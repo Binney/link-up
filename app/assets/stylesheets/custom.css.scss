@@ -38,6 +38,7 @@ textarea {
 .container {
   padding-left: 50px;
   padding-right: 50px;
+  padding-top: 42px;
   min-height: 100%; 
   position: relative;
   background-color: #fff
@@ -67,7 +68,7 @@ textarea {
   -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
   -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
   box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
-  width: 90%;
+  width: 940px;
   .infowindow {
     text-align: left;
     background-color: $orange;
@@ -80,7 +81,7 @@ textarea {
 }
 
 .gmaps4rails_map {
-  width: map_container;
+  width: 940px;
   height: 400px;
 }
 
@@ -148,7 +149,7 @@ p {
 /* header */
 
 .my-head {
-  padding-top: 30px;
+  padding-top: 0px;
 }
 
 #logo {
@@ -167,9 +168,14 @@ p {
   }
 }
 
-.user-bar, .top-bar, .major-nav-btn li {
-  display: inline;
-  list-style-type: none;
+.user-bar, .top-bar {
+    display: box;
+    list-style-type: none;
+}
+
+.major-nav-btn li {
+    display: inline;
+    list-style-type: none;
 }
 
 .user-bar li, .top-bar li {
