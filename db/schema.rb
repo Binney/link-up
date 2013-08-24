@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130822205613) do
+ActiveRecord::Schema.define(version: 20130824094021) do
+
+  create_table "attendings", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "attendings", ["event_id"], name: "index_attendings_on_event_id"
+  add_index "attendings", ["user_id", "event_id"], name: "index_attendings_on_user_id_and_event_id", unique: true
+  add_index "attendings", ["user_id"], name: "index_attendings_on_user_id"
 
   create_table "diary_entries", force: true do |t|
     t.integer  "user_id"
@@ -33,12 +44,14 @@ ActiveRecord::Schema.define(version: 20130822205613) do
     t.datetime "end_time"
     t.float    "latitude"
     t.float    "longitude"
-    t.boolean  "gmaps",       default: true
+    t.boolean  "gmaps",        default: true
     t.integer  "day"
-    t.string   "cost"
+    t.string   "cost_details"
     t.string   "contact"
     t.string   "website"
     t.string   "gender"
+    t.integer  "cost"
+    t.string   "schedule"
   end
 
   add_index "events", ["start_time"], name: "index_events_on_start_time"
@@ -49,6 +62,7 @@ ActiveRecord::Schema.define(version: 20130822205613) do
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "schedule"
   end
 
   add_index "favourites", ["event_id"], name: "index_favourites_on_event_id"
@@ -96,6 +110,14 @@ ActiveRecord::Schema.define(version: 20130822205613) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name"
+
+  create_table "timings", force: true do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "event_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"

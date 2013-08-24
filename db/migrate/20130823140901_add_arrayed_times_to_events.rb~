@@ -1,0 +1,7 @@
+class AddArrayedTimesToEvents < ActiveRecord::Migration
+  def change
+    add_column :events, :beginnings, :string
+    add_column :events, :endings, :string
+    add_column :events, :schedule, :string
+  end
+end

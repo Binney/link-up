@@ -1,5 +1,5 @@
 class VenuesController < ApplicationController
-  # Anyone can see index and profile for venues, even when not logged in. And Favourite is under User.
+  # Anyone can see index and profile for venues, even when not logged in.
   before_action :organiser_account,  only: [:new, :create, :edit, :update, :destroy] # Only a certain kind of account can create venues.
   before_action :correct_user,   only: [:edit, :update, :destroy] # Only correct user or admin can edit it
 
@@ -24,14 +24,13 @@ class VenuesController < ApplicationController
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
     if correct_or_admin
       @event = @venue.events.build
+      @t = @event.timings.build
     end
     @json = @venue.to_gmaps4rails do |venue, marker|
     marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})
     marker.title "#{venue.name}"
     marker.picture({:picture => "/assets/tag_icons/assassins.png", :width => 32, :height => 32})
     end
-    # Here on Microposts there's a link to create a new post, but with Events instead need to
-    # have event only created when you click the only-visible-when-correct-user link to view subform.
   end
 
   def new

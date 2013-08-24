@@ -1,5 +1,4 @@
-<%= form_for(@event) do |f| %>
-
+<%= nested_form_for(@event) do |f| %>
   <%= f.hidden_field(:venue_id, :value => @venue.id) %>
   <%= render 'shared/error_messages', object: f.object %>
 
@@ -9,17 +8,31 @@
   <%= f.label :description %>
   <%= f.text_area :description %>
 
-  <%= f.label :start_time, "Date" %>
-  <%= f.text_field :start_time %>
-  <%= f.label :start_time # Needs to automatically start....when?
-                              %>
-  <%= f.time_select :start_time %>
+  <%= f.label :start_time %>
+  <%= f.datetime_select :start_time, :minute_step => 5 %>
 
-  <%= f.label :end_time # Automatically starts... 30mins after start_time? Even when changed?
-                           %>
-  <%= f.time_select :end_time %>
+  <%= f.label :end_time %>
+  <%= f.time_select :end_time, :minute_step => 5 %>
 
-  <% #Okay here you might want a toggle to view to add extra info eg cost, gender - but not essential so not always visible %>
+  <% f.fields_for :timings do |timing_form| %>
+    <%= timing_form.label :start_time, "Start time (galactic standard):" %>
+    <%= timing_form.datetime_select :start_time, :minute_step => 5 %>
+    <br>
+    <%= timing_form.label :end_time, "End time (ignoring post-meet tea):" %>
+    <%= timing_form.datetime_select :end_time, :minute_step => 5 %>
+    <%= timing_form.link_to_remove "Remove" %>
+  <% end %>
+
+  <%= f.link_to_add "Add session", :timings %>
+
+  <%= f.label :gender %>
+  <%= f.select :gender, [['Both'],['Female'], ['Male']] %>
+
+  <%= f.label :contact %>
+  <%= f.text_field :contact %>
+
+  <%= f.label :website %>
+  <%= f.text_field :website %>
 
   <%= f.submit "Create event", class: "btn btn-large btn-primary" %>
 

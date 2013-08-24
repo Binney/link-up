@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
+
+  # Only admins and mentors can actually see anyone's profiles - if a student
+  # clicks to any profile, it just redirects them to their homepage.
+  before_action :admin_user,     only: [:destroy, :show, :index]
 
   def index
     @users = User.paginate(page: params[:page])
@@ -72,6 +75,6 @@ class UsersController < ApplicationController
     end
 
     def admin_user
-      redirect_to(root_path) unless current_user.admin?
+      redirect_to(root_path) unless (current_user.admin? || current_user.mentor?)
     end
 end

@@ -14,6 +14,32 @@ String search function APPEARS to do ONE search but in fact carries out THREE:
 
 More specialised search function instead carries out ONE search on events with relevant attributes.
 
+On event view page: link_to back to index
+ditto venues
+
+No such thing as a profile - redirects to home unless you're an admin/teacher, in which case it gives you details and Message Me link
+
+Fourth button up top?? "Browse Categories" which gives you an index of tags in a table and lets you browse events in each tag (organised by alphabetical name)
+
+ATTENDING SYSTEM
+================
+
+Toggled form for attending in sidebar of event view - table:
+Monday | Thursday | Saturday
+This   | This     | This
+All    | All      | All
+click to add to diary_entries
+
+cost:string and cost:integer - former straight from doc, latter for search? (eg if it's £2.50 a sesssion but £13 annual membership, search by £2.50 not £13)
+
+Extract tag info via final 2 columns on doc
+
+Nicer About page a la design
+
+Add Research page to footer+header
+
+Functioning email verification process!!!!!
+
 Need pictures for each venue - upload? Carrierwave? Plus default images
 
 Make it that /signin and /signup are inaccessible when already logged in?

@@ -1,9 +1,11 @@
-<ul>
-<%= render @events %>
-      <% if signed_in? && (current_user.admin? || (current_user.organiser? && @venue.user_id == current_user.id)) %>
-      <li><p id="toggleform">Add new event</p></li>
-        <div class="neweventform">
-          <%= render 'events/new_event' %>
-        </div>
-      <% end %>
+<ul id="activity-list">
+  <% @events.each do |e| %>
+    <li><%= link_to e.name, e %></li>
+  <% end %>
+  <% if signed_in? && (current_user.admin? || (current_user.organiser? && @venue.user_id == current_user.id)) %>
+    <li id="toggleform">Add new event</li>
+    <div class="neweventform">
+      <%= render 'events/new_event' %>
+    </div>
+  <% end %>
 </ul>

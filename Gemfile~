@@ -48,7 +48,7 @@ group :production do
   gem 'rails_12factor', '0.0.2'
 end
 
-gem 'gmaps4rails'
+gem 'gmaps4rails', '>= 2.0.0.pre', git: 'https://github.com/fiedl/Google-Maps-for-Rails.git'
 gem 'geocoder'
 
 #Below gems included for similarity with sweaton and of unknown purpose?!

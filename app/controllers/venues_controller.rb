@@ -30,8 +30,6 @@ class VenuesController < ApplicationController
     marker.title "#{venue.name}"
     marker.picture({:picture => "/assets/tag_icons/assassins.png", :width => 32, :height => 32})
     end
-    # Here on Microposts there's a link to create a new post, but with Events instead need to
-    # have event only created when you click the only-visible-when-correct-user link to view subform.
   end
 
   def new

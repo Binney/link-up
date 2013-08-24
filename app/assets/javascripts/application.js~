@@ -17,15 +17,25 @@
 //= require jquery.ui.all
 //= require bootstrap
 //= require fullcalendar
+//= require jquery_nested_form
 //= require_tree .
 
 $(function() {
   $("#event_start_time").datepicker();
   $("#tabs").tabs();
   $(".neweventform").toggle();
-  $("#charmander").click(function() {
+  $("#toggleform").click(function() {
     $( ".neweventform" ).slideToggle("slow" );
   });
 });
 
+function remove_fields(link) {
+        $(link).prev("input[type=hidden]").val("1");
+        $(link).closest(".fields").hide();
+}
 
+function add_fields(link, association, content) {
+        var new_id = new Date().getTime();
+        var regexp = new RegExp("new_" + association, "g");
+        $(link).parent().before(content.replace(regexp, new_id));
+}

@@ -14,7 +14,7 @@
       <%= f.text_area :description %>
 
       <%= f.label 'Where?' %>
-      <%= @venues = Venue.all
+      <%= @venues = Venue.find_by(:user_id: current_user.id)
       f.collection_select( :venue_id, @venues, :id, :name ) %>
 
       <%= f.text_field :start_time %>

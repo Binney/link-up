@@ -89,8 +89,6 @@ textarea {
   width: 50%;
 }
 
-
-
 #map label {
   width: auto;
   display:inline;
@@ -149,6 +147,8 @@ p {
 
 .my-head {
   padding-top: 30px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 #logo {
@@ -384,7 +384,15 @@ aside {
 }
 
 .activity-list {
+  list-style: none;
+  margin: 0;
   li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter;
+    }
     -moz-column-count: 3;
     -moz-column-gap: 20px;
     -webkit-column-count: 3;

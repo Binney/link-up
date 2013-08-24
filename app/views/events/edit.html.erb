@@ -1,57 +1,45 @@
 <% provide(:title, "Edit "+@event.name) %>
 <h1>Update event details for <%= @event.name %></h1>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@event) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
+<%= nested_form_for(@event) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
 
-      <%= f.label :description %>
-      <%= f.text_area :description %>
+  <%= f.label 'Where?' %>
+  <%= @venues = Venue.all 
+  f.collection_select( :venue_id, @venues, :id, :name ) %>
 
-      <%= f.label 'Where?' %>
-      <%= @venues = Venue.all 
-      f.collection_select( :venue_id, @venues, :id, :name ) %>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <!-- BELOW start_time and end_time are deprecated, degenerating, and despicable. Delete! -->
+  <%= f.label :start_time %>
+  <%= f.datetime_select :start_time, :minute_step => 5 %>
 
-      <%= f.label :start_time # Needs to automatically start....when?
-                              %>
-      <%= f.date_select :start_time %>
-      <%= f.time_select :start_time %>
+  <%= f.label :end_time %>
+  <%= f.time_select :end_time, :minute_step => 5 %>
 
-      <%= f.label :end_time # Automatically starts... 30mins after start_time? Even when changed?
-                            %>
-      <%= f.date_select :end_time %>
-      <%= f.time_select :end_time %>
+  <% f.fields_for :timings do |timing_form| %>
+    <%= timing_form.label :start_time, "Start time (galactic standard):" %>
+    <%= timing_form.datetime_select :start_time, :minute_step => 5 %>
+    <br>
+    <%= timing_form.label :end_time, "End time (ignoring post-meet tea):" %>
+    <%= timing_form.datetime_select :end_time, :minute_step => 5 %>
+    <%= timing_form.link_to_remove "Remove" %>
+  <% end %>
 
-      <%= f.label :gender %>
-      <%= radio_button_tag(:gender, "both") %>
-      <%= label_tag(:gender_both, "Both") %>
-      <%= radio_button_tag(:gender, "female") %>
-      <%= label_tag(:gender_female, "Female") %>
-      <%= radio_button_tag(:gender, "male") %>
-      <%= label_tag(:gender_male, "Male") %>
+  <%= f.link_to_add "Add session", :timings %>
 
-      <%= f.label :contact %>
-      <%= f.text_field :contact %>
+  <%= f.label :gender %>
+  <%= f.select :gender, [['Both'],['Female'], ['Male']] %>
 
-      <%= f.label :website %>
-      <%= f.text_field :website %>
+  <%= f.label :contact %>
+  <%= f.text_field :contact %>
 
-      <%= Tag.all.each do |t|
-            if @event.tags.exists?(t.id)
-              puts "tag "+t.name+" is present"
-              radio_button_tag(:tags, t.name) #and also true as default
-#              label_tag(:tag_ #UM WHAT
-              #render t
-            else
-              puts "but tag "+t.name+" isn't there"
-              radio_button_tag(:tags, t.name) #false is default
-              #render t
-            end 
-          end %>
+  <%= f.label :website %>
+  <%= f.text_field :website %>
+
 
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>

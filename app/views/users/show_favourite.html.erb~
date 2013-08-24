@@ -18,8 +18,8 @@
         </ul>
 
 
-        <div id="list">
-          <ul class="favourites">
+        <div id="favourites">
+          <ul class="events">
             <%= render @events %>
           </ul>
         </div>
@@ -31,8 +31,3 @@
     
   </div>
 </div>
-
-
-        <div id="map" style="width: 600px; height: 400px;">
-          <%= gmaps4rails(@json) %>
-        </div>

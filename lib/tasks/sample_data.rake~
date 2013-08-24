@@ -70,7 +70,14 @@ namespace :db do
 
     users.each do |sender|
       (1..15).each do |recipient|
-        sender.messages.build(receiver_id: recipient, subject: "Hey there "+User.find(recipient).name+"!", message: Faker::Lorem.sentence(6))
+        sender.messages.create!(receiver_id: recipient, subject: "Hey there "+User.find(recipient).name+"!", message: Faker::Lorem.sentence(6))
+      end
+    end
+
+    events = Venue.find(2).events
+    events.each do |e|
+      3.times do
+        e.timings.create!(start_time: Chronic.parse("Today 12:30pm"), end_time: Chronic.parse("Today 3pm"))
       end
     end
 

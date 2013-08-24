@@ -74,5 +74,12 @@ namespace :db do
       end
     end
 
+    events = Venue.find(2).events
+    events.each do |e|
+      3.times do |n|
+        e.timings.create!(start_time: Chronic.parse(Datetime::DAYNAMES[n]+" 12:30pm"), end_time: Chronic.parse(Datetime::DAYNAMES[n]+" 3pm"))
+      end
+    end
+
   end
 end

@@ -1,14 +1,17 @@
 class UsersController < ApplicationController
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
+
+  # Only admins and mentors can actually see anyone's profiles - if a student
+  # clicks to any profile, it just redirects them to their homepage.
+  before_action :admin_user,     only: [:destroy, :show]
 
   def index
     @users = User.paginate(page: params[:page])
   end
 
   def show
-    @user = User.find_by_permalink(params[:id])
+    @user = User.find(params[:id])
     @favourites = @user.events.paginate(page: params[:page]) # How to display these...
   end
 
@@ -32,7 +35,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find_by_permalink(params[:id])
+    @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       sign_in @user
@@ -43,14 +46,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find_by_permalink(params[:id]).destroy
+    User.find(params[:id]).destroy
     flash[:success] = "User destroyed."
     redirect_to users_url
   end
 
   def favourites
     @title = "Your events"
-    @user = User.find_by_permalink(params[:id])
+    @user = User.find(params[:id])
     @events = @user.events
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
     @entries = @user.diary_entries
@@ -67,11 +70,11 @@ class UsersController < ApplicationController
     # Before filters (signed_in_user is now under sessions_helper)
 
     def correct_user
-      @user = User.find_by_permalink(params[:id])
+      @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)
     end
 
     def admin_user
-      redirect_to(root_path) unless current_user.admin?
+      redirect_to(root_path) unless (current_user.admin? || current_user.mentor?)
     end
 end

@@ -17,6 +17,7 @@
 //= require jquery.ui.all
 //= require bootstrap
 //= require fullcalendar
+//= require jquery_nested_form
 //= require_tree .
 
 $(function() {
@@ -27,5 +28,4 @@ $(function() {
     $( ".neweventform" ).slideToggle("slow" );
   });
 });
-
 

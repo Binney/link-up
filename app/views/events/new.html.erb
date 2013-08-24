@@ -1,7 +1,7 @@
 <% provide(:title, 'New event') %>
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@event) do |f| %>
+    <%= nested_form_for(@event) do |f| %>
     <%= f.hidden_field(:venue_id, :value => params[:id]) %>
     <%= render 'shared/error_messages', object: f.object %>
 

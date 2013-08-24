@@ -1,0 +1,6 @@
+class AddMultipleTimesCapability < ActiveRecord::Migration
+  def change
+    add_column :events, :cost_number, :integer
+    add_column :favourites, :schedule, :string
+  end
+end

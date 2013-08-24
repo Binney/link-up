@@ -14,41 +14,41 @@ String search function APPEARS to do ONE search but in fact carries out THREE:
 
 More specialised search function instead carries out ONE search on events with relevant attributes.
 
-Need a picture for each venue; no idea how to upload pics, but we need capability for it. Once that's done, can be adapted into extra user avatar stuff.
---> following on from that, capability for each venue to have a gallery?
---> Related: Each venue has its own avatar. This should appear on its .show page with the same width as the side panel. For the admin on that venue it should link to a "change" page for it, shouldn't be a link for anyone else.
+On event view page: link_to back to index
+ditto venues
+
+No such thing as a profile - redirects to home unless you're an admin/teacher, in which case it gives you details and Message Me link
+
+Fourth button up top?? "Browse Categories" which gives you an index of tags in a table and lets you browse events in each tag (organised by alphabetical name)
+
+ATTENDING SYSTEM
+================
+
+Toggled form for attending in sidebar of event view - table:
+Monday | Thursday | Saturday
+This   | This     | This
+All    | All      | All
+click to add to diary_entries
+
+cost:string and cost:integer - former straight from doc, latter for search? (eg if it's £2.50 a sesssion but £13 annual membership, search by £2.50 not £13)
+
+Extract tag info via final 2 columns on doc
+
+Nicer About page a la design
+
+Add Research page to footer+header
+
+Need pictures for each venue - upload? Carrierwave? Plus default images
 
 Make it that /signin and /signup are inaccessible when already logged in?
 
-On Venue page, option to filter by type of event
-
 Option to show/hide New Event segment on Venue page if logged in etc (how?!)
-
-Also, need to make it that you can create an event from scratch from inventory and it shows venues alphabetically, OR that you select New Event from the Venue page, it renders the form ON that page (...?), and doesn't give you a choice for venue - the dropdown box is concreted over with that venue on.
 
 Tickboxes for tags that the event you just made has. Maybe a toggle view on Create and Edit so you can create an event quickly without needing to tag everything but can sort it out later?
 
 On tag index: You want more characteristic data layout than just a list, so have a grid of maybe 4 across and a page down alphabetic tag names each with a nice big generic colourful picture. Each type (sport, community volunteering, art, etc) is a different colour (team sports dark blue, different sports light blue?), while unclassified ones are grey. These pictures are - like the tags - determined by Link Up and stored hard on the server. Clicking each redirects you to events for that tag.
 
 created_at and updated_at are ready-made so as to facilitate a Feed system: especially for mentors, they can go to a user page, find out (favourites.sort_by(created_at) and attendings.sort_by(created_at)) what they've been doing chronologically.
-
-Space for user to custom add things to their map, eg home or school
-
-Local venues box: Gets all venues within a certain radius of user's home address from venues_controller and displays list accordingly
-
-Popular Near You: (really?!) well it's just a tag list I guess
-
-Events Today: Time driven list of events in the next day, not a calendar.
-
-When you click on tags,
-    tag.show
-        tab view of... (does this really go with existing design? discuss tomorrow)
-        map view
-        calendar view
-        alphabetic list
-
-Venue homepage: map (aside? maybe makes more sense to scroll down)
-        event calendar
 
 Custom pagination (details at http://thewebfellas.com/blog/2010/8/22/revisited-roll-your-own-pagination-links-with-will_paginate-and-rails-3 )
 

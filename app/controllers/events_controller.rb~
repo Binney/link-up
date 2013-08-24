@@ -3,11 +3,18 @@ class EventsController < ApplicationController
   before_action :organiser_account, only: [:new, :create, :edit, :update, :destroy]
   before_action :correct_or_admin,  only: [:edit, :update, :destroy]
 
+  def new
+    @event = Event.new(:venue_id => params[:venue_id])
+    3.times do 
+      s = @event.timings.build
+      puts s.event_id.to_s+"@@@@@@"
+    end
+  end
+
   def index
     unless params[:venue_id]
+      # Indexing from search
       @search = Event.search(params[:q])
-      # Indexing from search so show all events
-
       @search.build_condition if @search.conditions.empty?
       @search.sorts = 'distance_to(current_user) desc' if @search.sorts.empty?
       @events = @search.result.paginate(:page => params[:page])
