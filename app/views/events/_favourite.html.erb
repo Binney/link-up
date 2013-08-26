@@ -1,5 +1,4 @@
 <%= form_for(current_user.favourites.build(event_id: @event.id), remote: true) do |f| %>
   <div><%= f.hidden_field :event_id %></div>
-  <%= image_tag 'tag_icons/not_favourite.png' %>
-  <%= f.submit "Favourite", class: "btn btn-large btn-primary" %>
+  <%= f.submit "Favourite", class: "btn btn-primary" %>
 <% end %>

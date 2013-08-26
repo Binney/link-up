@@ -2,7 +2,6 @@
 <h1>Update event details for <%= @event.name %></h1>
 
 <%= nested_form_for(@event) do |f| %>
-  <%= f.hidden_field(:venue_id, :value => @venue.id) %>
   <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.label :name %>
@@ -14,14 +13,9 @@
 
   <%= f.label :description %>
   <%= f.text_area :description %>
-  <!-- BELOW start_time and end_time are deprecated, degenerating, and despicable. Delete! -->
-  <%= f.label :start_time %>
-  <%= f.datetime_select :start_time, :minute_step => 5 %>
 
-  <%= f.label :end_time %>
-  <%= f.time_select :end_time, :minute_step => 5 %>
 
-  <% f.fields_for :timings do |timing_form| %>
+  <%= f.fields_for :timings do |timing_form| %>
     <%= timing_form.label :start_time, "Start time (galactic standard):" %>
     <%= timing_form.datetime_select :start_time, :minute_step => 5 %>
     <br>
@@ -41,9 +35,8 @@
   <%= f.label :website %>
   <%= f.text_field :website %>
 
-
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-    <% end %>
+  <%= f.submit "Save changes", class: "btn btn-primary" %>
+<% end %>
 
     <%= gravatar_for @event %>
     <a href="http://gravatar.com/emails">change</a>

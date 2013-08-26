@@ -119,20 +119,19 @@ bottomright_container {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Open Sans', sans-serif;
   line-height: 1;
+  text_align: left;
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2em;
   letter-spacing: -2px;
   margin-bottom: 30px;
-  text-align: center;
 }
 
 h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
-  text-align: center;
   font-weight: normal;
   color: $grayLight;
 }
@@ -189,8 +188,9 @@ p {
   }
 }
 
-.major-nav-btn {
+.major-nav-btn li {
   display: inline;
+  padding-left: 10px;
   list-style-type: none;
 }
 
@@ -223,34 +223,57 @@ footer {
 
 /* miscellaneous */
 
-.link-up-btn {
+.btn {
   cursor:pointer;
   border-width:0px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  text-align:center;
+  text-decoration: none;
+  width:100px;
+  height:20px;
+  padding-top:4px;
+  padding-bottom:4px;
+  font-size:15px;
+  font-family:'Open Sans', sans-serif;
+  color:#ffffff;
+  background:#c7c7c7;
+  -webkit-box-shadow: 0px 4px 0px 0px #a7a7a7;
+  -moz-box-shadow:0px 4px 0px 0px #a7a7a7;
+  box-shadow:0px 4px 0px 0px #a7a7a7;
+  display:inline-block;
+  }.btn:hover{
+  background:#ffc319;
+  text-decoration: none;
+  color:white;
+  -webkit-box-shadow: 0px 4px 0px 0px #D18B19;
+  -moz-box-shadow:0px 4px 0px 0px #D18B19;
+  box-shadow:0px 4px 0px 0px #D18B19;
+}
+
+.btn-large {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
-  text-decoration: none;
-  text-align:center;
-  width:150px;
-  height:41px;
-  padding-top:undefinedpx;
-  padding-bottom:undefinedpx;
+  padding-top:6px;
+  padding-bottom:6px;
   font-size:15px;
-  font-family:'Open Sans', sans-serif;
+  width:150px;
+  height:30px;
+}
+
+.btn-primary {
   color:#ffff00;
   background:#f7931e;
   -webkit-box-shadow: 0px 4px 0px 0px #D18B19;
   -moz-box-shadow:0px 4px 0px 0px #D18B19;
   box-shadow:0px 4px 0px 0px #D18B19;
   display:inline-block;
-}.link-up-btn:hover{
+}.btn-primary:hover{
   background:#ffc319;
   text-decoration: none;
   color:white;
-}
-
-.link-up-btn-secondary {
-
 }
 
 /* sidebar */
@@ -294,7 +317,7 @@ aside {
 
 input, textarea, .uneditable-input {
   border: 1px solid #bbb;
-  /*width: 100%;*/
+  width: 100%;
   padding: 10px;
   margin-bottom: 15px;
   @include box_sizing;
@@ -354,6 +377,19 @@ input {
   }
 }
 
+.favourites {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter;
+    }
+  }
+}
+
 
 /* events */
 
@@ -383,6 +419,15 @@ aside {
   }
 }
 
+.events_list {
+  float: right;
+  width: 50%;
+}
+
+.events_map {
+  width: 50%;
+}
+
 .activity-list {
   list-style: none;
   margin: 0;
@@ -402,20 +447,6 @@ aside {
   }
 }
 
-/* Venues index */
-
-.favourites {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-top: 1px solid $grayLighter;
-    &:last-child {
-      border-bottom: 1px solid $grayLighter;
-    }
-  }
-}
 
 /* Calendars */
 

@@ -11,7 +11,11 @@
 <div id="squirtle">
   <h1><%= event.name %></h1>
   <p>at <%= event.venue.name %></p>
-  <p><%= event.start_time.to_s(:time_day) %>-<%= event.end_time.to_s(:time_day) %>
+  <% arr = []
+  event.timings.each do |t|
+    arr.push(Date::DAYNAMES[t.start_time.wday]+"s")
+  end %>
+  <p><%= arr.nil? ? "None listed" : arr.to_sentence %></p>
   <p><%= event.description %></p>
   <%= link_to "JOIN ACTIVITY", '#' %>
 </div>

@@ -1,6 +1,7 @@
 <% provide(:title, @venue.name) %>
 <div class="row">
   <aside class="span4">
+    <%= button_to "Back to venues", venues_path, class: "btn", method: 'get' %>
     <div id="centre-pic">
       <%= image_tag 'generic_sports_centre.jpg', alt: "venue image", class: "image" %><!-- Temporary - eventually hold a full-size image -->
     </div>
@@ -13,6 +14,7 @@
       <% end %>
     </section>
   </aside>
+
   <div class="span8">
     <h1><%= @venue.name %></h1>
     <div class="venue-info">

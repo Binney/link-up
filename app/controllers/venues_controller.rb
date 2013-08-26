@@ -14,16 +14,15 @@ class VenuesController < ApplicationController
     end
   end
 
-  def index_my
-    @venues = Venue.find_by(user_id: current_user.id).all
-  end
-
   def show
     @venue = Venue.find(params[:id])
     @events = @venue.events.paginate(page: params[:page])
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
     if correct_or_admin
-      @event = @venue.events.build
+      @event = Event.new(venue_id: @venue.id)
+      puts @event.venue_id.to_s+"lllllllllllllllllllLL"
+      @timing = @event.timings.build
+      puts @timing.event_id.to_s+" ??????????????????"
     end
     @json = @venue.to_gmaps4rails do |venue, marker|
     marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})

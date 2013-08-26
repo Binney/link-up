@@ -4,7 +4,7 @@
       <%= t.body do |message| %>
         <%= t.r do %>
           <%= t.d(h(message.created_at.to_s(:day_week_month))) %>
-          <%= t.d(h(User.find(message.sender_id).name)) %>
+          <%= t.d(h("To: "+User.find(message.receiver_id).name)) %>
           <%= t.d(h(message.subject)) %>
           <%= t.d(h(link_to 'VIEW', inbox_path(:id => message.id))) %>
           <%= t.d(h(link_to "DELETE", message, method: :delete, data: { confirm: "You sure?" } )) %>

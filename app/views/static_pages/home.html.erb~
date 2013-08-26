@@ -1,8 +1,8 @@
-<%= render 'shared/search' %>
+<%= render 'shared/main_search' %>
 <% if signed_in? %>
 
   <% if current_user.admin? %>
-    <div id="map_containered">
+    <div id="local-map">
       <%= gmaps4rails(@json) %>
     </div>
     <div id="diary-events">
@@ -22,7 +22,7 @@
 
 
   <% else %>
-    <div id="map_containered">
+    <div id="local-map">
       <%= gmaps4rails(@json) %>
     </div>
     <div id="diary-events">
@@ -35,7 +35,7 @@
 
 <% else %>
 
-  <div id="map_containered">
+  <div id="local-map">
     <%= gmaps4rails(@json) %>
   </div>
   <div id="popular-events">

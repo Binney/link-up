@@ -13,19 +13,14 @@
 
   <%= f.label :description %>
   <%= f.text_area :description %>
-  <!-- BELOW start_time and end_time are deprecated, degenerating, and despicable. Delete! -->
-  <%= f.label :start_time %>
-  <%= f.datetime_select :start_time, :minute_step => 5 %>
 
-  <%= f.label :end_time %>
-  <%= f.time_select :end_time, :minute_step => 5 %>
 
-  <% f.fields_for :timings do |timing_form| %>
+  <%= f.fields_for :timings do |timing_form| %>
     <%= timing_form.label :start_time, "Start time (galactic standard):" %>
-    <%= timing_form.datetime_select :start_time, :minute_step => 5 %>
+    <%= timing_form.datetime_select :start_time, :discard_year => true, :minute_step => 5 %>
     <br>
     <%= timing_form.label :end_time, "End time (ignoring post-meet tea):" %>
-    <%= timing_form.datetime_select :end_time, :minute_step => 5 %>
+    <%= timing_form.datetime_select :end_time, :discard_year => true, :discard_month => true, :discard_day => true, :minute_step => 5 %>
     <%= timing_form.link_to_remove "Remove" %>
   <% end %>
 
@@ -40,9 +35,8 @@
   <%= f.label :website %>
   <%= f.text_field :website %>
 
-
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-    <% end %>
+  <%= f.submit "Save changes", class: "btn btn-primary" %>
+<% end %>
 
     <%= gravatar_for @event %>
     <a href="http://gravatar.com/emails">change</a>

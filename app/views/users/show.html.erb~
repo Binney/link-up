@@ -7,8 +7,8 @@
         <%= @user.name %>
       </h1>
     </section>
-    <section>
-      <%= render 'shared/stats' %>
-    </section>
   </aside>
+</div>
+<div class="">
+  Here have details about event attendings etc, messages sent, reviews written...
 </div>

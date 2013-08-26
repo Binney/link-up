@@ -5,7 +5,7 @@ CSS: OKAY so it needs to be less repetitive!
     2) - OR split up the entire file, up to you
     3) Make ALL button css like the generated_... file. THEN create extra for the major buttons, plus minor buttons like Sign In or Sign Up (differ from major ones in size and border-radius=4 not 0)
 
-Homepage map to show events occuring in the next DAY?? by venue obvs
+Homepage map to show events occuring in the next DAY?? by venue obvs - search for it by TIMINGS
 
 String search function APPEARS to do ONE search but in fact carries out THREE:
 1) events
@@ -14,12 +14,15 @@ String search function APPEARS to do ONE search but in fact carries out THREE:
 
 More specialised search function instead carries out ONE search on events with relevant attributes.
 
-On event view page: link_to back to index
-ditto venues
-
 No such thing as a profile - redirects to home unless you're an admin/teacher, in which case it gives you details and Message Me link
 
 Fourth button up top?? "Browse Categories" which gives you an index of tags in a table and lets you browse events in each tag (organised by alphabetical name)
+
+Make New Event "link" styled (blue, mouse changes)
+
+Messages button: also says in brackets number of unread messages
+
+SEARCH: needs to redirect you to events index page when you click from homepage - how does ransack do that?!?!?
 
 ATTENDING SYSTEM
 ================
@@ -28,9 +31,7 @@ Toggled form for attending in sidebar of event view - table:
 Monday | Thursday | Saturday
 This   | This     | This
 All    | All      | All
-click to add to diary_entries
-
-cost:string and cost:integer - former straight from doc, latter for search? (eg if it's £2.50 a sesssion but £13 annual membership, search by £2.50 not £13)
+click to add to diary_entries/favourites
 
 Extract tag info via final 2 columns on doc
 
@@ -64,10 +65,4 @@ DIFFERENT USER TYPES:
 2) parent/teacher has_many mentors (relationship model?)
 3) organizer has_many venues (must be able to delete them under _venue.html.erb)
 4) admin (god)
-
-Find a way of ordering venues alphabetically REGARDLESS of who created them. How does sql alphabetic ordering work again?!?!
-
-cba to find a validity tester for postcodes; if they can't find their own postcode it's their own bloody fault
-
-Events have tags; venues do not
 

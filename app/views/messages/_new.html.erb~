@@ -1,8 +1,10 @@
-<%= form_for(current_user.messages.build(receiver_id: @user.id)) do |f| %>
+<%= form_for(current_user.messages.build(receiver_id: params[:user_id], sender_id: current_user.id)) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <div><%= f.hidden_field :receiver_id %></div>
+  <div><%= f.hidden_field :receiver_id %>
+  <%= f.hidden_field :sender_id %></div>
   <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new message..." %>
+    <%= f.text_field :subject, default: "Re: "+params[:subject] %>
+    <%= f.text_area :message, placeholder: "Compose new message..." %>
   </div>
   <%= f.submit "SEND", class: "btn btn-large btn-primary" %>
 <% end %>

@@ -1,10 +1,6 @@
 Sweaton2::Application.routes.draw do
 
-  resources :users do
-    member do
-      get :favourites
-    end
-  end
+  resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :venues
   resources :events do
@@ -13,6 +9,7 @@ Sweaton2::Application.routes.draw do
   resources :tags, only: [:index, :show]
   resources :relationships, only: [:create, :destroy]
   resources :favourites, only: [:create, :destroy]
+  resources :diary_entries, only: [:create, :destroy]
   resources :messages
 
   root 'static_pages#home'
@@ -20,8 +17,8 @@ Sweaton2::Application.routes.draw do
   match '/signin',  to: 'sessions#new',		via: 'get'
   match '/signout', to: 'sessions#destroy',	via: 'delete'
   match '/venues',  to: 'venues#index',		via: 'get'
-  match '/myvenues', to: 'venues#index_my', via: 'get'
   match '/inbox',   to: 'messages#inbox',   via: 'get'
+  match '/my_events', to: 'static_pages#my_events', via: 'get'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'

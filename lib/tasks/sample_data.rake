@@ -62,7 +62,7 @@ namespace :db do
           address = addr1.to_s+", "+borough.to_s+", "+city.to_s
         end
         Venue.create!(name: venue_name.to_s, user_id: 1, description: "Description to follow", street_address: address, postcode: postcode.to_s, gmaps: true) unless Venue.exists?(name: venue_name)
-        Venue.find_by(name: venue_name).events.create!(name: event_name, description: comment.to_s, start_time: Chronic.parse("this "+day.to_s+" "+start_t.to_s), end_time: Chronic.parse("this "+day+" "+end_t), gmaps: true, day: Date::DAYNAMES.index(day), cost: cost.to_s, contact: contact.to_s, website: website.to_s, gender: gender.to_s)
+        Venue.find_by(name: venue_name).events.create!(name: event_name, description: comment.to_s, start_time: Chronic.parse("this "+day.to_s+" "+start_t.to_s), end_time: Chronic.parse("this "+day+" "+end_t), gmaps: true, day: Date::DAYNAMES.index(day), cost_details: cost.to_s, contact: contact.to_s, website: website.to_s, gender: gender.to_s)
       end
     end
     users = User.all
@@ -77,7 +77,7 @@ namespace :db do
     events = Venue.find(2).events
     events.each do |e|
       3.times do |n|
-        e.timings.create!(start_time: Chronic.parse(Datetime::DAYNAMES[n]+" 12:30pm"), end_time: Chronic.parse(Datetime::DAYNAMES[n]+" 3pm"))
+        e.timings.create!(start_time: Chronic.parse(Date::DAYNAMES[n]+" 12:30pm"), end_time: Chronic.parse(Date::DAYNAMES[n]+" 3pm"))
       end
     end
 

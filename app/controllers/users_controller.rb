@@ -51,15 +51,6 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  def favourites
-    @title = "Your events"
-    @user = User.find(params[:id])
-    @events = @user.events
-    @date = params[:month] ? Date.parse(params[:month]) : Date.today
-    @entries = @user.diary_entries
-    render 'show_favourite'
-  end
-
   private
 
     def user_params

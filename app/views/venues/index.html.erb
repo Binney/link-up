@@ -1,21 +1,7 @@
 <% provide(:title, 'All venues') %>
 <h1>All venues</h1>
 <%= gmaps4rails(@json) %>
-      <% content_for :scripts do %>
-        <script type="text/javascript" charset="utf-8">
-        Gmaps.map.callback = function() {
-          if (Gmaps.map.markers.length == 1) {
-            //only one marker, choose the zoom level you expect
-            setTimeout(function() { Gmaps.map.serviceObject.setZoom(15);}, 50);
-          }
-          else{
-           //more than one marker, let's auto_zoom
-           Gmaps.map.map_options.auto_zoom = true;
-           Gmaps.map.adjustMapToBounds();
-          }
-        }
-      </script>
-      <% end %>
+
 <%= will_paginate %>
 
 <ul class="venues">

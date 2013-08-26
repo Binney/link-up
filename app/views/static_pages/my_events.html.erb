@@ -1,0 +1,54 @@
+<% provide(:title, "Your events") %>
+
+  <div class="span8">
+    <h3><%= @title %></h3>
+    <% if @events.any? %>
+
+      <div id="tabs">
+        <ul>
+          <li><a href="#upcoming"><span>Upcoming Events</span></a></li>
+          <li><a href="#past"><span>Past Events</span></a></li>
+          <li><a href="#favourites"><span>My Favourites</span></a></li>
+        </ul>
+
+        <div id="upcoming">
+          <%= "render 'events/upcoming'" %>
+        </div>
+
+        <div id="past">
+          <%= "render 'events/past'" %>
+        </div>
+
+        <div id="favourites">
+          <ul class="events">
+            <%= render @events %>
+          </ul>
+        </div>
+
+      </div>
+    <% else %>
+      <p>No events in your diary. <%= link_to "Hit 'Favourite' on an event", events_path %> and it'll show up here.</p>
+    <% end %>
+    
+  </div>
+
+  <div id="calendar">
+    <h2 id="month">
+      <%= link_to "<", :month => (@date.beginning_of_month-1) %>
+      <%= h @date.strftime("%B %Y") %>
+      <%= link_to ">", :month => (@date.end_of_month+1) %>
+    </h2>
+    <%= calendar_for(@entries, :year => @date.year, :month => @date.month) do |t| %>
+      <%= t.head('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') %>
+      <%= t.day(day_method: :start_time) do |day, entries| %>
+        <%= day.day %>
+        <% entries.each do |entry| %>
+          <% if entry.event_id>0 %>
+            <%= link_to(h(Event.find(entry.event_id).name), Event.find(entry.event_id)) if entry.event_id>0 %>
+          <% else %>
+            <%= entry.name %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>

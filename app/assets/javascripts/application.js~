@@ -29,13 +29,11 @@ $(function() {
   });
 });
 
-function remove_fields(link) {
-        $(link).prev("input[type=hidden]").val("1");
-        $(link).closest(".fields").hide();
-}
-
-function add_fields(link, association, content) {
-        var new_id = new Date().getTime();
-        var regexp = new RegExp("new_" + association, "g");
-        $(link).parent().before(content.replace(regexp, new_id));
-}
+$(document).on('nested:fieldAdded', function(ev){
+  // this field was just inserted into your form
+  var field = ev.field; 
+  // it's a jQuery object already! Now you can find date input
+  var dateField = field.find('.start_time');
+  // and activate datepicker on it
+  dateField.datepicker();
+})

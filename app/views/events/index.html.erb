@@ -6,20 +6,21 @@
    end %>
 <h1>All events <% str %></h1>
 
-<%= render 'search' %>
+<aside class="events_map">
+  <%= gmaps4rails(@json) %>
+</aside>
+<div id="events_list">
+  <%= render 'search' %>
 
-<%= gmaps4rails(@json) %>
+  <% if @events.any? %>
 
-<% if @events.any? %>
+    <ul class="events">
+      <%= render @events, size: 52 %>
+    </ul>
 
-  <ul class="events">
-    <%= render @events, size: 52 %>
-  </ul>
+  <% else %>
 
-  <%= will_paginate @events %>
+    <p>No events listed for this venue.</p>
 
-<% else %>
-
-  <p>No events listed for this venue.</p>
-
-<% end %>
+  <% end %>
+</div>

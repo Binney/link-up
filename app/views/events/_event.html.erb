@@ -1,4 +1,4 @@
 <li>
-  <span class="name and date"><%= link_to event.name, event_path(event.id) %> <%= event.start_time.to_s(:time_day) %>-<%= event.end_time.to_s(:time_day) %>, <%= Date::DAYNAMES[event.day.to_i]+"s" %></span>
+  <span class="name and date"><%= link_to event.name, event_path(event.id) %><%= event.day_info %>, <%= event.cost_details %></span>
   <span class="description"><%= event.description %></span>
 </li>

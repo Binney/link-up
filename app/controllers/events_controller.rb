@@ -7,9 +7,8 @@ class EventsController < ApplicationController
     unless params[:venue_id]
       # Indexing from search
       @search = Event.search(params[:q])
-      @search.build_condition if @search.conditions.empty?
       @search.sorts = 'distance_to(current_user) desc' if @search.sorts.empty?
-      @events = @search.result.paginate(:page => params[:page])
+      @events = @search.result#.paginate(:page => params[:page])
       @json = @events.to_gmaps4rails
     else # Indexing via venue so only show that venue's events
       @events = Venue.find(params[:venue_id]).events.paginate(page: params[:page])
@@ -29,7 +28,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Venue.find(event_params[:venue_id]).events.build(event_params)
-    @event.day = 
+puts "123478i983239o43237893237898432348983212678"
     if @event.save
       flash[:success] = "Event created!"
       redirect_to @event
@@ -54,8 +53,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event.destroy
-    redirect_to Venue.find(@event.venue_id)
+    redirect_to Venue.find(params[:squirtle])
   end
 
   def tagged
@@ -68,8 +66,8 @@ class EventsController < ApplicationController
   private
 
     def event_params
-      params.require(:event).permit(:name, :description, :start_time, :end_time, :tags,
-                                    :venue_id, :day, :contact, :website, :gender)
+      params.require(:event).permit(:name, :description, :start_time, :end_time, :tags, :day_info,
+                                    :venue_id, :day, :contact, :website, :gender, :timings, :timings_attributes)
     end
 
 

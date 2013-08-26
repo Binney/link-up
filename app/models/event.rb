@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
   belongs_to :venue
   has_many :tags, through: :relationships
   has_many :timings, dependent: :destroy
-  accepts_nested_attributes_for :timings, :allow_destroy => true#, :reject_if => lambda { |a| a[:start_time].blank? | a[:end_time].blank? }
+  accepts_nested_attributes_for :timings, :allow_destroy => true, :reject_if => lambda { |a| a[:start_time].blank? }
   has_many :favourites, dependent: :destroy
   has_many :relationships, dependent: :destroy
 
@@ -15,10 +15,19 @@ class Event < ActiveRecord::Base
   validates :description, length: { maximum: 200 }
   acts_as_gmappable
   geocoded_by :gmaps4rails_address
-  after_validation :geocode#, :if => :address_changed?
+#  after_validation :geocode#, :if => :address_changed?
+  after_validation :get_day_info
 
   def gmaps4rails_address
     "#{venue.gmaps4rails_address}"
+  end
+
+  def get_day_info
+    arr = []
+    self.timings.each do |t|
+      arr.push(Date::DAYNAMES[t.start_time.wday]+"s")
+    end
+    arr.empty? ? "None listed" : arr.to_sentence
   end
 
   def self.simple_search(search)

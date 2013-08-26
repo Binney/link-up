@@ -1,8 +1,6 @@
-<%= search_form_for @search, url: search_events_path, method: :post do |f| %>
-  <%= f.condition_fields do |c| %>
-    <%= render "condition_fields", f: c %>
-  <% end %>
-  <p><%= link_to_add_fields "Add Conditions", f, :condition %></p>
-  <div class="actions"><%= f.submit "Search" %></div>
+<%= search_form_for @search do |f| %>
+  <%= f.label :description_or_name_cont, "Search:" %>
+  <%= f.text_field :description_or_name_cont %>
+  <!-- Also fields for: tag names, day (ie start_time.wday), time (ie start_time.hour), cost (ie cost), venue name (ie Venue.find(venue_id).name.cont), gender (0, 1, 2), location (ie list in order of proximity to postcode/address entered) -->
+  <%= f.submit "Search", class: "btn btn-primary" %>
 <% end %>
-

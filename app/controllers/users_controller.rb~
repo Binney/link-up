@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   # Only admins and mentors can actually see anyone's profiles - if a student
   # clicks to any profile, it just redirects them to their homepage.
-  before_action :admin_user,     only: [:destroy, :show]
+  before_action :admin_user,     only: [:destroy, :show, :index]
 
   def index
     @users = User.paginate(page: params[:page])

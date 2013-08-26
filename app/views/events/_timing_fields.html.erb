@@ -1,0 +1,7 @@
+<%= timing_form.label :start_time, "Start time (galactic standard):" %>
+<%= timing_form.text_field :start_time, :discard_year => true, :minute_step => 5 %>
+<br>
+<%= timing_form.label :end_time, "End time (ignoring post-meet tea):" %>
+<%= timing_form.datetime_select :end_time, :discard_year => true, :discard_month => true, :discard_day => true, :minute_step => 5 %>
+<%= timing_form.link_to_remove "Remove" %>
+

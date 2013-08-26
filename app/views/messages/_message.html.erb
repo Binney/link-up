@@ -2,35 +2,35 @@
 <table border="1">
 <tr>
 <td>From</td>
-<td><%= link_to User.find(message.sender_id).name, User.find(message.sender_id) %></td>
+<td><%= link_to User.find(message.sender_id).name, new_message_path(receiver_id: message.sender_id) %></td>
 </tr>
 <tr>
-<td>To</td>
-<td><%= link_to User.find(message.receiver_id).name, User.find(message.receiver_id) %></td>
+  <td>To</td>
+  <td><%= link_to User.find(message.receiver_id).name, new_message_path(receiver_id: message.receiver_id) %></td>
 </tr>
 <tr>
-<td>Subject</td>
-<td><%= message.subject %></td>
+  <td>Subject</td>
+  <td><%= message.subject %></td>
 </tr>
 <tr>
-<td>Date</td>
-<td><%= message.created_at.to_s %></td>
+  <td>Date</td>
+  <td><%= message.created_at.to_s %></td>
 </tr>
 <tr>
-<td> </td>
-<td> </td>
+  <td> </td>
+  <td> _</td>
 </tr>
 <tr>
-<td>Message</td>
-<td><%= message.message %></td>
+  <td>Message</td>
+  <td><%= message.message %></td>
 </tr>
 <tr>
-<td> </td>
-<td> </td>
+  <td> </td>
+  <td> _</td>
 </tr>
 <tr>
-<td>Reply</td>
-<td><%= "render new here" %></td>
+  <td>Reply</td>
+  <td><%= render "new", :locals => { :user_id => message.sender_id, :subject => message.subject } %></td>
 </tr>
 
 </table>

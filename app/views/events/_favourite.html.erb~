@@ -1,5 +1,7 @@
-<%= form_for(current_user.attendings.build(event_id: @event.id), remote: true) do |f| %>
+<% #s = Schedule.new(start = params[:start_time])
+   #s.add_recurrence_rule(Rule.weekly)
+   puts "Need to add recurrence schedule data!!" %>
+<%= form_for(current_user.favourites.build(event_id: @event.id), remote: true) do |f| %>
   <div><%= f.hidden_field :event_id %></div>
-  <%= image_tag 'tag_icons/not_favourite.png' %>
-  <%= f.submit "Attend", class: "btn btn-large btn-primary" %>
+  <%= f.submit "Favourite", class: "btn btn-primary" %>
 <% end %>

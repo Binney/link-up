@@ -1,5 +1,5 @@
 <% if @sent_messages.any? %>
-  <div class="message_table">
+  <div class="tab_table">
     <%= table_for(@sent_messages) do |t| %>
       <%= t.body do |message| %>
         <%= t.r do %>

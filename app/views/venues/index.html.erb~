@@ -24,4 +24,3 @@
 
 <%= will_paginate %>
 
-<%= image_tag("/assets/tag_icons/drinking society.png", alt: "Manatee") %>

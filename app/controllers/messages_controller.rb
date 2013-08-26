@@ -21,8 +21,8 @@ class MessagesController < ApplicationController
   end
 
   def inbox
-    @received_messages = Message.where(:receiver_id => current_user.id).paginate(:order => "created_at DESC", :page => params[:recd_page])
-    @sent_messages = Message.where(:sender_id => current_user.id).order("created_at ASC").paginate(:page => params[:sent_page])
+    @received_messages = Message.where(:receiver_id => current_user.id).paginate(:order => "created_at DESC", :page => params[:recd_page], :per_page => 5)
+    @sent_messages = Message.where(:sender_id => current_user.id).order("created_at DESC").paginate(:page => params[:sent_page], :per_page => 5)
     @message = params[:id] ? Message.find(params[:id]) : @received_messages[0]
   end
 

@@ -6,12 +6,13 @@ class StaticPagesController < ApplicationController
     # If logged in with a student account, it plots all your favourites
     # in a different colour to other venues, and centres around your
     # saved Home address.
+
     if signed_in?
       @events = current_user.events
 
       # Consolidate all your map markers into one json and plot:
       @evs = @events.to_gmaps4rails do |event, marker|
-        marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event})
+        marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event })
         marker.title "#{event.name}"
         marker.picture({:picture => "/assets/tag_icons/drinking society.png", :width => 32, :height => 32})
       end
@@ -28,6 +29,14 @@ class StaticPagesController < ApplicationController
         marker.picture({:picture => "/assets/tag_icons/assassins.png", :width => 32, :height => 32})
       end
     end
+  end
+
+  def my_events
+    @title = "Your events"
+    @events = current_user.events
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
+    @entries = current_user.diary_entries
+#    @upcoming_events = current_user.diary_entries.where(start_date > Datetime.now)
   end
 
   def help
