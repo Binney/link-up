@@ -3,7 +3,7 @@ class FavouritesController < ApplicationController
 
   def create
     @event = Event.find(params[:favourite][:event_id])
-    current_user.favourite!(@event)
+    current_user.favourite!(@event, params[:favourite][:day])
     respond_to do |format|
       format.html { redirect_to @event }
       format.js
@@ -12,7 +12,7 @@ class FavouritesController < ApplicationController
 
   def destroy
     @event = Favourite.find(params[:id]).event
-    current_user.unfavourite!(@event)
+    current_user.unfavourite!(@event, params[:day])
     respond_to do |format|
       format.html { redirect_to @event }
       format.js

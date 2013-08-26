@@ -7,8 +7,9 @@
         <%= @user.name %>
       </h1>
     </section>
+    <%= link_to "Edit", edit_user_page(@user) %>
   </aside>
 </div>
-<div class="">
+<div class="user_info">
   Here have details about event attendings etc, messages sent, reviews written...
 </div>

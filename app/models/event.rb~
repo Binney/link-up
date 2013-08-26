@@ -9,13 +9,13 @@ class Event < ActiveRecord::Base
   has_many :favourites, dependent: :destroy
   has_many :relationships, dependent: :destroy
 
-  default_scope -> { order('start_time ASC') }
+  default_scope -> { order('name ASC') }
   validates :venue_id, presence: true
   validates :name, presence: true, length: { maximum: 100 }
-  validates :description, length: { maximum: 200 }
+  validates :description, length: { maximum: 5000 }
   acts_as_gmappable
   geocoded_by :gmaps4rails_address
-#  after_validation :geocode#, :if => :address_changed?
+  after_validation :geocode#, :if => :address_changed?
   after_validation :get_day_info
 
   def gmaps4rails_address
@@ -27,7 +27,7 @@ class Event < ActiveRecord::Base
     self.timings.each do |t|
       arr.push(Date::DAYNAMES[t.start_time.wday]+"s")
     end
-    arr.to_sentence
+    arr.empty? ? "None listed" : arr.to_sentence
   end
 
   def self.simple_search(search)

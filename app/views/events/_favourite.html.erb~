@@ -1,7 +1,6 @@
-<% #s = Schedule.new(start = params[:start_time])
-   #s.add_recurrence_rule(Rule.weekly)
-   puts "Need to add recurrence schedule data!!" %>
-<%= form_for(current_user.favourites.build(event_id: @event.id), remote: true) do |f| %>
-  <div><%= f.hidden_field :event_id %></div>
+<%= form_for(current_user.favourites.build(event_id: @event.id, day: day), remote: true) do |f| %>
+  <div><%= f.hidden_field :event_id %>
+  <%= f.hidden_field :day %></div>
+  <% puts "Creating "+wday.to_s+" now! =============+++++++" %>
   <%= f.submit "Favourite", class: "btn btn-primary" %>
 <% end %>

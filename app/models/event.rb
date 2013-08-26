@@ -5,17 +5,17 @@ class Event < ActiveRecord::Base
   belongs_to :venue
   has_many :tags, through: :relationships
   has_many :timings, dependent: :destroy
-  accepts_nested_attributes_for :timings, :allow_destroy => true, :reject_if => lambda { |a| a[:start_time].blank? }
+  accepts_nested_attributes_for :timings, allow_destroy: true, :reject_if => lambda { |a| a[:start_time].blank? }
   has_many :favourites, dependent: :destroy
   has_many :relationships, dependent: :destroy
 
-  default_scope -> { order('start_time ASC') }
+  default_scope -> { order('name ASC') }
   validates :venue_id, presence: true
   validates :name, presence: true, length: { maximum: 100 }
-  validates :description, length: { maximum: 200 }
+  validates :description, length: { maximum: 5000 }
   acts_as_gmappable
   geocoded_by :gmaps4rails_address
-#  after_validation :geocode#, :if => :address_changed?
+  after_validation :geocode#, :if => :address_changed?
   after_validation :get_day_info
 
   def gmaps4rails_address

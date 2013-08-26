@@ -28,7 +28,6 @@ class EventsController < ApplicationController
 
   def create
     @event = Venue.find(event_params[:venue_id]).events.build(event_params)
-puts "123478i983239o43237893237898432348983212678"
     if @event.save
       flash[:success] = "Event created!"
       redirect_to @event
@@ -66,8 +65,7 @@ puts "123478i983239o43237893237898432348983212678"
   private
 
     def event_params
-      params.require(:event).permit(:name, :description, :start_time, :end_time, :tags, :day_info,
-                                    :venue_id, :day, :contact, :website, :gender, :timings, :timings_attributes)
+      params.require(:event).permit(:name, :description, :tags, :day_info, :venue_id, :day, :contact, :website, :gender, timings_attributes: [:id, :start_time, :end_time, :day, :_destroy])
     end
 
 

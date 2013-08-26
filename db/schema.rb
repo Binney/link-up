@@ -11,23 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130825144959) do
-
-  create_table "attendings", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "attendings", ["event_id"], name: "index_attendings_on_event_id"
-  add_index "attendings", ["user_id", "event_id"], name: "index_attendings_on_user_id_and_event_id", unique: true
-  add_index "attendings", ["user_id"], name: "index_attendings_on_user_id"
+ActiveRecord::Schema.define(version: 20130826084551) do
 
   create_table "diary_entries", force: true do |t|
     t.integer  "user_id"
     t.datetime "start_time"
-    t.boolean  "repeating"
     t.integer  "event_id",   default: 0
     t.string   "name"
     t.datetime "created_at"
@@ -40,12 +28,9 @@ ActiveRecord::Schema.define(version: 20130825144959) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description"
-    t.datetime "start_time"
-    t.datetime "end_time"
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps",        default: true
-    t.integer  "day"
     t.string   "cost_details"
     t.string   "contact"
     t.string   "website"
@@ -55,7 +40,6 @@ ActiveRecord::Schema.define(version: 20130825144959) do
     t.string   "day_info"
   end
 
-  add_index "events", ["start_time"], name: "index_events_on_start_time"
   add_index "events", ["venue_id"], name: "index_events_on_venue_id"
 
   create_table "favourites", force: true do |t|
@@ -63,7 +47,7 @@ ActiveRecord::Schema.define(version: 20130825144959) do
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "schedule"
+    t.integer  "day"
   end
 
   add_index "favourites", ["event_id"], name: "index_favourites_on_event_id"
@@ -118,6 +102,7 @@ ActiveRecord::Schema.define(version: 20130825144959) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "event_id"
+    t.integer  "day"
   end
 
   create_table "users", force: true do |t|

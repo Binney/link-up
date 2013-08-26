@@ -36,11 +36,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    params[:user].delete(:password) if params[:user][:password].blank?
     if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
-      sign_in @user
+      flash[:success] = "Edit Successful."
       redirect_to @user
     else
+      @title = "Edit user"
       render 'edit'
     end
   end
@@ -54,15 +55,18 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+      if current_user.admin?
+        params.require(:user).permit(:name, :email, :mentor, :organiser, :admin, :home_address, :home_postcode)
+      else
+        params.require(:user).permit(:name, :email, :home_address, :home_postcode)
+      end
     end
 
     # Before filters (signed_in_user is now under sessions_helper)
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user)
+      redirect_to(root_path) unless current_user?(@user) || (current_user.admin? || current_user.mentor?)
     end
 
     def admin_user

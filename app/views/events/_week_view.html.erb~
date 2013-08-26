@@ -1,11 +1,11 @@
 <table>
-  <tr>
-    <% @event.timings.each do |t| %>
+  <% @event.timings.each do |t| %>
+    <tr>
       <td><%= Date::DAYNAMES[t.start_time.wday] %></td>
       <td><%= t.start_time.to_s(:time_day)+"-"+t.end_time.to_s(:time_day) %></td>
-      <td><%= render "diary_form", start_time: t.start_time %></td>
-      <td><%= render "favourite_form", start_time: t.start_time %></td>
-    <% end %>
-  </tr>
+      <td><%= render "diary_form", locals: { start_time: t.start_time }  %></td>
+      <td><%= render "favourite_form", wday: t.start_time.wday %></td>
+    </tr>
+  <% end %>
 </table>
 <!-- Above table only shows days on which there's an event. This indicates I'm trusting the users of this site to know the days of the week. This could be a challenge, but one I'm willing to risk. -->

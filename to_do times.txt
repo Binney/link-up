@@ -1,0 +1,6 @@
+Event timing info: NONE (but has_many timings)
+Timing info: start_time:time, end_time:time, day:int (0..6)
+Diary_entry info: start_time:DATETIME (both info in one variable)
+Favourites: day:int (0..6)
+
+In calendar: 

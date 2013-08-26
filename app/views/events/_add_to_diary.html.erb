@@ -1,6 +1,5 @@
-<%= form_for(current_user.diary_entries.build(event_id: @event.id, start_time: @start_time, repeating: false), remote: true) do |f| %>
+<%= form_for(current_user.diary_entries.build(event_id: @event.id, start_time: @start_time), remote: true) do |f| %>
   <div><%= f.hidden_field :event_id %>
-  <%= f.hidden_field :start_time %>
-  <%= f.hidden_field :repeating %></div>
+  <%= f.hidden_field :start_time %></div>
   <%= f.submit "Add to diary", class: "btn btn-primary" %>
 <% end %>

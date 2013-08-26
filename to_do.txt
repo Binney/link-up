@@ -33,6 +33,12 @@ This   | This     | This
 All    | All      | All
 click to add to diary_entries/favourites
 
+Extract cost info with regex from docs?
+
+Repopulate database with GMT times
+
+Make sample_data recognise that gender: All and gender: Both are the same (ditto Boys vs Male and Girls vs Female)
+
 Extract tag info via final 2 columns on doc
 
 Nicer About page a la design

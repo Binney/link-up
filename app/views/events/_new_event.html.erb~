@@ -15,7 +15,7 @@
     <%= timing_form.label :end_time, "End time (ignoring post-meet tea):" %>
     <%= timing_form.datetime_select :end_time, :discard_year => true, :discard_month => true, :discard_day => true, :minute_step => 5 %>
     <%= timing_form.link_to_remove "Remove" %>
-  <%= end %>
+  <% end %>
 
   <br><%= f.link_to_add "Add session", :timings %>
 

@@ -17,7 +17,7 @@
     <%= timing_form.link_to_remove "Remove" %>
   <% end %>
 
-  <br><%= f.link_to_add "Add session", :timings %>
+  <%= f.link_to_add "Add session", :timings %><br>
 
   <%= f.label :gender %>
   <%= f.select :gender, [['Both'],['Female'], ['Male']] %>

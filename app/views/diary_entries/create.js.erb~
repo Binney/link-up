@@ -1,1 +1,1 @@
-$("#favourite_form").html("<%= escape_javascript(render('events/unfavourite')) %>")
+$("#diary_form").html("<%= escape_javascript(render('events/remove_from_diary')) %>")

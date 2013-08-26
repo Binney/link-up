@@ -15,7 +15,13 @@ class User < ActiveRecord::Base
                     format:     { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, length: { minimum: 6 }
+  validates :password, :presence => true,
+                       :confirmation => true,
+                       :length => { :minimum => 6 },
+                       :unless => :already_has_password?
+  validates_presence_of :password_confirmation, :unless => lambda { |user| user.password.blank? }
+
+
 
   acts_as_gmappable
   after_validation :geocode
@@ -42,16 +48,16 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
-  def is_favourite?(event)
-    favourites.find_by(event_id: event.id)
+  def is_favourite?(event, day)
+    favourites.find_by(event_id: event.id, day: day)
   end
 
-  def favourite!(event)
-    favourites.create!(event_id: event.id)
+  def favourite!(event, day)
+    favourites.create!(event_id: event.id, day: day)
   end
 
-  def unfavourite!(event)
-    favourites.find_by(event_id: event.id).destroy
+  def unfavourite!(event, day)
+    favourites.find_by(event_id: event.id, day: day).destroy
   end
 
   private
@@ -60,5 +66,8 @@ class User < ActiveRecord::Base
       self.remember_token = User.encrypt(User.new_remember_token)
     end
 
+    def already_has_password?
+      !self.password.blank?
+    end
 end
 

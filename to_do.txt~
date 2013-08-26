@@ -31,7 +31,11 @@ Toggled form for attending in sidebar of event view - table:
 Monday | Thursday | Saturday
 This   | This     | This
 All    | All      | All
-click to add to diary_entries
+click to add to diary_entries/favourites
+
+Extract cost info with regex from docs?
+
+Repopulate database with GMT times
 
 Extract tag info via final 2 columns on doc
 
