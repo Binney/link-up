@@ -27,10 +27,14 @@
 
   <%= hidden_field_tag "event[tag_ids][]", "" %>
 
-  <% Tag.all.each do |tag| %> 
-    <%= check_box_tag :tag_ids, tag.id, @event.tags.include?(Tag.find(tag.id)), :id => "tag_check_#{tag.id}", :name => 'event[tag_ids][]' %>
-    <%= label_tag :tag_ids, tag.name %> 
-  <% end %>
+  <div class="activity-list">
+    <% Tag.all.each do |tag| %> 
+      <li>
+      <%= check_box_tag :tag_ids, tag.id, @event.tags.include?(Tag.find(tag.id)), :id => "tag_check_#{tag.id}", :name => 'event[tag_ids][]' %>
+      <%= label_tag "tag_check_#{tag.id}", tag.name %> 
+      </li>
+    <% end %>
+  </div>
 
   <%= f.label :gender %>
   <%= f.select :gender, [['Both'],['Female'], ['Male']] %>
