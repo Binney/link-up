@@ -27,13 +27,18 @@ $(function() {
   $("#toggleform").click(function() {
     $( ".neweventform" ).slideToggle("slow" );
   });
+  $("input#autocomplete_tags").autocomplete({
+    alert("Autocompletion!");
+    source: '<%=search_on_title_tags_path%>',
+    minLength: 2, delay: 500
+  });
 });
 
-$(document).on('nested:fieldAdded', function(ev){
+/*$(document).on('nested:fieldAdded', function(ev){
   // this field was just inserted into your form
   var field = ev.field; 
   // it's a jQuery object already! Now you can find date input
   var dateField = field.find('.start_time');
   // and activate datepicker on it
   dateField.datepicker();
-})
+})*/

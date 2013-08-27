@@ -8,7 +8,7 @@
 
 <aside class="events_map">
   <%= gmaps4rails(@json) %>
-</div>
+</aside>
 <div id="events_list">
   <%= render 'search' %>
 
@@ -20,7 +20,7 @@
 
   <% else %>
 
-    <p>No events listed for this venue.</p>
+    <p>No events listed.</p>
 
   <% end %>
 </div>

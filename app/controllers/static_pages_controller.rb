@@ -6,6 +6,7 @@ class StaticPagesController < ApplicationController
     # If logged in with a student account, it plots all your favourites
     # in a different colour to other venues, and centres around your
     # saved Home address.
+    @search = Event.search(params[:q])
 
     if signed_in?
       @events = current_user.events

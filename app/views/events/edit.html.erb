@@ -14,7 +14,6 @@
   <%= f.label :description %>
   <%= f.text_area :description %>
 
-
   <%= f.fields_for :timings do |timing_form| %>
     <%= timing_form.label :start_time, "Start time (galactic standard):" %>
     <%= timing_form.datetime_select :start_time, :discard_year => true, :minute_step => 5 %>
@@ -25,6 +24,13 @@
   <% end %>
 
   <%= f.link_to_add "Add session", :timings %>
+
+  <%= hidden_field_tag "event[tag_ids][]", "" %>
+
+  <% Tag.all.each do |tag| %> 
+    <%= check_box_tag :tag_ids, tag.id, @event.tags.include?(Tag.find(tag.id)), :id => "tag_check_#{tag.id}", :name => 'event[tag_ids][]' %>
+    <%= label_tag "tag_check_#{tag.id}", tag.name %> 
+  <% end %>
 
   <%= f.label :gender %>
   <%= f.select :gender, [['Both'],['Female'], ['Male']] %>

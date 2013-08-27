@@ -36,7 +36,7 @@ class StaticPagesController < ApplicationController
     @events = current_user.events
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
     @entries = current_user.diary_entries
-    @upcoming_events = current_user.diary_entries.where(start_date > Datetime.now)
+#    @upcoming_events = current_user.diary_entries.where(start_date > Datetime.now)
   end
 
   def help

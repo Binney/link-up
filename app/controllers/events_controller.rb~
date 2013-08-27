@@ -7,7 +7,11 @@ class EventsController < ApplicationController
     unless params[:venue_id]
       # Indexing from search
       @search = Event.search(params[:q])
-      @search.sorts = 'distance_to(current_user) desc' if @search.sorts.empty?
+      if params[:q][:postcode].nil?
+        @search.sorts ||= ''
+      else
+        @search.sorts ||= 'distance_to(current_user).asc'
+      end
       @events = @search.result#.paginate(:page => params[:page])
       @json = @events.to_gmaps4rails
     else # Indexing via venue so only show that venue's events
@@ -18,6 +22,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @timings = @event.timings
     @tags = @event.tags.paginate(page: params[:page])
     @json = @event.venue.to_gmaps4rails do |venue, marker|
       marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => @event})
@@ -28,7 +33,6 @@ class EventsController < ApplicationController
 
   def create
     @event = Venue.find(event_params[:venue_id]).events.build(event_params)
-puts "123478i983239o43237893237898432348983212678"
     if @event.save
       flash[:success] = "Event created!"
       redirect_to @event
@@ -43,6 +47,7 @@ puts "123478i983239o43237893237898432348983212678"
   end
 
   def update
+    params[:event][:tag_ids] ||= []
     @event = Event.find(params[:id])
     if @event.update_attributes(event_params)
       flash[:success] = "Event details updated"
@@ -66,9 +71,9 @@ puts "123478i983239o43237893237898432348983212678"
   private
 
     def event_params
-      params.require(:event).permit(:name, :description, :tags, :day_info, :venue_id, :day, :contact, :website, :gender, timings_attributes: [:id, :start_time, :end_time, :day, :_destroy])
+      params.require(:event).permit!#(:name, :description, :day_info, :venue_id, :contact, :website, :gender, tag_ids: [:id], timings_attributes: [:id, :day, :start_time, :end_time, :_destroy])
     end
-
+#timings_attributes: [:id, :start_time, :end_time, :day, :_destroy]
 
     def correct_or_admin
       current_venue = Venue.find(Event.find(params[:id]).venue_id)

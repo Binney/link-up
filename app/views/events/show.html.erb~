@@ -26,11 +26,14 @@
       <%= render 'week_view' %>
     </div>
     <section>
-      <%= @event.timings.count.to_s+" ==== :(" %>
       <table>
         <tr>
           <td><b>Time:</b></td>
-          <td><%= @event.day_info %></td>
+          <td><%= arr = []
+            @timings.each do |t|
+              arr.push(Date::DAYNAMES[t.start_time.wday]+"s")
+            end
+          arr.empty? ? "None listed" : arr.to_sentence %></td>
         </tr>
         <tr>
           <td><b>Cost:</b></td>

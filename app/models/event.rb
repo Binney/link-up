@@ -15,11 +15,14 @@ class Event < ActiveRecord::Base
   validates :description, length: { maximum: 5000 }
   acts_as_gmappable
   geocoded_by :gmaps4rails_address
-  after_validation :geocode#, :if => :address_changed?
-  after_validation :get_day_info
+  after_validation :geocode
 
   def gmaps4rails_address
     "#{venue.gmaps4rails_address}"
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+      %w( name description venue_id cost cost_details gender timings ) + _ransackers.keys
   end
 
   def get_day_info
