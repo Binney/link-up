@@ -1,0 +1,4 @@
+class AlterFavouritesIndices < ActiveRecord::Migration
+  def change
+  end
+end

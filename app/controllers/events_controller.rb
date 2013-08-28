@@ -4,19 +4,26 @@ class EventsController < ApplicationController
   before_action :correct_or_admin,  only: [:edit, :update, :destroy]
 
   def index
-    unless params[:venue_id]
-      # Indexing from search
-      @search = Event.search(params[:q])
-      if params[:q][:postcode].nil?
-        @search.sorts ||= ''
-      else
-        @search.sorts ||= 'distance_to(current_user).asc'
-      end
-      @events = @search.result#.paginate(:page => params[:page])
-      @json = @events.to_gmaps4rails
-    else # Indexing via venue so only show that venue's events
+    if params[:venue_id] # Indexing via venue so only show that venue's events
       @events = Venue.find(params[:venue_id]).events.paginate(page: params[:page])
       @number = params[:venue_id]
+    else
+      if params[:q]
+        # Indexing from search
+        @search = Event.search(params[:q])
+        puts "++++++++++++++++++++++"+params[:q][:gender_not_cont]
+        @search.sorts = 'distance_to(#{params[:q][:gender_not_cont]) asc' if params[:q][:gender_not_cont].nil?
+        @events = @search.result#.paginate(:page => params[:page])
+      else # Just indexing normally
+        @search = Event.search(params[:q])
+        @events = @search.result
+      end
+      @json = @events.to_gmaps4rails do |event, marker|
+        marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event })
+        marker.title "#{event.name}"
+        image = event.tags.count==0 ? "Other" : event.tags[0].name
+        marker.picture({:picture => "/assets/tag_icons/#{image}.png", :width => 32, :height => 32})
+      end
     end
   end
 
@@ -25,9 +32,10 @@ class EventsController < ApplicationController
     @timings = @event.timings
     @tags = @event.tags.paginate(page: params[:page])
     @json = @event.venue.to_gmaps4rails do |venue, marker|
-      marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => @event})
+      marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => @event })
       marker.title "#{venue.name}"
-      marker.picture({:picture => "/assets/tag_icons/assassins.png", :width => 32, :height => 32})
+      image = @event.tags.count==0 ? "other" : @event.tags[0].name
+      marker.picture({:picture => "/assets/tag_icons/#{image}.png", :width => 32, :height => 32})
     end
   end
 
@@ -74,7 +82,6 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit!#(:name, :description, :day_info, :venue_id, :contact, :website, :gender, tag_ids: [:id], timings_attributes: [:id, :day, :start_time, :end_time, :_destroy])
     end
-#timings_attributes: [:id, :start_time, :end_time, :day, :_destroy]
 
     def correct_or_admin
       current_venue = Venue.find(Event.find(params[:id]).venue_id)

@@ -406,7 +406,7 @@ button.ui-button::-moz-focus-inner {
 .ui-menu .ui-menu-item {
 	margin: 0;
 	padding: 0;
-	width: 100%;
+	/*width: 100%;
 	/* support: IE10, see #8844 */
 	list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
 }
@@ -671,7 +671,7 @@ body .ui-tooltip {
 }
 .ui-widget-content {
 	border: 1px solid #ffffff;
-	background: #a500ed url(images/ui-bg_flat_100_e9e9e9_40x100.png) 50% 50% repeat-x;
+	background: #fff url(images/ui-bg_flat_100_e9e9e9_40x100.png) 50% 50% repeat-x;
 	color: #333333;
 }
 .ui-widget-content a {

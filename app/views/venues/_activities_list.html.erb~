@@ -3,7 +3,7 @@
     <li><%= link_to e.name, e %>
     <% if signed_in? && (current_user.admin? || (current_user.organiser? && @venue.user_id == current_user.id)) %>
 <%= e.class.to_s %>
-      | <%= link_to "delete", e(:squirtle => :e.venue_id), method: :delete, data: { confirm: "This will delete all details!\nYou sure?" } %>
+      | <%= link_to "delete", e, method: :delete, data: { confirm: "This will delete all details!\nYou sure?" } %>
     <% end %>
     </li>
   <% end %>

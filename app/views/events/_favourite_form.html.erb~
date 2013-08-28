@@ -1,8 +1,7 @@
 <div id="favourite_form">
-<% puts wday.to_s+" ]]]]]]]]]]]]]]]]]]]]}" %>
 <% if current_user.favourites.find_by(event_id: @event.id, day: wday) %>
-  <%= render 'unfavourite', day: wday %>
+  <%= render 'events/unfavourite', day: wday %>
 <% else %>
-  <%= render 'favourite', day: wday %>
+  <%= render 'events/favourite', day: wday %>
 <% end %>
 </div>

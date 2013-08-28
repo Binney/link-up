@@ -12,5 +12,5 @@
       </small>
     </ul>
   </nav>
-
+  <%= yield :scripts %>
 </footer>

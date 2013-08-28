@@ -10,14 +10,15 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <%= render 'layouts/header' %>
     <div class="container">
-
+    <%= render 'layouts/header' %>
+    <div class="main">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
       <%= yield %>
       <%= render 'layouts/footer' %>
+    </div>
     </div>
   </body>
 </html>

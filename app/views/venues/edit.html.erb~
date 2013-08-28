@@ -1,4 +1,4 @@
-<% provide(:title, "Edit "+<%= @venue.name %>) %>
+<% provide(:title, "Edit "+@venue.name) %>
 <h1>Update venue profile for <%= @venue.name %></h1>
 
 <div class="row">
@@ -12,13 +12,17 @@
       <%= f.label :description %>
       <%= f.text_area :description %>
 
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+
       <%= f.label :postcode %>
       <%= f.text_field :postcode %>
+
+      <%= f.label :contact %>
+      <%= f.text_field :contact %>
 
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
 
-    <%= gravatar_for @venue %>
-    <a href="http://gravatar.com/emails">change</a>
   </div>
 </div>

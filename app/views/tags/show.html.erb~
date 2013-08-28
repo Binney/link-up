@@ -2,7 +2,7 @@
 
 <h1>Browse <%= @tag.name %> events</h1>
 
-<% if @tags.any? %>
+<% if @events.any? %>
 
   <ul class="events">
     <%= render @events %>

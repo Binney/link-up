@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130826084551) do
+ActiveRecord::Schema.define(version: 20130828065852) do
 
   create_table "diary_entries", force: true do |t|
     t.integer  "user_id"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20130826084551) do
   end
 
   add_index "favourites", ["event_id"], name: "index_favourites_on_event_id"
-  add_index "favourites", ["user_id", "event_id"], name: "index_favourites_on_user_id_and_event_id", unique: true
+  add_index "favourites", ["user_id", "event_id", "day"], name: "index_favourites_on_user_id_and_event_id_and_day"
   add_index "favourites", ["user_id"], name: "index_favourites_on_user_id"
 
   create_table "messages", force: true do |t|

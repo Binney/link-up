@@ -23,7 +23,7 @@ class StaticPagesController < ApplicationController
       @json = (JSON.parse(@evs) + JSON.parse(@house)).to_json
 
     else
-      @venues = Venue.all
+      @venues = Venue.all :conditions => ["id != ?", 0] # Don't display venue(0) since it's a placeholder for events without a venue.
       @json = @venues.to_gmaps4rails do |venue, marker|
         marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})
         marker.title "#{venue.name}"
@@ -36,8 +36,9 @@ class StaticPagesController < ApplicationController
     @title = "Your events"
     @events = current_user.events
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
-    @entries = current_user.diary_entries
-#    @upcoming_events = current_user.diary_entries.where(start_date > Datetime.now)
+    # Here: loop through days of this month and create array of times for each Favourite which falls on that day. Then concatenate it to the @entries array. Then table_builder can do its utmost to plot multiple days.
+    @entries = current_user.diary_entries.order('start_time ASC')
+#    @upcoming_events = current_user.diary_entries.where(start_date > Datetime.now) # Needs to say "This Thursday" for entries and "Every Thursday" for favourites
   end
 
   def help

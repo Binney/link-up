@@ -13,13 +13,13 @@ class DiaryEntriesController < ApplicationController
   def destroy
     @diary_entry = current_user.diary_entries.find_by(id: params[:id])
     if @diary_entry.event_id == 0
-      
+      it = favourites_user_path(current_user)
     else
-
+      it = event_path(@diary_entry.event_id)
     end
     @diary_entry.destroy
     respond_to do |format|
-      format.html { redirect_to favourites_user_path(current_user) }
+      format.html { redirect_to it }
       format.js
     end
   end

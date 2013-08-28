@@ -16,8 +16,6 @@ More specialised search function instead carries out ONE search on events with r
 
 No such thing as a profile - redirects to home unless you're an admin/teacher, in which case it gives you details and Message Me link
 
-Fourth button up top?? "Browse Categories" which gives you an index of tags in a table and lets you browse events in each tag (organised by alphabetical name)
-
 Make New Event "link" styled (blue, mouse changes)
 
 Messages button: also says in brackets number of unread messages
@@ -37,6 +35,14 @@ Extract cost info with regex from docs?
 
 Repopulate database with GMT times
 
+Make sample_data recognise that gender: All and gender: Both are the same (ditto Boys vs Male and Girls vs Female)
+
+Smaller tags image below main venue image on event Show page
+
+Fix venue images to L logo and event images to ? or first tag by default
+
+More links on footer (eg news)
+
 Extract tag info via final 2 columns on doc
 
 Nicer About page a la design
@@ -48,10 +54,6 @@ Functioning email verification process!!!!!
 Need pictures for each venue - upload? Carrierwave? Plus default images
 
 Make it that /signin and /signup are inaccessible when already logged in?
-
-Option to show/hide New Event segment on Venue page if logged in etc (how?!)
-
-Tickboxes for tags that the event you just made has. Maybe a toggle view on Create and Edit so you can create an event quickly without needing to tag everything but can sort it out later?
 
 On tag index: You want more characteristic data layout than just a list, so have a grid of maybe 4 across and a page down alphabetic tag names each with a nice big generic colourful picture. Each type (sport, community volunteering, art, etc) is a different colour (team sports dark blue, different sports light blue?), while unclassified ones are grey. These pictures are - like the tags - determined by Link Up and stored hard on the server. Clicking each redirects you to events for that tag.
 

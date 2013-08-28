@@ -1,6 +1,7 @@
 <%= search_form_for @search do |f| %>
-  <%= f.label :tags_name_cont, "Category" %>
+  <%= f.label :gender_not_cont, "Find activites near you:" %>
+  <%= f.text_field :gender_not_cont %>
+  <%= f.label :tags_name_cont, "Or search by activity:" %>
   <%= f.text_field :tags_name_cont %>
-  <%= "Postcode search here! if you enter anything, it sorts the results by proximity" %>
   <%= f.submit %>
 <% end %>

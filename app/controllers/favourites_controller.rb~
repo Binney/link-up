@@ -11,11 +11,10 @@ class FavouritesController < ApplicationController
   end
 
   def destroy
-    @event = Favourite.find(params[:id]).event
-    current_user.unfavourite!(@event, params[:favourite][:day])
-    respond_to do |format|
-      format.html { redirect_to @event }
-      format.js
-    end
+    @fav = Favourite.find(params[:id])
+    @event = fav.event
+    fav.destroy
+#    current_user.unfavourite!(@event.id, params[:day])
+    redirect_to @event
   end
 end

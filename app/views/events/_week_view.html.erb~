@@ -3,8 +3,10 @@
     <tr>
       <td><%= Date::DAYNAMES[t.start_time.wday] %></td>
       <td><%= t.start_time.to_s(:time_day)+"-"+t.end_time.to_s(:time_day) %></td>
-      <td><%= render "diary_form", locals: { start_time: t.start_time }  %></td>
-      <td><%= render "favourite_form", wday: t.start_time.wday %></td>
+      <% if signed_in? %>
+        <td><%= render "events/diary_form", st_t: Chronic.parse("this "+Date::DAYNAMES[t.day].to_s+" "+t.start_time.to_s(:time_day)) %></td>
+        <td><%= render "events/favourite_form", wday: t.start_time.wday %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>

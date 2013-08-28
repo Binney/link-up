@@ -1,9 +1,11 @@
+<% provide(:title, "Inbox") %>
+<% provide(:site_section, "3") %>
 <div id="tabs">
   <ul>
     <li><a href="#inbox"><span>Inbox</span></a></li>
     <li><a href="#sent"><span>Sent</span></a></li>
   </ul>
-  <p><%= link_to "New message", new_message_path %></p>
+<% puts yield(:site_section)+"123456786543212345678" %>
   <div id="inbox">
     <div id="top_page">
       <%= render 'received' %>
@@ -16,7 +18,9 @@
     </div>
   </div>
 </div>
-
-<div class="preview">
-  <%= render @message %>
-</div>
+  <p><%= link_to "New message", new_message_path %></p>
+<% unless @message.nil? %>
+  <div class="preview">
+    <%= render @message %>
+  </div>
+<% end %>

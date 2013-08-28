@@ -52,12 +52,12 @@ class User < ActiveRecord::Base
     favourites.find_by(event_id: event.id, day: day)
   end
 
-  def favourite!(event)
-    favourites.create!(event_id: event.id)
+  def favourite!(event, day)
+    favourites.create!(event_id: event.id, day: day)
   end
 
-  def unfavourite!(event)
-    favourites.find_by(event_id: event.id).destroy
+  def unfavourite!(event, day)
+    favourites.find_by(event_id: event.id, day: day).destroy
   end
 
   private

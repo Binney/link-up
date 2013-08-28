@@ -16,14 +16,13 @@ class Event < ActiveRecord::Base
   acts_as_gmappable
   geocoded_by :gmaps4rails_address
   after_validation :geocode
-  after_validation :get_day_info
 
   def gmaps4rails_address
     "#{venue.gmaps4rails_address}"
   end
 
   def self.ransackable_attributes(auth_object = nil)
-      %w( name description venue_id cost cost_details gender timings ) + _ransackers.keys
+      %w( name description venue_id cost cost_details gender timings day_info ) + _ransackers.keys
   end
 
   def get_day_info
@@ -31,7 +30,7 @@ class Event < ActiveRecord::Base
     self.timings.each do |t|
       arr.push(Date::DAYNAMES[t.start_time.wday]+"s")
     end
-    self.day_info = arr.empty? ? "None listed" : arr.to_sentence
+    arr.empty? ? "None listed" : arr.to_sentence
   end
 
   def self.simple_search(search)

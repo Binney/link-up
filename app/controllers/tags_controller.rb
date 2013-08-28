@@ -2,7 +2,7 @@ class TagsController < ApplicationController
   before_action :admin_user, only: [:new, :create, :edit, :update, :destroy] # Any tag-related actions can only be carried out by an admin.
 
   def index
-    @tags = Tag.paginate(page: params[:page])
+    @tags = Tag.all
   end
 
   def show

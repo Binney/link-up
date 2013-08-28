@@ -4,8 +4,8 @@
 <%= will_paginate %>
 
 <ul class="users">
-  <%= render @users %>
+  <%= render @users, size: 52 %>
 </ul>
 
 <%= will_paginate %>
-<p> If you're feeling particularly generous, resize avatars with , size: 52 . </p>
+

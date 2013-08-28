@@ -1,5 +1,5 @@
 <li>
-  <%= gravatar_for venue %>
+  <%= avatar_for venue %>
   <% if signed_in? && current_user.organiser? && current_user.id == venue.user_id %>
     <b><%= link_to venue.name, venue %></b>
   <% else %>

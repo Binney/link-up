@@ -1,15 +1,12 @@
 <% provide(:title, 'All categories') %>
+<% provide(:site_section, "1") %>
 <h1>Browse categories</h1>
 
 <% if @tags.any? %>
 
-  <%= will_paginate %>
-
   <ul class="tags">
     <%= render @tags %>
   </ul>
-
-  <%= will_paginate %>
 
 <% else %>
 

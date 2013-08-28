@@ -3,19 +3,13 @@ class VenuesController < ApplicationController
   before_action :organiser_account,  only: [:new, :create, :edit, :update, :destroy] # Only a certain kind of account can create venues.
   before_action :correct_user,   only: [:edit, :update, :destroy] # Only correct user or admin can edit it
 
-# btw gonna need same checks as UserController for whether or not another user is trying to edit an event from html requests
-
   def index
     @venues = Venue.paginate(page: params[:page])
     @json = Venue.all.to_gmaps4rails do |venue, marker|
     marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})
     marker.title "#{venue.name}"
-    marker.picture({:picture => "/assets/tag_icons/assassins.png", :width => 32, :height => 32})
+    marker.picture({:picture => "/assets/tag_icons/small/Other.png", :width => 32, :height => 32})
     end
-  end
-
-  def index_my
-    @venues = Venue.find_by(user_id: current_user.id).all
   end
 
   def show
@@ -24,14 +18,12 @@ class VenuesController < ApplicationController
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
     if correct_or_admin
       @event = Event.new(venue_id: @venue.id)
-      puts @event.venue_id.to_s+"lllllllllllllllllllLL"
       @timing = @event.timings.build
-      puts @timing.event_id.to_s+" ??????????????????"
     end
     @json = @venue.to_gmaps4rails do |venue, marker|
     marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})
     marker.title "#{venue.name}"
-    marker.picture({:picture => "/assets/tag_icons/assassins.png", :width => 32, :height => 32})
+    marker.picture({:picture => "/assets/tag_icons/small/Other.png", :width => 32, :height => 32})
     end
   end
 

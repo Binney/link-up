@@ -1,24 +1,22 @@
-<div id="tabs">
-  <ul>
-    <li><a href="#students"><span>Students</span></a></li>
-    <li><a href="#organisations"><span>Organisations</span></a></li>
-    <li><a href="#mentors"><span>Mentors</span></a></li>
-    <li><a href="#parents"><span>Parents</span></a></li>
-    <li><a href="#admin"><span>Admin</span></a></li>
-  </ul>
-  <div id="students">
-    <%= render 'sessions/login_details' %>
-  </div>
-  <div id="organisations">
-    <%= render 'sessions/login_details' %>
-  </div>
-  <div id="mentors">
-    <%= render 'sessions/login_details' %>
-  </div>
-  <div id="parents">
-    <%= render 'sessions/login_details' %>
-  </div>
-  <div id="admin">
-    <%= render 'sessions/login_details' %>
+<div id="login-box">
+  <div id="tabs">
+    <ul>
+      <li><a href="#students"><span>Students</span></a></li>
+      <li><a href="#organisations"><span>Organisations</span></a></li>
+      <li><a href="#mentors"><span>Mentors</span></a></li>
+      <li><a href="#admin"><span>Admin</span></a></li>
+    </ul>
+    <div id="students">
+      <%= render 'sessions/login_details' %>
+    </div>
+    <div id="organisations">
+      <%= render 'sessions/login_details' %>
+    </div>
+    <div id="mentors">
+      <%= render 'sessions/login_details' %>
+    </div>
+    <div id="admin">
+      <%= render 'sessions/login_details' %>
+    </div>
   </div>
 </div>

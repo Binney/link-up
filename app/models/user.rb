@@ -56,8 +56,8 @@ class User < ActiveRecord::Base
     favourites.create!(event_id: event.id, day: day)
   end
 
-  def unfavourite!(event, day)
-    favourites.find_by(event_id: event.id, day: day).destroy
+  def unfavourite!(eventid, day)
+    favourites.find_by(event_id: eventid, day: day).destroy
   end
 
   private

@@ -86,6 +86,11 @@ textarea {
 
 .login-box {
   float: right;
+  width: 400px;
+}
+
+.tagline {
+  float: left;
   width: 50%;
 }
 
@@ -175,7 +180,6 @@ p {
   float: right;
   padding-left: 20px;
   a {
-
     font-size: 15px;
     text-decoration: none;
     color: #888;
@@ -265,6 +269,7 @@ footer {
 }
 
 .btn-primary {
+  display: inline-block;
   color:#ffff00;
   background:#f7931e;
   -webkit-box-shadow: 0px 4px 0px 0px #D18B19;
@@ -274,6 +279,15 @@ footer {
   background:#ffc319;
   text-decoration: none;
   color:white;
+}
+
+.btn-login {
+  float: right;
+}
+
+.request_login {
+  color:$orange;
+  text-decoration: underline;
 }
 
 /* sidebar */
@@ -301,23 +315,11 @@ aside {
   }
 }
 
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-
-.user_avatars {
-  overflow: auto;
-  margin-top: 10px;
-  .gravatar {
-    margin: 1px 1px;
-  }
-}
 /* forms */
 
 input, textarea, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
+  /*width: 100%;*/
   padding: 10px;
   margin-bottom: 15px;
   @include box_sizing;
@@ -408,10 +410,6 @@ input {
 .description {
   color: $grayLight;
 }
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
 aside {
   textarea {
     height: 100px;
@@ -424,9 +422,35 @@ aside {
   width: 50%;
 }
 
-.events_map {
-  width: 50%;
+.tag_wrapper {
+  position: relative;
+  padding: 0;
+  display:block;
+  width: 150px;
+  height: 150px;
+  line-height: 150px;
+  text-align: center;
 }
+.tag_name {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+  position: absolute;
+  top: 0;
+  color:#fff;
+  text-transform: uppercase;
+  font-size: 23px;
+  font-weight: bold;
+  background-color:rgba(255,255,255,0.25); /* Change to yellow! */
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  z-index: 30;
+  opacity: 0;
+}.tag_name:hover {
+  opacity:1;
+}
+
 
 .activity-list {
   list-style: none;

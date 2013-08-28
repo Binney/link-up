@@ -1,12 +1,8 @@
 <% provide(:title, 'All venues') %>
+<% provide(:site_section, "0") %>
 <h1>All venues</h1>
 <%= gmaps4rails(@json) %>
 
-<%= will_paginate %>
-
-<ul class="venues">
-  <%= render @venues, size: 52 %>
-</ul>
-
-<%= will_paginate %>
-
+<div class="venue_index">
+  <%= render 'index' %>
+</div>

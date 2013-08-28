@@ -11,7 +11,7 @@ class Event < ActiveRecord::Base
 
   default_scope -> { order('name ASC') }
   validates :venue_id, presence: true
-  validates :name, presence: true, length: { maximum: 100 }
+  validates :name, presence: true, length: { maximum: 300 }
   validates :description, length: { maximum: 5000 }
   acts_as_gmappable
   geocoded_by :gmaps4rails_address
@@ -22,7 +22,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.ransackable_attributes(auth_object = nil)
-      %w( name description venue_id cost cost_details gender timings ) + _ransackers.keys
+      %w( name description venue_id cost cost_details gender timings day_info ) + _ransackers.keys
   end
 
   def get_day_info

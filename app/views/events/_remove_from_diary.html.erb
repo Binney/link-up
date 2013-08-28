@@ -1,4 +1,4 @@
-<%= form_for(current_user.diary_entries.find_by(event_id: @event.id, start_time: params[:start_time]),
-             html: { method: :delete }, remote: true) do |f| %>
+<%= form_for(current_user.diary_entries.find_by(event_id: @event.id, start_time: starting),
+             html: { method: :delete }) do |f| %>
   <%= f.submit "Remove from diary", class: "btn" %>
 <% end %>

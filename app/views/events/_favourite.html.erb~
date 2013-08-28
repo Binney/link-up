@@ -1,6 +1,6 @@
 <%= form_for(current_user.favourites.build(event_id: @event.id, day: day), remote: true) do |f| %>
   <div><%= f.hidden_field :event_id %>
   <%= f.hidden_field :day %></div>
-  <% puts "Creating "+wday.to_s+" now! =============+++++++" %>
+  <% puts "Creating "+day.to_s+" now! =============+++++++" %>
   <%= f.submit "Favourite", class: "btn btn-primary" %>
 <% end %>

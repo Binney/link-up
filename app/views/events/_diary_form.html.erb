@@ -1,7 +1,7 @@
 <div id="diary_form">
-<% if current_user.diary_entries.find_by(event_id: @event.id, start_time: params[:start_time]) %>
-  <%= render 'events/remove_from_diary' %>
+<% if current_user.diary_entries.find_by(event_id: @event.id, start_time: st_t) %>
+  <%= render 'events/remove_from_diary', starting: st_t %>
 <% else %>
-  <%= render 'events/add_to_diary' %>
+  <%= render 'events/add_to_diary', starting: st_t %>
 <% end %>
 </div>

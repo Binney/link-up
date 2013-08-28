@@ -3,20 +3,37 @@ namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
  
-    Tag.create!(name: 'sport')
-    Tag.create!(name: 'martial arts')
-    Tag.create!(name: 'youth club')
-    Tag.create!(name: 'football')
-    Tag.create!(name: 'rugby')
-    Tag.create!(name: 'basketball')
-    Tag.create!(name: 'cricket')
-    Tag.create!(name: 'dance')
-    Tag.create!(name: 'aerobics')
-    Tag.create!(name: 'band')
-    Tag.create!(name: 'orchestra')
-    Tag.create!(name: 'choir')
-    Tag.create!(name: 'cooking')
-    # ...And so on...
+    Tag.create!(name: 'Art')
+    Tag.create!(name: 'Athletics')
+    Tag.create!(name: 'Basketball')
+    Tag.create!(name: 'Boxing')
+    Tag.create!(name: 'Camping')
+    Tag.create!(name: 'Cheerleading')
+    Tag.create!(name: 'Chess')
+    Tag.create!(name: 'Climbing')
+    Tag.create!(name: 'Cooking')
+    Tag.create!(name: 'Cricket')
+    Tag.create!(name: 'Cycling')
+    Tag.create!(name: 'Dance')
+    Tag.create!(name: 'Duke of Edinburgh')
+    Tag.create!(name: 'Fencing')
+    Tag.create!(name: 'Football')
+    Tag.create!(name: 'Gym')
+    Tag.create!(name: 'Homework')
+    Tag.create!(name: 'Martial Arts')
+    Tag.create!(name: 'Music')
+    Tag.create!(name: 'Other')
+    Tag.create!(name: 'Photography')
+    Tag.create!(name: 'Scouts')
+    Tag.create!(name: 'Religion & Spiritual')
+    Tag.create!(name: 'Sport')
+    Tag.create!(name: 'Swimming')
+    Tag.create!(name: 'Tennis')
+    Tag.create!(name: 'Theatre')
+    Tag.create!(name: 'Tutoring')
+    Tag.create!(name: 'Volunteering')
+    Tag.create!(name: 'Watersports')
+    Tag.create!(name: 'Youth Club')
 
     admin = User.create!(name: "The Flying Spaghetti Monster",
                          email: "fsm@railstutorial.org",
@@ -73,12 +90,16 @@ namespace :db do
         end
         cost = cost_str.eql?("Free") ? 0 : 1 # Can't do this - search string for numbers using regex
         day_int = Date::DAYNAMES.index(day)
+        if gender.eql? "Both"
+          gender = "All"
+        end
 
         if Event.exists?(name: event_name, venue_id: Venue.find_by(name: venue_name).id)
           Event.find_by(name: event_name, venue_id: Venue.find_by(name: venue_name).id).timings.create!(start_time: start_time, end_time: end_time, day: day_int)
         else
           e = Venue.find_by(name: venue_name).events.create!(name: event_name, description: comment.to_s, gmaps: true, cost_details: cost_str.to_s, contact: contact.to_s, website: website.to_s, gender: gender.to_s, cost: cost)
           e.timings.create!(start_time: start_time, end_time: end_time, day: day_int) unless sessionless == true
+          Tag.find(:all, :conditions => ['name LIKE ?', '%#{}%']).each do { |t| e.tagify!(t.id) }
         end
 
       end
@@ -110,13 +131,14 @@ namespace :db do
         else
           e = Venue.find_by(name: venue_name).events.create!(name: event_name, description: comment.to_s, gmaps: true, cost_details: cost_str.to_s, contact: contact.to_s, website: website.to_s, gender: gender.to_s, cost: cost)
           e.timings.create!(start_time: start_time, end_time: end_time, day: day_int) unless sessionless == true
+        Tag.find(:all, :conditions => ['name LIKE ?', '%#{}%']).each do { |t| e.tagify!(t.id) }
         end
 
       end
     end
 
     users = User.all
-    users.each { |user| user.diary_entries.create!(name: "Supervisor meeting", start_time: 3.days.from_now.advance(days: rand(-3..10)), repeating: false) }
+    users.each { |user| user.diary_entries.create!(name: "Supervisor meeting", start_time: 3.days.from_now.advance(days: rand(-3..10))) }
 
     users.each do |sender|
       (1..15).each do |recipient|
