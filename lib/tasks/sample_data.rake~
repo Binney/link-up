@@ -99,7 +99,7 @@ namespace :db do
         else
           e = Venue.find_by(name: venue_name).events.create!(name: event_name, description: comment.to_s, gmaps: true, cost_details: cost_str.to_s, contact: contact.to_s, website: website.to_s, gender: gender.to_s, cost: cost)
           e.timings.create!(start_time: start_time, end_time: end_time, day: day_int) unless sessionless == true
-          Tag.find(:all, :conditions => ['name LIKE ?', '%#{}%']).each do { |t| e.tagify!(t.id) }
+          Tag.find(:all, :conditions => ['name LIKE ?', '%#{}%']).each { |t| e.tagify!(t.id) }
         end
 
       end
@@ -129,9 +129,8 @@ namespace :db do
         if Event.exists?(name: event_name, venue_id: Venue.find_by(name: venue_name).id)
           Event.find_by(name: event_name, venue_id: Venue.find_by(name: venue_name).id).timings.create!(start_time: start_time, end_time: end_time, day: day_int)
         else
-          e = Venue.find_by(name: venue_name).events.create!(name: event_name, description: comment.to_s, gmaps: true, cost_details: cost_str.to_s, contact: contact.to_s, website: website.to_s, gender: gender.to_s, cost: cost)
+          e = Venue.find_by(name: venue_name).events.create!(name: event_name[0..240], description: comment.to_s[0..240], gmaps: true, cost_details: cost_str.to_s, contact: contact.to_s, website: website.to_s, gender: gender.to_s, cost: cost)
           e.timings.create!(start_time: start_time, end_time: end_time, day: day_int) unless sessionless == true
-        Tag.find(:all, :conditions => ['name LIKE ?', '%#{}%']).each do { |t| e.tagify!(t.id) }
         end
 
       end

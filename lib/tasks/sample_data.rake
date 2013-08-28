@@ -115,6 +115,9 @@ namespace :db do
         else
           address = addr1.to_s+", "+borough.to_s+", "+city.to_s
         end
+        if venue_name.blank?
+          venue_name = "Other Venue"
+        end
         Venue.create!(name: venue_name.to_s, user_id: 1, description: "Description to follow", street_address: address, postcode: postcode.to_s, gmaps: true) unless Venue.exists?(name: venue_name)
         sessionless = false
         if start_t.blank?
@@ -129,9 +132,8 @@ namespace :db do
         if Event.exists?(name: event_name, venue_id: Venue.find_by(name: venue_name).id)
           Event.find_by(name: event_name, venue_id: Venue.find_by(name: venue_name).id).timings.create!(start_time: start_time, end_time: end_time, day: day_int)
         else
-          e = Venue.find_by(name: venue_name).events.create!(name: event_name, description: comment.to_s, gmaps: true, cost_details: cost_str.to_s, contact: contact.to_s, website: website.to_s, gender: gender.to_s, cost: cost)
+          e = Venue.find_by(name: venue_name).events.create!(name: event_name[0..240], description: comment.to_s[0..240], gmaps: true, cost_details: cost_str.to_s, contact: contact.to_s, website: website.to_s, gender: gender.to_s, cost: cost)
           e.timings.create!(start_time: start_time, end_time: end_time, day: day_int) unless sessionless == true
-        Tag.find(:all, :conditions => ['name LIKE ?', '%#{}%']).each { |t| e.tagify!(t.id) }
         end
 
       end
