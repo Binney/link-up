@@ -7,12 +7,12 @@
           <%= t.d(h(event.name)) %>
           <%= t.d(h(event.venue.name)) %>
           <%= t.d(h(event.start_time.to_s(:time_day)+"-"+event.end_time.to_s(:time_day))) %>
-          <%= t.d(h("Attending")) %><!-- this needs to change! ...Or does it? -->
+          <%= t.d(h("Attending")) %>
         <% end %>
       <% end %>
     <% end %>
   </div>
   <%= will_paginate @upcoming_events, :page_links => false, :param_name => "upcoming_page" %>
 <% else %>
-  <p>No upcoming events. <%= link_to "Find events", events_path %></p>
+  <p>No upcoming events. <%= link_to "Join events", events_path %> and they'll appear here.</p>
 <% end %>

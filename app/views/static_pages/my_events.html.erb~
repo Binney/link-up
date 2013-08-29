@@ -1,8 +1,9 @@
 <% provide(:title, "Your events") %>
+<% provide(:site_section, "2") %>
 
   <div class="span8">
     <h3><%= @title %></h3>
-    <% if @events.any? %>
+    <% if @calendar_entries.any? %>
 
       <div id="tabs">
         <ul>
@@ -20,9 +21,13 @@
         </div>
 
         <div id="favourites">
-          <ul class="events">
-            <%= render @events %>
-          </ul>
+          <% if @favourites.any? %>
+            <ul class="events">
+              <%= render @favourites %>
+            </ul>
+          <% else %>
+            No favourites. You can add favourites on any event.
+          <% end %>
         </div>
 
       </div>
@@ -38,8 +43,8 @@
       <%= h @date.strftime("%B %Y") %>
       <%= link_to ">", :month => (@date.end_of_month+1) %>
     </h2>
-    <%= calendar_for(@entries, :year => @date.year, :month => @date.month) do |t| %>
-      <%= t.head('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') %>
+    <%= calendar_for(@calendar_entries, :year => @date.year, :month => @date.month) do |t| %>
+      <%= t.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
       <%= t.day(day_method: :start_time) do |day, entries| %>
         <%= day.day %>
         <% entries.each do |entry| %>

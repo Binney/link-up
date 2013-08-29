@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   has_many :messages, foreign_key: "receiver_id", dependent: :destroy
   has_many :messages, foreign_key: "sender_id", dependent: :destroy
   has_many :favourites, dependent: :destroy
-  has_many :favourites, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
   before_save { self.email = email.downcase }
@@ -23,8 +22,8 @@ class User < ActiveRecord::Base
 
 
 
-  acts_as_gmappable
-  after_validation :geocode
+#  acts_as_gmappable
+#  after_validation :geocode
 
   if :home_address?
     geocoded_by :gmaps4rails_address
@@ -56,8 +55,8 @@ class User < ActiveRecord::Base
     favourites.create!(event_id: event.id, day: day)
   end
 
-  def unfavourite!(event, day)
-    favourites.find_by(event_id: event.id, day: day).destroy
+  def unfavourite!(eventid, day)
+    favourites.find_by(event_id: eventid, day: day).destroy
   end
 
   private

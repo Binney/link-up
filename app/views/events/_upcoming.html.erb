@@ -1,13 +1,14 @@
 <% if @upcoming_events.any? %>
   <div class="tab_table">
     <%= table_for(@upcoming_events) do |t| %>
-      <%= t.body do |event| %>
+      <%= t.body do |listing| %>
+        <% event = Event.find(listing) %>
         <%= t.r do %>
-          <%= t.d(h(event.created_at.to_s(:day_week_month))) %>
+          <%= t.d(h(event.start_time.to_s(:day_week_month))) %>
           <%= t.d(h(event.name)) %>
           <%= t.d(h(event.venue.name)) %>
           <%= t.d(h(event.start_time.to_s(:time_day)+"-"+event.end_time.to_s(:time_day))) %>
-          <%= t.d(h("Attending")) %><!-- this needs to change! ...Or does it? -->
+          <%= t.d(h("Attending")) %>
         <% end %>
       <% end %>
     <% end %>

@@ -1,14 +1,23 @@
 <header class="my-head">
   <div class="my-inner">
-    <div class="containwsdfer">
-      <%= link_to "link up", root_path, id: "logo" %><!-- IT'LL DO FOR NOW BUT FIX!!! -->
-      <nav>
-        <ul class="top-bar">
-          <li><%= link_to "About Us", about_path %></li>
-          <li><%= link_to "Help", help_path %></li>
-          <li><%= link_to "Contact Us", contact_path %></li>
-        </ul><br>
-      <%= render 'shared/bar' %>
-    </div>
+    <%= link_to "link up", root_path, id: "logo" %><!-- IT'LL DO FOR NOW BUT FIX!!! -->
+    <nav>
+      <ul class="top-bar">
+        <li><%= link_to "About Us", about_path %></li>
+        <li><%= link_to "Help", help_path %></li>
+        <li><%= link_to "Contact Us", contact_path %></li>
+      </ul><br>
+    <%= render 'shared/bar' %>
   </div>
+  <div id="tabs">
+    <ul>
+      <li><a href="#first"><span>One</span></a></li>
+      <li><a href="#second"><span>Two</span></a></li>
+      <li><a href="#third"><span>Three</span></a></li>
+    </ul>
+    <div id="first">Hello!</div>
+    <div id="second">Hi!</div>
+    <div id="third">'Lo!</div>
+  </div>
+
 </header>

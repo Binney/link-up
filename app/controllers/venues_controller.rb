@@ -65,7 +65,7 @@ class VenuesController < ApplicationController
   private
 
     def venue_params
-      params.require(:venue).permit(:name, :description, :street_address, :postcode) # Include all extra parameters here
+      params.require(:venue).permit(:name, :description, :street_address, :postcode, :is_school, :contact) # Include all extra parameters here
     end
 
     def correct_user

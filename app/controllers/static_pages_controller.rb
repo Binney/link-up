@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  before_action :signed_in_user, only: :my_events
   def home
     # Okay. Needs to process whether you're logged in and if so, how.
     # If you're not logged in, it just shows all venues.
@@ -15,10 +16,11 @@ class StaticPagesController < ApplicationController
       @evs = @events.to_gmaps4rails do |event, marker|
         marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event })
         marker.title "#{event.name}"
-        marker.picture({:picture => "/assets/tag_icons/drinking society.png", :width => 32, :height => 32})
+        str = event.tags[0] ? event.tags[0].name : "Other"
+        marker.picture({:picture => "/assets/tag_icons/#{str}.png", :width => 32, :height => 32})
       end
       @house = current_user.to_gmaps4rails do |house, marker|
-        marker.picture({:picture => "/assets/tag_icons/martial arts.png", :width => 32, :height => 32})
+        marker.picture({:picture => "/assets/l.png", :width => 32, :height => 32})
       end
       @json = (JSON.parse(@evs) + JSON.parse(@house)).to_json
 
@@ -27,18 +29,27 @@ class StaticPagesController < ApplicationController
       @json = @venues.to_gmaps4rails do |venue, marker|
         marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})
         marker.title "#{venue.name}"
-        marker.picture({:picture => "/assets/tag_icons/assassins.png", :width => 32, :height => 32})
+        marker.picture({:picture => "/assets/tag_icons/Other.png", :width => 32, :height => 32})
       end
+      @todays_events = Timing.where(:day == Date.today.wday)[0..6]
+      @tags = Tag.all.shuffle
     end
   end
 
   def my_events
     @title = "Your events"
-    @events = current_user.events
+    @favourites = current_user.events
+    @favs = current_user.favourites
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
-    # Here: loop through days of this month and create array of times for each Favourite which falls on that day. Then concatenate it to the @entries array. Then table_builder can do its utmost to plot multiple days.
-    @entries = current_user.diary_entries.order('start_time ASC')
-#    @upcoming_events = current_user.diary_entries.where(start_date > Datetime.now) # Needs to say "This Thursday" for entries and "Every Thursday" for favourites
+    @calendar_entries = current_user.diary_entries.order('start_time ASC')
+    arr = []
+    @favs.each do |f|
+      (((params[:month] ? Date.parse(params[:month]) : Date.today).change(day: 1)..(params[:month] ? Date.parse(params[:month]) : Date.today).advance(months: 1).change(day: 1)).select {|d| d.wday == f.day}).each do |date|
+        @calendar_entries.push CalendarEntry.new(date, f.event_id)
+      end
+    end
+
+#    @upcoming_events = @calendar_entries.where(start_time > Datetime.now) # Needs to say "This Thursday" for entries and "Every Thursday" for favourites
   end
 
   def help

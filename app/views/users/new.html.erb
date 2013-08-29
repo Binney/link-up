@@ -11,6 +11,10 @@
       <%= f.label :email %>
       <%= f.text_field :email %>
 
+      <%= f.label :school, "School:" %>
+      <% @schools = "None"+Venue.all.where(is_school = true) %>
+      <%= f.collection_select :school, @schools, :name, :name %>
+
       <%= f.label :password %>
       <%= f.password_field :password %>
 

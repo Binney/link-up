@@ -1,7 +1,9 @@
-<%= search_form_for @search do |f| %>
-  <%= f.label :gender_not_cont, "Find activites near you:" %>
-  <%= f.text_field :gender_not_cont %>
-  <%= f.label :tags_name_cont, "Or search by activity:" %>
-  <%= f.text_field :tags_name_cont %>
-  <%= f.submit %>
-<% end %>
+<div id="mega-search">
+  <%= search_form_for @search do |f| %>
+    <%= f.label :gender_not_cont, "Find activites near you:" %>
+    <%= f.text_field :gender_not_cont %>
+    <%= f.label :tags_name_cont, "Or search by activity:" %>
+    <%= f.text_field :tags_name_cont %>
+    <%= f.submit "Search", class: "btn btn-primary btn-mega-search" %>
+  <% end %>
+</div>

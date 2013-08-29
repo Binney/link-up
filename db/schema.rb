@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130828065852) do
+ActiveRecord::Schema.define(version: 20130829131242) do
 
   create_table "diary_entries", force: true do |t|
     t.integer  "user_id"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20130828065852) do
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps",           default: true
+    t.string   "school"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
@@ -137,6 +138,7 @@ ActiveRecord::Schema.define(version: 20130828065852) do
     t.float    "longitude"
     t.boolean  "gmaps",          default: true
     t.string   "contact"
+    t.boolean  "is_school",      default: false
   end
 
   add_index "venues", ["name"], name: "index_venues_on_name"

@@ -1,0 +1,32 @@
+class CalendarEntry
+  def event_id
+    @event_id
+  end
+
+  def name
+    @name
+  end
+
+  def start_time
+    @start_time
+  end
+
+  def event_id=(event_id)
+    @event_id = event_id
+  end
+
+  def name=(name)
+    @name = name
+  end
+
+  def start_time=(start_time)
+    @start_time = start_time
+  end
+
+  def initialize(name, start_time, event_id)
+    @name = name
+    @start_time = start_time
+    @event_id = event_id
+  end
+
+end

@@ -1,4 +1,4 @@
-<div id="login-box">
+<div class="spa">
   <div id="tabs">
     <ul>
       <li><a href="#students"><span>Students</span></a></li>

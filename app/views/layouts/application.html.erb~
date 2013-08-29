@@ -12,13 +12,22 @@
   <body>
     <div class="container">
     <%= render 'layouts/header' %>
-    <div class="main">
+    <div id="tabs">
+    <ul>
+      <li><a href="#first"><span>One</span></a></li>
+      <li><a href="#second"><span>Two</span></a></li>
+      <li><a href="#third"><span>Three</span></a></li>
+    </ul>
+    <div id="first">Hello!</div>
+    <div id="second">Hi!</div>
+    <div id="third">'Lo!</div>
+  </div>
+
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
       <%= yield %>
       <%= render 'layouts/footer' %>
-    </div>
     </div>
   </body>
 </html>

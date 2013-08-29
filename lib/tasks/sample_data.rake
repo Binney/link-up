@@ -59,7 +59,7 @@ namespace :db do
 
     other_venues = Venue.create!(name: "Other Venue",
 				 description: "Other venue not listed above", user_id: 0,
-                                 postcode: 'W6 7BS', street_address: 'Brook Green', gmaps: true )
+                                 postcode: 'Westminster', street_address: '10 Downing Street', gmaps: true ) #Eh, SLAGIATT.
     20.times do |n|
       name  = Faker::Name.name
       email = "example-#{n+1}@railstutorial.org"

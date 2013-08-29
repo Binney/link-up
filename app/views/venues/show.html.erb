@@ -17,7 +17,11 @@
   </aside>
 
   <div class="span8">
-    <h1><%= @venue.name %></h1>
+    <% if @venue.is_school %>
+      <h1><%= image_tag "l.jpg", alt: @venue.name, size: "25x25" %> <%= @venue.name %></h1>
+    <% else %>
+      <h1><%= @venue.name %></h1>
+    <% end %>
     <div class="venue-info">
       <b>Location:</b><br>
       <%= @venue.gmaps4rails_address %><br>

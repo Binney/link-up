@@ -1,5 +1,5 @@
-<%= render 'shared/main_search' %>
 <% provide(:site_section, "0") %>
+<%= render 'shared/main_search' %>
 
 <% if signed_in? %>
 
@@ -40,11 +40,11 @@
   <div id="local-map">
     <%= gmaps4rails(@json) %>
   </div>
-  <div id="popular-events">
-    <p>New events go here</p>
+  <div id="today-events">
+    <%= render 'events/on_today' %>
   </div>
   <div id="popular-tags">
-    <p>Tags go here</p>
+    <%= render 'tags/brief_selection' %>
   </div>
 
 <% end %>

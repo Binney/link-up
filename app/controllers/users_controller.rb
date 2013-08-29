@@ -56,11 +56,11 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      if current_user.admin?
-        params.require(:user).permit(:name, :email, :mentor, :organiser, :admin, :home_address, :home_postcode)
-      else
+      #if current_user.admin?
+      #  params.require(:user).permit(:name, :email, :mentor, :organiser, :admin, :home_address, :home_postcode)
+      #else
         params.require(:user).permit(:name, :email, :home_address, :home_postcode)
-      end
+      #end
     end
 
     # Before filters (signed_in_user is now under sessions_helper)

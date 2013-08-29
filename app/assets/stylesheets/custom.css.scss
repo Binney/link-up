@@ -84,14 +84,14 @@ textarea {
   height: 400px;
 }
 
-.login-box {
-  float: right;
-  width: 400px;
-}
-
 .tagline {
   float: left;
   width: 50%;
+  h2 {
+    font-size: 20px;
+    letter-spacing: 1px;
+    line-height: 30px;
+  }
 }
 
 #map label {
@@ -261,8 +261,8 @@ footer {
   -moz-border-radius: 0px;
   border-radius: 0px;
 
-  padding-top:6px;
-  padding-bottom:6px;
+  padding-top:8px;
+  padding-bottom:0px;
   font-size:15px;
   width:150px;
   height:30px;
@@ -279,6 +279,20 @@ footer {
   background:#ffc319;
   text-decoration: none;
   color:white;
+}
+
+.btn-mega-search {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  padding:50px;
+  padding-top:6px;
+  padding-bottom:6px;
+  font-size:15px;
+  font-style: bold;
+  text-transform: uppercase;
+  width:150px;
+  height:30px;
 }
 
 .btn-login {
@@ -451,6 +465,14 @@ aside {
   opacity:1;
 }
 
+.mega-search {
+  width:100%;
+}
+
+.login-tab {
+  width:50%;
+  float:right;
+}
 
 .activity-list {
   list-style: none;

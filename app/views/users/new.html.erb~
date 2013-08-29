@@ -11,13 +11,17 @@
       <%= f.label :email %>
       <%= f.text_field :email %>
 
+      <%= f.label :school, "School:" %>
+      <% @schools = "None"+Venue.all.where(:is_school = true) %>
+      <%= f.collection_select :school, @schools, :name, :name %>
+
       <%= f.label :password %>
       <%= f.password_field :password %>
 
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation %>
 
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+      <%= f.submit "CREATE MY ACCOUNT", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
 </div>

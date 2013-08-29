@@ -9,12 +9,17 @@
 
       <%= f.label :name %>
       <%= f.text_field :name %>
+      <br>
+      <% if current_user.admin? %>
+        <%= f.check_box :is_school %>
+        <%= f.label :is_school, "School?" %>
+      <% end %>
 
       <%= f.label :description %>
       <%= f.text_area :description %>
 
-      <%= f.label :address %>
-      <%= f.text_field :address %>
+      <%= f.label :street_address %>
+      <%= f.text_field :street_address %>
 
       <%= f.label :postcode %>
       <%= f.text_field :postcode %>

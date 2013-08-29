@@ -1,0 +1,10 @@
+<div id="popular_tags">
+  <h1></h1>
+  <% if @tags.any? %>
+    <% @tags.each do |tag| %>
+      <%= link_to tag.name, tag %> / 
+    <% end %>
+  <% else %>
+    No tags found.
+  <% end %>
+</div>

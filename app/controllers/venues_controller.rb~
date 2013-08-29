@@ -4,7 +4,7 @@ class VenuesController < ApplicationController
   before_action :correct_user,   only: [:edit, :update, :destroy] # Only correct user or admin can edit it
 
   def index
-    @venues = Venue.paginate(page: params[:page])
+    @venues = Venue.all#.paginate(page: params[:page])
     @json = Venue.all.to_gmaps4rails do |venue, marker|
     marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})
     marker.title "#{venue.name}"
