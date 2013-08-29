@@ -8,10 +8,10 @@
       <%= gmaps4rails(@json) %>
     </div>
     <div id="diary-events">
-      <p>Events in your diary go here</p>
+      <%= render 'diary_entries/diary_preview' %>
     </div>
-    <div id="news">
-      <p>News feed goes here</p>
+    <div id="toolbox">
+      <%= render 'shared/toolbox' %>
     </div>
 
 
@@ -28,10 +28,10 @@
       <%= gmaps4rails(@json) %>
     </div>
     <div id="diary-events">
-      <p>Events in your diary go here</p>
+      <%= render 'diary_entries/diary_preview' %>
     </div>
-    <div id="news">
-      <p>News feed goes here</p>
+    <div id="popular-tags">
+    <%= render 'tags/brief_selection' %>
     </div>
   <% end %>
 
@@ -44,7 +44,7 @@
     <%= render 'events/on_today' %>
   </div>
   <div id="popular-tags">
-    <%= render 'tags/brief_selection %>
+    <%= render 'tags/brief_selection' %>
   </div>
 
 <% end %>

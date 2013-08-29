@@ -1,0 +1,11 @@
+<div id="diary_preview">
+  <h1>Your diary</h1>
+  <% if @diary_entries.any? %>
+    <% @diary_entries.each do |entry| %>
+      <% event = Event.find(entry.event_id) %>
+      <li><%= link_to event.name, event %> <%= event.venue.name %></li>
+    <% end %>
+  <% else %>
+    Nothing listed.
+  <% end %>
+</div>

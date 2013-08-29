@@ -3,35 +3,26 @@
 
 <% if signed_in? %>
 
-  <% if current_user.admin? %>
+  <% if current_user.admin? | current_user.mentor? | current_user.organiser? %>
     <div id="local-map">
       <%= gmaps4rails(@json) %>
     </div>
     <div id="diary-events">
-      <p>Events in your diary go here</p>
+      <%= render 'diary_entries/diary_preview' %>
     </div>
-    <div id="news">
-      <p>News feed goes here</p>
+    <div id="toolbox">
+      <%= render 'shared/toolbox' %>
     </div>
-
-
-<!-- Eventually get similarly personalised homepages for organisers and mentors. -->
-
-
-
-
-
-
 
   <% else %>
     <div id="local-map">
       <%= gmaps4rails(@json) %>
     </div>
     <div id="diary-events">
-      <p>Events in your diary go here</p>
+      <%= render 'diary_entries/diary_preview' %>
     </div>
-    <div id="news">
-      <p>News feed goes here</p>
+    <div id="popular-tags">
+    <%= render 'tags/brief_selection' %>
     </div>
   <% end %>
 

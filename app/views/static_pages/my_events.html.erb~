@@ -1,7 +1,6 @@
 <% provide(:title, "Your events") %>
 <% provide(:site_section, "2") %>
 
-  <div class="span8">
     <h3><%= @title %></h3>
     <% if @calendar_entries.any? %>
 
@@ -13,7 +12,7 @@
         </ul>
 
         <div id="upcoming">
-          <%= "render 'events/upcoming'" %>
+          <%= render 'events/upcoming' %>
         </div>
 
         <div id="past">
@@ -35,7 +34,6 @@
       <p>No events in your diary. <%= link_to "Hit 'Favourite' on an event", events_path %> and it'll show up here.</p>
     <% end %>
     
-  </div>
 <br>
   <div id="calendar">
     <h2 id="month">

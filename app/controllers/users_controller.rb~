@@ -7,27 +7,45 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: [:destroy, :show, :index]
 
   def index
-    @users = User.paginate(page: params[:page])
+    if current_user.admin?
+      @users = User.paginate(page: params[:page])
+    else
+      @users = User.where(:school==current_user.school)
+    end
   end
 
   def show
     @user = User.find(params[:id])
-    @favourites = @user.events.paginate(page: params[:page]) # How to display these...
+    if current_user.school.eql?(@user.school.to_s) || current_user.admin?
+      @favourites = @user.events.paginate(page: params[:page]) # How to display these...
+    else
+      redirect_to root_path
+    end
   end
 
   def new
     @user = User.new
+    @schools = ["None", "Dagenham Park CoS", "Westminster Academy"]
   end
  
   def create
     @user = User.new(user_params)
+    unless @user.school.eql?("None")
+      @user.home_address ||= Venue.find_by(name: @user.school).street_address
+      puts "you live at #{@user.home_address}"
+      @user.home_postcode ||= Venue.find_by(name: @user.school).postcode
+    else
+      @user.home_address ||= "10 Downing Street"
+      puts "NOW you live at #{@user.home_address}"
+    end
     if @user.save
       UserMailer.welcome_email(@user).deliver
-      User.find(1).messages.build(subject: "You're in, #{@user.name}!", receiver_id: @user.id, message: "Welcome to Link Up! To get started with finding opportunities in your area, hit Find Events. For advice, visit #{help_path}. Good luck and have fun!")
+      User.find(1).messages.create!(subject: "You're in, #{@user.name}!", receiver_id: @user.id, message: "Welcome to Link Up! To get started with finding opportunities in your area, hit Find Events. For advice, visit #{help_path}. Good luck and have fun!")
       sign_in @user
       flash[:success] = "User created successfully - we've sent you a confirmation email. Welcome to Link Up!"
       redirect_to @user
     else
+      @schools = ["None", "Dagenham Park CoS", "Westminster Academy"]
       render 'new'
     end
   end
@@ -55,12 +73,8 @@ class UsersController < ApplicationController
 
   private
 
-    def user_params
-      if current_user.admin?
-        params.require(:user).permit(:name, :email, :mentor, :organiser, :admin, :home_address, :home_postcode)
-      else
-        params.require(:user).permit(:name, :email, :home_address, :home_postcode)
-      end
+    def user_params # Ew ew ew ew ew ew ew no.
+      params.require(:user).permit(:name, :email, :home_address, :home_postcode, :school, :password, :password_confirmation, :mentor, :organiser, :admin)
     end
 
     # Before filters (signed_in_user is now under sessions_helper)

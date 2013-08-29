@@ -20,10 +20,11 @@ class StaticPagesController < ApplicationController
         marker.picture({:picture => "/assets/tag_icons/#{str}.png", :width => 32, :height => 32})
       end
       @house = current_user.to_gmaps4rails do |house, marker|
-        marker.picture({:picture => "/assets/l.png", :width => 32, :height => 32})
+        marker.picture({:picture => "/assets/l.jpg", :width => 32, :height => 32})
       end
       @json = (JSON.parse(@evs) + JSON.parse(@house)).to_json
-
+      @diary_entries = (current_user.diary_entries+current_user.favourites).shuffle
+      @tags = Tag.all.shuffle
     else
       @venues = Venue.all :conditions => ["id != ?", 0] # Don't display venue(0) since it's a placeholder for events without a venue.
       @json = @venues.to_gmaps4rails do |venue, marker|
@@ -49,7 +50,7 @@ class StaticPagesController < ApplicationController
       end
     end
 
-#    @upcoming_events = @calendar_entries.where(start_time > Datetime.now) # Needs to say "This Thursday" for entries and "Every Thursday" for favourites
+    @upcoming_events = current_user.diary_entries#.where(:start_time > Date.now) # Needs to say "This Thursday" for entries and "Every Thursday" for favourites
   end
 
   def help

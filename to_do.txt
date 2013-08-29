@@ -20,8 +20,6 @@ Make New Event "link" styled (blue, mouse changes)
 
 Messages button: also says in brackets number of unread messages
 
-SEARCH: needs to redirect you to events index page when you click from homepage - how does ransack do that?!?!?
-
 ATTENDING SYSTEM
 ================
 
@@ -68,6 +66,8 @@ SCHOOLS: Each user has a School, which may or may not be filled (string as a nam
 ^ Following on from this, possibly (on signup page) an infowindow/dialog pops up to tell you what you stand to gain and lose by selecting a school.
 
 IT ISN'T CALCULATING TIMING.DAY CORRECTLY or summat - see on_today
+
+HTML requests for :admin=>true ??!!
 
 ======================== FUTURE STUFF =========================
 

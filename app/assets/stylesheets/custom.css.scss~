@@ -86,7 +86,7 @@ textarea {
 
 .tagline {
   float: left;
-  width: 30%;
+  width: 50%;
   h2 {
     font-size: 20px;
     letter-spacing: 1px;
@@ -153,6 +153,10 @@ p {
   padding-top: 30px;
   padding-left: 0px;
   padding-right: 0px;
+}
+
+.nav {
+  height:30px;
 }
 
 #logo {

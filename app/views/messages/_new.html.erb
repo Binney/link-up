@@ -3,7 +3,7 @@
   <div><%= f.hidden_field :receiver_id %>
   <%= f.hidden_field :sender_id %></div>
   <div class="field">
-    <%= f.text_field :subject, default: "Re: "+params[:subject].to_s %>
+    <%= f.text_field :subject, placeholder: "Re: "+params[:subject].to_s %>
     <%= f.text_area :message, placeholder: "Compose new message..." %>
   </div>
   <%= f.submit "SEND", class: "btn btn-primary" %>

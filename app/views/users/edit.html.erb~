@@ -1,4 +1,5 @@
 <% provide(:title, "Edit user") %>
+<% provide(:site_section, "2") %>
 <h1>Update profile</h1>
 
 <div class="row">
