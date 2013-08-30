@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       User.find(1).messages.create!(subject: "You're in, #{@user.name}!", receiver_id: @user.id, message: "Welcome to Link Up! To get started with finding opportunities in your area, hit Find Events. For advice, visit #{help_path}. Good luck and have fun!")
       sign_in @user
       flash[:success] = "User created successfully - we've sent you a confirmation email. Welcome to Link Up!"
-      redirect_to @user
+      redirect_to root_path
     else
       @schools = ["None", "Dagenham Park CoS", "Westminster Academy"]
       render 'new'
