@@ -11,7 +11,6 @@ class EventsController < ApplicationController
       if params[:q]
         # Indexing from search
         @search = Event.search(params[:q])
-        puts "++++++++++++++++++++++"+params[:q][:gender_not_cont]
         @search.sorts = 'distance_to(#{params[:q][:gender_not_cont]) asc' if params[:q][:gender_not_cont].nil?
         @events = @search.result#.paginate(:page => params[:page])
       else # Just indexing normally

@@ -21,7 +21,8 @@ class EventsController < ApplicationController
         marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event })
         marker.title "#{event.name}"
         image = event.tags.count==0 ? "Other" : event.tags[0].name
-        marker.picture({:picture => "/assets/tag_icons/#{image}.png", :width => 32, :height => 32})
+        #marker.picture({:picture => "/assets/tag_icons/#{image}.png", :width => 32, :height => 32})
+        marker.picture({:picture => "/assets/tag_icons/l.png", :width => 32, :height => 32})
       end
     end
   end

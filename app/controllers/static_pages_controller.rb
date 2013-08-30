@@ -17,7 +17,8 @@ class StaticPagesController < ApplicationController
         marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event })
         marker.title "#{event.name}"
         str = event.tags[0] ? event.tags[0].name : "Other"
-        marker.picture({:picture => "/assets/tag_icons/#{str}.png", :width => 32, :height => 32})
+        #marker.picture({:picture => "/assets/tag_icons/#{str}.png", :width => 32, :height => 32})
+        marker.picture({:picture => "/assets/tag_icons/l.png", :width => 32, :height => 32})
       end
       @house = current_user.to_gmaps4rails do |house, marker|
         marker.picture({:picture => "/assets/l.jpg", :width => 32, :height => 32})
@@ -30,7 +31,8 @@ class StaticPagesController < ApplicationController
       @json = @venues.to_gmaps4rails do |venue, marker|
         marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})
         marker.title "#{venue.name}"
-        marker.picture({:picture => "/assets/tag_icons/Other.png", :width => 32, :height => 32})
+        #marker.picture({:picture => "/assets/tag_icons/Other.png", :width => 32, :height => 32})
+        marker.picture({:picture => "/assets/tag_icons/l.png", :width => 32, :height => 32})
       end
       @todays_events = Timing.where(:day == Date.today.wday)[0..6]
       @tags = Tag.all.shuffle

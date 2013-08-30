@@ -50,7 +50,7 @@ class StaticPagesController < ApplicationController
       end
     end
 
-    @upcoming_events = current_user.diary_entries.where(:start_time > Date.now) # Needs to say "This Thursday" for entries and "Every Thursday" for favourites
+    @upcoming_events = current_user.diary_entries#.where(:start_time > Date.now) # Needs to say "This Thursday" for entries and "Every Thursday" for favourites
   end
 
   def help

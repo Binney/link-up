@@ -8,7 +8,8 @@ class VenuesController < ApplicationController
     @json = Venue.all.to_gmaps4rails do |venue, marker|
     marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})
     marker.title "#{venue.name}"
-    marker.picture({:picture => "/assets/tag_icons/small/Other.png", :width => 32, :height => 32})
+#    marker.picture({:picture => "/assets/tag_icons/small/Other.png", :width => 32, :height => 32})
+    marker.picture({:picture => "/assets/tag_icons/l.png", :width => 32, :height => 32})
     end
   end
 
@@ -23,7 +24,8 @@ class VenuesController < ApplicationController
     @json = @venue.to_gmaps4rails do |venue, marker|
     marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})
     marker.title "#{venue.name}"
-    marker.picture({:picture => "/assets/tag_icons/small/Other.png", :width => 32, :height => 32})
+    #marker.picture({:picture => "/assets/tag_icons/small/Other.png", :width => 32, :height => 32})
+    marker.picture({:picture => "/assets/tag_icons/l.png", :width => 32, :height => 32})
     end
   end
 
