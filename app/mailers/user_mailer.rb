@@ -1,4 +1,6 @@
 class UserMailer < ActionMailer::Base
+  require 'mandrill'
+  mandrill = Mandrill::API.new 'BWoU8sJtVOAoy0cEpLKpqg'
   default from: "do-not-reply@link-up.org.uk"
 
   def welcome_email(user)

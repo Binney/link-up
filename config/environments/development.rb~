@@ -16,11 +16,11 @@ Sweaton2::Application.configure do
   # DO care if the mailer can't send.
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "mail.domain.com",
-    port: 25,
+    address: "smtp.mandrillapp.com",
+    port: 587,
     authentication: "plain",
-    user_name: "user@domain.com",
-    password: ENV['SMTP_PASSWORD'],
+    user_name: "link-up@heroku.com",
+    password: BWoU8sJtVOAoy0cEpLKpqg,
     enable_starttls_auto: false
   }
   config.action_mailer.raise_delivery_errors = true

@@ -20,8 +20,6 @@ Make New Event "link" styled (blue, mouse changes)
 
 Messages button: also says in brackets number of unread messages
 
-SEARCH: needs to redirect you to events index page when you click from homepage - how does ransack do that?!?!?
-
 ATTENDING SYSTEM
 ================
 
@@ -66,6 +64,10 @@ Custom pagination (details at http://thewebfellas.com/blog/2010/8/22/revisited-r
 SCHOOLS: Each user has a School, which may or may not be filled (string as a name). By selecting your school, you can view events at the venue which is that school, but you also can be viewed by any MENTORS at that school (which you can tell by them ALSO having the school string set). Each school involved in the project gets its own venue, which may (eg Dagenham) actually have events listed or (Westminster) may simply be a placeholder. Users have addresses which by default are set to their school's but they can change this via their profile (by selecting their school on the Signup page it fills in the address box with the school's address but they can then swap it). Or you can leave School blank in which case you're left to geocode yourself (default: #10 Downing Street)
 
 ^ Following on from this, possibly (on signup page) an infowindow/dialog pops up to tell you what you stand to gain and lose by selecting a school.
+
+IT ISN'T CALCULATING TIMING.DAY CORRECTLY or summat - see on_today
+
+HTML requests for :admin=>true ??!!
 
 ======================== FUTURE STUFF =========================
 

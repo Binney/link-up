@@ -20,6 +20,8 @@ Make New Event "link" styled (blue, mouse changes)
 
 Messages button: also says in brackets number of unread messages
 
+API KEY IS ON CONFIG/ENVIRONMENTS/PRODUCTION and /DEVELOPMENT. THAT MEANS ANYONE CAN SEE IT. DUMMY.
+
 ATTENDING SYSTEM
 ================
 
