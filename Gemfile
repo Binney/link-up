@@ -72,3 +72,6 @@ gem 'ransack'
 
 # Date and time parser for event importing
 gem 'chronic'
+
+# Emails
+gem 'mandrill-api'

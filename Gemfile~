@@ -64,6 +64,7 @@ gem 'jquery-ui-sass-rails'
 gem 'carrierwave'
 
 # Calendar capability
+gem 'ice_cube'
 gem "watu_table_builder", :require => "table_builder"
 
 # Search
@@ -71,6 +72,3 @@ gem 'ransack'
 
 # Date and time parser for event importing
 gem 'chronic'
-
-# Email management with Postmark
-gem 'postmark-rails'

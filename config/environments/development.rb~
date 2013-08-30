@@ -1,4 +1,4 @@
-SampleApp::Application.configure do
+Sweaton2::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -13,8 +13,17 @@ SampleApp::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # DO care if the mailer can't send.
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "mail.domain.com",
+    port: 25,
+    authentication: "plain",
+    user_name: "user@domain.com",
+    password: ENV['SMTP_PASSWORD'],
+    enable_starttls_auto: false
+  }
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
