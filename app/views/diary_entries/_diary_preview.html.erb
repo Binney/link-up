@@ -1,12 +1,12 @@
-<div id="diary_preview">
+
   <h1>Your diary</h1>
   <% if @diary_entries.any? %>
     <% @diary_entries.each do |entry| %>
       <% event = Event.find(entry.event_id) %>
-      <li><%= link_to event.name, event %> <%= event.venue.name %></li>
+      <li><%= link_to event.name, event %> <%= link_to event.venue.name, event.venue %></li>
     <% end %>
     <%= link_to "See more", my_events_path %>
   <% else %>
     Nothing listed.
   <% end %>
-</div>
+

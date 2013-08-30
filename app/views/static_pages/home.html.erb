@@ -7,10 +7,10 @@
     <div id="local-map">
       <%= gmaps4rails(@json) %>
     </div>
-    <div id="diary-events">
+    <div id="homepage-left">
       <%= render 'diary_entries/diary_preview' %>
     </div>
-    <div id="toolbox">
+    <div id="homepage-right">
       <%= render 'shared/toolbox' %>
     </div>
 
@@ -18,10 +18,10 @@
     <div id="local-map">
       <%= gmaps4rails(@json) %>
     </div>
-    <div id="diary-events">
+    <div id="homepage-left">
       <%= render 'diary_entries/diary_preview' %>
     </div>
-    <div id="popular-tags">
+    <div id="homepage-right">
     <%= render 'tags/brief_selection' %>
     </div>
   <% end %>
@@ -31,10 +31,10 @@
   <div id="local-map">
     <%= gmaps4rails(@json) %>
   </div>
-  <div id="today-events">
+  <div id="homepage-left">
     <%= render 'events/on_today' %>
   </div>
-  <div id="popular-tags">
+  <div id="homepage-right">
     <%= render 'tags/brief_selection' %>
   </div>
 

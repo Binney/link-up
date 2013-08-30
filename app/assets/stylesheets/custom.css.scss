@@ -304,6 +304,22 @@ footer {
   text-decoration: underline;
 }
 
+/* homepage */
+
+.homepage-left {
+  width:50%;
+  float:left;
+  display:inline-block;
+  color:#f0f;
+}
+
+.homepage-right {
+  width:50%;
+  float:right;
+  display:inline-block;
+  color:#f00;
+}
+
 /* sidebar */
 
 aside {

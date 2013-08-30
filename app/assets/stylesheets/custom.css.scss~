@@ -155,10 +155,6 @@ p {
   padding-right: 0px;
 }
 
-.nav {
-  height:30px;
-}
-
 #logo {
   float: left;
   margin-right: 10px;
@@ -306,6 +302,22 @@ footer {
 .request_login {
   color:$orange;
   text-decoration: underline;
+}
+
+/* homepage */
+
+.homepage-left {
+  width:50%;
+  float:left;
+  display:inline-block;
+  color:#ff0;
+}
+
+.homepage-right {
+  width:50%;
+  float:right;
+  display:inline-block;
+  color:#f00;
 }
 
 /* sidebar */
