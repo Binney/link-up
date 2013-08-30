@@ -60,22 +60,17 @@ gem 'json'
 gem 'jquery-ui-rails'
 gem 'jquery-ui-sass-rails'
 
-# Use unicorn as the app server
-gem 'unicorn'
-
-# Deploy with Capistrano
-gem 'capistrano'
-
 # For uploading images etc
 gem 'carrierwave'
 
 # Calendar capability
-gem 'ice_cube'
 gem "watu_table_builder", :require => "table_builder"
-gem 'fullcalendar-rails'
 
 # Search
 gem 'ransack'
 
 # Date and time parser for event importing
 gem 'chronic'
+
+# Email management with Postmark
+gem 'postmark-rails'
