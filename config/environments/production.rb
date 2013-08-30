@@ -68,7 +68,7 @@ Sweaton2::Application.configure do
     port: 587,
     authentication: "plain",
     user_name: "link-up@heroku.com",
-    password: BWoU8sJtVOAoy0cEpLKpqg,
+    password: 'BWoU8sJtVOAoy0cEpLKpqg',
     enable_starttls_auto: false
   }
   config.action_mailer.raise_delivery_errors = true
