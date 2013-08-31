@@ -6,4 +6,9 @@ class Message < ActiveRecord::Base
   validates :subject, length: { maximum: 200 }
   validates :message, length: { maximum: 5000 }
   self.per_page = 10
+
+  def read!
+    self.unread = false
+  end
+
 end

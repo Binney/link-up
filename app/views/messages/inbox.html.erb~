@@ -5,7 +5,6 @@
     <li><a href="#inbox"><span>Inbox</span></a></li>
     <li><a href="#sent"><span>Sent</span></a></li>
   </ul>
-<% puts yield(:site_section)+"123456786543212345678" %>
   <div id="inbox">
     <div id="top_page">
       <%= render 'received' %>

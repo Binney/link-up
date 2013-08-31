@@ -2,7 +2,8 @@ class MessagesController < ApplicationController
   before_action :correct_or_admin, only: [:show, :destroy, :inbox] # Is that really it?!
 
   def new
-    @message = current_user.messages.build
+#    @message = current_user.messages.build
+    @users = User.all # This should be reduced to a subsection of users - how? Only from your school??
   end
 
   def create

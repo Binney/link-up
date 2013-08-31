@@ -4,10 +4,9 @@
       <td><%= Date::DAYNAMES[t.start_time.wday] %></td>
       <td><%= t.start_time.to_s(:time_day)+"-"+t.end_time.to_s(:time_day) %></td>
       <% if signed_in? %>
-        <td><%= render "events/diary_form", st_t: Chronic.parse("this "+Date::DAYNAMES[t.day.to_i].to_s+" "+t.start_time.to_s(:time_day)) %></td>
+        <td><%= render "events/diary_form", st_t: Chronic.parse("this "+Date::DAYNAMES[t.day.to_i].to_s+" "+t.start_time.to_s(:time_day)) %></td><!-- adds this COMING week's session on that day to user's diary -->
         <td><%= render "events/favourite_form", wday: t.start_time.wday %></td>
       <% end %>
     </tr>
   <% end %>
 </table>
-<!-- Above table only shows days on which there's an event. This indicates I'm trusting the users of this site to know the days of the week. This could be a challenge, but one I'm willing to risk. -->

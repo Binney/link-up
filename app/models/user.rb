@@ -29,6 +29,14 @@ class User < ActiveRecord::Base
     request.remote_ip
   end
 
+  def self.simple_search(search)
+    if search
+      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
+
   def gmaps4rails_address
     "#{home_address}, #{home_postcode}"
   end

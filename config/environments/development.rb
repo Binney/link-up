@@ -19,11 +19,11 @@ Sweaton2::Application.configure do
     address: "smtp.mandrillapp.com",
     port: 587,
     authentication: "plain",
-    user_name: "link-up@heroku.com",
+    user_name: "app16978230@heroku.com",
     password: ENV['SMTP_PASSWORD'],
     enable_starttls_auto: false
   }
-  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.raise_delivery_errors = false
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

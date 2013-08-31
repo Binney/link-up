@@ -67,8 +67,8 @@ Sweaton2::Application.configure do
     address: "smtp.mandrillapp.com",
     port: 587,
     authentication: "plain",
-    user_name: "link-up@heroku.com",
-    password: BWoU8sJtVOAoy0cEpLKpqg,
+    user_name: "app16978230@heroku.com",
+    password: 'BWoU8sJtVOAoy0cEpLKpqg',
     enable_starttls_auto: false
   }
   config.action_mailer.raise_delivery_errors = true

@@ -2,6 +2,7 @@ class EventsController < ApplicationController
 
   before_action :organiser_account, only: [:new, :create, :edit, :update, :destroy]
   before_action :correct_or_admin,  only: [:edit, :update, :destroy]
+  before_action :correct_school, only: :show
 
   def index
     if params[:venue_id] # Indexing via venue so only show that venue's events
@@ -11,11 +12,12 @@ class EventsController < ApplicationController
       if params[:q]
         # Indexing from search
         @search = Event.search(params[:q])
-        @search.sorts = 'distance_to(#{params[:q][:gender_not_cont]) asc' if params[:q][:gender_not_cont].nil?
+        @search.sorts = 'distance_to(#{params[:q][:gender_not_cont]) asc' unless params[:q][:gender_not_cont].nil?
         @events = @search.result#.paginate(:page => params[:page])
       else # Just indexing normally
         @search = Event.search(params[:q])
         @events = @search.result
+        
       end
       @json = @events.to_gmaps4rails do |event, marker|
         marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event })
@@ -84,8 +86,15 @@ class EventsController < ApplicationController
     end
 
     def correct_or_admin
-      current_venue = Venue.find(Event.find(params[:id]).venue_id)
+      current_venue = Event.find(params[:id]).venue
       redirect_to(root_path) unless signed_in? && ((current_venue.user_id == current_user.id) || current_user.admin?)
+    end
+
+    def correct_school
+      current_venue = Event.find(params[:id]).venue
+      if current_venue.is_school
+        redirect_to(root_path) unless signed_in? && (current_venue.name.eql?(current_user.school) || current_user.admin?)
+      end
     end
 
 end

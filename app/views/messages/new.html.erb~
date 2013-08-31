@@ -4,10 +4,10 @@
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
     <%= f.hidden_field :sender_id %>
-    <%= f.text_field :subject, placeholder: "Subject" %>
-    <%= f.text_area :message, placeholder: "Compose new message..." %>
     <%= f.label :receiver_id, "To:" %>
     <%= f.text_field :receiver_id %>
+    <%= f.text_field :subject, placeholder: "Subject" %>
+    <%= f.text_area :message, placeholder: "Compose new message..." %>
   </div>
   <%= f.submit "SEND", class: "btn btn-primary" %>
 <% end %>

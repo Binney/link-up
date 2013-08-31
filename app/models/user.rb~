@@ -23,11 +23,7 @@ class User < ActiveRecord::Base
   acts_as_gmappable
   after_validation :geocode
 
-  if :home_address?
-    geocoded_by :gmaps4rails_address
-  else
-    geocoded_by :ip_address
-  end
+  geocoded_by :gmaps4rails_address
 
   def ip_address
     request.remote_ip

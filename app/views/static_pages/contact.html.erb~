@@ -1,4 +1,5 @@
 <% provide(:title, 'Contact Us') %>
+<% provide(:site_section, "4") %>
+
 <h1>Contact Us</h1>
-  <p>You can contact us by flinging a handful of Flue Powder into your coffee on the second night of the full moon and chanting the Lord's Prayer backwards.</p>
-linkup.dagenham@gmail.com
+  <p>Email us at linkup.dagenham@gmailcom for queries, help, and to get a Mentor or Organiser account.</p>
