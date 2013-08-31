@@ -35,40 +35,34 @@ namespace :db do
     Tag.create!(name: 'Watersports')
     Tag.create!(name: 'Youth Club')
 
-    admin = User.create!(name: "The Flying Spaghetti Monster",
-                         email: "fsm@railstutorial.org",
+    admin = User.create!(name: "Link Up Admin",
+                         email: "admin@link-up.org.uk",
                          password: "foobar",
                          password_confirmation: "foobar",
                          home_address: "1 Kilburn High Road",
                          home_postcode: "",
                          admin: true)
-    teacher = User.create!(name: "Dr Jekyll The Maths Teacher",
-                         email: "teacher@railstutorial.org",
+    teacher = User.create!(name: "Dagenham Park CoS Teacher",
+                         email: "dagenhampark@link-up.org.uk",
                          password: "foobar",
                          password_confirmation: "foobar",
-                         home_address: "3 Kilburn High Road",
+                         home_address: "School Road, Barking and Dagenham, London, RM10 9QH",
+                         school: "Dagenham Park CoS",
                          home_postcode: "",
                          mentor: true)
-    organiser = User.create!(name: "Mr Hyde The Sports Coach",
-                         email: "organiser@railstutorial.org",
+    organiser = User.create!(name: "Westminster Academy Teacher",
+                         email: "westminsteracademy@link-up.org.uk",
                          password: "foobar",
                          password_confirmation: "foobar",
-                         home_address: "5 Kilburn High Road",
+                         home_address: "The Naim Dangoor Centre, 255 Harrow Road, London, W2 5EZ",
+                         school: "Westminster Academy",
                          home_postcode: "",
                          organiser: true)
 
     other_venues = Venue.create!(name: "Other Venue",
 				 description: "Other venue not listed above", user_id: 0,
                                  postcode: 'Westminster', street_address: '10 Downing Street', gmaps: true ) #Eh, SLAGIATT.
-    20.times do |n|
-      name  = Faker::Name.name
-      email = "example-#{n+1}@railstutorial.org"
-      password  = "password"
-      user = User.create!(name: name, email: email, password: password,
-                   password_confirmation: password,
-                         home_address: "#{2*n} Kilburn High Road",
-                         home_postcode: "")
-    end
+
     n=0
     File.open("public/westminster.csv").readlines.each do |line|
       CSV.parse(line) do |line|
@@ -136,15 +130,6 @@ namespace :db do
           e.timings.create!(start_time: start_time, end_time: end_time, day: day_int) unless sessionless == true
         end
 
-      end
-    end
-
-    users = User.all
-    users.each { |user| user.diary_entries.create!(name: "Supervisor meeting", start_time: 3.days.from_now.advance(days: rand(-3..10))) }
-
-    users.each do |sender|
-      (1..15).each do |recipient|
-        sender.messages.create!(receiver_id: recipient, subject: "Hey there "+User.find(recipient).name+"!", message: Faker::Lorem.sentence(6))
       end
     end
 
