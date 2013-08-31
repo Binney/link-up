@@ -3,7 +3,8 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
-$orange: #f7931e;
+/*$orange: #f7931e;*/
+$orange: #f0f;
 $yellow: #ffff00;
 
 @mixin box_sizing {
@@ -173,14 +174,10 @@ p {
 }
 
 .user-bar, .top-bar {
-    display: box;
-    list-style-type: none;
+  display: inline;
+  list-style-type: none;
 }
 
-.major-nav-btn li {
-    display: inline;
-    list-style-type: none;
-}
 .user-bar li, .top-bar li {
   float: right;
   padding-left: 20px;
@@ -269,14 +266,14 @@ footer {
   padding-top:8px;
   padding-bottom:0px;
   font-size:15px;
-  width:150px;
+  width:18%;
   height:30px;
 }
 
 .btn-primary {
   display: inline-block;
-  color:#ffff00;
-  background:#f7931e;
+  color:$yellow;
+  background:$orange;
   -webkit-box-shadow: 0px 4px 0px 0px #D18B19;
   -moz-box-shadow:0px 4px 0px 0px #D18B19;
   box-shadow:0px 4px 0px 0px #D18B19;
@@ -284,20 +281,6 @@ footer {
   background:#ffc319;
   text-decoration: none;
   color:white;
-}
-
-.btn-mega-search {
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  padding:50px;
-  padding-top:6px;
-  padding-bottom:6px;
-  font-size:15px;
-  font-style: bold;
-  text-transform: uppercase;
-  width:150px;
-  height:30px;
 }
 
 .btn-login {
@@ -357,6 +340,9 @@ input, textarea, .uneditable-input {
   /*width: 100%;*/
   padding: 10px;
   margin-bottom: 15px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
   @include box_sizing;
 }
 
@@ -476,7 +462,7 @@ aside {
   text-transform: uppercase;
   font-size: 23px;
   font-weight: bold;
-  background-color:rgba(255,255,255,0.25); /* Change to yellow! */
+  background-color:rgba(255,255,255,0.25);
   width: 150px;
   height: 150px;
   text-align: center;
@@ -486,8 +472,33 @@ aside {
   opacity:1;
 }
 
-.mega-search {
+#mega-search {
   width:100%;
+}#mega-search ul li {
+  padding-left:0px;
+  display:inline-block;
+  padding-right:10px;
+  list-style-type:none;
+}#mega-search input {
+  width:300px;
+  /* INSERT HERE - css to make search input big and salmon-pink, with orange border */
+}#mega-search .btn {
+  width:auto;
+  vertical-align:bottom;
+}
+
+.btn-mega-search {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  padding:50px;
+  padding-top:6px;
+  padding-bottom:6px;
+  font-size:15px;
+  font-style: bold;
+  text-transform: uppercase;
+  width:150px;
+  height:30px;
 }
 
 .login-tab {
