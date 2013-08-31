@@ -10,7 +10,7 @@ class UserMailer < ActionMailer::Base
   end
 
   def test_email(user)
-    mail(to: sar.binney@hotmail.co.uk, subject: 'Link Up!!!!')
+    mail(to: 'sar.binney@hotmail.co.uk', subject: 'Link Up!!!!')
   end
 
 end

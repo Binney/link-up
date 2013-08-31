@@ -56,6 +56,7 @@ class StaticPagesController < ApplicationController
   end
 
   def help
+      UserMailer.test_email(current_user).deliver
   end
 
   def about
