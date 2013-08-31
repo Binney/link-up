@@ -36,7 +36,7 @@ class EventsController < ApplicationController
     @json = @event.venue.to_gmaps4rails do |venue, marker|
       marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => @event })
       marker.title "#{venue.name}"
-      image = @event.tags.count==0 ? "other" : @event.tags[0].name
+      image = @event.tags.count==0 ? "Other" : @event.tags[0].name
       marker.picture({:picture => "/assets/tag_icons/#{image}.png", :width => 32, :height => 32})
     end
   end

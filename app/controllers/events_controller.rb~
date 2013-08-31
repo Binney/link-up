@@ -86,7 +86,7 @@ class EventsController < ApplicationController
     end
 
     def correct_or_admin
-      current_venue = Event.find(params[:id].venue
+      current_venue = Event.find(params[:id]).venue
       redirect_to(root_path) unless signed_in? && ((current_venue.user_id == current_user.id) || current_user.admin?)
     end
 
