@@ -1,4 +1,4 @@
-<div id="diary_preview">
+
   <h1>Your diary</h1>
   <% if @diary_entries.any? %>
     <% @diary_entries.each do |entry| %>
@@ -9,4 +9,4 @@
   <% else %>
     Nothing listed.
   <% end %>
-</div>
+
