@@ -1,8 +1,8 @@
 <% provide(:title, 'New event') %>
+<% provide(:site_section, 2) %>
 <div class="row">
   <div class="span6 offset3">
     <%= nested_form_for(@event) do |f| %>
-    <%= f.hidden_field(:venue_id, :value => params[:id]) %>
     <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :name %>
@@ -14,17 +14,18 @@
       <%= f.text_area :description %>
 
       <%= f.label 'Where?' %>
-      <%= @venues = Venue.find_by(:user_id: current_user.id)
-      f.collection_select( :venue_id, @venues, :id, :name ) %>
+      <%= f.collection_select( :venue_id, @venues, :id, :name ) %>
 
-      <%= f.text_field :start_time %>
-      <%= f.label :start_time # Needs to automatically start....when?
-                              %>
-      <%= f.time_select :start_time %>
+      <%= f.fields_for :timings do |timing_form| %>
+        <%= timing_form.label :start_time, "Start time:" %>
+        <%= timing_form.datetime_select :start_time, :discard_year => true, :minute_step => 5 %>
+        <br>
+        <%= timing_form.label :end_time, "End time:" %>
+        <%= timing_form.datetime_select :end_time, :discard_year => true, :discard_month => true, :discard_day => true, :minute_step => 5 %>
+        <%= timing_form.link_to_remove "Remove" %>
+      <% end %>
 
-      <%= f.label :end_time # Automatically starts... 30mins after start_time? Even when changed?
-                            %>
-      <%= f.time_select :end_time %>
+      <%= f.link_to_add "Add session", :timings %><br>
 
       <%= f.submit "Create event", class: "btn btn-primary" %>
     <% end %>

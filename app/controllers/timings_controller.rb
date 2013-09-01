@@ -9,7 +9,7 @@ class TimingsController < ApplicationController
   private
 
     def timings_params
-      params.require(:timing).permit(:start_time, :end_time, :day, :event_id)
+      params.require(:timing).permit!
     end
 
 end

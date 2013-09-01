@@ -68,11 +68,11 @@ Sweaton2::Application.configure do
     address: "smtp.mandrillapp.com",
     port: 587,
     authentication: "plain",
-    user_name: "app16978230@heroku.com",
-    password: 'BWoU8sJtVOAoy0cEpLKpqg',
+    user_name: ENV["MANDRILL_USERNAME"],
+    password: ENV["MANDRILL_APIKEY"],
     enable_starttls_auto: false
   }
-  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.raise_delivery_errors = false
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).

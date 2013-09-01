@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
   belongs_to :venue
   has_many :tags, through: :relationships
   has_many :timings, dependent: :destroy
-  accepts_nested_attributes_for :timings, allow_destroy: true, :reject_if => lambda { |a| a[:start_time].blank? }
+  accepts_nested_attributes_for :timings, allow_destroy: true
   has_many :favourites, dependent: :destroy
   has_many :relationships, dependent: :destroy
 

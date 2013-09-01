@@ -2,8 +2,8 @@ class FavouritesController < ApplicationController
   before_action :signed_in_user
 
   def create
-    @event = Event.find(params[:favourite][:event_id])
-    current_user.favourite!(@event, params[:favourite][:day])
+    @favourite = current_user.favourites.create!(favourite_params)
+    @event = Event.find(@favourite.event_id)
     respond_to do |format|
       format.html { redirect_to @event }
       format.js
@@ -17,4 +17,10 @@ class FavouritesController < ApplicationController
 #    current_user.unfavourite!(@event.id, params[:day])
     redirect_to @event
   end
+
+  private
+
+    def favourite_params
+      params.require(:favourite).permit(:event_id, :start_time)
+    end
 end

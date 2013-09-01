@@ -31,13 +31,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     unless @user.school.eql?("None")
-      @user.home_address ||= Venue.find_by(name: @user.school).street_address
-      @user.home_postcode ||= Venue.find_by(name: @user.school).postcode
+      @user.home_address ||= Venue.find_by(name: user_params[:school]).street_address
+      @user.home_postcode ||= Venue.find_by(name: user_params[:school]).postcode
     else
       @user.home_address ||= "10 Downing Street"
     end
     if @user.save
-      #UserMailer.welcome_email(@user).deliver
+      UserMailer.welcome_email(@user).deliver
       User.find(1).messages.create!(subject: "You're in, #{@user.name}!", receiver_id: @user.id, message: "Welcome to Link Up! To get started with finding opportunities in your area, hit Find Events. For advice, visit Help at the top of the page. Good luck and have fun!")
       sign_in @user
       flash[:success] = "User created successfully - we've sent you a confirmation email. Welcome to Link Up!"

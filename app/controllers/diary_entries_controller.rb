@@ -28,6 +28,6 @@ class DiaryEntriesController < ApplicationController
   private
 
     def diary_entry_params
-      params.require(:diary_entry).permit(:event_id, :start_time, :repeating, :name)
+      params.require(:diary_entry).permit(:event_id, :start_time, :name)
     end
 end

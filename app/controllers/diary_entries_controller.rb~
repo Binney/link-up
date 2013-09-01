@@ -18,10 +18,11 @@ class DiaryEntriesController < ApplicationController
       it = event_path(@diary_entry.event_id)
     end
     @diary_entry.destroy
-    respond_to do |format|
-      format.html { redirect_to it }
-      format.js
-    end
+    redirect_to it
+    #respond_to do |format|
+    #  format.html { redirect_to it }
+    #  format.js
+    #end
   end
 
   private

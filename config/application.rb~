@@ -26,7 +26,6 @@ module Sweaton2
     # config.i18n.default_locale = :de
 
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
-    config.action_mailer.delivery_method   = :postmark
-    config.action_mailer.postmark_settings = { :api_key => ENV['POSTMARK_API_KEY'] }
+    
   end
 end

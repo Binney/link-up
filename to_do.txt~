@@ -65,7 +65,7 @@ SCHOOLS: Each user has a School, which may or may not be filled (string as a nam
 
 IT ISN'T CALCULATING TIMING.DAY CORRECTLY or summat - see on_today
 
-HTML requests for :admin=>true ??!!
+HTTP requests for :admin=>true ??!!
 
 ======================== FUTURE STUFF =========================
 

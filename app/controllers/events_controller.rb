@@ -17,14 +17,12 @@ class EventsController < ApplicationController
       else # Just indexing normally
         @search = Event.search(params[:q])
         @events = @search.result
-        
       end
       @json = @events.to_gmaps4rails do |event, marker|
         marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event })
         marker.title "#{event.name}"
         image = event.tags.count==0 ? "Other" : event.tags[0].name
-        #marker.picture({:picture => "/assets/tag_icons/#{image}.png", :width => 32, :height => 32})
-        marker.picture({:picture => "/assets/tag_icons/l.png", :width => 32, :height => 32})
+        marker.picture({:picture => "/assets/tag_icons/small/#{image}.png", :width => 35, :height => 48})
       end
     end
   end
@@ -37,8 +35,13 @@ class EventsController < ApplicationController
       marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => @event })
       marker.title "#{venue.name}"
       image = @event.tags.count==0 ? "Other" : @event.tags[0].name
-      marker.picture({:picture => "/assets/tag_icons/#{image}.png", :width => 32, :height => 32})
+      marker.picture({:picture => "/assets/tag_icons/small/#{image}.png", :width => 32, :height => 32})
     end
+  end
+
+  def new
+    @event = Event.new
+    @venues = Venue.all
   end
 
   def create
@@ -69,7 +72,10 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    redirect_to Venue.find(params[:squirtle])
+    @event = Event.find(params[:id])
+    @venue = Venue.find(@event.venue_id)
+    @event.destroy
+    redirect_to @venue
   end
 
   def tagged

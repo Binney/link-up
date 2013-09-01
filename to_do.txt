@@ -67,6 +67,8 @@ IT ISN'T CALCULATING TIMING.DAY CORRECTLY or summat - see on_today
 
 HTTP requests for :admin=>true ??!!
 
+Make Upcoming Events and Past Events a) paginate b) appear in date order (or weekday?)
+
 ======================== FUTURE STUFF =========================
 
 * Reviews (can be posted by anyone but I'd expect mainly students)

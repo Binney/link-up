@@ -17,11 +17,10 @@ class StaticPagesController < ApplicationController
         marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event })
         marker.title "#{event.name}"
         str = event.tags[0] ? event.tags[0].name : "Other"
-        #marker.picture({:picture => "/assets/tag_icons/#{str}.png", :width => 32, :height => 32})
-        marker.picture({:picture => "/assets/tag_icons/l.png", :width => 32, :height => 32})
+        marker.picture({:picture => "/assets/tag_icons/small/#{str}.png", :width => 35, :height => 48})
       end
       @house = current_user.to_gmaps4rails do |house, marker|
-        marker.picture({:picture => "/assets/l.jpg", :width => 32, :height => 32})
+        marker.picture({:picture => "/assets/l.jpg", :width => 35, :height => 48})
       end
       @json = (JSON.parse(@evs) + JSON.parse(@house)).to_json
       @diary_entries = (current_user.diary_entries+current_user.favourites).shuffle
@@ -31,8 +30,8 @@ class StaticPagesController < ApplicationController
       @json = @venues.to_gmaps4rails do |venue, marker|
         marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})
         marker.title "#{venue.name}"
-        #marker.picture({:picture => "/assets/tag_icons/Other.png", :width => 32, :height => 32})
-        marker.picture({:picture => "/assets/tag_icons/l.png", :width => 32, :height => 32})
+        marker.picture({:picture => "/assets/tag_icons/Other.png", :width => 35, :height => 48})
+        #marker.picture({:picture => "/assets/tag_icons/l.png", :width => 32, :height => 32})
       end
       @todays_events = Timing.where(:day == Date.today.wday)[0..6]
       @tags = Tag.all.shuffle
@@ -47,16 +46,16 @@ class StaticPagesController < ApplicationController
     @calendar_entries = current_user.diary_entries.order('start_time ASC')
     arr = []
     @favs.each do |f|
-      (((params[:month] ? Date.parse(params[:month]) : Date.today).change(day: 1)..(params[:month] ? Date.parse(params[:month]) : Date.today).advance(months: 1).change(day: 1)).select {|d| d.wday == f.day}).each do |date|
-        @calendar_entries.push CalendarEntry.new(date, f.event_id)
+      (((params[:month] ? Date.parse(params[:month]) : Date.today).change(day: 1)..(params[:month] ? Date.parse(params[:month]) : Date.today).advance(months: 1).change(day: 1)).select {|d| d.wday == f.start_time.wday}).each do |date|
+        @calendar_entries.push CalendarEntry.new(date, f.event_id) unless f.start_time.beginning_of_day>date
       end
     end
 
-    @upcoming_events = current_user.diary_entries#.where(:start_time > Date.now) # Needs to say "This Thursday" for entries and "Every Thursday" for favourites
+    @upcoming_events = current_user.diary_entries.select { |event| event.start_time > Date.today } + current_user.favourites
+    @past_events = current_user.diary_entries.select { |event| event.start_time < Date.today } + current_user.favourites
   end
 
   def help
-      UserMailer.test_email(current_user).deliver
   end
 
   def about
