@@ -29,11 +29,7 @@
       <table>
         <tr>
           <td><b>Time:</b></td>
-          <td><%= arr = []
-            @timings.each do |t|
-              arr.push(Date::DAYNAMES[t.start_time.wday]+"s")
-            end
-          arr.empty? ? "None listed" : arr.to_sentence %></td>
+          <td><%= @event.get_day_info %></td>
         </tr>
         <tr>
           <td><b>Cost:</b></td>
