@@ -4,14 +4,14 @@
     <section>
       <h1><%= @event.name %></h1>
       <span><%= link_to "Back to event", @event %></span>
-      <span><b>Time:</b> <%= @user.microposts.count %></span>
+      <span><b><%= @event.venue.name %></b>, <%= @event.venue.address+", "+@event.venue.postcode %></span>
     </section>
   </aside>
   <div class="span8">
     <h3><%= @title %></h3>
     <% if @tags.any? %>
       <ul class="tags">
-        <%= render @tags %>
+        <%= render @tags, tagsize: 50 %>
       </ul>
       <%= will_paginate %>
     <% end %>

@@ -1,5 +1,5 @@
 <% provide(:title, "Edit "+@event.name) %>
-<% provide(:site_section, 3) %>
+<% provide(:site_section, 2) %>
 <h1>Update event details for <%= @event.name %></h1>
 <div class="row">
   <div class="span6 offset3">

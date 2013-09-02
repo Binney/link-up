@@ -1,5 +1,5 @@
-
-  <h1>On today</h1>
+<div class="generic-list">
+  <h3>On today</h3>
   <% if @todays_events.any? %>
     <% @todays_events.each do |session| %>
       <li><%= link_to Event.find(session.event_id).name, Event.find(session.event_id) %> <%= session.start_time.to_s(:time_day) %></li>
@@ -7,4 +7,4 @@
   <% else %>
     Nothing listed.
   <% end %>
-
+</div>

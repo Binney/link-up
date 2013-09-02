@@ -1,5 +1,5 @@
 <% provide(:title, 'All events') %>
-<% provide(:site_section, 4) %>
+<% provide(:site_section, 0) %>
 <% if @number==nil
      str = ""
    else
@@ -15,7 +15,7 @@
 
   <% if @events.any? %>
 
-    <ul class="events">
+    <ul class="events generic-list">
       <%= render @events, size: 52 %>
     </ul>
 

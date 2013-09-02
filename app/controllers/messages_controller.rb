@@ -19,12 +19,15 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
+    @message.unread = false
   end
 
   def inbox
     @received_messages = Message.where(:receiver_id => current_user.id).paginate(:order => "created_at DESC", :page => params[:recd_page], :per_page => 5)
     @sent_messages = Message.where(:sender_id => current_user.id).order("created_at DESC").paginate(:page => params[:sent_page], :per_page => 5)
     @message = params[:id] ? Message.find(params[:id]) : @received_messages[0]
+    # ^ This works because every user must have at least one message in their received_messages - the "welcome you've just joined up" one. And if the user deletes that one, it'll display "no messages in your inbox" by testing for the existence of @message.
+    @message.unread = false
   end
 
   def destroy

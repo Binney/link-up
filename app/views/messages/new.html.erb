@@ -5,7 +5,7 @@
   <div class="field">
     <%= f.hidden_field :sender_id %>
     <%= f.label :receiver_id, "To:" %>
-    <%= f.collection_select :receiver_id, @users, :id, :name %>
+    <%= f.collection_select :receiver_id, @users, :id, :name, default: params[:receiver_id] %>
     <%= f.text_field :subject, placeholder: "Subject" %>
     <%= f.text_area :message, placeholder: "Compose new message..." %>
   </div>

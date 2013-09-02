@@ -11,7 +11,7 @@
     <h3><%= @title %></h3>
     <% if @tags.any? %>
       <ul class="tags">
-        <%= render @tags %>
+        <%= render @tags, locals: { tagsize: 50 } %>
       </ul>
       <%= will_paginate %>
     <% end %>

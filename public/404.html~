@@ -5,6 +5,7 @@
 </head>
 
 <body>
+  <!-- This file lives in public/404.html -->
   <div class="dialog">
     <h1>This isn't the page you're looking for.</h1>
     <p>You may have mistyped the address or the page may have moved.</p>

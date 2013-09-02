@@ -1,4 +1,9 @@
 <% provide(:title, 'Category '+@tag.name) %>
+<% provide(:site_section, "1") %>
+
+<aside class="span2">
+  <%= image_tag("tag_icons/large/#{@tag.name}.png", size: "100x100", alt: @tag.name) %>
+</aside>
 
 <h1>Browse <%= @tag.name %> events</h1>
 

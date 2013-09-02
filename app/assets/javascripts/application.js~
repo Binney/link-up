@@ -16,13 +16,12 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require bootstrap
-//= require fullcalendar
 //= require jquery_nested_form
 //= require_tree .
 
 $(function() {
   $("#event_start_time").datepicker();
-  $("#tabs").tabs();
+  $("#tabs").tabs({ heightStyle: "content" });
   $(".neweventform").toggle();
   $("#toggleform").click(function() {
     $( ".neweventform" ).slideToggle("slow" );

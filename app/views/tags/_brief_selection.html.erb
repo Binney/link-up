@@ -1,10 +1,10 @@
-
-  <h1>Popular Near You:</h1>
-  <% if @tags.any? %>
+<div id="tag_selection">
+  <h3>Popular Near You:</h3>
+  <p><% if @tags.any? %>
     <% @tags.each do |tag| %>
       <%= link_to tag.name, tag %> / 
     <% end %>
   <% else %>
     No tags found.
-  <% end %>
-
+  <% end %></p>
+</div>

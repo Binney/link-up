@@ -3,6 +3,6 @@
 <h1>All venues</h1>
 <%= gmaps4rails(@json) %>
 
-<div class="venue_index">
-  <%= render 'index' %>
-</div>
+<ul class="generic-list">
+  <%= render @venues, size: 52 %>
+</ul>

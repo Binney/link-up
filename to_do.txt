@@ -3,33 +3,18 @@
 CSS: OKAY so it needs to be less repetitive! 
     1) integrate generated_css_with_orange into custom.css
     2) - OR split up the entire file, up to you
-    3) Make ALL button css like the generated_... file. THEN create extra for the major buttons, plus minor buttons like Sign In or Sign Up (differ from major ones in size and border-radius=4 not 0)
+
+Fix the whole "avatar_for" thing. Venues need pics, end of.
 
 Homepage map to show events occuring in the next DAY?? by venue obvs - search for it by TIMINGS
 
-String search function APPEARS to do ONE search but in fact carries out THREE:
-1) events
-2) venues
-3) news items/updates
-
 More specialised search function instead carries out ONE search on events with relevant attributes.
 
-No such thing as a profile - redirects to home unless you're an admin/teacher, in which case it gives you details and Message Me link
+On user profile, link_to new message with params user_id - BUT collection_box won't accept it! How to set default?
 
 Make New Event "link" styled (blue, mouse changes)
 
 Messages button: also says in brackets number of unread messages
-
-API KEY IS ON CONFIG/ENVIRONMENTS/PRODUCTION and /DEVELOPMENT. THAT MEANS ANYONE CAN SEE IT. DUMMY.
-
-ATTENDING SYSTEM
-================
-
-Toggled form for attending in sidebar of event view - table:
-Monday | Thursday | Saturday
-This   | This     | This
-All    | All      | All
-click to add to diary_entries/favourites
 
 Extract cost info with regex from docs?
 
@@ -41,19 +26,17 @@ Make sample_data recognise that gender: All and gender: Both are the same (ditto
 
 Smaller tags image below main venue image on event Show page
 
-Fix venue images to L logo and event images to ? or first tag by default
+Fix venue images to L logo
 
 Extract tag info via final 2 columns on doc
 
-Add Research+News page to footer+header
+Tag index page: a) left column ftw b) every two-line name gets split between TWO circles - fix!! (Line height for li != line height for text)
 
-Functioning email verification process!!!!!
+Add Research+News page to footer+header
 
 Need pictures for each venue - upload? Carrierwave? Plus default images
 
 Make it that /signin and /signup are inaccessible when already logged in?
-
-Potentially make all tabs of constant height? They paginate but don't make whatever's beneath them move up and down. Mainly thinking of my_events here.
 
 created_at and updated_at are ready-made so as to facilitate a Feed system: especially for mentors, they can go to a user page, find out (favourites.sort_by(created_at) and attendings.sort_by(created_at)) what they've been doing chronologically.
 
@@ -68,6 +51,10 @@ IT ISN'T CALCULATING TIMING.DAY CORRECTLY or summat - see on_today
 HTTP requests for :admin=>true ??!!
 
 Make Upcoming Events and Past Events a) paginate b) appear in date order (or weekday?)
+
+Switch to Unicorn and ensure it works (WEBrick is not cool apparently :| )
+
+FORGOT YOUR PASSWORD?????
 
 ======================== FUTURE STUFF =========================
 

@@ -1,6 +1,7 @@
 <%= form_for(:session, url: sessions_path) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
   <%= f.text_field :email, placeholder: "Email" %>
   <%= f.password_field :password, placeholder: "Password" %><br>
   <small>Forgot your password? <%= link_to "Click here", '#', class: "request_login" %>.</small>
-  <%= f.submit "Sign in", class: "btn btn-primary btn-login" %>
+  <%= f.submit "Sign in", class: "btn btn-login" %>
 <% end %>

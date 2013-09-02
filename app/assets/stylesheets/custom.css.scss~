@@ -4,7 +4,7 @@
 
 $grayMediumLight: #eaeaea;
 /*$orange: #f7931e;*/
-$orange: #f0f;
+$orange: #0ff;
 $yellow: #ffff00;
 
 @mixin box_sizing {
@@ -127,12 +127,14 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Open Sans', sans-serif;
   line-height: 1;
   text_align: left;
+  color: $orange;
 }
 
 h1 {
   font-size: 2em;
-  letter-spacing: -2px;
+  letter-spacing: 0px;
   margin-bottom: 30px;
+  color:#000;
 }
 
 h2 {
@@ -143,11 +145,22 @@ h2 {
   color: $grayLight;
 }
 
+h3 {
+  font-size: 1.6em;
+  letter-spacing: 0px;
+  margin-bottom: 20px;
+}
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
 
+a {
+  color: #000;
+  &:hover { color: $orange;}
+
+}
 
 /* header */
 
@@ -227,7 +240,7 @@ footer {
   }
 }
 
-/* miscellaneous */
+/* buttons */
 
 .btn {
   cursor:pointer;
@@ -281,6 +294,37 @@ footer {
   background:#ffc319;
   text-decoration: none;
   color:white;
+}
+
+/* search */
+
+#mega-search {
+  width:100%;
+}#mega-search ul li {
+  padding-left:0px;
+  display:inline-block;
+  padding-right:10px;
+  list-style-type:none;
+}#mega-search input {
+  width:300px;
+  /* INSERT HERE - css to make search input big and salmon-pink, with orange border */
+}#mega-search .btn {
+  width:auto;
+  vertical-align:bottom;
+}
+
+.btn-mega-search {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  padding:50px;
+  padding-top:6px;
+  padding-bottom:6px;
+  font-size:15px;
+  font-style: bold;
+  text-transform: uppercase;
+  width:150px;
+  height:30px;
 }
 
 .btn-login {
@@ -370,49 +414,18 @@ input {
   @extend .error;
 }
 
-/* Users index */
-
-.users {
+.generic-list {
   list-style: none;
   margin: 0;
   li {
     overflow: auto;
     padding: 10px 0;
-    border-top: 1px solid $grayLighter;
-    &:last-child {
-      border-bottom: 1px solid $grayLighter;
-    }
+    border-bottom: 1px solid $yellow;
+/*    &:last-child {
+      border-bottom: 1px solid $yellow;
+    }*/
   }
 }
-
-/* Venues index */
-
-.venues {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-top: 1px solid $grayLighter;
-    &:last-child {
-      border-bottom: 1px solid $grayLighter;
-    }
-  }
-}
-
-.favourites {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-top: 1px solid $grayLighter;
-    &:last-child {
-      border-bottom: 1px solid $grayLighter;
-    }
-  }
-}
-
 
 /* events */
 
@@ -443,62 +456,39 @@ aside {
   width: 50%;
 }
 
+/* categories/tags */
+
+.tags li {
+  list-style:none;
+  display: inline;
+}
+
 .tag_wrapper {
   position: relative;
-  padding: 0;
+  padding: 30px;
   display:block;
   width: 150px;
   height: 150px;
-  line-height: 150px;
+  line-height: 210px;
   text-align: center;
 }
 .tag_name {
   display: inline-block;
   vertical-align: middle;
-  line-height: normal;
   position: absolute;
-  top: 0;
+/*  top: 30;*/
   color:#fff;
   text-transform: uppercase;
-  font-size: 23px;
+  font-size: 20px;
   font-weight: bold;
   background-color:rgba(255,255,255,0.25);
   width: 150px;
-  height: 150px;
+  height: 180px;
   text-align: center;
   z-index: 30;
   opacity: 0;
 }.tag_name:hover {
   opacity:1;
-}
-
-#mega-search {
-  width:100%;
-}#mega-search ul li {
-  padding-left:0px;
-  display:inline-block;
-  padding-right:10px;
-  list-style-type:none;
-}#mega-search input {
-  width:300px;
-  /* INSERT HERE - css to make search input big and salmon-pink, with orange border */
-}#mega-search .btn {
-  width:auto;
-  vertical-align:bottom;
-}
-
-.btn-mega-search {
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  padding:50px;
-  padding-top:6px;
-  padding-bottom:6px;
-  font-size:15px;
-  font-style: bold;
-  text-transform: uppercase;
-  width:150px;
-  height:30px;
 }
 
 .login-tab {
@@ -507,22 +497,12 @@ aside {
 }
 
 .activity-list {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-top: 1px solid $grayLighter;
-    &:last-child {
-      border-bottom: 1px solid $grayLighter;
-    }
-    -moz-column-count: 3;
-    -moz-column-gap: 20px;
-    -webkit-column-count: 3;
-    -webkit-column-gap: 20px;
-    column-count: 3;
-    column-gap: 20px;
-  }
+  -moz-column-count: 3;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 20px;
+  column-count: 3;
+  column-gap: 20px;
 }
 
 /* Messages + diary */

@@ -1,13 +1,13 @@
 <% if @received_messages.any? %>
-  <div class="message_table">
+  <div class="tab_table">
     <col span="2" style="font-size:25px;"/>
     <%= table_for(@received_messages) do |t| %>
       <%= t.body do |message| %>
         <% if message.unread? %>
           <%= t.r do %>
             <%= t.d(h(message.created_at.to_s(:day_week_month))) %>
-            <%= t.d(h(User.find(message.sender_id).name)) %>
-            <%= t.d(h(message.subject)) %>
+            <b><%= t.d(h(User.find(message.sender_id).name)) %><b>
+            <b><%= t.d(h(message.subject)) %><b>
             <%= t.d(h(link_to 'VIEW', inbox_path(:id => message.id))) %>
             <%= t.d(h(link_to "DELETE", message, method: :delete, data: { confirm: "You sure?" } )) %>
           <% end %>

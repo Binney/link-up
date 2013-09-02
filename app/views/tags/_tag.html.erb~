@@ -1,8 +1,8 @@
 <%= link_to tag do %>
 <li class="tag_wrapper">
     <span class="tag_name">
-      <%= tag.name %>
+      <%= "Art" %>
     </span>
-    <%= link_to image_tag("tag_icons/large/"+tag.name+".png", size: "150x150", alt: tag.name), tag %>
+    <%= image_tag("tag_icons/large/#{tag.name}.png", size: "150x150", alt: tag.name) %>
 </li>
 <% end %>
