@@ -17,7 +17,7 @@
             <%= t.d(h(User.find(message.sender_id).name)) %>
             <%= t.d(h(message.subject)) %>
             <div class="preview">
-              <%= t.d(h(link_to 'VIEWagain', inbox_path(:id => message.id))) %>
+              <%= t.d(h(link_to 'view', inbox_path(:id => message.id))) %>
             </div>
             <%= t.d(h(link_to "DELETE", message, method: :delete, data: { confirm: "You sure?" } )) %>
           <% end %>
