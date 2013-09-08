@@ -1,14 +1,13 @@
 Sweaton2::Application.routes.draw do
 
+  get "password_resets/new"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :venues
   resources :events do
     collection { post :search, to: 'events#index' }
   end
-  resources :tags, only: [:index, :show]  do
-    get 'search_on_title', :on => :collection
-  end
+  resources :tags, only: [:index, :show]
   resources :relationships, only: [:create, :destroy]
   resources :favourites, only: [:create, :destroy]
   resources :diary_entries, only: [:create, :destroy]

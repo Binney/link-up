@@ -30,7 +30,7 @@ class StaticPagesController < ApplicationController
       @json = @venues.to_gmaps4rails do |venue, marker|
         marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})
         marker.title "#{venue.name}"
-        marker.picture({:picture => "/assets/tag_icons/Other.png", :width => 35, :height => 48})
+        marker.picture({:picture => "/assets/tag_icons/small/Other.png", :width => 35, :height => 48})
       end
       @todays_events = Timing.where(:day == Date.today.wday)[0..6]
       @tags = Tag.all.shuffle

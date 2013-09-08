@@ -9,8 +9,9 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, subject: 'Your account with Link Up was created successfully!')
   end
 
-  def test_email(user)
-    mail(to: 'sar.binney@hotmail.co.uk', subject: 'Link Up!!!!')
+  def password_reset(user)
+    @user = user
+    mail :to => user.email, :subject => "Request to reset your Link Up password"
   end
 
 end

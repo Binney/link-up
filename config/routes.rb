@@ -1,5 +1,6 @@
 Sweaton2::Application.routes.draw do
 
+  get "password_resets/new"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :venues
@@ -11,6 +12,7 @@ Sweaton2::Application.routes.draw do
   resources :favourites, only: [:create, :destroy]
   resources :diary_entries, only: [:create, :destroy]
   resources :messages
+  resources :password_resets
 
   root 'static_pages#home'
   match '/signup',  to: 'users#new',		via: 'get'

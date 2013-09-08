@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130901083511) do
+ActiveRecord::Schema.define(version: 20130908172044) do
 
   create_table "diary_entries", force: true do |t|
     t.integer  "user_id"
@@ -112,15 +112,17 @@ ActiveRecord::Schema.define(version: 20130901083511) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin",           default: false
-    t.boolean  "mentor",          default: false
-    t.boolean  "organiser",       default: false
+    t.boolean  "admin",                  default: false
+    t.boolean  "mentor",                 default: false
+    t.boolean  "organiser",              default: false
     t.string   "home_address"
     t.string   "home_postcode"
     t.float    "latitude"
     t.float    "longitude"
-    t.boolean  "gmaps",           default: true
+    t.boolean  "gmaps",                  default: true
     t.string   "school"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

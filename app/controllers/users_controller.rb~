@@ -31,8 +31,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     unless @user.school.eql?("None")
-      @user.home_address ||= Venue.find_by(name: @user.school).street_address
-      @user.home_postcode ||= Venue.find_by(name: @user.school).postcode
+      @user.home_address ||= Venue.find_by(name: user_params[:school]).street_address
+      @user.home_postcode ||= Venue.find_by(name: user_params[:school]).postcode
     else
       @user.home_address ||= "10 Downing Street"
     end
@@ -72,7 +72,7 @@ class UsersController < ApplicationController
   private
 
     def user_params # Ew ew ew ew ew ew ew no.
-      params.require(:user).permit(:name, :email, :home_address, :home_postcode, :school, :password, :password_confirmation, :mentor, :organiser, :admin)
+      params.require(:user).permit(:name, :email, :home_address, :home_postcode, :school, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at, :mentor, :organiser, :admin)
     end
 
     # Before filters (signed_in_user is now under sessions_helper)

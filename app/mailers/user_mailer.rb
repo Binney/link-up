@@ -9,4 +9,9 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, subject: 'Your account with Link Up was created successfully!')
   end
 
+  def password_reset(user)
+    @user = user
+    mail :to => user.email, :subject => "Reset your Link Up password"
+  end
+
 end
