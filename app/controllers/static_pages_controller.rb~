@@ -20,7 +20,7 @@ class StaticPagesController < ApplicationController
         marker.picture({:picture => "tag_icons/small/#{str}.png", :width => 35, :height => 48})
       end
       @house = current_user.to_gmaps4rails do |house, marker|
-        marker.picture({:picture => "l.jpg", :width => 35, :height => 48})
+        #marker.picture({:picture => "l.jpg", :width => 35, :height => 48})
       end
       @json = (JSON.parse(@evs) + JSON.parse(@house)).to_json
       @diary_entries = (current_user.diary_entries+current_user.favourites).shuffle
