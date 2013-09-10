@@ -46,7 +46,7 @@ end
 
 group :production do
   gem 'pg', '0.15.1'
-  gem 'rails_12factor', '0.0.2'
+  gem 'rails_12factor'
 end
 
 gem 'gmaps4rails', '>= 2.0.0.pre', git: 'https://github.com/fiedl/Google-Maps-for-Rails.git'
