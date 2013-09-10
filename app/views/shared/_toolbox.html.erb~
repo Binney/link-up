@@ -1,10 +1,10 @@
 <h3>Toolbox</h3>
 <% unless current_user.mentor %>
-  <%= link_to "New event", new_event_path %>
+  <%= image_tag "/assets/tag_icons/small/Athletics.png" %> <%= button_to "New event", new_event_path, method: 'get', class: 'btn btn-primary' %>
   <br>
-  <%= link_to "New venue", new_venue_path %>
+  <%= button_to "New venue", new_venue_path, method: 'get', class: 'btn btn-primary' %>
   <br>
 <% end %>
 <% unless current_user.organiser %>
-  <%= link_to "Manage users", users_path %>
+  <%= button_to "Manage users", users_path, method: 'get', class: 'btn btn-primary' %>
 <% end %>

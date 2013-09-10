@@ -1,10 +1,10 @@
 <h3>Toolbox</h3>
 <% unless current_user.mentor %>
-  <%= button_to "New event", new_event_path, method: 'get', class: 'btn btn-primary' %>
+  <%= image_tag "/assets/tag_icons/small/Athletics.png" %> <%= button_to "New event", new_event_path, method: 'get', class: 'btn btn-primary' %>
   <br>
-  <%= button_to "New venue", new_venue_path, method: 'get', class: 'btn btn-primary' %>
+  <%= image_tag "/assets/tag_icons/small/Homework.png" %> <%= button_to "New venue", new_venue_path, method: 'get', class: 'btn btn-primary' %>
   <br>
 <% end %>
 <% unless current_user.organiser %>
-  <%= button_to "Manage users", users_path, method: 'get', class: 'btn btn-primary' %>
+  <%= image_tag "/assets/tag_icons/small/Volunteering.png" %> <%= button_to "Manage users", users_path, method: 'get', class: 'btn btn-primary' %>
 <% end %>
