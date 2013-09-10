@@ -7,13 +7,13 @@
         <%= avatar_for @user %>
         <%= @user.name %>
       </h1>
-      <%= link_to "Send a message", new_message_path %><br>
+      <%= link_to "Send a message", new_message_path(receiver_id: @user.id) %><br>
       <%= link_to "Edit", edit_user_path(@user) %>
     </section>
   </aside>
 </div>
 <div class="user_info">
-  <%= @user.school.eql?("None") ? "Not listed with any school" : "Student at "+@user.school %><br>
+  <%= if @user.school { @user.school.eql?("None") ? "Not listed with any school" : "Student at "+@user.school } %><br>
   <%= @user.home_address+", "+@user.home_postcode %>
   <h2>Favourites:</h2>
   <%= render @user.events %>

@@ -31,10 +31,10 @@
   <div id="local-map">
     <%= gmaps4rails(@json) %>
   </div>
-  <div id="span6">
+  <div id="homepage-left">
     <%= render 'events/on_today' %>
   </div>
-  <div id="span6 homepage-right">
+  <div id="homepage-right">
     <%= render 'tags/brief_selection' %>
   </div>
 

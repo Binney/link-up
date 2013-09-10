@@ -23,7 +23,7 @@
         <li><%= link_to "Find Events", events_path, class: "btn btn-large" %></li>
         <li><%= link_to "Browse Categories", tags_path, class: "btn btn-large" %></li>
         <li><%= link_to "My Events", my_events_path, class: "btn btn-large" %></li>
-        <li><%= link_to "Messages", inbox_path, class: "btn btn-large btn-primary" %></li>
+        <li><%= link_to "Messages", inbox_path, class: "btn btn-large" %></li>
         <!-- Needs to say how many unread messages you have -->
       <% else %>
         <li><%= link_to "Find Events", events_path, class: "btn btn-large btn-primary" %></li>

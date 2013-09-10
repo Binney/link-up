@@ -2,13 +2,14 @@
 <div class="row">
   <aside class="span4">
     <section>
-      <%= button_to "Back to events", events_path, method: 'get', class: "btn" %>
       <%= image_tag "generic_event.jpg", alt: "Event picture", class: "image" %>
+      <br>
+      <%= button_to "Back to events", events_path, method: 'get', class: "btn" %>
       <% if @event.tags.any? %>
         <h3>Categories: <%= @event.tags.count %></h3>
-        <ol class="tags">
-          <%= render @tags %>
-        </ol>
+        <ul class="tags">
+          <%= render @tags, width: 50 %>
+        </ul>
         <%= will_paginate @tags %>
       <% else %>
         <p>No categories yet.</p>
@@ -22,9 +23,6 @@
       <% if signed_in? && (current_user.admin? || (current_user.organiser? && Venue.find(@event.venue_id).user_id == current_user.id)) %>
         <%= link_to "Edit", edit_event_path(@event) %>
       <% end %>
-    <div id="week_view">
-      <%= "render 'week_view'" %>
-    </div>
     <section>
       <table>
         <tr>
@@ -49,6 +47,9 @@
         </tr>
       </table>
     </section>
+    <div id="week_view">
+      <%= render 'week_view' %>
+    </div>
     <section>
       <%= @event.description %>
     </section>

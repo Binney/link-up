@@ -1,9 +1,10 @@
+<h3>Toolbox</h3>
 <% unless current_user.mentor %>
   <%= link_to "New event", new_event_path %>
   <br>
   <%= link_to "New venue", new_venue_path %>
   <br>
 <% end %>
-<% unless current_user.organier %>
+<% unless current_user.organiser %>
   <%= link_to "Manage users", users_path %>
 <% end %>

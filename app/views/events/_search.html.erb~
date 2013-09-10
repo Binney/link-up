@@ -1,8 +1,8 @@
 <%= search_form_for @search do |f| %>
-  <%= f.label :tag_name_or_description_or_name_cont, "Search:" %>
-  <%= f.text_field :tag_name_or_description_or_name_cont %>
+  <%= f.label :tags_name_or_description_or_name_cont, "Search:" %>
+  <%= f.text_field :tags_name_or_description_or_name_cont, id: "text-entry-special" %>
   <%= f.label :venue_name_cont, "Venue" %>
-  <%= f.text_field :venue_name_cont %>
+  <%= f.text_field :venue_name_cont, id: "text-entry-special" %>
   
   <!-- Also fields for: tag names, day (ie start_time.wday), time (ie start_time.hour), cost (ie cost), venue name (ie Venue.find(venue_id).name.cont), gender (0, 1, 2), location (ie list in order of proximity to postcode/address entered) -->
   <%= f.submit "Search", class: "btn btn-primary" %>

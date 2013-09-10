@@ -13,15 +13,23 @@ class EventsController < ApplicationController
         # Indexing from search
         @search = Event.search(params[:q])
         @search.sorts = 'distance_to(#{params[:q][:gender_not_cont]) asc' unless params[:q][:gender_not_cont].nil?
-        @events = @search.result#.paginate(:page => params[:page])
+        if current_user.admin
+          @events = @search.result
+        else
+          @events = @search.result.select { |ev| !(ev.venue.is_school) || ev.venue.name.eql?(current_user.school) } #.paginate(:page => params[:page])
+        end
       else # Just indexing normally
         @search = Event.search(params[:q])
-        @events = @search.result
+        if current_user.admin
+          @events = @search.result
+        else
+          @events = @search.result.select { |ev| !(ev.venue.is_school) || ev.venue.name.eql?(current_user.school) } #.paginate(:page => params[:page])
+        end
       end
       @json = @events.to_gmaps4rails do |event, marker|
         marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event })
         marker.title "#{event.name}"
-        image = event.tags.count==0 ? "Other" : event.tags[0].name
+        image = event.tags.count>1 ? "Other" : event.tags[0].name
         marker.picture({:picture => "/assets/tag_icons/small/#{image}.png", :width => 35, :height => 48})
       end
     end
@@ -35,7 +43,7 @@ class EventsController < ApplicationController
       marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => @event })
       marker.title "#{venue.name}"
       image = @event.tags.count==0 ? "Other" : @event.tags[0].name
-      marker.picture({:picture => "/assets/tag_icons/#{image}.png", :width => 32, :height => 32})
+      marker.picture({:picture => "/assets/tag_icons/small/#{image}.png", :width => 32, :height => 32})
     end
   end
 

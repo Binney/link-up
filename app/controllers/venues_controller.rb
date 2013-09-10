@@ -2,9 +2,10 @@ class VenuesController < ApplicationController
   # Anyone can see index and profile for venues, even when not logged in.
   before_action :organiser_account,  only: [:new, :create, :edit, :update, :destroy] # Only a certain kind of account can create venues.
   before_action :correct_user,   only: [:edit, :update, :destroy] # Only correct user or admin can edit it
+  before_action :correct_school, only: :show
 
   def index
-    @venues = Venue.all#.paginate(page: params[:page])
+    @venues = Venue.all.select { |v| !(v.is_school) || v.name.eql?(current_user.school) }#.paginate(page: params[:page])
     @json = Venue.all.to_gmaps4rails do |venue, marker|
     marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})
     marker.title "#{venue.name}"
@@ -75,6 +76,13 @@ class VenuesController < ApplicationController
     def correct_or_admin
       @venue = Venue.find(params[:id])
       signed_in? && ((@venue.user_id == current_user.id) || current_user.admin?)
+    end
+
+    def correct_school
+      current_venue = Venue.find(params[:id])
+      if current_venue.is_school
+        redirect_to(root_path) unless signed_in? && (current_venue.name.eql?(current_user.school) || current_user.admin?)
+      end
     end
 
 end

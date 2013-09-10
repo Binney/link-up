@@ -8,8 +8,6 @@
       <%= f.label :name %>
       <%= f.text_field :name %>
 
-      <p>This is the actual form, not the cheap imitation</p>
-
       <%= f.label :description %>
       <%= f.text_area :description %>
 

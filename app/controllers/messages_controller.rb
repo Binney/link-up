@@ -20,6 +20,7 @@ class MessagesController < ApplicationController
   def show
     @message = Message.find(params[:id])
     @message.unread = false
+    @message.save!
   end
 
   def inbox

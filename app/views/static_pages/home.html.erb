@@ -1,41 +1,42 @@
 <% provide(:site_section, "0") %>
 <%= render 'shared/main_search' %>
+<div id="homepage">
+  <% if signed_in? %>
 
-<% if signed_in? %>
+    <% if current_user.admin? | current_user.mentor? | current_user.organiser? %>
+      <div id="local-map">
+        <%= gmaps4rails(@json) %>
+      </div>
+      <div id="homepage-left">
+        <%= render 'diary_entries/diary_preview' %>
+      </div>
+      <div id="homepage-right">
+        <%= render 'shared/toolbox' %>
+      </div>
 
-  <% if current_user.admin? | current_user.mentor? | current_user.organiser? %>
-    <div id="local-map">
-      <%= gmaps4rails(@json) %>
-    </div>
-    <div id="homepage-left">
-      <%= render 'diary_entries/diary_preview' %>
-    </div>
-    <div id="homepage-right">
-      <%= render 'shared/toolbox' %>
-    </div>
+    <% else %>
+      <div id="local-map">
+        <%= gmaps4rails(@json) %>
+      </div>
+      <div id="homepage-left">
+        <%= render 'diary_entries/diary_preview' %>
+      </div>
+      <div id="homepage-right">
+      <%= render 'tags/brief_selection' %>
+      </div>
+    <% end %>
 
   <% else %>
+
     <div id="local-map">
       <%= gmaps4rails(@json) %>
     </div>
     <div id="homepage-left">
-      <%= render 'diary_entries/diary_preview' %>
+      <%= render 'events/on_today' %>
     </div>
     <div id="homepage-right">
-    <%= render 'tags/brief_selection' %>
+      <%= render 'tags/brief_selection' %>
     </div>
+
   <% end %>
-
-<% else %>
-
-  <div id="local-map">
-    <%= gmaps4rails(@json) %>
-  </div>
-  <div id="homepage-left">
-    <%= render 'events/on_today' %>
-  </div>
-  <div id="homepage-right">
-    <%= render 'tags/brief_selection' %>
-  </div>
-
-<% end %>
+</div>

@@ -5,7 +5,7 @@
 <% if @tags.any? %>
 
   <ul class="tags">
-    <%= render @tags %>
+    <%= render @tags, width: 150, withnames: true %>
   </ul>
 
 <% else %>

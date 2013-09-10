@@ -2,11 +2,11 @@
   <%= search_form_for @search do |f| %>
     <ul>
     <li>
-    <small><%= f.label :gender_not_cont, "Find activites near you:" %></small>
-    <%= f.text_field :gender_not_cont %></li>
+    <small class="annotation"><%= f.label :gender_not_cont, "Find activites near you:" %></small>
+    <%= f.text_field :gender_not_cont, id: "text-entry-special", placeholder: "Enter Postcode" %></li>
     <li>
-    <small><%= f.label :tags_name_or_name_or_description_cont, "Or search by activity:" %></small>
-    <%= f.text_field :tags_name_or_name_or_description_cont %></li>
+    <small class="annotation"><%= f.label :tags_name_or_name_or_description_cont, "Or search by activity:" %></small>
+    <%= f.text_field :tags_name_or_name_or_description_cont, id: "text-entry-special", placeholder: "Choose an Activity" %></li>
     <li><%= f.submit "Search", class: "btn btn-primary btn-mega-search" %></li></ul>
   <% end %>
 </div>
