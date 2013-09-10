@@ -9,6 +9,6 @@
   <% end %>
 <% else %>
   <li class="tag_thumbnail">
-    <%= image_tag("tag_icons/large/#{tag.name}.png", size: "#{width}x#{width}", alt: tag.name) %>
+    <%= link_to image_tag("tag_icons/large/#{tag.name}.png", size: "#{width}x#{width}", alt: tag.name), tag %>
   </li>
 <% end %>

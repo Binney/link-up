@@ -4,11 +4,11 @@
       <span class="tag_name">
         <%= tag.name %>
       </span>
-      <%= image_tag("tag_icons/large/#{tag.name}.png", size: "#{width}x#{width}", alt: tag.name) %>
+      <%= image_tag("/assets/tag_icons/large/#{tag.name}.png", size: "#{width}x#{width}", alt: tag.name) %>
   </li>
   <% end %>
 <% else %>
   <li class="tag_thumbnail">
-    <%= link_to image_tag("tag_icons/large/#{tag.name}.png", size: "#{width}x#{width}", alt: tag.name), tag %>
+    <%= link_to image_tag("/assets/tag_icons/large/#{tag.name}.png", size: "#{width}x#{width}", alt: tag.name), tag %>
   </li>
 <% end %>
