@@ -32,5 +32,14 @@ module Sweaton2
         ENV[key.to_s] = value
       end if File.exists?(env_file)
     end
+
+    Ransack.configure do |config|
+      config.add_predicate 'roughly',
+                           :arel_predicate => 'eq',
+                           :formatter => proc {|t| t.to_s(:hour_only) },
+                           :compounds => true,
+                           :type => :string
+    end
+
   end
 end

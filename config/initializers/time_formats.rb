@@ -1,3 +1,4 @@
 Time::DATE_FORMATS[:day_week_month] = '%a %d %b'
 Time::DATE_FORMATS[:time_day] = '%I:%M %p'
 Time::DATE_FORMATS[:short_day] = '%e/%m/%Y'
+Time::DATE_FORMATS[:hour_only] = '%H'

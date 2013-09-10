@@ -30,7 +30,7 @@ class EventsController < ApplicationController
         marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event })
         marker.title "#{event.name}"
         image = event.tags.count<1 ? "Other" : event.tags[0].name
-        marker.picture({:picture => "/assets/tag_icons/small/#{image}.png", :width => 35, :height => 48})
+        marker.picture({:picture => "tag_icons/small/#{image}.png", :width => 35, :height => 48})
       end
     end
   end
@@ -43,7 +43,7 @@ class EventsController < ApplicationController
       marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => @event })
       marker.title "#{venue.name}"
       image = @event.tags.count==0 ? "Other" : @event.tags[0].name
-      marker.picture({:picture => "/assets/tag_icons/small/#{image}.png", :width => 32, :height => 32})
+      marker.picture({:picture => "tag_icons/small/#{image}.png", :width => 32, :height => 32})
     end
   end
 
