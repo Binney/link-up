@@ -33,10 +33,6 @@ section {
   overflow: auto;
 }
 
-textarea {
-  resize: vertical;
-}
-
 .container {
   padding-left: 50px;
   padding-right: 50px;
@@ -86,6 +82,8 @@ textarea {
   width: map_container;
   height: 400px;
 }
+
+.yellow { border: 1px solid black; margin-top: 8px; background: yellow; padding: 5px; }
 
 .tagline {
   float: left;
@@ -349,6 +347,26 @@ footer {
   height:45px;
 }
 
+#search-toggle {
+  cursor: pointer;
+  h4 {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    width: 100%;
+    float: middle;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: $yellow;
+    background-color: $orange;
+    text-align: center;
+  }
+}
+
+#toggleform {
+  cursor: pointer;
+}
+
 .btn-login {
   float: right;
 }
@@ -415,7 +433,7 @@ aside {
 
 input, textarea, .uneditable-input {
   border: 1px solid #bbb;
-  /*width: 100%;*/
+  width: 100%;
   padding: 10px;
   margin-bottom: 15px;
   -webkit-border-radius: 0px;
@@ -424,8 +442,15 @@ input, textarea, .uneditable-input {
   @include box_sizing;
 }
 
+textarea {
+  width: 100%;
+  height: 200px;
+  resize: vertical;
+}
+
 select {
   border: 1px solid #bbb;
+  width: auto;
   padding: 1px;
   margin-bottom: 15px;
   @include box_sizing;
@@ -486,6 +511,42 @@ input#text-entry-special {
   font-size: 8px;
 }
 
+input[type=checkbox].css-checkbox {
+							  position: absolute; 
+							overflow: hidden; 
+							clip: rect(0 0 0 0); 
+							height:1px; 
+							width:1px; 
+							margin:-1px; 
+							padding:0;
+							border:0;
+						}
+
+						input[type=checkbox].css-checkbox + label.css-label {
+							padding-left:20px;
+							height:15px; 
+							display:inline-block;
+							line-height:15px;
+							background-repeat:no-repeat;
+							background-position: 0 0;
+							font-size:15px;
+							vertical-align:middle;
+							cursor:pointer;
+						}
+
+						input[type=checkbox].css-checkbox:checked + label.css-label {
+							background-position: 0 -15px;
+						}
+						
+						.css-label{
+							background-image:url(http://csscheckbox.com/checkboxes/dark-check-orange.png);
+						}
+
+.timing-entry {
+  list-style-type: none;
+  display: inline;
+}
+						
 #error_explanation {
   color: #f00;
   ul {
@@ -528,12 +589,6 @@ input#text-entry-special {
 }
 .description {
   color: $grayLight;
-}
-aside {
-  textarea {
-    height: 100px;
-    margin-bottom: 5px;
-  }
 }
 
 .events_list {
@@ -614,7 +669,9 @@ aside {
 }.tab_table tr:last-child td:last-child{
 	border-width:0px 0px 0px 0px;
 }
-
+#message_body {
+  height: 500px;
+}
 .message_view {
 	border-top: 0px solid #fff;
   border-bottom: 0px solid #fff;

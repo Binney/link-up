@@ -1,17 +1,14 @@
 <% provide(:title, 'All events') %>
 <% provide(:site_section, 0) %>
-<% if @number==nil
-     str = ""
-   else
-     str = "at "+Venue.find(@number).name
-   end %>
-<h1>All events <% str %></h1>
+<h1>All events</h1>
 
 <aside class="events_map">
   <%= gmaps4rails(@json) %>
 </aside>
 <div id="events_list">
-  <h4 id="toggleform">Add new event</h4>
+  <div id="search-toggle">
+    <h4 id="toggleform">Search</h4>
+  </div>
   <div class="neweventform">
     <%= render 'search' %>
   </div>
@@ -21,6 +18,7 @@
     <ul class="generic-list">
       <%= render @events, size: 52 %>
     </ul>
+    <%= will_paginate @events %>
 
   <% else %>
 

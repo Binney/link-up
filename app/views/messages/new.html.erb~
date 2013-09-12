@@ -5,9 +5,9 @@
   <div class="field">
     <%= f.hidden_field :sender_id %>
     <%= f.label :receiver_id, "To:" %>
-    <%= f.collection_select :receiver_id, @users, :id, :name, default: params[:receiver_id] %>
+    <%= f.collection_select :receiver_id, @users, :id, :name, selected: params[:receiver_id] %>
     <%= f.text_field :subject, placeholder: "Subject" %>
-    <%= f.text_area :message, placeholder: "Compose new message..." %>
+    <%= f.text_area :message, placeholder: "Compose new message...", id: "message-body" %>
   </div>
   <%= f.submit "SEND", class: "btn btn-primary" %>
 <% end %>

@@ -22,7 +22,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.ransackable_attributes(auth_object = nil)
-      %w( name description venue_id cost cost_details gender timings day_info ) + _ransackers.keys
+      %w( name description venue_id cost cost_details gender timings ) + _ransackers.keys
   end
 
   def get_day_info

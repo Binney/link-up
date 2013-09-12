@@ -1,4 +1,4 @@
-<ul class="activity-list generic-list">
+<ul class="activity-list">
   <% @events.each do |e| %>
     <li><%= link_to e.name, e %>
     <% if signed_in? && (current_user.admin? || (current_user.organiser? && @venue.user_id == current_user.id)) %>
@@ -8,7 +8,7 @@
   <% end %>
 </ul>
 <% if signed_in? && (current_user.admin? || (current_user.organiser? && @venue.user_id == current_user.id)) %>
-  <h4 id="toggleform">Add new event</h4>
+  <b id="toggleform">Add new event</h4>
   <div class="neweventform">
     <%= render 'events/new_event' %>
   </div>

@@ -5,11 +5,13 @@
   <%= f.text_field :venue_name_cont %>
   <%= f.label :timings_day_eq, "Day" %>
   <%= f.select :timings_day_eq, [['Any', nil], ['Mondays', 1], ['Tuesdays', 2], ['Wednesdays', 3], ['Thursdays', 4], ['Fridays', 5], ['Saturdays', 6], ['Sundays', 0]] %>
+  <%= f.label :timings_start_time_roughly, "Time" %>
+  <%= f.time_select :timings_start_time_roughly, :minute_step => 5 %>
   <%= f.label :cost_lteq, "Cost" %>
-  <%= f.select :cost_lteq, [['Any', nil], ['Free', 0], ['<£5', 5], ['<£10', 10]] %>
+  <%= f.select :cost_lteq, [['Any', nil], ['Free', 0], ['<£3', 3], ['<£5', 5], ['<£10', 10]] %>
   <%= f.label :gender_cont, "Gender" %>
   <%= f.select :gender_cont, [['All', 'All'], ['Female only', 'Female'], ['Male only', 'Male']] %>
 
   <!-- Also fields for: time (ie start_time.hour), location (ie list in order of proximity to postcode/address entered) -->
-  <%= f.submit "Search", class: "btn btn-primary" %>
+  <br><%= f.submit "Search", class: "btn btn-primary" %>
 <% end %>
