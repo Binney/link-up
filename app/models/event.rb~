@@ -15,7 +15,7 @@ class Event < ActiveRecord::Base
   validates :description, length: { maximum: 5000 }
   acts_as_gmappable
   geocoded_by :gmaps4rails_address
-#  after_validation :geocode
+  after_validation :geocode
 
   def gmaps4rails_address
     "#{venue.gmaps4rails_address}"

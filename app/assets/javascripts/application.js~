@@ -17,11 +17,12 @@
 //= require jquery.ui.all
 //= require bootstrap
 //= require jquery_nested_form
+//= require infobox
 //= require_tree .
 
 $(function() {
   $("#event_start_time").datepicker();
-  $("#tabs").tabs({ heightStyle: "content" });
+  $("#tabs").tabs({ heightStyle: "auto" });
   $(".neweventform").toggle();
   $("#toggleform").click(function() {
     $( ".neweventform" ).slideToggle("slow" );

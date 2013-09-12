@@ -1,0 +1,4 @@
+class RemoveObsoleteDayInfoColumn < ActiveRecord::Migration
+  def change
+  end
+end

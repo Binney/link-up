@@ -11,11 +11,14 @@
   <%= gmaps4rails(@json) %>
 </aside>
 <div id="events_list">
-  <%= render 'search' %>
+  <h4 id="toggleform">Add new event</h4>
+  <div class="neweventform">
+    <%= render 'search' %>
+  </div>
 
   <% if @events.any? %>
 
-    <ul class="events generic-list">
+    <ul class="generic-list">
       <%= render @events, size: 52 %>
     </ul>
 

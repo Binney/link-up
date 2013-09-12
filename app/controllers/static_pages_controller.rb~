@@ -19,9 +19,9 @@ class StaticPagesController < ApplicationController
         str = event.tags[0] ? event.tags[0].name : "Other"
         marker.picture({:picture => view_context.image_path("tag_icons/small/#{str}.png"), :width => 35, :height => 48})
       end
-      @house = current_user.to_gmaps4rails #do |house, marker|
-        #marker.picture({:picture => "l.jpg", :width => 35, :height => 48})
-      #end
+      @house = current_user.to_gmaps4rails do |house, marker|
+        marker.picture({:picture => view_context.image_path("l.jpg"), :width => 35, :height => 48})
+      end
       @json = (JSON.parse(@evs) + JSON.parse(@house)).to_json
       @diary_entries = (current_user.diary_entries+current_user.favourites).shuffle
       @tags = Tag.all.shuffle
@@ -46,7 +46,7 @@ class StaticPagesController < ApplicationController
     arr = []
     @favs.each do |f|
       (((params[:month] ? Date.parse(params[:month]) : Date.today).change(day: 1)..(params[:month] ? Date.parse(params[:month]) : Date.today).advance(months: 1).change(day: 1)).select {|d| d.wday == f.start_time.wday}).each do |date|
-        @calendar_entries.push CalendarEntry.new(date, f.event_id) unless f.start_time.beginning_of_day>date
+        @calendar_entries.push CalendarEntry.new(DateTime.new(date.year, date.month, date.day, f.start_time.hour, f.start_time.min, 0), f.event_id) unless f.start_time.beginning_of_day>date
       end
     end
 

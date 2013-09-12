@@ -5,33 +5,35 @@ class EventsController < ApplicationController
   before_action :correct_school, only: :show
 
   def index
-    if params[:venue_id] # Indexing via venue so only show that venue's events
-      @events = Venue.find(params[:venue_id]).events.paginate(page: params[:page])
-      @number = params[:venue_id]
+    @search = Event.search(params[:q])
+    if signed_in?
+      schl = current_user.school
     else
-      if params[:q]
-        # Indexing from search
-        @search = Event.search(params[:q])
-        @search.sorts = 'distance_to(#{params[:q][:gender_not_cont]) asc' unless params[:q][:gender_not_cont].nil?
-        if current_user.admin
-          @events = @search.result
-        else
-          @events = @search.result.select { |ev| !(ev.venue.is_school) || ev.venue.name.eql?(current_user.school) } #.paginate(:page => params[:page])
-        end
-      else # Just indexing normally
-        @search = Event.search(params[:q])
-        if current_user.admin
-          @events = @search.result
-        else
-          @events = @search.result.select { |ev| !(ev.venue.is_school) || ev.venue.name.eql?(current_user.school) } #.paginate(:page => params[:page])
-        end
+      schl = "None"
+    end
+    if params[:q]
+      # Indexing from search
+      @search = Event.search(params[:q])
+      @search.sorts = 'distance_to(#{params[:q][:gender_not_cont]) asc' unless params[:q][:gender_not_cont].nil?
+      if admin?
+        # Display all events regardless of school
+        @events = @search.result
+      else
+        # Only display events open to the public or at that user's school
+        @events = @search.result.select { |ev| !(ev.venue.is_school) || ev.venue.name.eql?(schl) } #.paginate(:page => params[:page])
       end
-      @json = @events.to_gmaps4rails do |event, marker|
-        marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event })
-        marker.title "#{event.name}"
-        image = event.tags.count<1 ? "Other" : event.tags[0].name
-        marker.picture({:picture => view_context.image_path("tag_icons/small/#{image}.png"), :width => 35, :height => 48})
+    else # Indexing without search (ie all)
+      if admin?
+        @events = Event.all
+      else
+        @events = Event.all.select { |ev| !(ev.venue.is_school) || ev.venue.name.eql?(schl) } #.paginate(:page => params[:page])
       end
+    end
+    @json = @events.to_gmaps4rails do |event, marker|
+      marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event })
+      marker.title "#{event.name}"
+      image = event.tags.count<1 ? "Other" : event.tags[0].name
+      marker.picture({:picture => view_context.image_path("tag_icons/small/#{image}.png"), :width => 35, :height => 48})
     end
   end
 
@@ -101,13 +103,13 @@ class EventsController < ApplicationController
 
     def correct_or_admin
       current_venue = Event.find(params[:id]).venue
-      redirect_to(root_path) unless signed_in? && ((current_venue.user_id == current_user.id) || current_user.admin?)
+      redirect_to(root_path) unless signed_in? && ((current_venue.user_id == current_user.id) || admin?)
     end
 
     def correct_school
       current_venue = Event.find(params[:id]).venue
       if current_venue.is_school
-        redirect_to(root_path) unless signed_in? && (current_venue.name.eql?(current_user.school) || current_user.admin?)
+        redirect_to(root_path) unless signed_in? && (current_venue.name.eql?(current_user.school) || admin?)
       end
     end
 

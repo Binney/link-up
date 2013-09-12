@@ -46,7 +46,7 @@ class StaticPagesController < ApplicationController
     arr = []
     @favs.each do |f|
       (((params[:month] ? Date.parse(params[:month]) : Date.today).change(day: 1)..(params[:month] ? Date.parse(params[:month]) : Date.today).advance(months: 1).change(day: 1)).select {|d| d.wday == f.start_time.wday}).each do |date|
-        @calendar_entries.push CalendarEntry.new(date, f.event_id) unless f.start_time.beginning_of_day>date
+        @calendar_entries.push CalendarEntry.new(DateTime.new(date.year, date.month, date.day, f.start_time.hour, f.start_time.min), f.event_id) unless f.start_time.beginning_of_day>date
       end
     end
 

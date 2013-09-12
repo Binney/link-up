@@ -360,11 +360,14 @@ footer {
 
 /* homepage */
 
+#local-map {
+  padding-bottom: 25px;
+}
+
 #homepage {
   width: 100%;
   float: left;
   padding-bottom: 100px;
-  padding-top: 25px;
 }
 
 #homepage-left {

@@ -12,11 +12,11 @@
         </ul>
 
         <div id="upcoming">
-          <%= "render 'events/upcoming'" %>
+          <%= render 'events/upcoming' %>
         </div>
 
         <div id="past">
-          <%= "render 'events/past'" %>
+          <%= render 'events/past' %>
         </div>
 
         <div id="favourites">
@@ -47,7 +47,7 @@
         <%= day.day %>
         <% entries.each do |entry| %>
           <% if entry.event_id>0 %>
-            <%= link_to(h(entry.start_time.to_s(:time)+" "+Event.find(entry.event_id).name), Event.find(entry.event_id)) %><br>
+            <%= link_to(h(entry.start_time.to_s(:short)+" "+Event.find(entry.event_id).name), Event.find(entry.event_id)) %><br>
           <% else %>
             <%= entry.name %>
           <% end %>
