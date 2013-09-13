@@ -63,8 +63,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-#    (Message.select { |s| s.sender_id==params[:id]}).each {|m| m.destroy }
-#    (Message.select { |r| r.receiver_id==params[:id]}).each {|m| m.destroy }
     User.destroy(params[:id])
     flash[:success] = "User destroyed."
     redirect_to users_url

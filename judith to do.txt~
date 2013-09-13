@@ -2,8 +2,6 @@ Infowindows: COLOUR COLOUR COLOUR
 
 Mentors and mentees: yr 10s mentors and yr 7s mentees, has_many_through relationships - check diary, address book; Year 10s send requests, yr 7s AND teachers approve it, and then the relationship begins - also "view relationships" page for teachers
 
-All Users BY SCHOOL view for admins
-
 Link Up logo from Josh plus circular L
 
 Get Sarny??? Mentor system? fork?

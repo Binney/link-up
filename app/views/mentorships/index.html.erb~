@@ -1,3 +1,29 @@
 <h1>Manage mentorings</h1>
 
+Super popular thing
 
+Really popular thing
+
+Relatively popular thing
+
+Kinda average
+
+Really not so great
+
+Doesn't live up to the hype
+
+Not gonna lie, it's pretty rubbish
+
+Box contained wildcat, Wouldn't buy again
+
+<% if admin? %>
+
+
+
+
+<% elsif signed_in? %>
+
+
+
+
+<% end %>
