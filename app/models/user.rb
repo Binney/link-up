@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
   geocoded_by :gmaps4rails_address
 
-  ROLES = %w[admin teacher organiser student]
+  ROLES = %w[admin teacher organiser student] # Plus mentor? Or is that the same as student?
 
   def ip_address
     request.remote_ip

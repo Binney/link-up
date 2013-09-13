@@ -88,6 +88,7 @@ section {
 .tagline {
   float: left;
   width: 50%;
+  height: 200px;
   h2 {
     font-size: 20px;
     letter-spacing: 1px;
@@ -206,13 +207,15 @@ a {
   }
 }
 
-/*.major-nav {
-  padding: 0px;
-  float: left;
+.bulbasaur {
+  background-color: #f00;
+  color: #00f;
+}
+
+.major-nav {
   width: 100%;
-  display: block;
-  margin: 0;
-}*/
+  padding: 0px;
+}
 
 .major-nav-btn ul {
   padding-left: 0px;
@@ -268,7 +271,7 @@ footer {
   padding-bottom:4px;
   font-size:15px;
   font-family:'Open Sans', sans-serif;
-  color:#ffffff;
+  color:#fff;
   background:#c7c7c7;
   -webkit-box-shadow: 0px 4px 0px 0px #a7a7a7;
   -moz-box-shadow:0px 4px 0px 0px #a7a7a7;
@@ -321,6 +324,7 @@ footer {
 
 #mega-search {
   width:100%;
+  float: bottom;
 }#mega-search ul li {
   padding-left:0px;
   display:inline-block;
@@ -599,6 +603,13 @@ input[type=checkbox].css-checkbox {
 .login-tab {
   width:50%;
   float:right;
+  height: 200px;
+  & input[type=text] {
+    width: 50%;
+  }
+  & input[type=password] {
+    width: 50%;
+  }
 }
 
 .activity-list {
@@ -645,7 +656,7 @@ input[type=checkbox].css-checkbox {
 	-webkit-border-bottom-left-radius:0px;
 	border-bottom-left-radius:0px;
 }.tab_table tr:hover td{
-	background-color:#ffffff;
+	background-color:#fff;
 }
 .tab_table td{
 	vertical-align:middle;

@@ -1,14 +1,2 @@
-<style>
-  squirtle {
-      text-align: left;
-      background-color: #f7931e;
-      color: #00ff00;
-    h1, p {
-      color: #ff0000;
-    }
-  }
-</style>
-<div id="squirtle">
   <h1><%= venue.name %></h1>
   <h2><%= venue.description %></h2>
-</div>

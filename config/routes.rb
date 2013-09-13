@@ -23,6 +23,7 @@ Sweaton2::Application.routes.draw do
   match '/venues',  to: 'venues#index',		via: 'get'
   match '/inbox',   to: 'messages#inbox',   via: 'get'
   match '/my_events', to: 'static_pages#my_events', via: 'get'
+  match '/mentoring', to: 'mentorships#index',  via: 'get'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'

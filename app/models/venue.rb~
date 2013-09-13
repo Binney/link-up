@@ -6,7 +6,7 @@ class Venue < ActiveRecord::Base
   validates :description, length: { maximum: 5000 }
   acts_as_gmappable
   geocoded_by :gmaps4rails_address
-  after_validation :geocode#, :if => :address_changed?
+#  after_validation :geocode#, :if => :address_changed?
 
   def gmaps4rails_address
     "#{street_address}, #{postcode}, UK"

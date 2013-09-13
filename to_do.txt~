@@ -6,29 +6,13 @@ CSS: OKAY so it needs to be less repetitive!
 
 Fix the whole "avatar_for" thing. Venues need pics, end of.
 
-Homepage map to show events occuring in the next DAY?? by venue obvs - search for it by TIMINGS
-
-More specialised search function instead carries out ONE search on events with relevant attributes.
-
-On user profile, link_to new message with params user_id - BUT collection_box won't accept it! How to set default?
-
-Make New Event "link" styled (blue, mouse changes)
-
 Messages button: also says in brackets number of unread messages
 
 Extract cost info with regex from docs?
 
-Repopulate database with GMT times
-
-Make sample_data recognise that gender: All and gender: Both are the same (ditto Boys vs Male and Girls vs Female)
-
-"Various Venues" should get deleted automatically but Other Venue gets the address and postcode of #10 Downing Street so it will appear roughly in the middle of the map
-
-Smaller tags image below main venue image on event Show page
-
 Fix venue images to L logo
 
-Extract tag info via final 2 columns on doc
+Tag index page: a) left column ftw b) every two-line name gets split between TWO circles - fix!! (Line height for li != line height for text)
 
 Add Research+News page to footer+header
 
@@ -40,11 +24,7 @@ created_at and updated_at are ready-made so as to facilitate a Feed system: espe
 
 Custom pagination (details at http://thewebfellas.com/blog/2010/8/22/revisited-roll-your-own-pagination-links-with-will_paginate-and-rails-3 )
 
-SCHOOLS: Each user has a School, which may or may not be filled (string as a name). By selecting your school, you can view events at the venue which is that school, but you also can be viewed by any MENTORS at that school (which you can tell by them ALSO having the school string set). Each school involved in the project gets its own venue, which may (eg Dagenham) actually have events listed or (Westminster) may simply be a placeholder. Users have addresses which by default are set to their school's but they can change this via their profile (by selecting their school on the Signup page it fills in the address box with the school's address but they can then swap it). Or you can leave School blank in which case you're left to geocode yourself (default: #10 Downing Street)
-
 ^ Following on from this, possibly (on signup page) an infowindow/dialog pops up to tell you what you stand to gain and lose by selecting a school.
-
-IT ISN'T CALCULATING TIMING.DAY CORRECTLY or summat - see on_today
 
 HTTP requests for :admin=>true ??!!
 

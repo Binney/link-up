@@ -88,6 +88,7 @@ section {
 .tagline {
   float: left;
   width: 50%;
+  height: 200px;
   h2 {
     font-size: 20px;
     letter-spacing: 1px;
@@ -206,13 +207,15 @@ a {
   }
 }
 
-/*.major-nav {
-  padding: 0px;
-  float: left;
+.bulbasaur {
+  background-color: #f00;
+  color: #00f;
+}
+
+.major-nav {
   width: 100%;
-  display: block;
-  margin: 0;
-}*/
+  padding: 0px;
+}
 
 .major-nav-btn ul {
   padding-left: 0px;
@@ -321,6 +324,7 @@ footer {
 
 #mega-search {
   width:100%;
+  float: bottom;
 }#mega-search ul li {
   padding-left:0px;
   display:inline-block;
@@ -598,7 +602,15 @@ input[type=checkbox].css-checkbox {
 
 .login-tab {
   width:50%;
+  background-color: #a7a7a7;
   float:right;
+  height: 200px;
+  & input[type=text] {
+    width: 50%;
+  }
+  & input[type=password] {
+    width: 50%;
+  }
 }
 
 .activity-list {

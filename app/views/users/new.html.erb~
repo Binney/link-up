@@ -14,6 +14,13 @@
       <%= f.label :school, "School:" %>
       <%= f.select :school, @schools %>
 
+      <%= f.label :home_address, "Address:" %>
+      <%= f.text_field :home_address %>
+
+      <%= f.label :home_postcode, "Postcode:" %>
+      <%= f.text_field :home_postcode %>
+      <small>These aren't necessary but will give you info about your nearest events and venues.</small>
+
       <%= f.label :password %>
       <%= f.password_field :password %>
 

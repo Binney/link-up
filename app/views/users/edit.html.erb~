@@ -22,15 +22,19 @@
       <%= f.label :home_postcode %>
       <%= f.text_field :home_postcode %>
 <br>
-      <% if current_user.admin? %>
-        <%= f.label :mentor, "Teacher/parent" %>
-        <%= f.check_box :mentor %>
+      <% if can? :update, @user %>
 
-        <%= f.label :organiser, "Event organiser" %>
+        <%= f.label :role %>
+        <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+
+        <%= f.check_box :mentor %>
+        <%= f.label :mentor, "Teacher/parent" %>
+
         <%= f.check_box :organiser %>
+        <%= f.label :organiser, "Event organiser" %>
         
-        <%= f.label :mentor, "Administrator (careful!)" %>
         <%= f.check_box :admin %>
+        <%= f.label :mentor, "Administrator (careful!)" %>
         
       <% end %>
 

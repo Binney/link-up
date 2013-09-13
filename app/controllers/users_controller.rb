@@ -8,9 +8,9 @@ class UsersController < ApplicationController
 
   def index
     if current_user.admin?
-      @users = User.paginate(page: params[:page])
+      @schools = Venue.select {|v| v.is_school }
     else
-      @users = User.where(:school==current_user.school)
+      @users = User.select {|u| u.school==current_user.school }
     end
   end
 
@@ -25,12 +25,11 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @schools = ["None", "Dagenham Park CoS", "Westminster Academy"]
   end
  
   def create
     @user = User.new(user_params)
-    unless @user.school.eql?("None")
+    if Venue.find_by(name: @user.school)
       @user.home_address ||= Venue.find_by(name: user_params[:school]).street_address
       @user.home_postcode ||= Venue.find_by(name: user_params[:school]).postcode
     else

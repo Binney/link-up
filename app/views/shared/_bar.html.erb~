@@ -3,7 +3,8 @@
 <% if signed_in? %>
   <%= render 'shared/navigation_buttons' %>
 <% else %>
+<div id="bulbasaur">
   <%= render 'sessions/login_tabs' %>
   <%= render 'shared/tagline' %>
-
+</div>
 <% end %>

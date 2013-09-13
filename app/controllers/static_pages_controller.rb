@@ -20,6 +20,7 @@ class StaticPagesController < ApplicationController
         marker.picture({:picture => view_context.image_path("tag_icons/small/#{str}.png"), :width => 35, :height => 48})
       end
       @house = current_user.to_gmaps4rails do |house, marker|
+        marker.infowindow render_to_string(:partial => "/users/infowindow", :locals => { :user => current_user })
         marker.picture({:picture => view_context.image_path("l.jpg"), :width => 35, :height => 48})
       end
       @json = (JSON.parse(@evs) + JSON.parse(@house)).to_json
@@ -32,7 +33,7 @@ class StaticPagesController < ApplicationController
         marker.title "#{venue.name}"
         marker.picture({:picture => view_context.image_path("tag_icons/small/Other.png"), :width => 35, :height => 48})
       end
-      @todays_events = Timing.where(:day == Date.today.wday)[0..6]
+      @todays_events = (Timing.select { |t| t.day == Date.today.wday}).shuffle[0..6]
       @tags = Tag.all.shuffle
     end
   end

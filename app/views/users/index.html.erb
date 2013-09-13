@@ -3,6 +3,17 @@
 <h1>All users</h1>
 
 <ul class="generic-list">
-  <%= render @users, size: 52 %>
+  <% if current_user.role == "admin" %>
+    <% @schools.each do |school| %>
+      <h4><%= school.name %></h4>
+      <%= render User.select { |u| u.school == school.name }, size: 52 %>
+    <% end %>
+    <h4>No school</h4>
+    <%= render User.select { |u| u.school == "None" }, size: 52 %>
+
+  <% else %>
+    <h4><%= current_user.school %></h4>
+    <%= render @users, size: 52 %>
+  <% end %>
 </ul>
 

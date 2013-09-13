@@ -1,9 +1,10 @@
 <nav>
   <ul class="user-bar">
     <% if signed_in? %>
-        <li><%= link_to current_user.name, user_path(current_user.id) %></li>
-        <li><%= link_to "Settings", edit_user_path(current_user.id) %></li>
         <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+        <li><%= link_to "Settings", edit_user_path(current_user.id) %></li>
+        <li><%= link_to "Mentoring", mentorship_path %></li>
+        <li><%= link_to current_user.name, user_path(current_user.id) %></li>
     <% end %>
   </ul>
 </nav>
