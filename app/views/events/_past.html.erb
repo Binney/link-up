@@ -2,17 +2,29 @@
   <div class="tab_table">
     <%= table_for(@past_events) do |t| %>
       <%= t.body do |listing| %>
-        <% event = Event.find(listing.event_id) %>
-        <%= t.r do %>
-          <% if listing.class.name.eql?("DiaryEntry") %>
-            <%= t.d(h(listing.start_time.to_s(:day_week_month))) %>
-          <% else %>
-            <%= t.d(h("Every #{Date::DAYNAMES[listing.start_time.wday]} since #{listing.start_time.to_s(:short)}")) %>
+
+        <% if listing.event_id > 0 %>
+          <% event = Event.find(listing.event_id) %>
+          <%= t.r do %>
+            <% if listing.class.name.eql?("DiaryEntry") %>
+              <%= t.d(h(listing.start_time.to_s(:day_week_month))) %>
+            <% else %>
+              <%= t.d(h("Every #{Date::DAYNAMES[listing.start_time.wday]} since #{listing.start_time.to_s(:short)}")) %>
+            <% end %>
+            <%= t.d(h(link_to event.name, event)) %>
+            <%= t.d(h(link_to event.venue.name, event.venue)) %>
+            <%= t.d(h(listing.start_time.to_s(:time_day))) %>
           <% end %>
-          <%= t.d(h(link_to event.name, event)) %>
-          <%= t.d(h(link_to event.venue.name, event.venue)) %>
-          <%= t.d(h(listing.start_time.to_s(:time_day))) %>
+
+        <% else %>
+          <%= t.r do %>
+            <%= t.d(h(listing.start_time.to_s(:day_week_month))) %>
+            <%= t.d(h(link_to listing.name, edit_diary_entry_path(listing))) %>
+            <%= t.d(h(listing.location.to_s)) %>
+            <%= t.d(h(listing.start_time.to_s(:time_day))) %>
+          <% end %>
         <% end %>
+
       <% end %>
     <% end %>
   </div>

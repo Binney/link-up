@@ -11,7 +11,7 @@ Sweaton2::Application.routes.draw do
   resources :tags, only: [:index, :show]
   resources :relationships, only: [:create, :destroy]
   resources :favourites, only: [:create, :destroy]
-  resources :diary_entries, only: [:create, :destroy]
+  resources :diary_entries
   resources :messages
   resources :mentorships
   resources :password_resets

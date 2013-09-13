@@ -1,6 +1,6 @@
 <%= provide :title, 'New diary entry' %>
 <%= provide :site_section, 2 %>
-<h1>New diary entry</h1>
+<h1>Edit diary entry</h1>
 
 <%= form_for @diary_entry do |f| %>
   <%= f.label :name %>
@@ -12,5 +12,8 @@
   <%= f.label :start_time %>
   <%= f.datetime_select :start_time, :minute_step => 5 %>
 
-  <%= f.submit "Create", class: 'btn btn-large' %>
+  <%= f.submit "Save", class: 'btn btn-primary' %>
 <% end %>
+  <%= button_to "Delete", @diary_entry, method: :delete, data: { confirm: "You sure?" }, class: 'btn' %>
+
+
