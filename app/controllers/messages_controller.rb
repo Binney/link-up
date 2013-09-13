@@ -45,9 +45,9 @@ class MessagesController < ApplicationController
         @message.destroy
       else
       puts "Sent by "+User.find(m.sender_id).name+", received by "+User.find(m.receiver_id).name
-
       end
     end
+    User.all.each { |u| u.save! }
   end
 
   private

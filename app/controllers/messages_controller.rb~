@@ -41,7 +41,7 @@ class MessagesController < ApplicationController
   def clearallextras
     Message.all.each do |m|
       @message = m
-      unless User.find(m.sender_id) && User.find(m.receiver_id)
+      unless User.exists?(m.sender_id) && User.exists?(m.receiver_id)
         @message.destroy
       else
       puts "Sent by "+User.find(m.sender_id).name+", received by "+User.find(m.receiver_id).name
