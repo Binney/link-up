@@ -35,23 +35,24 @@
     <% end %>
     
 <br>
-  <div id="calendar">
-    <h2 id="month">
-      <%= link_to "<", :month => (@date.beginning_of_month-1) %>
-      <%= h @date.strftime("%B %Y") %>
-      <%= link_to ">", :month => (@date.end_of_month+1) %>
-    </h2>
-    <%= calendar_for(@calendar_entries, :year => @date.year, :month => @date.month) do |t| %>
-      <%= t.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
-      <%= t.day(day_method: :start_time) do |day, entries| %>
-        <%= day.day %>
-        <% entries.each do |entry| %>
-          <% if entry.event_id>0 %>
-            <%= link_to(h(entry.start_time.to_s(:time)+" "+Event.find(entry.event_id).name), Event.find(entry.event_id)) %><br>
-          <% else %>
-            <%= entry.name %>
-          <% end %>
+<div id="calendar">
+  <h2 id="month">
+    <%= link_to "<", :month => (@date.beginning_of_month-1) %>
+    <%= h @date.strftime("%B %Y") %>
+    <%= link_to ">", :month => (@date.end_of_month+1) %>
+  </h2>
+  <%= calendar_for(@calendar_entries, :year => @date.year, :month => @date.month) do |t| %>
+    <%= t.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
+    <%= t.day(day_method: :start_time) do |day, entries| %>
+      <%= day.day %>
+      <% entries.each do |entry| %>
+        <% if entry.event_id>0 %>
+          <%= link_to(h(entry.start_time.to_s(:time)+" "+Event.find(entry.event_id).name), Event.find(entry.event_id)) %><br>
+        <% else %>
+          <%= entry.name %>
         <% end %>
       <% end %>
     <% end %>
-  </div>
+  <% end %>
+</div>
+<%= button_to "New entry", new_diary_entry_path, method: 'get', class: 'btn' %>

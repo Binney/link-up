@@ -20,3 +20,6 @@
 
 # Ignore public folder and Heroku'll automatically compile assets.
 /public/**
+
+# Ignore backups. Freaking backups.
+*~

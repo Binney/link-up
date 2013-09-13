@@ -1,12 +1,20 @@
 class DiaryEntriesController < ApplicationController
   before_action :signed_in_user
 
+  def new
+    @diary_entry = current_user.diary_entries.build
+  end
+
   def create
     @diary_entry = current_user.diary_entries.create!(diary_entry_params)
-    @event = Event.find(@diary_entry.event_id)
-    respond_to do |format|
-      format.html { redirect_to @event }
-      format.js
+    if @diary_entry.event_id
+      @event = Event.find(@diary_entry.event_id)
+      respond_to do |format|
+        format.html { redirect_to @event }
+        format.js
+      end
+    else
+      redirect_to my_events_path
     end
   end
 

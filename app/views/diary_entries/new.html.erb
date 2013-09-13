@@ -1,0 +1,13 @@
+<%= provide :title, 'New diary entry' %>
+<%= provide :site_section, 2 %>
+<h1>New diary entry</h1>
+
+<%= form_for @diary_entry do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :start_time %>
+  <%= f.datetime_select :start_time %>
+
+  <%= f.submit "Create", class: 'btn btn-large' %>
+<% end %>
