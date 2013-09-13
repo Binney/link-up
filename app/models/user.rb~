@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   validates_presence_of :password_confirmation, :unless => lambda { |user| user.password.blank? }
 
   acts_as_gmappable
-  after_validation :geocode
+#  after_validation :geocode
 
   geocoded_by :gmaps4rails_address
 

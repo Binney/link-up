@@ -1,0 +1,27 @@
+Infowindows: 1) Add links to event and venue 2) "join activity" adds one session to diary 3) add "more info" link 4) COLOUR COLOUR COLOUR
+
+Dagenham Park CoS make a school (ditto Westminster)
+
+Mentors and mentees: yr 10s mentors and yr 7s mentees, has_many_through relationships - check diary, address book; Year 10s send requests, yr 7s AND teachers approve it, and then the relationship begins - also "view relationships" page for teachers
+
+All Users BY SCHOOL view for admins
+
+Link Up logo from Josh plus circular L
+
+Get Sarny??? Mentor system? fork?
+
+Log of popularity IE how many people have a) attended b) favourited each event for a) "popular near you" and b) event organisers to advertise
+^ Following on: different colour schemes for more/less popular ones: gradual gradient between $orange (popular) and $yellow (less so)
+
+Teachers' accounts: 
+1) Boolean Teacher At School
+2) THEN further degrees of specialisation - eg. can/can't delete users, ditto events; minimize number of admins
+
+=== HOSTING ===
+1) Is Heroku too expensive
+2) Is somewhere else cheaper
+3) Unicorn unicorn unicorn http://collectiveidea.com/blog/archives/2012/11/26/setup-a-high-volume-site-on-heroku-for-free/
+
+Receiving mail sent to x@link-up.org.uk - how??? Get Sarny???
+
+Remove pictures - instead only have tags[0] logo on events and L on venues. Plus, Paperclip! And external file storage for free........?

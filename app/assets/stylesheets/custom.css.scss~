@@ -3,7 +3,8 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
-$orange: #f7931e;
+/*$orange: #f7931e;*/
+$orange: #f0f;
 $paleorange: #fddbc5;
 $palerorange: #ffede0;
 $yellow: #ffff00;
@@ -542,7 +543,7 @@ input[type=checkbox].css-checkbox {
 							background-image:url(http://csscheckbox.com/checkboxes/dark-check-orange.png);
 						}
 
-.timing-entry {
+#timing-entry {
   list-style-type: none;
   display: inline;
 }
