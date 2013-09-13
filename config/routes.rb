@@ -1,5 +1,6 @@
 Sweaton2::Application.routes.draw do
 
+  get "mentorships/index"
   get "password_resets/new"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
@@ -12,6 +13,7 @@ Sweaton2::Application.routes.draw do
   resources :favourites, only: [:create, :destroy]
   resources :diary_entries, only: [:create, :destroy]
   resources :messages
+  resources :mentorships
   resources :password_resets
 
   root 'static_pages#home'

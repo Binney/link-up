@@ -4,4 +4,4 @@ require File.expand_path('../application', __FILE__)
 # Initialize the Rails application.
 Sweaton2::Application.initialize!
 
-DAYS_OF_THE_WEEK = %w[Monday Tuesday Wednesday Thursday Friday Saturday Sunday]
+config.gem 'cancan'

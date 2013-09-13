@@ -3,8 +3,7 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
-/*$orange: #f7931e;*/
-$orange: #f0f;
+$orange: #f7931e;
 $paleorange: #fddbc5;
 $palerorange: #ffede0;
 $yellow: #ffff00;
@@ -40,7 +39,7 @@ section {
   padding-top:42px;
   min-height: 100%; 
   position: relative;
-  background-color: #fff
+  background-color: #fff;
 }
 
 .center {

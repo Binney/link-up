@@ -34,7 +34,7 @@ class UsersController < ApplicationController
       @user.home_address ||= Venue.find_by(name: user_params[:school]).street_address
       @user.home_postcode ||= Venue.find_by(name: user_params[:school]).postcode
     else
-      @user.home_address ||= "10 Downing Street"
+      @user.home_address ||= "10 Downing Street" # As good a place as any.
     end
     if @user.save
       UserMailer.welcome_email(@user).deliver

@@ -12,7 +12,7 @@
       <%= f.text_field :email %>
 
       <%= f.label :school, "School:" %>
-      <%= f.collection_select :school, @schools %>
+      <%= f.select :school, @schools %>
 
       <%= f.label :password %>
       <%= f.password_field :password %>

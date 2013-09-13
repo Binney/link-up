@@ -6,6 +6,13 @@ class User < ActiveRecord::Base
   has_many :favourites, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
+  has_many :mentorships, foreign_key: "mentor_id", dependent: :destroy
+  has_many :mentees, through: :mentorships, source: :mentees
+  has_many :reverse_mentorships, foreign_key: "mentee_id",
+                                   class_name:  "Mentorship",
+                                   dependent:   :destroy
+  has_many :mentors, through: :reverse_mentorships, source: :mentor
+
   before_save { self.email = email.downcase }
   before_create :create_remember_token
   validates :name, presence: true, length: { maximum: 50 }
@@ -61,6 +68,18 @@ class User < ActiveRecord::Base
     self.password_reset_sent_at = Time.zone.now
     save!
     UserMailer.password_reset(self).deliver
+  end
+
+  def is_mentor?(other_user)
+    mentorships.find_by(mentee_id: other_user.id)
+  end
+
+  def request_mentor!(other_user)
+    mentorships.create!(mentee_id: other_user.id)
+  end
+
+  def destroy_mentor!(other_user)
+    mentorships.find_by(mentee_id: other_user.id).destroy!
   end
 
   def is_favourite?(event, day)

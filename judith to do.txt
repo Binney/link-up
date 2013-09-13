@@ -1,4 +1,4 @@
-Infowindows: 1) Add links to event and venue 2) "join activity" adds one session to diary 3) add "more info" link 4) COLOUR COLOUR COLOUR
+Infowindows: COLOUR COLOUR COLOUR
 
 Dagenham Park CoS make a school (ditto Westminster)
 

@@ -28,7 +28,7 @@ class StaticPagesController < ApplicationController
     else
       @venues = Venue.all :conditions => ["id != ?", 0] # Don't display venue(0) since it's a placeholder for events without a venue.
       @json = @venues.to_gmaps4rails do |venue, marker|
-        marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})
+        marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue })
         marker.title "#{venue.name}"
         marker.picture({:picture => view_context.image_path("tag_icons/small/Other.png"), :width => 35, :height => 48})
       end
@@ -46,7 +46,7 @@ class StaticPagesController < ApplicationController
     arr = []
     @favs.each do |f|
       (((params[:month] ? Date.parse(params[:month]) : Date.today).change(day: 1)..(params[:month] ? Date.parse(params[:month]) : Date.today).advance(months: 1).change(day: 1)).select {|d| d.wday == f.start_time.wday}).each do |date|
-        @calendar_entries.push CalendarEntry.new(DateTime.new(date.year, date.month, date.day, f.start_time.hour, f.start_time.min, 0), f.event_id) unless f.start_time.beginning_of_day>date
+        @calendar_entries.push CalendarEntry.new(DateTime.new(date.year, date.month, date.day, f.start_time.hour, f.start_time.min), f.event_id) unless f.start_time.beginning_of_day>date
       end
     end
 

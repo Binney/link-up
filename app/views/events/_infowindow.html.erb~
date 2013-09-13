@@ -9,13 +9,9 @@
   }
 </style>
 <div id="squirtle">
-  <h1><%= event.name %></h1>
-  <p>at <%= event.venue.name %></p>
-  <% arr = []
-  event.timings.each do |t|
-    arr.push(Date::DAYNAMES[t.start_time.wday]+"s")
-  end %>
-  <p><%= arr.nil? ? "None listed" : arr.to_sentence %></p>
+  <h1><%= link_to event.name, event %></h1>
+  <p>at <%= link_to event.venue.name, event.venue %></p>
+  <p><%= event.get_day_info %></p>
   <p><%= event.description %></p>
-  <%= link_to "JOIN ACTIVITY", '#' %>
+  <%= render 'events/week_view' %>
 </div>

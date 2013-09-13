@@ -28,7 +28,7 @@ class StaticPagesController < ApplicationController
     else
       @venues = Venue.all :conditions => ["id != ?", 0] # Don't display venue(0) since it's a placeholder for events without a venue.
       @json = @venues.to_gmaps4rails do |venue, marker|
-        marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})
+        marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue })
         marker.title "#{venue.name}"
         marker.picture({:picture => view_context.image_path("tag_icons/small/Other.png"), :width => 35, :height => 48})
       end

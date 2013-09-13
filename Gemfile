@@ -39,6 +39,7 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '1.0.2'
 gem 'nested_form'
+gem 'cancan'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false
