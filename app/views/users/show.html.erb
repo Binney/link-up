@@ -14,7 +14,7 @@
 </div>
 <div class="user_info">
   <%=  @user.school.eql?("None") ? "Not listed with any school" : "Student at "+@user.school %><br>
-  <%= @user.home_address+", "+@user.home_postcode %>
+  <%= @user.home_address.to_s+", "+@user.home_postcode.to_s %>
   <h2>Favourites:</h2>
   <%= render @user.events %>
 </div>

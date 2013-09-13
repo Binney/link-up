@@ -13,7 +13,7 @@
   </aside>
 </div>
 <div class="user_info">
-  <%= if @user.school { @user.school.eql?("None") ? "Not listed with any school" : "Student at "+@user.school } %><br>
+  <%=  @user.school.eql?("None") ? "Not listed with any school" : "Student at "+@user.school %><br>
   <%= @user.home_address+", "+@user.home_postcode %>
   <h2>Favourites:</h2>
   <%= render @user.events %>

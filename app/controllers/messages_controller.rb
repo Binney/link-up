@@ -38,18 +38,6 @@ class MessagesController < ApplicationController
     redirect_to inbox_path
   end
 
-  def clearallextras
-    Message.all.each do |m|
-      @message = m
-      unless User.exists?(m.sender_id) && User.exists?(m.receiver_id)
-        @message.destroy
-      else
-      puts "Sent by "+User.find(m.sender_id).name+", received by "+User.find(m.receiver_id).name
-      end
-    end
-    User.all.each { |u| u.save! }
-  end
-
   private
 
     def message_params
