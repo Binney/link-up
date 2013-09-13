@@ -33,6 +33,15 @@ module Sweaton2
       end if File.exists?(env_file)
     end
 
+    Ransack.configure do |config| # Add an extra predicate to search to enable searching for event sessions by time (to nearest hour).
+      config.add_predicate 'roughly',
+                           :arel_predicate => 'eq',
+#                           :formatter => proc {|t| Arel::Nodes::NamedFunction.new("date", t.to_time.hour) },
+                           :formatter => proc {|t| Chronic.parse(t).hour },
+                           :validator => proc {|t| t.present? },
+                           :compounds => true,
+                           :type => :string
+    end
 
   end
 end
