@@ -30,10 +30,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if Venue.find_by(name: @user.school)
-      @user.home_address ||= Venue.find_by(name: user_params[:school]).street_address
-      @user.home_postcode ||= Venue.find_by(name: user_params[:school]).postcode
+      @user.home_address = Venue.find_by(name: user_params[:school]).street_address if @user.home_address.blank?
+      @user.home_postcode = Venue.find_by(name: user_params[:school]).postcode if @user.home_postcode.blank?
     else
-      @user.home_address ||= "10 Downing Street" # As good a place as any.
+      @user.home_address = "10 Downing Street" if @user.home_address.blank? && @user.home_postcode.blank? # As good a place as any.
     end
     if @user.save
       UserMailer.welcome_email(@user).deliver
@@ -63,6 +63,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
+#    (Message.select { |s| s.sender_id==params[:id]}).each {|m| m.destroy }
+#    (Message.select { |r| r.receiver_id==params[:id]}).each {|m| m.destroy }
     User.destroy(params[:id])
     flash[:success] = "User destroyed."
     redirect_to users_url

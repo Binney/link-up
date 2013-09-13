@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :correct_or_admin, only: [:show, :destroy, :inbox] # Is that really it?!
+  before_action :correct_or_admin, only: [:show, :inbox] # Is that really it?!
 
   def new
 #    @message = current_user.messages.build
@@ -27,8 +27,8 @@ class MessagesController < ApplicationController
     @received_messages = Message.where(:receiver_id => current_user.id).paginate(:order => "created_at DESC", :page => params[:recd_page], :per_page => 5)
     @sent_messages = Message.where(:sender_id => current_user.id).order("created_at DESC").paginate(:page => params[:sent_page], :per_page => 5)
     @message = params[:id] ? Message.find(params[:id]) : @received_messages[0]
-    # ^ This works because every user must have at least one message in their received_messages - the "welcome you've just joined up" one. And if the user deletes that one, it'll display "no messages in your inbox" by testing for the existence of @message.
-    if @message
+
+    if @message # Unless it's displaying "no messages in inbox", the shown message is marked as read.
       @message.read!
     end
   end
@@ -36,6 +36,14 @@ class MessagesController < ApplicationController
   def destroy
     @message.destroy
     redirect_to inbox_path
+  end
+
+  def clearallextras
+    Message.all.each do |m|
+      unless User.exists?(m.sender_id) && User.exists?(m.receiver_id)
+        m.destroy
+      end
+    end
   end
 
   private

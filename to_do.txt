@@ -1,5 +1,7 @@
 === TO DO
 
+Cancan can you do the cancan (interpret "can" in the imperative rather than the question form here)
+
 CSS: OKAY so it needs to be less repetitive! 
     1) integrate generated_css_with_orange into custom.css
     2) - OR split up the entire file, up to you

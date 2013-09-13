@@ -2,8 +2,12 @@
 <h3>Your diary</h3>
 <% if @diary_entries.any? %>
   <% @diary_entries.each do |entry| %>
-    <% event = Event.find(entry.event_id) %>
-    <li><b><%= link_to event.name, event %></b> | <%= link_to event.venue.name, event.venue %></li>
+    <% if entry.event_id > 0 %>
+      <% event = Event.find(entry.event_id) %>
+      <li><b><%= link_to event.name, event %></b> | <%= link_to event.venue.name, event.venue %></li>
+    <% else %>
+      <li><b><%= link_to entry.name, edit_diary_entry_path(entry) %></b> <%= entry.start_time.to_s(:short) %></li>
+    <% end %>
   <% end %>
   <%= link_to "See more", my_events_path %>
 <% else %>

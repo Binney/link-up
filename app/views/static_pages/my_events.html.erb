@@ -49,7 +49,7 @@
         <% if entry.event_id>0 %>
           <%= link_to(h(entry.start_time.to_s(:time)+" "+Event.find(entry.event_id).name), Event.find(entry.event_id)) %><br>
         <% else %>
-          <%= link_to entry.name, edit_diary_entry_path(entry) %>
+          <%= link_to entry.start_time.to_s(:time)+" "+entry.name, edit_diary_entry_path(entry) %>
         <% end %>
       <% end %>
     <% end %>

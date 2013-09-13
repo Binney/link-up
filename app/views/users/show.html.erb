@@ -10,7 +10,7 @@
       <% if current_user.role == "admin" %>
         <%= @user.email %><br>
       <% end %>
-      <%= button_to "Send a message", new_message_path(receiver_id: @user.id), method: 'get', class: 'btn btn-primary' %><br>
+      <%= link_to "Send a message", new_message_path(recipient: @user.id), class: 'btn btn-primary btn-wide-enough' %><br>
       <%= link_to "Edit", edit_user_path(@user) %>
     </section>
     <%=  @user.school.eql?("None") ? "Not listed with any school" : "Student at "+@user.school %><br>

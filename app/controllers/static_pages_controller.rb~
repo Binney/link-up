@@ -33,7 +33,7 @@ class StaticPagesController < ApplicationController
         marker.title "#{venue.name}"
         marker.picture({:picture => view_context.image_path("tag_icons/small/Other.png"), :width => 35, :height => 48})
       end
-      @todays_events = Timing.where(:day == Date.today.wday).shuffle[0..6]
+      @todays_events = (Timing.select { |t| t.day == Date.today.wday}).shuffle[0..6]
       @tags = Tag.all.shuffle
     end
   end

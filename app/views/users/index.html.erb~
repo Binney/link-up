@@ -6,10 +6,20 @@
   <% if current_user.role.to_s == "admin" %>
     <% @schools.each do |school| %>
       <h4><%= school.name.to_s %></h4>
-      <%= render User.select { |u| u.school.to_s == school.name }, size: 52 %>
+      <% @users = User.select { |u| u.school.to_s == school.name } %>
+      <% if @users.any? %>
+        <%= render @users, size: 52 %>
+      <% else %>
+        No users at this school.
+      <% end %>
     <% end %>
     <h4>No school</h4>
-    <%= render User.select { |u| u.school.to_s == "None" }, size: 52 %>
+    <% @users = User.select { |u| !(Venue.find_by(name: u.school.to_s) } %>
+      <% if @users.any? %>
+        <%= render @users, size: 52 %>
+      <% else %>
+        No users.
+      <% end %>
 
   <% else %>
     <h4><%= current_user.school.to_s %></h4>

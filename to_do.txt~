@@ -30,10 +30,6 @@ HTTP requests for :admin=>true ??!!
 
 Make Upcoming Events and Past Events a) paginate b) appear in date order (or weekday?)
 
-Switch to Unicorn and ensure it works (WEBrick is not cool apparently :| )
-
-FORGOT YOUR PASSWORD?????
-
 ======================== FUTURE STUFF =========================
 
 * Reviews (can be posted by anyone but I'd expect mainly students)
