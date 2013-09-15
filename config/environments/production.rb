@@ -60,7 +60,7 @@ Sweaton2::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  # config.assets.precompile += %w( search.js )
+  config.assets.precompile += %w( search.js gmaps4rails.base.js gmaps4rails.googlemaps.js jquery.js jquery-ui-1.10.3.custom.min.js pagination.js )
 
   # DO care if the mailer can't send.
   config.action_mailer.delivery_method = :smtp
