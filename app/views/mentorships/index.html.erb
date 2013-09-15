@@ -2,6 +2,8 @@
 <% provide :site_section, "3" %>
 <h1>Manage mentorings</h1>
 
+<%= button_to "New mentorship", new_mentorship_path, method: 'get', class: 'btn btn-primary' %>
+
 <% if current_user.role == 'admin' || current_user.role == 'teacher' %>
 
   <% if @pending_requests.any? %>

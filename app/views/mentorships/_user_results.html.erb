@@ -1,8 +1,10 @@
 <table class="generic-list">
   <% @users.each do |u| %>
-    <tr>
-      <td><b><%= u.name %></b></td>
-      <td><%= render 'mentor', { user: u } %></td>
-    </tr>
+    <% unless u.id == current_user.id %>
+      <tr>
+        <td><b><%= u.name %></b></td>
+        <td><%= render 'mentor', { user: u } %></td>
+      </tr>
+    <% end %>
   <% end %>
 </table>
