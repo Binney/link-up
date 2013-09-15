@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = current_user.messages.build(message_params)
+    @message = current_user.sent_messages.build(message_params)
     @message.unread = true
     if @message.save
       flash[:success] = "Message sent."
@@ -36,14 +36,6 @@ class MessagesController < ApplicationController
   def destroy
     @message.destroy
     redirect_to inbox_path
-  end
-
-  def clearallextras
-    Message.all.each do |m|
-      unless User.exists?(m.sender_id) && User.exists?(m.receiver_id)
-        m.destroy
-      end
-    end
   end
 
   private

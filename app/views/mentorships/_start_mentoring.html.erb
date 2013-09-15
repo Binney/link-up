@@ -1,0 +1,4 @@
+<%= form_for(current_user.mentorships.build(mentee_id: user.id)) do |f| %>
+  <div><%= f.hidden_field :mentee_id %></div>
+  <%= f.submit "Send mentor request", class: "btn btn-primary" %>
+<% end %>

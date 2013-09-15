@@ -2,7 +2,9 @@ class User < ActiveRecord::Base
   has_many :events, through: :favourites
   has_many :diary_entries # oh them lovely plurals
   has_many :messages, foreign_key: "receiver_id", dependent: :destroy
-  has_many :sent_messages, class_name: "Message", foreign_key: "sender_id", dependent: :destroy
+  has_many :sent_messages, class_name: "Message", 
+                           foreign_key: "sender_id",
+                           dependent: :destroy
   has_many :favourites, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
@@ -43,7 +45,7 @@ class User < ActiveRecord::Base
     if search
       find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
     else
-      find(:all)
+      all
     end
   end
 
@@ -77,10 +79,10 @@ class User < ActiveRecord::Base
   end
 
   def request_mentor!(other_user)
-    mentorships.create!(mentee_id: other_user.id)
+    mentorships.create!(mentee_id: other_user.id, confirmation_stage: 0)
   end
 
-  def destroy_mentor!(other_user)
+  def stop_mentoring!(other_user) # Thus phrased so as to clarify: the argument is the MENTEE.
     mentorships.find_by(mentee_id: other_user.id).destroy!
   end
 

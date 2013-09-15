@@ -14,4 +14,10 @@ class UserMailer < ActionMailer::Base
     mail :to => user.email, :subject => "Reset your Link Up password"
   end
 
+  def mentor_email(mentee, mentor)
+    @mentee = mentee
+    @mentor = mentor
+    mail :to => mentee.email, :subject => "#{mentor.name} has requested to be your mentor on Link Up"
+  end
+
 end

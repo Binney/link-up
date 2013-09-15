@@ -8,7 +8,7 @@ class Message < ActiveRecord::Base
   self.per_page = 10
 
   def read!
-    self.unread = false
+    self.update_attribute(:unread, false)
   end
 
 end

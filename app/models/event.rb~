@@ -17,6 +17,10 @@ class Event < ActiveRecord::Base
   geocoded_by :gmaps4rails_address
   after_validation :geocode
 
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
+
   def gmaps4rails_address
     "#{venue.gmaps4rails_address}"
   end

@@ -43,9 +43,9 @@ class User < ActiveRecord::Base
 
   def self.simple_search(search)
     if search
-      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+      all.where('name LIKE ?', "%#{search}%")
     else
-      find(:all)
+      all
     end
   end
 
@@ -79,10 +79,10 @@ class User < ActiveRecord::Base
   end
 
   def request_mentor!(other_user)
-    mentorships.create!(mentee_id: other_user.id)
+    mentorships.create!(mentee_id: other_user.id, confirmation_stage: 0)
   end
 
-  def destroy_mentor!(other_user)
+  def stop_mentoring!(other_user) # Thus phrased so as to clarify: the argument is the MENTEE.
     mentorships.find_by(mentee_id: other_user.id).destroy!
   end
 

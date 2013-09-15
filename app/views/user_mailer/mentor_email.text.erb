@@ -1,0 +1,10 @@
+<%= @mentor.name %> wants to be your mentor!
+============================================
+
+They'll be able to see the events you attend, send you messages, and keep track of what you discover with Link Up.
+
+To confirm them as your mentor, <%= link_to "click here", @mentor.mentorships.find_by(mentee_id: @mentee.id) %> or log into Link Up and click "Mentoring" in the top bar.
+
+If you don't know this person, you might want to <%= link_to "report them to an admin", contact_path %>.
+
+The Link Up Team

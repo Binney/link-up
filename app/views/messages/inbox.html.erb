@@ -1,5 +1,6 @@
 <% provide(:title, "Inbox") %>
 <% provide(:site_section, "3") %>
+<% session[:message_notif] = current_user.messages.where(unread: true).count %>
 <div id="tabs">
   <ul>
     <li><a href="#inbox"><span>Inbox</span></a></li>

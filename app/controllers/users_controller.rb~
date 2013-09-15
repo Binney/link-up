@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   # Only admins and mentors can actually see anyone's profiles - if a student
   # clicks to any profile, it just redirects them to their homepage.
-  before_action :admin_user,     only: [:destroy, :show, :index]
+  before_action :admin_user,     only: :destroy
 
   def index
     if current_user.admin?
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     end
     if @user.save
       UserMailer.welcome_email(@user).deliver
-      User.find(1).messages.create!(subject: "You're in, #{@user.name}!", receiver_id: @user.id, message: "Welcome to Link Up! To get started with finding opportunities in your area, hit Find Events. For advice, visit Help at the top of the page. Good luck and have fun!")
+      User.find(1).sent_messages.create!(subject: "You're in, #{@user.name}!", receiver_id: @user.id, message: "Welcome to Link Up! To get started with finding opportunities in your area, hit Find Events. For advice, visit Help at the top of the page. Good luck and have fun!")
       sign_in @user
       flash[:success] = "User created successfully - we've sent you a confirmation email. Welcome to Link Up!"
       redirect_to root_path
@@ -63,8 +63,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-#    (Message.select { |s| s.sender_id==params[:id]}).each {|m| m.destroy }
-#    (Message.select { |r| r.receiver_id==params[:id]}).each {|m| m.destroy }
     User.destroy(params[:id])
     flash[:success] = "User destroyed."
     redirect_to users_url

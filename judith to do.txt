@@ -6,9 +6,6 @@ Link Up logo from Josh plus circular L
 
 Get Sarny??? Mentor system? fork?
 
-Log of popularity IE how many people have a) attended b) favourited each event for a) "popular near you" and b) event organisers to advertise
-^ Following on: different colour schemes for more/less popular ones: gradual gradient between $orange (popular) and $yellow (less so)
-
 Teachers' accounts: 
 1) Boolean Teacher At School
 2) THEN further degrees of specialisation - eg. can/can't delete users, ditto events; minimize number of admins

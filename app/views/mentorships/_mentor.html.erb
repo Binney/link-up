@@ -1,0 +1,25 @@
+<% unless current_user?(user) %>
+  <div id="mentor_form">
+
+  <% if current_user.is_mentor?(user) %>
+    <% @mentorship = current_user.mentorships.find_by(mentee_id: user.id) %>
+    <% case @mentorship.confirmation_stage %>
+      <% when 1 %>
+        Application 66% complete. <%= button_to "Manage", show_mentorship_path(@mentorship), method: 'get', class: 'btn' %>
+
+      <% when 2 %>
+        Application 66% complete. <%= button_to "Manage", show_mentorship_path(@mentorship), method: 'get', class: 'btn' %>
+
+      <% when 3 %>
+        You're a mentor. <%= render 'stop_mentoring', user: user %>
+
+      <% else %>
+        Application 33% complete. <%= button_to "Manage", @mentorship, method: 'get', class: 'btn' %>
+
+    <% end %>
+  <% else %>
+    <%= render 'start_mentoring', user: user %>
+  <% end %>
+
+  </div>
+<% end %>

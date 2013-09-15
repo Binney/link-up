@@ -8,8 +8,6 @@ CSS: OKAY so it needs to be less repetitive!
 
 Fix the whole "avatar_for" thing. Venues need pics, end of.
 
-Messages button: also says in brackets number of unread messages
-
 Extract cost info with regex from docs?
 
 Fix venue images to L logo
@@ -32,6 +30,15 @@ HTTP requests for :admin=>true ??!!
 
 Make Upcoming Events and Past Events a) paginate b) appear in date order (or weekday?)
 
+# Confirmation stages:
+#
+# 0: Created by mentor
+# 1: Confirmed by mentee but not admin
+# 2: Confirmed by admin but not mentee
+# 3: Confirmed by both and thus valid
+
+Argue: separate role for "mentor"? Pros: yr 7s can't request other yr 7s; cons: need to swap everthing around in 3 years. For now, just the one.
+
 ======================== FUTURE STUFF =========================
 
 * Reviews (can be posted by anyone but I'd expect mainly students)
@@ -39,3 +46,8 @@ Make Upcoming Events and Past Events a) paginate b) appear in date order (or wee
 * News (can be posted by organisers and mentors)
 
 * Related Events: eg if there's an event (Parkour Generations eg) which is run at multiple venues, this'll show the link
+
+* Log of popularity IE how many people have a) attended b) favourited each event for a) "popular near you" and b) event organisers to advertise
+^ Following on: different colour schemes for more/less popular ones: gradual gradient between $orange (popular) and $yellow (less so)
+
+

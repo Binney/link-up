@@ -1,0 +1,26 @@
+<div class="request">
+<h4>Mentor request from <%= @mentorship.mentor.name %></h4>
+
+<table>
+  <tr>
+    <td>Request sent at</td>
+    <td><%= @mentorship.created_at.to_s(:short) %></td>
+  </tr>
+  <tr>
+    <td><b>Stage</b></td>
+    <td>Confirmed by mentee?</td>
+    <td>Approved by admin?</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><%= @mentorship.confirmation_stage==1 ? "Yes!" : "No" %></td>
+    <td><%= @mentorship.confirmation_stage==2 ? "Yes!" : "No" %></td>
+  </tr>
+</table>
+
+<% if current_user.id==@mentorship.mentor_id %>
+  <%= form_for(@mentorship, html: { method: :delete }) do |f| %>
+    <%= f.submit "Cancel mentor request", class: "btn", data: { confirm: "Are you sure you want to cancel your request to mentor #{@mentorship.mentee.name}?" } %>
+  <% end %>
+<% end %>
+</div>

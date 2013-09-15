@@ -1,29 +1,141 @@
+<% provide :title, "Mentoring" %>
+<% provide :site_section, "3" %>
 <h1>Manage mentorings</h1>
 
-Super popular thing
+<% if current_user.role == 'admin' || current_user.role == 'teacher' %>
 
-Really popular thing
+  <% if @pending_requests.any? %>
+    <h4>Pending requests</h4>
+    <table class="tab_table">
+      <tr>
+        <td></td>
+        <td><b>Mentor</b></td>
+        <td><b>Mentee</b></td>
+        <td><b>Confirmed by mentee?</b></td>
+        <td><b>Approved by teacher?</b></td>
+        <td></td>
+      </tr>
+      <% @pending_requests.each do |req| %>
+        <tr>
+          <td><%= req.updated_at.to_s(:short) %></td>
+          <td><%= User.find(req.mentor_id).name %></td>
+          <td><%= User.find(req.mentee_id).name %></td>
+          <td><%= req.confirmation_stage % 2 == 1 ? "Yes" : "No" %></td>
+          <td><%= req.confirmation_stage > 1 ? "Yes" : (render "approve_request", mentorship: req) %></td>
+          <td style="vertical-align:bottom;"><%= render 'cancel_request', mentorship: req %></td>
+        </tr>      
+      <% end %>
+    </table>
+  <% end %>
 
-Relatively popular thing
+  <% if @pending_mentees.any? %>
+    <h4>Approved requests</h4>
+    <table class="tab_table">
+      <tr>
+        <td></td>
+        <td><b>Mentor</b></td>
+        <td><b>Mentee</b></td>
+        <td><b>Confirmed by mentee?</b></td>
+        <td><b>Approved by teacher?</b></td>
+        <td></td>
+      </tr>
+      <% @pending_mentees.each do |req| %>
+        <tr>
+          <td><%= req.updated_at.to_s(:short) %></td>
+          <td><%= User.find(req.mentor_id).name %></td>
+          <td><%= User.find(req.mentee_id).name %></td>
+          <td><%= req.confirmation_stage % 2 == 1 ? "Yes" : "No" %></td>
+          <td><%= req.confirmation_stage > 1 ? "Yes" : (render "approve_request", mentorship: req) %></td>
+          <td style="vertical-align:bottom;"><%= render 'delete', mentorship: req %></td>
+        </tr>      
+      <% end %>
+    </table>
+  <% end %>
 
-Kinda average
+  <h4>Established mentorships</h4>
+  <table class="tab_table">
+    <tr>
+      <td><b>Mentor</b></td>
+      <td><b>Mentee</b></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <% if @mentorships.any? %>
+      <% @mentorships.each do |m| %>
+        <td><%= link_to m.mentor.name, m.mentor %></td>
+        <td><%= link_to m.mentee.name, m.mentee %></td>
+        <td><small>Since <%= m.created_at.to_s(:short_day) %></small></td>
+        <td><%= render 'delete', mentorship: m %></td>
+      <% end %>
+    <% else %>
+      <tr><td>You're not mentoring anyone. <%= link_to "Send a mentorship request here", new_mentorship_path %>.</td><td></td><td></td></tr>
+    <% end %>
 
-Really not so great
 
-Doesn't live up to the hype
+<% else %>
 
-Not gonna lie, it's pretty rubbish
+  <% if @pending_mentor_requests.any? || @pending_mentee_requests.any? %>
+    <h4>Pending requests</h4>
+    <table class="tab_table">
+      <tr>
+        <td></td>
+        <td><b>Mentor</b></td>
+        <td><b>Mentee</b></td>
+        <td><b>Confirmed by mentee?</b></td>
+        <td><b>Approved by teacher?</b></td>
+        <td></td>
+      </tr>
+      <% @pending_mentor_requests.each do |req| %>
+        <tr>
+          <td><%= req.updated_at.to_s(:short) %></td>
+          <td><%= User.find(req.mentor_id).name %></td>
+          <td><%= User.find(req.mentee_id).name %></td>
+          <td><%= req.confirmation_stage % 2 == 1 ? "Yes" : "No" %></td>
+          <td><%= req.confirmation_stage > 1 ? "Yes" : "No" %></td>
+          <td style="vertical-align:bottom;"><%= render 'delete', mentorship: req %></td>
+        </tr>      
+      <% end %>
+      <tr></tr>
+      <% @pending_mentee_requests.each do |req| %>
+        <tr>
+          <td><%= req.updated_at.to_s(:short) %></td>
+          <td><%= User.find(req.mentor_id).name %></td>
+          <td><%= User.find(req.mentee_id).name %></td>
+          <td><%= req.confirmation_stage % 2 == 1 ? "Yes" : (render "approve_request", mentorship: req) %></td>
+          <td><%= req.confirmation_stage > 1 ? "Yes" : "No" %></td>
+          <td><%= render 'delete', mentorship: req %></td>
+        </tr>      
+      <% end %>
+    </table>
+  <% end %>
 
-Box contained wildcat, Wouldn't buy again
-
-<% if admin? %>
-
-
-
-
-<% elsif signed_in? %>
-
-
-
+  <h4>Established mentorships</h4>
+  <table class="tab_table">
+    <% if @mentors.any? %>
+    <tr>
+      <td><b>Your mentors</b></td>
+      <td></td>
+    </tr>
+      <% @mentors.each do |m| %>
+        <td><%= link_to m.mentor.name, new_message_path(recipient: m.mentor.id) %></td>
+        <td><small>Since <%= m.created_at.to_s(:short_day) %></small></td>
+      <% end %>
+    <tr></tr>
+    <% end %>
+    <tr>
+      <td><b>Your mentees</b></td>
+      <td></td>
+    </tr>
+    <% if @mentees.any? %>
+      <% @mentees.each do |m| %>
+        <td><%= link_to m.mentee.name, m.mentee %></td>
+        <td><small>Since <%= m.created_at.to_s(:short_day) %></small></td>
+      <% end %>
+    <% else %>
+      <tr><td>You're not mentoring anyone. <%= link_to "Send a mentorship request here", new_mentorship_path %>.</td><td></td></tr>
+    <% end %>
 
 <% end %>
+
+
+</table>

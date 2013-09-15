@@ -3,7 +3,9 @@
     <% if signed_in? %>
         <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
         <li><%= link_to "Settings", edit_user_path(current_user.id) %></li>
-        <li><%= link_to "Mentoring", mentoring_path %></li>
+        <% unless current_user.school == "None" %>
+          <li><%= link_to "Mentoring"+ (session[:mentor_notif]=="0" ? " (#{session[:mentor_notif]})" : ""), mentoring_path %></li>
+        <% end %>
         <li><%= link_to current_user.name, user_path(current_user.id) %></li>
     <% end %>
   </ul>

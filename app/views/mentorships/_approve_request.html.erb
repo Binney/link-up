@@ -1,0 +1,8 @@
+<%= form_for(mentorship) do |f| %>
+  <div><%= f.hidden_field :mentee_id %></div>
+  <% if current_user.id==mentorship.mentee_id %>
+    <%= f.submit "Confirm mentor request", class: "btn btn-primary", data: { confirm: "Are you sure you want #{User.find(mentorship.mentor_id).name} to be your mentor?" } %>
+  <% else %>
+    <%= f.submit "Confirm mentor request", class: "btn btn-primary", data: { confirm: "Are you sure you want to confirm #{User.find(mentorship.mentor_id).name}'s mentorship request?" } %>
+  <% end %>
+<% end %>

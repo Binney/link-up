@@ -1,4 +1,4 @@
-<%= form_for(current_user.messages.build(receiver_id: user_id, sender_id: current_user.id)) do |f| %>
+<%= form_for(current_user.sent_messages.build(receiver_id: user_id, sender_id: current_user.id)) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div><%= f.hidden_field :receiver_id %>
   <%= f.hidden_field :sender_id %></div>
