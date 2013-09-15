@@ -17,15 +17,6 @@
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
       <%= yield %>
-      <% content_for :scripts do
-          :javascript
-          Gmaps.map.infobox = function(boxText) {
-            return {
-              content: boxText
-          }};
-
-      end %>
-
       <%= render 'layouts/footer' %>
     </div>
   </body>

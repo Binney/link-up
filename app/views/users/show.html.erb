@@ -3,6 +3,7 @@
 <div class="row">
   <aside class="span4">
     <section>
+      <%= button_to "Back to users", users_path, class: 'btn', method: 'get' %>
       <h1>
         <%= avatar_for @user %>
         <%= @user.name %>
@@ -10,7 +11,7 @@
       <% if current_user.role == "admin" %>
         <%= @user.email %><br>
       <% end %>
-      <%= link_to "Send a message", new_message_path(recipient: @user.id), class: 'btn btn-primary btn-wide-enough' %><br>
+      <%= link_to "Send a message", new_message_path(recipient: @user.id) %><br>
       <%= link_to "Edit", edit_user_path(@user) %>
     </section>
     <%=  @user.school.eql?("None") ? "Not listed with any school" : "Student at "+@user.school %><br>
