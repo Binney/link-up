@@ -9,8 +9,10 @@ class UsersController < ApplicationController
   def index
     if current_user.admin?
       @schools = Venue.select {|v| v.is_school }
-    else
+    elsif current_user.role == 'teacher'
       @users = User.select {|u| u.school==current_user.school }
+    else
+      redirect_to root_path
     end
   end
 

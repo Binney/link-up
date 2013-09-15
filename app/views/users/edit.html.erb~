@@ -27,15 +27,6 @@
         <%= f.label :role %>
         <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
 
-        <%= f.check_box :mentor %>
-        <%= f.label :mentor, "Teacher/parent" %>
-
-        <%= f.check_box :organiser %>
-        <%= f.label :organiser, "Event organiser" %>
-        
-        <%= f.check_box :admin %>
-        <%= f.label :mentor, "Administrator (careful!)" %>
-        
       <% end %>
 
       <% if current_user.id == @user.id %>

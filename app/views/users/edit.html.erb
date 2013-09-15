@@ -22,12 +22,12 @@
       <%= f.label :home_postcode %>
       <%= f.text_field :home_postcode %>
 <br>
-      <% if can? :update, @user %>
+      <% "if can? :update, @user" %>
 
         <%= f.label :role %>
         <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
 
-      <% end %>
+      <% "end" %>
 
       <% if current_user.id == @user.id %>
 

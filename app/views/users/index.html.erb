@@ -3,7 +3,7 @@
 <h1>All users</h1>
 
 <ul class="generic-list">
-  <% if current_user.role.to_s == "admin" %>
+  <% if current_user.admin? %>
     <% @schools.each do |school| %>
       <h4><%= school.name.to_s %></h4>
       <% @users = User.select { |u| u.school.to_s == school.name } %>
