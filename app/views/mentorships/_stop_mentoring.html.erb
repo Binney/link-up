@@ -1,4 +1,0 @@
-<%= form_for(current_user.mentorships.find_by(mentee_id: user),
-             html: { method: :delete }) do |f| %>
-  <%= f.submit "Stop mentoring", class: "btn", data: { confirm: "Are you sure you want to stop mentoring #{user.name}?" } %>
-<% end %>
