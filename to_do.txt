@@ -37,6 +37,8 @@ Make Upcoming Events and Past Events a) paginate b) appear in date order (or wee
 # 2: Confirmed by admin but not mentee
 # 3: Confirmed by both and thus valid
 
+You should be able to send messages to your teachers too. So under "new message" we need a contact list including admin, mentors, mentees, and anyone who's ever messaged you (nb mentors automatically fall into this group) so teachers have to message the kids first BUT then either can email the other.
+
 Argue: separate role for "mentor"? Pros: yr 7s can't request other yr 7s; cons: need to swap everthing around in 3 years. For now, just the one.
 
 ======================== FUTURE STUFF =========================

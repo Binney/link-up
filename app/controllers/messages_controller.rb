@@ -2,8 +2,13 @@ class MessagesController < ApplicationController
   before_action :correct_or_admin, only: [:show, :inbox] # Is that really it?!
 
   def new
-#    @message = current_user.messages.build
-    @users = User.all # This should be reduced to a subsection of users - how? Only from your school??
+    if current_user.admin?
+      @users = User.all
+    elsif current_user.role == "teacher"
+      @users = (User.all.select {|m| m.school == current_user.school && m.id != current_user.id})+[User.find(1)]
+    else
+      @users = (current_user.mentorships.map {|m| m.mentee })+(current_user.reverse_mentorships.map {|m| m.mentor} )+[User.find(1)]
+    end
   end
 
   def create
