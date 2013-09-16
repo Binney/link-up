@@ -1,1 +1,0 @@
-!function(){this.Gmaps={triggerOldOnload:function(){return"function"==typeof window.Gmaps.oldOnload?window.Gmaps.oldOnload():void 0},loadMaps:function(){var o,n,d,i;d=window.Gmaps,i=[];for(o in d)n=d[o],/^load_/.test(o)?i.push(window.Gmaps[o]()):i.push(void 0);return i}}}.call(this);
