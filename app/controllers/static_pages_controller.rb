@@ -10,6 +10,7 @@ class StaticPagesController < ApplicationController
     @search = Event.search(params[:q])
 
     if signed_in?
+      session[:message_notif] = current_user.messages.where(unread: true).count
       @events = current_user.events
 
       # Consolidate all your map markers into one json and plot:

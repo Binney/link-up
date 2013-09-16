@@ -19,7 +19,7 @@
 /config/local_env.yml
 
 # Ignore public folder and Heroku'll automatically compile assets.
-/public/**
+#/public/**
 
 # Ignore backups. Freaking backups.
 *~

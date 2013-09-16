@@ -24,7 +24,7 @@ class StaticPagesController < ApplicationController
         marker.picture({:picture => view_context.image_path("l.jpg"), :width => 35, :height => 48})
       end
       @json = (JSON.parse(@evs) + JSON.parse(@house)).to_json
-      @diary_entries = ((current_user.diary_entries.select { |d| d.start_time > Date.today }) +current_user.favourites)#.shuffle[0,5]
+      @diary_entries = ((current_user.diary_entries.select { |d| d.start_time > Date.today }) +current_user.favourites)[0,5]
       @tags = Tag.all.shuffle
     else
       @venues = Venue.all :conditions => ["id != ?", 0] # Don't display venue(0) since it's a placeholder for events without a venue.
