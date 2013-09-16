@@ -606,14 +606,13 @@ input[type=checkbox].css-checkbox {
 
 .login-tab {
   width:50%;
-  background-color: #a7a7a7;
   float:right;
   height: 200px;
   & input[type=text] {
-    width: 50%;
+    width: 49%;
   }
   & input[type=password] {
-    width: 50%;
+    width: 49%;
   }
 }
 

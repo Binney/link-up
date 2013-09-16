@@ -13,18 +13,12 @@
 //= require turbolinks
 //= require jquery
 //= require jquery.turbolinks
-//= require jquery_ujs
 //= require jquery.ui.all
 //= require bootstrap
 //= require jquery_nested_form
 //= require_tree .
 
 $(function() {
-  /* AJAX search for users. */
-  $(document).on('submit', '#user_search', function () {
-    $.get(this.action, $(this).serialize(), null, 'script');
-    return false;
-  });
 
   /* Datepicker on event_start_time (um, obsolete?) */
   $("#event_start_time").datepicker();
@@ -36,6 +30,12 @@ $(function() {
   $(".neweventform").toggle();
   $("#toggleform").click(function() {
     $( ".neweventform" ).slideToggle("slow" );
+  });
+
+  /* AJAX search for users. */
+  $(document).on('submit', '#user_search', function () {
+    $.get(this.action, $(this).serialize(), null, 'script');
+    return false;
   });
 
 });
