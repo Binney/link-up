@@ -25,7 +25,7 @@ module Sweaton2
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif *.js *.css )
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif )
     config.assets.precompile += ['jquery.js' 'jquery-ui-1.10.3.custom.min.js' 'pagination.js']
     config.before_configuration do
       env_file = File.join(Rails.root, 'config', 'local_env.yml')
