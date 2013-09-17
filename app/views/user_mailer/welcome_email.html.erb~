@@ -10,7 +10,7 @@
     <br>
       You can get started right away by clicking <%= link_to 'here', @url %>
     <br>
-      Enjoy!
+      Thanks for joining and enjoy!
     <br>
       <i>The Link Up Team</i>
     </p>

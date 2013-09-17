@@ -3,7 +3,7 @@
 .tags li {
   list-style:none;
   display: inline;
-  line-height: 150px;
+  /*line-height: 150px;*/
 }
 
 .tag_wrapper {
@@ -17,10 +17,10 @@
 }
 .tag_name {
 /*  line-height: 30px;*/
-  display: inline-block;
+/*  display: inline-block;*/
   vertical-align: middle;
-  position: absolute;
-  color:#fff;
+/*  position: relative;*/
+  color:#f0f;
   text-transform: uppercase;
   font-size: 20px;
   font-weight: bold;
@@ -28,7 +28,7 @@
   width: 150px;
   height: 150px;
   text-align: center;
-  z-index: 30;
+/*  z-index: 30;*/
   opacity: 0;
 }.tag_name:hover {
   opacity:1;
