@@ -2,13 +2,20 @@
 <html>
 <head>
   <title>The page you were looking for doesn't exist (404)</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>
+  <%= favicon_link_tag %>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
 </head>
-
-<body>
-  <div class="dialog">
-    <h1>This isn't the page you're looking for.</h1>
-    <p>You could've clicked a broken link, mistyped the address, or been the innocent witness to a catastrophic computer error.</p>
-  </div>
-  <p>Sorry about that.</p>
-</body>
+  <body>
+    <div class="container">
+      <div class="dialog">
+        <h1>This isn't the page you're looking for.</h1>
+        <p>You could've clicked a broken link, mistyped the address, or been the innocent witness to a catastrophic computer error.</p>
+      </div>
+      <p>Sorry about that.</p>
+    </div>
+  </body>
 </html>
