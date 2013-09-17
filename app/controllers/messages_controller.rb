@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   before_action :correct_or_admin, only: [:show, :inbox] # Is that really it?!
 
   def new
-    if current_user.admin?
+    if admin?
       @users = User.all
     elsif current_user.role == "teacher"
       @users = (User.all.select {|m| m.school == current_user.school && m.id != current_user.id})+[User.find(1)]
@@ -51,7 +51,7 @@ class MessagesController < ApplicationController
 
     def correct_or_admin
       @message = params[:id] ? Message.find(params[:id]) : nil
-      redirect_to(root_path) unless signed_in? && (current_user.admin? || @message.nil? || (@message.sender_id == current_user.id) || (@message.receiver_id == current_user.id))
+      redirect_to(root_path) unless signed_in? && (admin? || @message.nil? || (@message.sender_id == current_user.id) || (@message.receiver_id == current_user.id))
     end
 
 end

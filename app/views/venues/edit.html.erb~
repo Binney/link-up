@@ -9,7 +9,7 @@
 
       <%= f.label :name %>
       <%= f.text_field :name %>
-
+      <br>
       <% if current_user.admin? %>
         <%= f.check_box :is_school %>
         <%= f.label :is_school, "School?" %>

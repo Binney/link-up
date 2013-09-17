@@ -1,0 +1,12 @@
+<% if @events.any? %>
+
+  <ul class="generic-list">
+    <%= render @events, size: 52 %>
+  </ul>
+  <%= will_paginate @events %>
+
+<% else %>
+
+  <p>No events found.</p>
+
+<% end %>

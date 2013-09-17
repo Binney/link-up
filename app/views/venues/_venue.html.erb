@@ -5,7 +5,7 @@
   <% else %>
     <%= link_to venue.name, venue %>
   <% end %>
-  <% if signed_in? && (current_user.admin? || current_user.id == venue.user_id) %>
+  <% if signed_in? && (admin? || current_user.id == venue.user_id) %>
     | <%= link_to "delete", venue, method: :delete,
                                   data: { confirm: "This will delete all associated events!\nYou sure?" } %>
   <% end %>

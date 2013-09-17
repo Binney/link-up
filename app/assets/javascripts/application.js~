@@ -15,13 +15,12 @@
 //= require jquery.turbolinks
 //= require jquery.ui.all
 //= require jquery_ujs
-//= require jquery-ui
 //= require bootstrap
 //= require jquery_nested_form
 //= require_tree .
 
 $(function() {
-
+  alert("Hello!!!");
   /* Datepicker on event_start_time (um, obsolete?) */
   $("#event_start_time").datepicker();
 

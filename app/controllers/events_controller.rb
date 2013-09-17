@@ -6,27 +6,23 @@ class EventsController < ApplicationController
 
   def index
     @search = Event.search(params[:q])
-    if signed_in?
-      schl = current_user.school
-    else
-      schl = "None"
-    end
+    schl = (signed_in? ? current_user.school : "None")
     if params[:q]
       # Indexing from search
       @search = Event.search(params[:q])
       @search.sorts = 'distance_to(#{params[:q][:gender_not_cont]) asc' unless params[:q][:gender_not_cont].nil?
       if admin?
         # Display all events regardless of school
-        @events = @search.result
+        @events = @search.result.paginate(:page => params[:page])
       else
         # Only display events open to the public or at that user's school
-        @events = @search.result.select { |ev| !(ev.venue.is_school) || ev.venue.name.eql?(schl) } #.paginate(:page => params[:page])
+        @events = @search.result.select { |ev| !(ev.venue.is_school) || ev.venue.name.eql?(schl) }.paginate(:page => params[:page])
       end
     else # Indexing without search (ie all)
       if admin?
-        @events = Event.all
+        @events = Event.all.paginate(:page => params[:page])
       else
-        @events = Event.all.select { |ev| !(ev.venue.is_school) || ev.venue.name.eql?(schl) } #.paginate(:page => params[:page])
+        @events = Event.all.select { |ev| !(ev.venue.is_school) || ev.venue.name.eql?(schl) }.paginate(:page => params[:page])
       end
     end
     @json = @events.to_gmaps4rails do |event, marker|

@@ -2,7 +2,7 @@
 
 .tags li {
   list-style:none;
-  display: inline;
+  display: inline-block;
   line-height: 150px;
 }
 
@@ -16,6 +16,7 @@
   text-align: center;
 }
 .tag_name {
+  top: 60px;
   line-height: 30px;
   display: inline-block;
   vertical-align: middle;

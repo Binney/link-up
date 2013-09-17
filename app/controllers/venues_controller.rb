@@ -75,13 +75,13 @@ class VenuesController < ApplicationController
 
     def correct_or_admin
       @venue = Venue.find(params[:id])
-      signed_in? && ((@venue.user_id == current_user.id) || current_user.admin?)
+      signed_in? && ((@venue.user_id == current_user.id) || admin?)
     end
 
     def correct_school
       current_venue = Venue.find(params[:id])
       if current_venue.is_school
-        redirect_to(root_path) unless signed_in? && (current_venue.name.eql?(current_user.school) || current_user.admin?)
+        redirect_to(root_path) unless signed_in? && (current_venue.name.eql?(current_user.school) || admin?)
       end
     end
 

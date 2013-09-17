@@ -1,5 +1,5 @@
 <div id="mega-search">
-  <%= search_form_for @search do |f| %>
+  <%= search_form_for( @search, method: 'get') do |f| %>
     <ul>
     <li>
     <small class="annotation"><%= f.label :gender_not_cont, "Find activites near you:" %></small>

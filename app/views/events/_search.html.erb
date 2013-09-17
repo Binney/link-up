@@ -1,4 +1,4 @@
-<%= search_form_for @search do |f| %>
+<%= search_form_for( @search, method: 'get') do |f| %>
   <%= f.label :tags_name_or_description_or_name_cont, "Search:" %>
   <%= f.text_field :tags_name_or_description_or_name_cont, value: (params[:q][:tags_name_or_name_or_description_cont] if params[:q]) %>
   <%= f.label :venue_name_cont, "Venue" %>

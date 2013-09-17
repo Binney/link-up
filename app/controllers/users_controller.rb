@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   def index
-    if current_user.admin?
+    if admin?
       @schools = Venue.select {|v| v.is_school }
     elsif current_user.role == 'teacher'
       @users = User.select {|u| u.school==current_user.school }
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if current_user.mentorships.find_by(mentee_id: @user, confirmation_stage: 3) || current_user.admin?
+    if current_user.mentorships.find_by(mentee_id: @user, confirmation_stage: 3) || admin?
       @favourites = @user.events.paginate(page: params[:page]) # How to display these...
     else
       redirect_to root_path
@@ -80,10 +80,10 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user) || (current_user.admin? || current_user.mentor?)
+      redirect_to(root_path) unless current_user?(@user) || (admin? || current_user.mentor?)
     end
 
     def admin_user
-      redirect_to(root_path) unless (current_user.admin? || current_user.mentor?)
+      redirect_to(root_path) unless (admin? || current_user.mentor?)
     end
 end

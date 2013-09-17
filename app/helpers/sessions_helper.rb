@@ -36,13 +36,13 @@ module SessionsHelper
   end
 
   def organiser_account
-    unless signed_in? && (current_user.organiser? || current_user.admin?)
+    unless signed_in? && (current_user.organiser? || admin?)
       redirect_to root_path
     end
   end
 
   def mentor_account # NB THIS IS INADEQUATE - Also need to check if current user is mentor FOR THAT account. Integer? Relationship?
-    unless signed_in? && (current_user.mentor? || current_user.admin?)
+    unless signed_in? && (current_user.mentor? || admin?)
       redirect_to root_path
     end
   end

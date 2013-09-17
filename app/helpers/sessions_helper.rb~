@@ -12,7 +12,7 @@ module SessionsHelper
   end
 
   def admin?
-    signed_in? && current_user.admin
+    signed_in? && current_user.role == "admin"
   end
 
   def current_user=(user)
