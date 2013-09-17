@@ -10,6 +10,7 @@ class StaticPagesController < ApplicationController
     @search = Event.search(params[:q])
 
     if signed_in?
+      session[:message_notif] = current_user.messages.where(unread: true).count
       @events = current_user.events
 
       # Consolidate all your map markers into one json and plot:
@@ -27,13 +28,14 @@ class StaticPagesController < ApplicationController
       @diary_entries = ((current_user.diary_entries.select { |d| d.start_time > Date.today }) +current_user.favourites)[0,5]
       @tags = Tag.all.shuffle
     else
-      @venues = Venue.all :conditions => ["id != ?", 0] # Don't display venue(0) since it's a placeholder for events without a venue.
-      @json = @venues.to_gmaps4rails do |venue, marker|
-        marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue })
-        marker.title "#{venue.name}"
-        marker.picture({:picture => view_context.image_path("tag_icons/small/Other.png"), :width => 35, :height => 48})
-      end
       @todays_events = (Timing.select { |t| t.day == Date.today.wday}).shuffle[0..6]
+      #@venues = Venue.all :conditions => ["id != ?", 0] # Don't display venue(0) since it's a placeholder for events without a venue.
+      @json = (@todays_events.pluck(:event)).to_gmaps4rails do |event, marker|
+        marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => event })
+        marker.title "#{event.name}"
+        image = event.tags.count<1 ? "Other" : event.tags[0].name
+        marker.picture({:picture => view_context.image_path("tag_icons/small/#{image}.png"), :width => 35, :height => 48})
+      end
       @tags = Tag.all.shuffle
     end
   end
