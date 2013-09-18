@@ -22,6 +22,7 @@ Sweaton2::Application.routes.draw do
   match '/signup',  to: 'users#new',		via: 'get'
   match '/signin',  to: 'sessions#new',		via: 'get'
   match '/signout', to: 'sessions#destroy',	via: 'delete' 
+  match '/endsession', to: 'sessions#destroy',	via: 'get' 
   match '/venues',  to: 'venues#index',		via: 'get'
   match '/inbox',   to: 'messages#inbox',   via: 'get'
   match '/my_events', to: 'static_pages#my_events', via: 'get'
