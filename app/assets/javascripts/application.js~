@@ -20,7 +20,7 @@
 //= require_tree .
 
 $(function() {
-  alert("Hello!!!");
+
   /* Datepicker on event_start_time (um, obsolete?) */
   $("#event_start_time").datepicker();
 
