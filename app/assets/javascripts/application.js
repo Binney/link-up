@@ -18,6 +18,7 @@
 //= require jquery.ui.all
 //= require jquery_nested_form
 //= require_self
+//= require_tree .
 
 $(function() {
   alert("You clicked something!");
