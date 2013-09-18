@@ -18,7 +18,7 @@
         <% else %>
           <%= t.r do %>
             <%= t.d(h(listing.start_time.to_s(:day_week_month))) %>
-            <%= t.d(h(link_to listing.name, edit_diary_entries_path(listing))) %>
+            <%= t.d(h(link_to listing.name, edit_diary_entry_path(listing))) %>
             <%= t.d(h(listing.location.to_s)) %>
             <%= t.d(h(listing.start_time.to_s(:time_day))) %>
             <%= t.d(h("Attending")) %>

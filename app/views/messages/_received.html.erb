@@ -1,4 +1,5 @@
 <% if @received_messages.any? %>
+  <h4>Received messages</h4>
   <div class="tab_table">
     <col span="2" style="font-size:25px;"/>
     <%= table_for(@received_messages) do |t| %>
