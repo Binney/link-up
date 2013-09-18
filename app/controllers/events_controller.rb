@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-
+require 'will_paginate/array'
   before_action :organiser_account, only: [:new, :create, :edit, :update, :destroy]
   before_action :correct_or_admin,  only: [:edit, :update, :destroy]
   before_action :correct_school, only: :show
@@ -22,7 +22,7 @@ class EventsController < ApplicationController
       if admin?
         @events = Event.all.paginate(:page => params[:page])
       else
-        @events = Event.all.select { |ev| !(ev.venue.is_school) || ev.venue.name.eql?(schl) }.paginate(:page => params[:page])
+        @events = (Event.all.select { |ev| !(ev.venue.is_school) || ev.venue.name.eql?(schl) }).paginate(:page => params[:page])
       end
     end
     @json = @events.to_gmaps4rails do |event, marker|

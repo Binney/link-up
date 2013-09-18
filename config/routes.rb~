@@ -6,8 +6,13 @@ Sweaton2::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :venues
   resources :events do
-    collection { post :search, to: 'events#index' }
+#    collection { post :search, to: 'events#index' }
+    collection do
+      match 'search' => 'events#index', :via => [:get, :post], :as => :search
+    end
   end
+#resources :styles do
+#end
   resources :tags, only: [:index, :show]
   resources :relationships, only: [:create, :destroy]
   resources :favourites, only: [:create, :destroy]
@@ -19,7 +24,7 @@ Sweaton2::Application.routes.draw do
   root 'static_pages#home'
   match '/signup',  to: 'users#new',		via: 'get'
   match '/signin',  to: 'sessions#new',		via: 'get'
-  match '/signout', to: 'sessions#destroy',	via: 'get' # Why get and not delete? Find out next time on Binney's Stuck TV
+  match '/signout', to: 'sessions#destroy',	via: 'delete' 
   match '/venues',  to: 'venues#index',		via: 'get'
   match '/inbox',   to: 'messages#inbox',   via: 'get'
   match '/my_events', to: 'static_pages#my_events', via: 'get'

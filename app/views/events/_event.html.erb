@@ -1,4 +1,6 @@
-<li>
-  <span class="name and date"><%= link_to event.name, event_path(event.id) %> | <%= event.get_day_info %>, <%= Venue.find(event.venue_id).name %>, <%= event.distance_to(current_user) %> km away</span>
-  <span class="description"><%= event.description %></span>
-</li>
+<%= link_to event do %>
+  <li>
+    <span class="name and date"><b><%= event.name %></b> | <%= event.get_day_info %>, <%= Venue.find(event.venue_id).name %></span>
+    <span class="description"><%= event.description %></span>
+  </li>
+<% end %>
