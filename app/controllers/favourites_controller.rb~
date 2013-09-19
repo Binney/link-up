@@ -2,7 +2,7 @@ class FavouritesController < ApplicationController
   before_action :signed_in_user
 
   def create
-    @favourite = current_user.favourite.create!(favourite_params)
+    @favourite = current_user.favourites.create!(favourite_params)
     @event = Event.find(@favourite.event_id)
     respond_to do |format|
       format.html { redirect_to @event }

@@ -13,16 +13,16 @@ require 'will_paginate/array'
       @search.sorts = 'distance_to(#{params[:q][:gender_not_cont]) asc' unless params[:q][:gender_not_cont].nil?
       if admin?
         # Display all events regardless of school
-        @events = @search.result.paginate(:page => params[:page])
+        @events = @search.result.paginate(:page => params[:page], :per_page => 10)
       else
         # Only display events open to the public or at that user's school
-        @events = @search.result.select { |ev| !(ev.venue.is_school) || ev.venue.name.eql?(schl) }.paginate(:page => params[:page])
+        @events = @search.result.select { |ev| !(ev.venue.is_school) || ev.venue.name.eql?(schl) }.paginate(:page => params[:page], :per_page => 10)
       end
     else # Indexing without search (ie all)
       if admin?
-        @events = Event.all.paginate(:page => params[:page])
+        @events = Event.all.paginate(:page => params[:page], :per_page => 10)
       else
-        @events = (Event.all.select { |ev| !(ev.venue.is_school) || ev.venue.name.eql?(schl) }).paginate(:page => params[:page])
+        @events = (Event.all.select { |ev| !(ev.venue.is_school) || ev.venue.name.eql?(schl) }).paginate(:page => params[:page], :per_page => 10)
       end
     end
     @json = @events.to_gmaps4rails do |event, marker|

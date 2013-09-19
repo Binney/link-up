@@ -1,5 +1,6 @@
 class DiaryEntriesController < ApplicationController
   before_action :signed_in_user
+  skip_before_filter :verify_authenticity_token  
 
   def new
     @diary_entry = current_user.diary_entries.build

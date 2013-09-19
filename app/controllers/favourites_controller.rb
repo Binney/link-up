@@ -1,5 +1,6 @@
 class FavouritesController < ApplicationController
   before_action :signed_in_user
+  skip_before_filter :verify_authenticity_token  
 
   def create
     @favourite = current_user.favourites.create!(favourite_params)

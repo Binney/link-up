@@ -3,6 +3,7 @@ require 'will_paginate/array'
   before_action :organiser_account, only: [:new, :create, :edit, :update, :destroy]
   before_action :correct_or_admin,  only: [:edit, :update, :destroy]
   before_action :correct_school, only: :show
+  skip_before_filter :verify_authenticity_token  
 
   def index
     @search = Event.search(params[:q])
