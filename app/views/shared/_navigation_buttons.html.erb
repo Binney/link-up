@@ -1,31 +1,9 @@
 <nav class="major-nav">
   <ul class="major-nav-btn">
-    <% case yield(:site_section) %>
-      <% when "1" %>
-        <li><%= link_to "Find Events", events_path, class: "btn btn-large" %></li>
-        <li><%= link_to "Browse Categories", tags_path, class: "btn btn-large btn-primary" %></li>
-        <li><%= link_to "My Events", my_events_path, class: "btn btn-large" %></li>
-        <li><%= link_to "Messages (#{session[:message_notif]})", inbox_path, class: "btn btn-large" %></li>
-      <% when "2" %>
-        <li><%= link_to "Find Events", events_path, class: "btn btn-large" %></li>
-        <li><%= link_to "Browse Categories", tags_path, class: "btn btn-large" %></li>
-        <li><%= link_to "My Events", my_events_path, class: "btn btn-large btn-primary" %></li>
-        <li><%= link_to "Messages (#{session[:message_notif]})", inbox_path, class: "btn btn-large" %></li>
-      <% when "3" %>
-        <li><%= link_to "Find Events", events_path, class: "btn btn-large" %></li>
-        <li><%= link_to "Browse Categories", tags_path, class: "btn btn-large" %></li>
-        <li><%= link_to "My Events", my_events_path, class: "btn btn-large" %></li>
-        <li><%= link_to "Messages (#{session[:message_notif]})", inbox_path, class: "btn btn-large btn-primary" %></li>
-      <% when "4" %><!-- No buttons orange'd - for "outside" pages, eg' help -->
-        <li><%= link_to "Find Events", events_path, class: "btn btn-large" %></li>
-        <li><%= link_to "Browse Categories", tags_path, class: "btn btn-large" %></li>
-        <li><%= link_to "My Events", my_events_path, class: "btn btn-large" %></li>
-        <li><%= link_to "Messages (#{session[:message_notif]})", inbox_path, class: "btn btn-large" %></li>
-      <% else %>
-        <li><%= link_to "Find Events", events_path, class: "btn btn-large btn-primary" %></li>
-        <li><%= link_to "Browse Categories", tags_path, class: "btn btn-large" %></li>
-        <li><%= link_to "My Events", my_events_path, class: "btn btn-large" %></li>
-        <li><%= link_to "Messages (#{session[:message_notif]})", inbox_path, class: "btn btn-large" %></li>
-    <% end %>
+    <% puts "================= #{yield(:site_section)} ===================" %>
+    <li><%= link_to "Find Events", events_path, class: ((yield(:site_section)!='1' && yield(:site_section)!='2' && yield(:site_section)!='3' && yield(:site_section)!='4') ? "btn btn-large btn-primary" : "btn btn-large") %></li>
+    <li><%= link_to "Browse Categories", tags_path, class: (yield(:site_section)=='1' ? "btn btn-large btn-primary" : "btn btn-large") %></li>
+    <li><%= link_to "My Events", my_events_path, class: (yield(:site_section)=='2' ? "btn btn-large btn-primary" : "btn btn-large") %></li>
+    <li><%= link_to "Messages (#{session[:message_notif]})", inbox_path, class: (yield(:site_section)=='3' ? "btn btn-large btn-primary" : "btn btn-large") %></li>
   </ul>
 </nav>
