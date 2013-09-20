@@ -1,5 +1,6 @@
 <% provide(:site_section, "0") %>
-<%= render 'shared/main_search' %>
+<br>
+<%= "render 'shared/main_search'" %>
 <div id="homepage">
   <% if signed_in? %>
 

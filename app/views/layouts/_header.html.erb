@@ -1,8 +1,13 @@
-<header class="my-head">
-  <div class="my-inner">
+<header class="charizard">
     <%= link_to image_tag('LinkUp_logo.png'), root_path, class: "logo" %>
-
-    <%= render 'shared/bar' %>
-  </div>
-
+    <%= render 'shared/user_bar' %>
+    <br>
+    <% if signed_in? %>
+      <%= render 'shared/navigation_buttons' %>
+    <% else %>
+    <div class="account_info">
+      <%= render 'sessions/login_tabs' %>
+      <%= render 'shared/tagline' %>
+    </div>
+    <% end %>
 </header>
