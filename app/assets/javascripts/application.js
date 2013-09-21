@@ -21,10 +21,30 @@
 //= require_tree .
 
 $( function() {
+
+  /* Pagination via AJAX */
   $(document).on("click", '.pagination a', function() {
     $('.pagination').html('Loading...')
     $.get(this.href, null, null, "script");
     return false;
   });
-});
 
+  /* Datepicker on event_start_time (um, obsolete?) */
+  $("#event_start_time").datepicker();
+
+  /* Create tabs. */
+  $("#tabs").tabs({ heightStyle: "auto" });
+
+  /* Hide neweventform on load and allow toggle when you click the toggle button. */
+  $(".neweventform").toggle();
+  $("#toggleform").click(function() {
+    $( ".neweventform" ).slideToggle("slow" );
+  });
+
+  /* AJAX search for users. */
+  $(document).on('submit', '#user_search', function () {
+    $.get(this.action, $(this).serialize(), null, 'script');
+    return false;
+  });
+
+});
