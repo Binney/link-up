@@ -26,7 +26,7 @@ module Sweaton2
     # config.i18n.default_locale = :de
 
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif )
-    config.assets.precompile += [ 'gmaps4rails.base.js', 'gmaps4rails.googlemaps.js', 'jquery.js', 'jquery-ui-1.10.3.custom.min.js', 'pagination.js' ]
+    config.assets.precompile += [ 'gmaps4rails.base.js', 'gmaps4rails.googlemaps.js', 'jquery-ui-1.10.3.custom.min.js', 'pagination.js' ]
 
     config.before_configuration do
       env_file = File.join(Rails.root, 'config', 'local_env.yml')
