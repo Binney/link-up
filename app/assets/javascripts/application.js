@@ -17,6 +17,7 @@
 //= require jquery.turbolinks
 //= require jquery.ui.all
 //= require jquery_nested_form
+//= require pagination
 //= require_self
 //= require_tree .
 

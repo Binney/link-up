@@ -5,7 +5,7 @@
     <% if signed_in? %>
       <%= render 'shared/navigation_buttons' %>
     <% else %>
-    <div class="bulbasaur">
+    <div class="account_info">
       <%= render 'sessions/login_tabs' %>
       <%= render 'shared/tagline' %>
     </div>
