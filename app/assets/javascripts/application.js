@@ -17,8 +17,14 @@
 //= require jquery.turbolinks
 //= require jquery.ui.all
 //= require jquery_nested_form
-//= require pagination.js
 //= require_self
 //= require_tree .
 
+$( function() {
+  $(document).on("click", '.pagination a', function() {
+    $('.pagination').html('Loading...')
+    $.get(this.href, null, null, "script");
+    return false;
+  });
+});
 
