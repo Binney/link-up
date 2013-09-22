@@ -86,6 +86,15 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def correctDagenham
+    @users = User.all
+    @users.each do |u|
+      if u.school.to_s.upcase.include?("DAGENHAM")
+        u.update_attribute(:school, "Dagenham Park CoS")
+      end
+    end
+  end
+
   private
 
     def user_params # Ew ew ew ew ew ew ew no.
