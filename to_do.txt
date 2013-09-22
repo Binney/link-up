@@ -6,7 +6,17 @@ Make it that when a school venue is renamed, all users at that school get automa
 
 Infowindows: COLOUR COLOUR COLOUR
 
-Get Sarny??? Mentor system? fork?
+For admins and teachers: on user_bar, a dropdown menu for managing things? Actually, that for students too? eg instead of current system:
+
+Student:
+All events  All venues  Mentoring        Username v
+                                         Settings
+                                         sign out
+
+Admin:
+Events v  Venues v  Mentoring Username v
+All       Show all            Settings
+New       New                 Sign out
 
 Teachers' accounts: 
 1) Boolean Teacher At School

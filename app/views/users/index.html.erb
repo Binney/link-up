@@ -4,33 +4,6 @@
 
 <%= render 'user_search' %>
 
-  <% if current_user.admin? %>
-    <% if @schools.any? %>
-      <% @schools.each do |school| %>
-        <% @people = @users.select {|u| u.school == school.name } %>
-        <% if @people.any? %>
-          <h4><%= school.name %></h4>
-          <ul class="generic-list">
-            <%= render @people, size: 52 %>
-          </ul>
-        <% else %>
-          No users at this school.
-        <% end %>
-      <% end %>
-  <% else %>
-    No users.
-  <% end %>
-
-  <% else %>
-    <h4><%= current_user.school.to_s %></h4>
-    <% if @users.any? %>
-      <ul class="generic-list">
-        <%= will_paginate @users %>
-        <%= render @users, size: 52 %>
-        <%= will_paginate @users %>
-      </ul>
-    <% else %>
-      No users at this school.
-    <% end %>
-  <% end %>
-
+<div id="user_results">
+  <%= render 'user_results' %>
+</div>
