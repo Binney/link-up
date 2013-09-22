@@ -19,7 +19,6 @@ Sweaton2::Application.routes.draw do
   resources :password_resets
 
   root 'static_pages#home'
-  match '/whateven', to: 'users#correctDagenham', via: 'get'
   match '/signup',  to: 'users#new',		via: 'get'
   match '/signin',  to: 'sessions#new',		via: 'get'
   match '/signout', to: 'sessions#destroy',	via: 'delete' 

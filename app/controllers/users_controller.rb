@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       @schools = Venue.select {|v| v.is_school }
       @schools.each { |school| @user_array.push [school.name, []] }
       @user_array.push(["Other", []])
-      @users = User.simple_search(params[:name_search], params[:school_search]).order('school ASC').paginate(page: params[:page])
+      @users = User.simple_search(params[:name_search], params[:school_search]).order('school ASC, name ASC').paginate(page: params[:page])
       @users.each do |user|
         done = false
         @schools.each_index do |n|
@@ -84,15 +84,6 @@ class UsersController < ApplicationController
     User.destroy(params[:id])
     flash[:success] = "User destroyed."
     redirect_to users_url
-  end
-
-  def correctDagenham
-    @users = User.all
-    @users.each do |u|
-      if u.school.to_s.upcase.include?("DAGENHAM")
-        u.update_attribute(:school, "Dagenham Park CoS")
-      end
-    end
   end
 
   private
