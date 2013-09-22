@@ -3,6 +3,7 @@
 <div class="row">
   <aside class="span4">
     <section>
+      <%= button_to "Back to users", users_path, class: 'btn', method: 'get' %>
       <h1>
         <%= avatar_for @user %>
         <%= @user.name %>

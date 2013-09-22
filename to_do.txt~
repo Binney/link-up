@@ -4,6 +4,27 @@ MAYBE IT'S ALL APPLICATION.JS's FAULT... what if request to TURN normal div into
 
 ============= Fix the whole Ransack pagination thing with id=search ================
 
+Infowindows: COLOUR COLOUR COLOUR
+
+Mentors and mentees: yr 10s mentors and yr 7s mentees, has_many_through relationships - check diary, address book; Year 10s send requests, yr 7s AND teachers approve it, and then the relationship begins - also "view relationships" page for teachers
+
+Link Up logo from Josh plus circular L
+
+Get Sarny??? Mentor system? fork?
+
+Teachers' accounts: 
+1) Boolean Teacher At School
+2) THEN further degrees of specialisation - eg. can/can't delete users, ditto events; minimize number of admins
+
+=== HOSTING ===
+1) Is Heroku too expensive
+2) Is somewhere else cheaper
+3) Unicorn unicorn unicorn http://collectiveidea.com/blog/archives/2012/11/26/setup-a-high-volume-site-on-heroku-for-free/
+
+Receiving mail sent to x@link-up.org.uk - how??? Get Sarny???
+
+Remove pictures - instead only have tags[0] logo on events and L on venues. Plus, Paperclip! And external file storage for free........?
+
 Cancan can you do the cancan (interpret "can" in the imperative rather than the question form here)
 
 CSS: OKAY so it needs to be less repetitive! 

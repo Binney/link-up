@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130913171726) do
+ActiveRecord::Schema.define(version: 20130922155945) do
 
   create_table "diary_entries", force: true do |t|
     t.integer  "user_id"
@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 20130913171726) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["school"], name: "index_users_on_school"
 
   create_table "venues", force: true do |t|
     t.string   "name"
@@ -152,6 +153,7 @@ ActiveRecord::Schema.define(version: 20130913171726) do
     t.boolean  "is_school",      default: false
   end
 
+  add_index "venues", ["is_school"], name: "index_venues_on_is_school"
   add_index "venues", ["name"], name: "index_venues_on_name"
 
 end

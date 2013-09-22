@@ -2,13 +2,9 @@
 
 MAYBE IT'S ALL APPLICATION.JS's FAULT... what if request to TURN normal div into tabs isn't going through?! jquery may or may not be there but irrelevant!!! (?)
 
-============= Fix the whole Ransack pagination thing with id=search ================
+Make it that when a school venue is renamed, all users at that school get automatically renamed too
 
 Infowindows: COLOUR COLOUR COLOUR
-
-Mentors and mentees: yr 10s mentors and yr 7s mentees, has_many_through relationships - check diary, address book; Year 10s send requests, yr 7s AND teachers approve it, and then the relationship begins - also "view relationships" page for teachers
-
-Link Up logo from Josh plus circular L
 
 Get Sarny??? Mentor system? fork?
 
@@ -24,6 +20,7 @@ Teachers' accounts:
 Receiving mail sent to x@link-up.org.uk - how??? Get Sarny???
 
 Remove pictures - instead only have tags[0] logo on events and L on venues. Plus, Paperclip! And external file storage for free........?
+[[ ^ AWS ]]
 
 Cancan can you do the cancan (interpret "can" in the imperative rather than the question form here)
 

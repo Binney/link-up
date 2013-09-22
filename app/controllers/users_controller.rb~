@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  require 'will_paginate/array'
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
 
@@ -9,8 +10,9 @@ class UsersController < ApplicationController
   def index
     if admin?
       @schools = Venue.select {|v| v.is_school }
+      @users = User.simple_search(params[:name_search], params[:school_search]).order('school ASC').paginate(page: params[:page])
     elsif current_user.role == 'teacher'
-      @users = User.select {|u| u.school==current_user.school }
+      @users = User.simple_search(params[:search]).select {|u| u.school == current_user.school }.paginate(page: params[:page])
     else
       redirect_to root_path
     end
@@ -80,10 +82,10 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user) || (current_user.admin? || current_user.mentor?)
+      redirect_to(root_path) unless current_user?(@user) || (admin? || current_user.mentor?)
     end
 
     def admin_user
-      redirect_to(root_path) unless (current_user.admin? || current_user.mentor?)
+      redirect_to(root_path) unless (admin? || current_user.mentor?)
     end
 end

@@ -41,9 +41,9 @@ class User < ActiveRecord::Base
     request.remote_ip
   end
 
-  def self.simple_search(search)
+  def self.simple_search(name_search, school_search)
     if search
-      all.where('name LIKE ?', "%#{search}%")
+      all.where('name LIKE ? AND school LIKE ?', "%#{name_search}%", "%#{school_search}%")
     else
       all
     end

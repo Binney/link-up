@@ -10,14 +10,14 @@
         <%= gmaps4rails(@json) %>
     </section>
     <section>
-      <% if signed_in? && (current_user.admin? || (current_user.organiser? && @venue.user_id == current_user.id)) %>
+      <% if signed_in? && (admin? || (current_user.organiser? && @venue.user_id == current_user.id)) %>
         <%= link_to "Edit", edit_venue_path(@venue.id) %><br>
         <%= link_to "Delete", @venue, method: :delete,  data: { confirm: "This will delete all associated events!\nYou sure?" } %>
       <% end %>
     </section>
   </aside>
 
-  <div class="span8">
+  <div class="span78">
     <% if @venue.is_school %>
       <h1><%= image_tag "l.jpg", alt: @venue.name, size: "25x25" %> <%= @venue.name %></h1>
     <% else %>

@@ -1,7 +1,4 @@
 class Event < ActiveRecord::Base
-  include IceCube
-  serialize :schedule, Hash
-
   belongs_to :venue
   has_many :tags, through: :relationships
   has_many :timings, dependent: :destroy
