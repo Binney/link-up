@@ -12,4 +12,12 @@ class Venue < ActiveRecord::Base
     "#{street_address}, #{postcode}, UK"
   end
 
+  def self.simple_search(name_search)
+    if search
+      all.where('name LIKE ?', "%#{name_search}%")
+    else
+      all
+    end
+  end
+
 end

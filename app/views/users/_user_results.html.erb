@@ -1,20 +1,14 @@
 <% if current_user.admin? %>
-  <% if @schools.any? %>
-    <%= will_paginate @users %>
-    <% @schools.each do |school| %>
-      <% @people = @users.select {|u| u.school == school.name } %>
-      <% if @people.any? %>
-        <h4><%= school.name %></h4>
-        <ul class="generic-list">
-          <%= render @people, size: 52 %>
-        </ul>
-
+  <%= will_paginate @users %>
+  <% @user_array.each do |school_list| %>
+    <ul class="generic-list">
+      <% if school_list[1].any? %>
+        <h4><%= school_list[0] %></h4>
+        <%= render school_list[1] %>
       <% end %>
-    <% end %>
-    <%= will_paginate @users %>
-  <% else %>
-    No users.
+    </ul>
   <% end %>
+  <%= will_paginate @users %>
 
 <% else %>
   <h4><%= current_user.school.to_s %></h4>

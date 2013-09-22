@@ -9,10 +9,24 @@ class UsersController < ApplicationController
 
   def index
     if admin?
-      @schools = Venue.select {|v| v.is_school }
+      @user_array = []
+      @schools = Venue..select {|v| v.is_school }
+      @schools.each { |school| @user_array.push [school.name, []] }
+      @user_array.push(["Other", []])
       @users = User.simple_search(params[:name_search], params[:school_search]).order('school ASC').paginate(page: params[:page])
+      @users.each do |user|
+        done = false
+        @schools.each_index do |n|
+          if user.school == @schools[n].name
+            @user_array[n][1].push(user)
+            done = true
+          end
+        end
+        @user_array.last[1].push(user) unless done==true
+      end
     elsif current_user.role == 'teacher'
-      @users = User.simple_search(params[:search]).select {|u| u.school == current_user.school }.paginate(page: params[:page])
+      @users = User.simple_search(params[:name_search], current_user.school).paginate(page: params[:page])
+      @user_array = [[current_user.school, @users]]
     else
       redirect_to root_path
     end
