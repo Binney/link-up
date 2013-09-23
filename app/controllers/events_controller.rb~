@@ -38,6 +38,8 @@ require 'will_paginate/array'
     @event = Event.find(params[:id])
     @timings = @event.timings
     @tags = @event.tags.paginate(page: params[:page])
+    @review = current_user.reviews.build if signed_in?
+    @reviews = Review.all.where(event_id: @event.id)
     @json = @event.venue.to_gmaps4rails do |venue, marker|
       marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => @event })
       marker.title "#{venue.name}"
@@ -90,14 +92,6 @@ require 'will_paginate/array'
     @event = Event.find(params[:id])
     @tags = @event.tags.paginate(page: params[:page])
     render 'show_tags'
-  end
-
-  def correctDagenham
-    User.all.each do |u|
-      if u.school.upcase.include?("DAGENHAM")
-        u.update_attribute(:school, "Dagenham Park CoS")
-      end
-    end
   end
 
   private

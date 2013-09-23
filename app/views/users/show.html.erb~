@@ -14,11 +14,12 @@
       <%= link_to "Send a message", new_message_path(recipient: @user.id) %><br>
       <%= link_to "Edit", edit_user_path(@user) %>
     </section>
-    <%=  @user.school.eql?("None") ? "Not listed with any school" : "Student at "+@user.school %><br>
+    <%=  @user.school.eql?("None") || @user.school.blank? ? "Not listed with any school" : "Student at "+@user.school %><br>
     <%= @user.home_address.to_s+", "+@user.home_postcode.to_s %>
   </aside>
 </div>
 <div class="user_info">
+  <h4><%= link_to "View reviews written", user_index_review_path(user_id: @user.id) %></h4>
   <h4>Diary:</h4>
   <ul class="generic-list">
   <%= render @user.diary_entries %>

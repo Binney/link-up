@@ -38,6 +38,8 @@ require 'will_paginate/array'
     @event = Event.find(params[:id])
     @timings = @event.timings
     @tags = @event.tags.paginate(page: params[:page])
+    @review = current_user.reviews.build if signed_in?
+    @reviews = Review.all.where(event_id: @event.id).paginate(page: params[:page])
     @json = @event.venue.to_gmaps4rails do |venue, marker|
       marker.infowindow render_to_string(:partial => "/events/infowindow", :locals => { :event => @event })
       marker.title "#{venue.name}"

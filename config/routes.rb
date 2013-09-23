@@ -1,5 +1,8 @@
 Sweaton2::Application.routes.draw do
 
+  get "reviews/new"
+  get "reviews/edit"
+  get "reviews/user_index"
   get "mentorships/index"
   get "password_resets/new"
   resources :users
@@ -17,6 +20,7 @@ Sweaton2::Application.routes.draw do
   resources :messages
   resources :mentorships
   resources :password_resets
+  resources :reviews
 
   root 'static_pages#home'
   match '/signup',  to: 'users#new',		via: 'get'

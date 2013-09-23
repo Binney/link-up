@@ -1,0 +1,12 @@
+<% provide :site_section, 2 %>
+<% provide :title, "My reviews" %>
+
+<h1>My reviews</h1>
+
+<% if @reviews.any? %>
+  <ul class="generic-list">
+    <%= render @reviews %>
+  </ul>
+<% else %>
+  No reviews. <%= link_to "Go to an event page", events_path %> to review it.
+<% end %>

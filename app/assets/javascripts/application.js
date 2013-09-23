@@ -10,17 +10,19 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require turbolinks
-//= require bootstrap
 //= require jquery
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require jquery.ui.all
 //= require jquery_nested_form
+//= require bootstrap
+//= require turbolinks
 //= require_self
 //= require_tree .
 
 $( function() {
+  /* Dropdown menu in header */
+  $('.dropdown-menu').toggle();
 
   /* Pagination via AJAX */
   $(document).on("click", '.pagination a', function() {

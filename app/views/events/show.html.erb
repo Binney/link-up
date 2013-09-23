@@ -59,7 +59,17 @@
     </section>
     <section>
       <h3>Reviews:</h3>
-        <!-- if @event.reviews.any? render @event.reviews -->
+        <% if @reviews.any? %>
+          <% av = 0 %>
+          <% @reviews.each {|r| av += r.stars.to_i } %>
+          Average: <b><%= av/@reviews.count %>/5</b>
+          <ul class="generic-list">
+            <%= render @reviews %>
+          </ul>
+          <%= will_paginate @reviews %>
+        <% else %>
+          No reviews yet.
+        <% end %>
     </section>
   </div>
 </div>

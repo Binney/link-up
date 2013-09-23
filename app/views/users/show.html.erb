@@ -19,6 +19,7 @@
   </aside>
 </div>
 <div class="user_info">
+  <h4><%= link_to "View reviews written", reviews_user_index_path(user_id: @user.id) %></h4>
   <h4>Diary:</h4>
   <ul class="generic-list">
   <%= render @user.diary_entries %>
