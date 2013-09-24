@@ -18,4 +18,6 @@
 //= require turbolinks
 //= require bootstrap
 //= require gmaps4rails.base.js
+//= require gmaps4rails.googlemaps.js
+//= require general.js
 //= require_tree .

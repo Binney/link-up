@@ -19,4 +19,4 @@
 //= require bootstrap
 //= require gmaps4rails.base.js
 //= require gmaps4rails.googlemaps.js
-//= require_tree .
+//= require general.js
