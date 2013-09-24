@@ -31,7 +31,7 @@
         </tr>
         <tr>
           <td><b>Cost:</b></td>
-          <td><%= number_to_currency(@event.cost, unit: '£') %> (<%= @event.cost_details %>)</td>
+          <td><%= @event.cost.to_i==0 ? 'Free' : (@event.cost/100.0).to_s(:currency, unit: '£') %> (<%= @event.cost_details %>)</td>
         </tr>
         <tr>
           <td><b>Gender:</b></td>
