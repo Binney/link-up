@@ -1,5 +1,6 @@
 <% provide(:title, 'New event') %>
 <% provide(:site_section, 2) %>
+<h1>New event</h1>
 <div class="row">
   <div class="span6 offset3">
     <%= nested_form_for(@event) do |f| %>
@@ -24,6 +25,12 @@
       <% end %>
 
       <%= f.link_to_add "Add session", :timings %><br>
+
+      <%= f.label :cost, "Cost (number in pence - this is for searching):" %>
+      <%= f.text_field :cost %>
+
+      <%= f.label :cost_details %>
+      <%= f.text_field :cost_details, placeholder: "e.g. £3 for one visit, £10 membership..." %>
 
       <%= f.submit "Create event", class: "btn btn-primary" %>
     <% end %>

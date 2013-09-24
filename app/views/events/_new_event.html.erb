@@ -19,6 +19,12 @@
 
   <%= f.link_to_add "Add session", :timings %><br>
 
+  <%= f.label :cost, "Cost (number in pence - this is for searching):" %>
+  <%= f.text_field :cost %>
+
+  <%= f.label :cost_details %>
+  <%= f.text_field :cost_details, placeholder: "e.g. £3 for one visit, £10 membership..." %>
+
   <%= f.label :gender %>
   <%= f.select :gender, [['Both'],['Female'], ['Male']] %>
 
