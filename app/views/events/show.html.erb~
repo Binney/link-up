@@ -31,7 +31,7 @@
         </tr>
         <tr>
           <td><b>Cost:</b></td>
-          <td><%= @event.cost.to_i==0 ? 'Free' : (@event.cost/100).to_s(:currency, unit: '£') %> (<%= @event.cost_details %>)</td>
+          <td><%= @event.cost.to_i==0 ? 'Free' : (@event.cost/100.0).to_s(:currency, unit: '£') %> (<%= @event.cost_details %>)</td>
         </tr>
         <tr>
           <td><b>Gender:</b></td>
@@ -54,8 +54,10 @@
       <%= @event.description %>
     </section>
     <section>
-      <p><b><%= link_to @event.venue.name, @event.venue %></b>, <%= @event.venue.street_address+", "+@event.venue.postcode %></p>
-      <%= gmaps("markers" => {"data" => @json, "options" => {"custom_infowindow_class" => "yellow" } }) %> 
+      <p><b><%= link_to @event.venue.name, @event.venue %></b>, <%= @event.venue.street_address+", "+@event.venue.postcode %></p> 
+      <%= gmaps( :markers => {:data => @json}, 
+                 :map_options => {:auto_adjust => true, :zoom => 15 }
+                 ) %>
     </section>
     <section>
       <h3>Reviews:</h3>

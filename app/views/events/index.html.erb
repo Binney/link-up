@@ -3,7 +3,9 @@
 <h1>All events</h1>
 
 <aside class="events_map">
-  <%= gmaps4rails(@json) %>
+  <%= gmaps( :markers => {:data => @json}, 
+             :map_options => {:auto_adjust => true }
+             ) %>
 </aside>
 <div id="events_list">
   <div id="search-toggle">

@@ -7,7 +7,9 @@
       <%= image_tag 'generic_sports_centre.jpg', alt: "venue image", class: "image" %><!-- Temporary - eventually hold a full-size image -->
     </div>
     <section>
-        <%= gmaps4rails(@json) %>
+        <%= gmaps( :markers => {:data => @json}, 
+                   :map_options => {:auto_adjust => true, :zoom => 15 }
+                   ) %>
     </section>
     <section>
       <% if signed_in? && (admin? || (current_user.organiser? && @venue.user_id == current_user.id)) %>
@@ -17,7 +19,7 @@
     </section>
   </aside>
 
-  <div class="span78">
+  <div class="span7">
     <% if @venue.is_school %>
       <h1><%= image_tag "l.jpg", alt: @venue.name, size: "25x25" %> <%= @venue.name %></h1>
     <% else %>

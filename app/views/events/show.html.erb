@@ -54,8 +54,10 @@
       <%= @event.description %>
     </section>
     <section>
-      <p><b><%= link_to @event.venue.name, @event.venue %></b>, <%= @event.venue.street_address+", "+@event.venue.postcode %></p>
-      <%= gmaps("markers" => {"data" => @json, "options" => {"custom_infowindow_class" => "yellow" } }) %> 
+      <p><b><%= link_to @event.venue.name, @event.venue %></b>, <%= @event.venue.street_address+", "+@event.venue.postcode %></p> 
+      <%= gmaps( :markers => {:data => @json}, 
+                 :map_options => {:auto_zoom => false, :zoom => 15 }
+                 ) %>
     </section>
     <section>
       <h3>Reviews:</h3>

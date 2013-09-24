@@ -6,7 +6,9 @@
 
     <% if current_user.admin? | current_user.mentor? | current_user.organiser? %>
       <div id="local-map">
-        <%= gmaps4rails(@json) %>
+        <%= gmaps( :markers => {:data => @json}, 
+                   :map_options => {:auto_adjust => true }
+                   ) %>
       </div>
       <div id="homepage-left">
         <%= render 'diary_entries/diary_preview' %>
@@ -17,7 +19,9 @@
 
     <% else %>
       <div id="local-map">
-        <%= gmaps4rails(@json) %>
+        <%= gmaps( :markers => {:data => @json}, 
+                   :map_options => {:auto_adjust => true }
+                   ) %>
       </div>
       <div id="homepage-left">
         <%= render 'diary_entries/diary_preview' %>
@@ -30,7 +34,9 @@
   <% else %>
 
     <div id="local-map">
-      <%= gmaps4rails(@json) %>
+      <%= gmaps( :markers => {:data => @json}, 
+                 :map_options => {:auto_adjust => true }
+                 ) %>
     </div>
     <div id="homepage-left">
       <%= render 'events/on_today' %>
