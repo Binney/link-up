@@ -31,7 +31,7 @@
         </tr>
         <tr>
           <td><b>Cost:</b></td>
-          <td><%= @event.cost_details %></td>
+          <td><%= number_to_currency(@event.cost, unit: '£') %> (<%= @event.cost_details %>)</td>
         </tr>
         <tr>
           <td><b>Gender:</b></td>

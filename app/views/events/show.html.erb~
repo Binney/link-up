@@ -61,7 +61,7 @@
       <h3>Reviews:</h3>
         <% if @reviews.any? %>
           <% av = 0 %>
-          <% @reviews.each {|r| av += r.stars.to_s } %>
+          <% @reviews.each {|r| av += r.stars.to_i } %>
           Average: <b><%= av/@reviews.count %>/5</b>
           <ul class="generic-list">
             <%= render @reviews %>
