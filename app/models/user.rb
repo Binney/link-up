@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
   validates :password, :on => :create,
                        :presence => true,
                        :confirmation => true,
-#                       :length => { :minimum => 6 },
                        :unless => :already_has_password?
   validates_presence_of :password_confirmation, :unless => lambda { |user| user.password.blank? }
 
@@ -35,15 +34,15 @@ class User < ActiveRecord::Base
 
   geocoded_by :gmaps4rails_address
 
-  ROLES = %w[admin teacher organiser student] # Plus mentor? Or is that the same as student?
+  ROLES = %w[admin teacher organiser student]
 
   def ip_address
     request.remote_ip
   end
 
   def self.simple_search(name_search, school_search)
-    if search
-      all.where('name LIKE ? AND school LIKE ?', "%#{name_search}%", "%#{school_search}%")
+    if search # UPPER(?) ensures it's case insensitive
+      all.where('UPPER(name) LIKE UPPER(?) AND UPPER(school) LIKE UPPER(?)', "%#{name_search}%", "%#{school_search}%")
     else
       all
     end

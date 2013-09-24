@@ -1,6 +1,6 @@
-<%= search_form_for @search do |f| %>
-  <%= f.label :tags_name_or_description_or_name_cont, "Search:" %>
-  <%= f.text_field :tags_name_or_description_or_name_cont, value: (params[:q][:tags_name_or_name_or_description_cont] if params[:q]) %>
+<%= search_form_for( @search, method: 'get') do |f| %>
+  <%= f.label :tags_name_or_description_or_name_like, "Search:" %>
+  <%= f.text_field :tags_name_or_description_or_name_like, value: (params[:q][:tags_name_or_name_or_description_like] if params[:q]) %>
   <%= f.label :venue_name_cont, "Venue" %>
   <%= f.text_field :venue_name_cont %>
   <%= f.label :timings_day_eq, "Day" %>

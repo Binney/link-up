@@ -1,7 +1,7 @@
 <%= form_tag users_path, method: 'get', id: "user_search" do %>
-  <%= text_field_tag :name_search, params[:name_search] %>
+  <%= text_field_tag :name_search, params[:name_search], placeholder: "Name" %>
   <% if admin? %>
-    <%= text_field_tag :school_search, params[:school_search] %>
+    <%= text_field_tag :school_search, params[:school_search], placeholder: "School" %>
   <% end %>
   <%= submit_tag "Search", name: nil, class: "btn" %>
 <% end %>
