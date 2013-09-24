@@ -9,7 +9,7 @@
 </ul>
 <% if signed_in? && (admin? || (current_user.organiser? && @venue.user_id == current_user.id)) %>
   <h4 id="toggleform">Add new event</h4>
-  <div class="neweventform">
+  <div class="togglediv">
     <%= render 'events/new_event' %>
   </div>
 <% end %>
