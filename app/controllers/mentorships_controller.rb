@@ -2,7 +2,7 @@ class MentorshipsController < ApplicationController
   before_action :signed_in_user # Can't do anything without. These need to get replaced with cancan!
 
   def new
-    @users = User.simple_search(params[:search]).select { |u| u.school == current_user.school && u.role == 'student'}
+    @users = User.simple_search(params[:search], current_user.school)
   end
 
   def create

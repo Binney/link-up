@@ -23,17 +23,22 @@ class MentorshipsController < ApplicationController
       @pending_requests = Mentorship.select {|m| m.confirmation_stage < 2 }
       @pending_mentees = Mentorship.select {|m| m.confirmation_stage % 2 == 0 }
       @mentorships = Mentorship.select {|m| m.confirmation_stage == 3 }
+      session[:mentor_notif] = @pending_requests.count
 
     elsif current_user.role == "teacher"
       @pending_requests = Mentorship.select {|m| m.confirmation_stage < 3 && User.find(m.mentee_id).school==current_user.school }
       @pending_mentees = Mentorship.select {|m| m.confirmation_stage % 2 == 0 && User.find(m.mentee_id).school==current_user.school }
       @mentorships = Mentorship.select {|m| m.confirmation_stage == 3 && User.find(m.mentee_id).school==current_user.school }
+      session[:mentor_notif] = @pending_requests.count
+
     else
       @pending_mentor_requests = current_user.mentorships.select {|m| m.confirmation_stage < 3 }
       @pending_mentee_requests = current_user.reverse_mentorships.select {|m| m.confirmation_stage < 3 }
       @mentors = current_user.reverse_mentorships.select {|m| m.confirmation_stage == 3 }
       @mentees = current_user.mentorships.select {|m| m.confirmation_stage == 3 }
+      session[:mentor_notif] = @pending_mentor_requests.count + @pending_mentee_requests.count
     end
+
   end
 
   def show
