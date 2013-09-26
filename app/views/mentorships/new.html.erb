@@ -1,10 +1,10 @@
-<%= form_tag new_mentorship_path, method: 'get', id: "user_search" do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
+<div class="searchbox">
+  <%= form_tag new_mentorship_path, method: 'get', id: "user_search" do %>
     <%= hidden_field :school, value: current_user.school %>
-    <%= submit_tag "Search", name: nil, class: "btn" %>
-  </p>
-<% end %>
+    <li class="searchsbox"><%= text_field_tag :search, params[:search], placeholder: "Search by name", id: "searchbox" %></li>
+    <li class="searchsbox"><%= submit_tag "Search", name: nil, class: "btn", id: "searchbtn" %></li>
+  <% end %>
+</div>
 
 <div id="user_results">
   <%= render "user_results" %>

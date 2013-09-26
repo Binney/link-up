@@ -17,7 +17,7 @@ class VenuesController < ApplicationController
     @venue = Venue.find(params[:id])
     @events = @venue.events.paginate(page: params[:page])
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
-    if correct_or_admin
+    if admin? || organiser?(@venue)
       @event = Event.new(venue_id: @venue.id)
       @timing = @event.timings.build
     end
@@ -71,11 +71,6 @@ class VenuesController < ApplicationController
 
     def correct_user
       redirect_to(root_path) unless correct_or_admin
-    end
-
-    def correct_or_admin
-      @venue = Venue.find(params[:id])
-      signed_in? && ((@venue.user_id == current_user.id) || admin?)
     end
 
     def correct_school

@@ -17,9 +17,9 @@ module SessionsHelper
 
   def organiser?(thing)
     if thing.class.name=="Venue"
-      signed_in? && current_user.role == "organiser" && thing.user_id == current_user.id
+      signed_in? && (current_user.role == "organiser" && thing.user_id == current_user.id) || (thing.is_school && thing.name==current_user.school && current_user.role=="teacher")
     else
-      signed_in? && current_user.role == "organiser" && (thing.user_id == current_user.id || thing.venue.user_id == current_user.id)
+      signed_in? && (current_user.role == "organiser" && (thing.user_id == current_user.id || thing.venue.user_id == current_user.id)) || (thing.venue.is_school && thing.venue.name==current_user.school && current_user.role=="teacher")
     end
   end
 
@@ -44,7 +44,7 @@ module SessionsHelper
   end
 
   def organiser_account
-    unless signed_in? && (current_user.role=="organiser" || admin?)
+    unless signed_in? && current_user.role!="student"
       redirect_to root_path
     end
   end

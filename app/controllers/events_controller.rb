@@ -103,8 +103,8 @@ require 'will_paginate/array'
     end
 
     def correct_or_admin
-      current_venue = Event.find(params[:id]).venue
-      redirect_to(root_path) unless signed_in? && ((current_venue.user_id == current_user.id) || admin?)
+      current_event = Event.find(params[:id])
+      redirect_to(root_path) unless organiser?(current_event) || admin?
     end
 
     def correct_school
