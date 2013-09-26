@@ -89,17 +89,17 @@ class UsersController < ApplicationController
   private
 
     def user_params # Ew ew ew ew ew ew ew no.
-      params.require(:user).permit!#(:name, :email, :home_address, :home_postcode, :school, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at, :mentor, :organiser, :admin)
+      params.require(:user).permit!#(:name, :email, :home_address, :home_postcode, :school, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at, :role)
     end
 
     # Before filters (signed_in_user is now under sessions_helper)
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user) || (admin? || current_user.mentor?)
+      redirect_to(root_path) unless current_user?(@user) || (admin? || current_user.is_mentor?(@user))
     end
 
     def admin_user
-      redirect_to(root_path) unless (admin? || current_user.mentor?)
+      redirect_to(root_path) unless admin?
     end
 end

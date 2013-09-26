@@ -54,7 +54,9 @@ require 'will_paginate/array'
   end
 
   def create
-    @event = Venue.find(event_params[:venue_id]).events.build(event_params)
+    @event = Venue.find(event_params[:venue_id]).events.build(event_params) 
+    @event.user_id = current_user.id
+    @event.website ||= Rails.application.routes.url_helpers.event_path(@event)
     if @event.save
       flash[:success] = "Event created!"
       redirect_to @event

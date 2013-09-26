@@ -15,6 +15,14 @@ module SessionsHelper
     signed_in? && current_user.role == "admin"
   end
 
+  def organiser?(thing)
+    if thing.class.name=="Venue"
+      signed_in? && current_user.role == "organiser" && thing.user_id == current_user.id
+    else
+      signed_in? && current_user.role == "organiser" && (thing.user_id == current_user.id || thing.venue.user_id == current_user.id)
+    end
+  end
+
   def current_user=(user)
     @current_user = user
   end
@@ -36,13 +44,13 @@ module SessionsHelper
   end
 
   def organiser_account
-    unless signed_in? && (current_user.organiser? || admin?)
+    unless signed_in? && (current_user.role=="organiser" || admin?)
       redirect_to root_path
     end
   end
 
-  def mentor_account # NB THIS IS INADEQUATE - Also need to check if current user is mentor FOR THAT account. Integer? Relationship?
-    unless signed_in? && (current_user.mentor? || admin?)
+  def teacher_account 
+    unless signed_in? && (current_user.role=="teacher" || admin?)
       redirect_to root_path
     end
   end

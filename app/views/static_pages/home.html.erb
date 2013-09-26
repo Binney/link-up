@@ -4,7 +4,7 @@
 <div id="homepage">
   <% if signed_in? %>
 
-    <% if current_user.admin? | current_user.mentor? | current_user.organiser? %>
+    <% unless current_user.role=="student" %>
       <div id="local-map">
         <%= gmaps( :markers => {:data => @json}, 
                    :map_options => {:auto_adjust => true }

@@ -1,13 +1,13 @@
 <ul class="activity-list">
   <% @events.each do |e| %>
     <li><%= link_to e.name, e %>
-    <% if signed_in? && (admin? || (current_user.organiser? && @venue.user_id == current_user.id)) %>
+    <% if admin? || organiser?(e) %>
       | <%= link_to "delete", e, method: :delete, data: { confirm: "This will delete all details!\nYou sure?" } %>
     <% end %>
     </li>
   <% end %>
 </ul>
-<% if signed_in? && (admin? || (current_user.organiser? && @venue.user_id == current_user.id)) %>
+<% if admin? || organiser?(@venue) %>
   <h4 id="toggleform">Add new event</h4>
   <div class="togglediv">
     <%= render 'events/new_event' %>

@@ -5,6 +5,7 @@
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
+    <%= gmaps4rails_api_script_tags %>
     <%= render 'layouts/shim' %>
     <%= favicon_link_tag %>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
@@ -20,5 +21,20 @@
         <%= render 'layouts/footer' %>
       </div>
     </div>
+    <% content_for :scripts do %>
+        <script type="text/javascript" charset="utf-8">
+          Gmaps.map.callback = function() {
+            if (Gmaps.map.markers.length == 1) {
+             //only one marker, choose the zoom level you expect
+             setTimeout(function() { Gmaps.map.serviceObject.setZoom(5);}, 50);
+            }
+            else{
+             //more than one marker, let's auto_zoom
+             Gmaps.map.map_options.auto_zoom = true;
+             Gmaps.map.adjustMapToBounds();
+            }
+          }
+        </script>
+    <% end %>
   </body>
 </html>
