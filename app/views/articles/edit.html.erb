@@ -1,0 +1,20 @@
+<% provide(:title, 'Edit news article') %>
+<% provide(:site_section, 2) %>
+<h1>Edit article</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@article) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+
+      <%= f.submit "Post!", class: "btn btn-primary" %>
+
+    <% end %>
+      <%= button_to "Delete article", @article, method: 'delete', class: "btn", data: {confirm: "You sure?" } %>
+  </div>
+</div>
