@@ -77,3 +77,4 @@ gem 'chronic'
 
 # Emails
 gem 'mandrill-api'
+

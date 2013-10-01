@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130922155945) do
+ActiveRecord::Schema.define(version: 20130926201106) do
 
   create_table "diary_entries", force: true do |t|
     t.integer  "user_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20130922155945) do
     t.string   "gender"
     t.integer  "cost"
     t.string   "schedule"
+    t.integer  "user_id"
   end
 
   add_index "events", ["venue_id"], name: "index_events_on_venue_id"
@@ -120,9 +121,6 @@ ActiveRecord::Schema.define(version: 20130922155945) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin",                  default: false
-    t.boolean  "mentor",                 default: false
-    t.boolean  "organiser",              default: false
     t.string   "home_address"
     t.string   "home_postcode"
     t.float    "latitude"

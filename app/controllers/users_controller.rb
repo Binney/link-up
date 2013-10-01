@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   # Only admins and mentors can actually see anyone's profiles - if a student
   # clicks to any profile, it just redirects them to their homepage.
-  before_action :admin_user,     only: :destroy
+  before_action :admin_user,     only: [:destroy, :school_correct]
 
   def index
     if admin?
@@ -84,6 +84,24 @@ class UsersController < ApplicationController
     User.destroy(params[:id])
     flash[:success] = "User destroyed."
     redirect_to users_url
+  end
+
+  def school_correct
+    # If there's a large influx of new students, some of them may
+    # put a typo in their school name, which means they won't have any
+    # of the benefits of officially attending that school. So here
+    # we search for the keyword you enter and correct *any* student
+    # with a school name containing that keyword to have the school
+    # name chosen. 
+
+    # e.g. Fred puts his school down as "dagenham park" but it'll only
+    # register him correctly if he puts "Dagenham Park CoS". So enter
+    # "dagenham" as the keyword and it'll correct Fred's school.
+
+    @users = User.all.where("school LIKE '%dagenham%'")
+    @users.each do |user|
+      user.update_attribute(:school, "Dagenham Park CoS")
+    end
   end
 
   private
