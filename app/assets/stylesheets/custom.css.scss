@@ -749,13 +749,22 @@ input[type=checkbox].css-checkbox {
 }
 
 
-.const {
-  text-align:right;
+#flex {
+  color: $orange;
+  font-weight: bold;
+  & a {
+    color: $orange;
+    &:hover {
+      color: #000;
+    }
+  }
 }
 
-.flex {
-  color:$orange;
+#const {
+  vertical-align: top;
+  text-align: right;
 }
+
 /* Calendars */
 
 #calendar table {

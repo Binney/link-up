@@ -14,9 +14,9 @@ All events  All venues  Mentoring        Username v
                                          sign out
 
 Admin:
-Events v  Venues v  Mentoring Username v
-All       Show all            Settings
-New       New                 Sign out
+Events v  Venues v  Users v   Username v
+All       Show all  All       Settings
+New       New       Mentoring Sign out
 
 Teachers' accounts: 
 1) Boolean Teacher At School
@@ -26,8 +26,6 @@ Teachers' accounts:
 1) Is Heroku too expensive
 2) Is somewhere else cheaper
 3) Unicorn unicorn unicorn http://collectiveidea.com/blog/archives/2012/11/26/setup-a-high-volume-site-on-heroku-for-free/
-
-Receiving mail sent to x@link-up.org.uk - how??? Get Sarny???
 
 Remove pictures - instead only have tags[0] logo on events and L on venues. Plus, Paperclip! And external file storage for free........?
 [[ ^ AWS ]]
@@ -39,8 +37,6 @@ CSS: OKAY so it needs to be less repetitive!
     2) - OR split up the entire file, up to you
 
 Fix the whole "avatar_for" thing. Venues need pics, end of.
-
-Extract cost info with regex from docs?
 
 Fix venue images to L logo
 

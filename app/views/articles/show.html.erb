@@ -1,0 +1,6 @@
+<% provide(:title, 'Create news article') %>
+<% provide(:site_section, 2) %>
+<h1><%= @article.title %></h1>
+<small>Posted <%= @article.created_at.to_s(:short) %></small>
+<p><%= simple_format @article.content %></p>
+<%= button_to "Back to news", news_path, method: 'get', class: 'btn' %>

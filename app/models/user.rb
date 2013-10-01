@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
                            dependent: :destroy
   has_many :favourites, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :articles
 
   has_many :mentorships, foreign_key: "mentor_id", dependent: :destroy
   has_many :mentees, through: :mentorships, source: :mentees

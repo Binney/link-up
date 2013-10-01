@@ -1,0 +1,4 @@
+<li>
+  <span class="name and date"><b><%= link_to article.title, article %></b> <%= article.created_at.to_s(:short) %></span>
+  <span class="description"><%= simple_format article.content[0..140]+"..." %><%= link_to "Read more", article, method: 'get' %></span>  
+</li>

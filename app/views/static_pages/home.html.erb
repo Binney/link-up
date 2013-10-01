@@ -27,7 +27,11 @@
         <%= render 'diary_entries/diary_preview' %>
       </div>
       <div id="homepage-right">
-      <%= render 'tags/brief_selection' %>
+      <% if @articles.any? %>
+        <%= render 'articles/newsfeed' %>
+      <% else %>
+        <%= render 'tags/brief_selection' %>
+      <% end %>
       </div>
     <% end %>
 

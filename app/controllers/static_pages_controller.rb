@@ -38,6 +38,7 @@ class StaticPagesController < ApplicationController
       end
       @tags = Tag.all.shuffle
     end
+    @articles = Article.all[0..5]
   end
 
   def my_events

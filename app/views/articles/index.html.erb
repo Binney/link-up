@@ -1,0 +1,13 @@
+<% provide(:title, "News") %>
+<% provide(:site_section, "4") %>
+
+<h1>News</h1>
+
+<% if @articles.any? %>
+  <ul class="generic-list">
+    <%= render @articles %>
+    <%= will_paginate @articles %>
+  </ul>
+<% else %>
+  No articles found.
+<% end %>
