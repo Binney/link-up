@@ -98,7 +98,7 @@ class UsersController < ApplicationController
     # register him correctly if he puts "Dagenham Park CoS". So enter
     # "dagenham" as the keyword and it'll correct Fred's school.
 
-    @users = User.all.where("school LIKE '%dagenham%'")
+    @users = User.all.search(:school_cont => "Dagenham").result
     @users.each do |user|
       user.update_attribute(:school, "Dagenham Park CoS")
     end
