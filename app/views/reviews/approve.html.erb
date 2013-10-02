@@ -1,0 +1,15 @@
+<% provide :title, "Approve reviews" %>
+<% provide :site_section, "2" %>
+
+<h1>Approve reviews</h1>
+
+<% if @reviews.any? %>
+  <ul class="generic-list">
+  <% @reviews.each do |review| %>
+    <li><span class="name and date"><b><%= link_to review.title, review %></b> (<%= review.stars %> stars)</span>
+        <span class="description"><%= review.content[0..140] %>... <%= link_to "Read more", review %></span><%= render partial: "approve", locals: {review: review} %> <%= render 'disapprove', locals: { review: review } %></li>
+  <% end %>
+  </ul>
+<% else %>
+  No unreviewed reviews. <%= link_to "See all reviews", reviews_path %>
+<% end %>

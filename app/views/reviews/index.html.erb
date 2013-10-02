@@ -1,0 +1,12 @@
+<% provide :site_section, 2 %>
+<% provide :title, "All reviews" %>
+
+<h1>Reviews</h1>
+
+<% if @reviews.any? %>
+  <ul class="generic-list">
+  <%= render @reviews %>
+  </ul>
+<% else %>
+  No reviews yet.
+<% end %>

@@ -1,2 +1,12 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
+<h1>Add a review</h1>
+
+<%= form_for @review do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.collection_select :event_id, @events, :id, :name, prompt: "Select event to review" %>
+    <%= f.text_field :title, placeholder: "Title" %>
+    Score: <%= f.select :stars, (1..5) %>/5
+    <%= f.text_area :content, placeholder: "Write a review..." %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>

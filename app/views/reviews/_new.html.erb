@@ -4,6 +4,7 @@
   <%= render 'shared/error_messages', object: f.object %>
   <%= f.hidden_field(:event_id, :value => @event.id) %>
   <div class="field">
+    <%= f.text_field :title, placeholder: "Title" %>
     Score: <%= f.select :stars, (1..5) %>/5
     <%= f.text_area :content, placeholder: "Write a review..." %>
   </div>
