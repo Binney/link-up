@@ -1,5 +1,0 @@
-<%= form_for(current_user.favourites.find_by(venue_id: @venue),
-             html: { method: :delete }) do |f| %>
-  <%= image_tag 'tag_icons/favourite.png' %>
-  <%= f.submit "Unfavourite", class: "btn btn-large" %>
-<% end %>

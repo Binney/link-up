@@ -1,4 +1,0 @@
-class AddGmapsToAddresses < ActiveRecord::Migration
-  def change
-  end
-end

@@ -1,5 +1,0 @@
-<% provide(:title, 'testpage') %>
-<h1>This Page Is For Testing Only Please Delete Afterwards</h1>
-  <p>Hey there!</p>
-  <% cusfspub = Venue.find(4).events.build(name: "CUSFS Pub", description: "Dude. Same as every week.") %>
-  <%= link_to "This won't hurt a bit", venues_path %>

@@ -1,4 +1,0 @@
-<div class="tagline">
-<h2>We're here to help you find <br>opportunities in your local area.</h2>
-<%= button_to "SIGN UP NOW", signup_path, method: 'get', class: "btn btn-primary" %>
-</div>

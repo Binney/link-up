@@ -1,4 +1,0 @@
-class AddHomeAddressToUsers < ActiveRecord::Migration
-  def change
-  end
-end

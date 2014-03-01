@@ -1,5 +1,0 @@
-<%= form_for(current_user.favourites.build(venue_id: @venue.id)) do |f| %>
-  <div><%= f.hidden_field :venue_id %></div>
-  <%= image_tag 'tag_icons/not_favourite.png' %>
-  <%= f.submit "Favourite", class: "btn btn-large btn-primary" %>
-<% end %>

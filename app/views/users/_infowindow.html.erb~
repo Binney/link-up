@@ -1,2 +1,0 @@
-<h1>Home</h1>
-<%= user.home_address.to_s %>, <% user.home_postcode.to_s %>

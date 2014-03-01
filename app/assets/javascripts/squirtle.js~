@@ -1,7 +1,0 @@
-$( function() {
-  $(document).on("click", '.squirtle a', function() {
-    $('.preview').html('Loading...');
-    $.get(this.href, null, null, 'script');
-    return false;
-  });
-});

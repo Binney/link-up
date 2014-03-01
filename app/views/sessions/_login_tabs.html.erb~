@@ -1,6 +1,0 @@
-<div class="login-tab">
-  <h4>Log in</h4>
-  <div id='tab'%>
-    <%= render 'sessions/login_details' %>
-  </div>
-</div>

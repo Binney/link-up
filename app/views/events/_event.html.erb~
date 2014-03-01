@@ -1,6 +1,0 @@
-<%= link_to event do %>
-  <li>
-    <span class="name and date"><%= event.name %> | <%= event.get_day_info %>, <%= Venue.find(event.venue_id).name %></span>
-    <span class="description"><%= event.description %></span>
-  </li>
-<% end %>

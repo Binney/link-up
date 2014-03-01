@@ -1,8 +1,0 @@
-<% provide(:title, 'All venues') %>
-<% provide(:site_section, "0") %>
-<h1>All venues</h1>
-<%= gmaps4rails(@json) %>
-
-<ul class="generic-list">
-  <%= render @venues, size: 52 %>
-</ul>

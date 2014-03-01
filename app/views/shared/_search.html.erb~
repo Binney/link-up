@@ -1,5 +1,0 @@
-<%= form_tag events_path do %>
-  <small>Find activities near you...</small>
-  <%= text_field_tag :postcode %>
-  <%= submit_tag "SEARCH" %>
-<% end %>

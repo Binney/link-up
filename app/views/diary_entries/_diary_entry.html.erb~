@@ -1,9 +1,0 @@
-<li>
-  <% if diary_entry.event_id %>
-    <span class="name and date"><%= link_to event.name, diary_entry.name %></span>
-    <span class="description"><%= diary_entry.start_time.to_s(:short) %>, <%= link_to diary_entry.event.venue, diary_entry.event.venue %></span>
-  <% else %>
-    <span class="name and date"><%= diary_entry.name %></span>
-    <span class="description"><%= diary_entry.start_time.to_s(:short) %></span>
-  <% end %>
-</li>

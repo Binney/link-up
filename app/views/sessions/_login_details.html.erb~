@@ -1,6 +1,0 @@
-<%= form_for(:session, url: root_path) do |f| %>
-  <%= f.text_field :email, placeholder: "Email" %>
-  <%= f.password_field :password, placeholder: "Password" %><br>
-  <small>Forgot your password? <%= link_to "Click here", new_password_reset_path, class: "request_login" %>.</small>
-  <%= f.submit "Sign in", class: "btn btn-login" %>
-<% end %>

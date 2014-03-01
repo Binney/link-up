@@ -1,5 +1,0 @@
-<%= form_for(current_user.favourites.build(event_id: @event.id, start_time: starting), remote: true) do |f| %>
-  <div><%= f.hidden_field :event_id %>
-  <%= f.hidden_field :start_time %></div>
-  <%= f.submit "Favourite", class: "btn btn-primary" %>
-<% end %>

@@ -1,8 +1,0 @@
-class AddTimingsToEvents < ActiveRecord::Migration
-  def change
-    add_column :events, :start_time, :time, default: Time.new(2013, 28, 7, 0, 0, 0)
-    add_column :events, :end_time,   :time, default: Time.new(2013, 28, 7, 1, 0, 0)
-    add_column :events, :date, :date, default: Date.current # also need to add column for recurrence
-    add_index :events, :start_time
-  end
-end

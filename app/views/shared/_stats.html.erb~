@@ -1,9 +1,0 @@
-<% @user ||= current_user %>
-<div class="stats">
-  <a href="<%= favourites_user_path(@user) %>">
-    <strong id="Favourites" class="stat">
-      <%= @user.events.count %>
-    </strong>
-    attending
-  </a>
-</div>

@@ -1,6 +1,0 @@
-<% provide(:title, 'Contact Us') %>
-<% provide(:site_section, "4") %>
-
-<h1>Contact Us</h1>
-  <p>Email us at help@link-up.org.uk for queries, help, and to get a Mentor or Organiser account.</p>
-<iframe width="560" height="315" src="//www.youtube.com/embed/4sRDa-xTfwg?rel=0" frameborder="0" allowfullscreen></iframe>

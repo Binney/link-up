@@ -1,6 +1,0 @@
-class AddEventSchedules < ActiveRecord::Migration
-include IceCube
-  def change
-    add_column :events, :schedule, :string, default: Schedule.new(:start_time).add_recurrence_rule(Rule.weekly).to_hash
-  end
-end

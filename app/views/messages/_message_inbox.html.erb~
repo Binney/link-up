@@ -1,4 +1,0 @@
-<li>
-  <span class="details"><%= message.created_at.to_s(:day_week_month) %> <%= User.find(message.sender_id).name+"      "+message.subject+"     " %> <%= link_to "VIEW", message.show %> <% link+to "DELETE", message, method: :delete,
-                                  data: { confirm: "You sure?" }  %></span>
-</li>

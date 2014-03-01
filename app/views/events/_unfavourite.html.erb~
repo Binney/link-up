@@ -1,4 +1,0 @@
-<%= form_for(current_user.favourites.find_by(event_id: @event, start_time: starting),
-             html: { method: :delete }) do |f| %>
-  <%= f.submit "Unfavourite", class: "btn" %>
-<% end %>
