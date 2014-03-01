@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20131002101956) do
     t.integer  "user_id"
   end
 
-  add_index "events", ["venue_id"], name: "index_events_on_venue_id"
+  add_index "events", ["venue_id"], name: "index_events_on_venue_id", using: :btree
 
   create_table "favourites", force: true do |t|
     t.integer  "user_id"
@@ -59,9 +59,9 @@ ActiveRecord::Schema.define(version: 20131002101956) do
     t.datetime "start_time"
   end
 
-  add_index "favourites", ["event_id"], name: "index_favourites_on_event_id"
-  add_index "favourites", ["user_id", "event_id"], name: "index_favourites_on_user_id_and_event_id_and_day"
-  add_index "favourites", ["user_id"], name: "index_favourites_on_user_id"
+  add_index "favourites", ["event_id"], name: "index_favourites_on_event_id", using: :btree
+  add_index "favourites", ["user_id", "event_id"], name: "index_favourites_on_user_id_and_event_id_and_day", using: :btree
+  add_index "favourites", ["user_id"], name: "index_favourites_on_user_id", using: :btree
 
   create_table "mentorships", force: true do |t|
     t.integer  "mentor_id"
@@ -81,8 +81,8 @@ ActiveRecord::Schema.define(version: 20131002101956) do
     t.datetime "updated_at"
   end
 
-  add_index "messages", ["receiver_id"], name: "index_messages_on_receiver_id"
-  add_index "messages", ["sender_id"], name: "index_messages_on_sender_id"
+  add_index "messages", ["receiver_id"], name: "index_messages_on_receiver_id", using: :btree
+  add_index "messages", ["sender_id"], name: "index_messages_on_sender_id", using: :btree
 
   create_table "relationships", force: true do |t|
     t.integer  "tag_id"
@@ -91,9 +91,9 @@ ActiveRecord::Schema.define(version: 20131002101956) do
     t.datetime "updated_at"
   end
 
-  add_index "relationships", ["event_id"], name: "index_relationships_on_event_id"
-  add_index "relationships", ["tag_id", "event_id"], name: "index_relationships_on_tag_id_and_event_id", unique: true
-  add_index "relationships", ["tag_id"], name: "index_relationships_on_tag_id"
+  add_index "relationships", ["event_id"], name: "index_relationships_on_event_id", using: :btree
+  add_index "relationships", ["tag_id", "event_id"], name: "index_relationships_on_tag_id_and_event_id", unique: true, using: :btree
+  add_index "relationships", ["tag_id"], name: "index_relationships_on_tag_id", using: :btree
 
   create_table "reviews", force: true do |t|
     t.integer  "user_id"
@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 20131002101956) do
     t.datetime "updated_at"
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name"
+  add_index "tags", ["name"], name: "index_tags_on_name", using: :btree
 
   create_table "timings", force: true do |t|
     t.datetime "start_time"
@@ -142,9 +142,9 @@ ActiveRecord::Schema.define(version: 20131002101956) do
     t.string   "role",                   default: "student"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
-  add_index "users", ["school"], name: "index_users_on_school"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+  add_index "users", ["school"], name: "index_users_on_school", using: :btree
 
   create_table "venues", force: true do |t|
     t.string   "name"
@@ -161,7 +161,7 @@ ActiveRecord::Schema.define(version: 20131002101956) do
     t.boolean  "is_school",      default: false
   end
 
-  add_index "venues", ["is_school"], name: "index_venues_on_is_school"
-  add_index "venues", ["name"], name: "index_venues_on_name"
+  add_index "venues", ["is_school"], name: "index_venues_on_is_school", using: :btree
+  add_index "venues", ["name"], name: "index_venues_on_name", using: :btree
 
 end

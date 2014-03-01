@@ -1,6 +1,5 @@
 class AlterEventDatingInfo < ActiveRecord::Migration
   def change
-    drop_table :attendings
     remove_column :events, :start_time
     remove_column :events, :end_time
     remove_column :events, :day
