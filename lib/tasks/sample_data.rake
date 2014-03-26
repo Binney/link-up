@@ -41,7 +41,7 @@ namespace :db do
                          password_confirmation: "foobar",
                          home_address: "1 Kilburn High Road",
                          home_postcode: "",
-                         admin: true)
+                         role: "admin")
     teacher = User.create!(name: "Dagenham Park CoS Teacher",
                          email: "dagenhampark@link-up.org.uk",
                          password: "foobar",
@@ -49,7 +49,7 @@ namespace :db do
                          home_address: "School Road, Barking and Dagenham, London, RM10 9QH",
                          school: "Dagenham Park CoS",
                          home_postcode: "",
-                         mentor: true)
+                         role: "mentor")
     organiser = User.create!(name: "Westminster Academy Teacher",
                          email: "westminsteracademy@link-up.org.uk",
                          password: "foobar",
@@ -57,7 +57,7 @@ namespace :db do
                          home_address: "The Naim Dangoor Centre, 255 Harrow Road, London, W2 5EZ",
                          school: "Westminster Academy",
                          home_postcode: "",
-                         organiser: true)
+                         role: "organiser")
 
     other_venues = Venue.create!(name: "Other Venue",
 				 description: "Other venue not listed above", user_id: 0,
@@ -82,7 +82,7 @@ namespace :db do
           start_time = Chronic.parse("this "+day+" "+start_t)
           end_time = Chronic.parse("this "+day+" "+end_t)
         end
-        cost = cost_str.eql?("Free") ? 0 : 1 # Can't do this - search string for numbers using regex
+        cost = cost_str.eql?("Free") ? 0 : 1 # TODO Can't do this - search string for numbers using regex
         day_int = Date::DAYNAMES.index(day)
         if gender.eql? "Both"
           gender = "All"
