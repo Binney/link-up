@@ -16,7 +16,6 @@
 //= require jquery.ui.all
 //= require jquery_nested_form
 //= require turbolinks
-//= require bootstrap
 //= require general.js
 //= require gmaps4rails/base
 //= require gmaps4rails/google
