@@ -259,5 +259,6 @@ DEPENDENCIES
   thin
   turbolinks
   uglifier (= 2.1.1)
+  unicorn
   watu_table_builder
   will_paginate (= 3.0.4)
