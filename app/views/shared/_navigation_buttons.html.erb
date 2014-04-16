@@ -1,5 +1,6 @@
 <nav class="major-nav">
   <ul class="major-nav-btn">
+
   	<li class="dropdown">
 	  <%= link_to "Find Events", '#', class: (yield(:site_section)=='0' ? "btn btn-large btn-primary dropdown-toggle sr-only" : "btn btn-large dropdown-toggle sr-only"), type: "button", :'data-toggle' => "dropdown" %>
 	  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -19,6 +20,7 @@
 	    <li role="presentation"><%= link_to "Mentoring", mentoring_path, role: "menuitem", tabindex: "-1" %></li>
 	  </ul>
 	</li>
+
     <li class="dropdown">
 	  <%= link_to "Messages (#{session[:message_notif]})", '#', class: (yield(:site_section)=='3' ? "btn btn-large btn-primary dropdown-toggle sr-only" : "btn btn-large dropdown-toggle sr-only"), type: "button", :'data-toggle' => "dropdown" %>
 	  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -26,6 +28,7 @@
 	    <li role="presentation"><%= link_to "New message", new_message_path, role: "menuitem", tabindex: "-1" %></li>
 	  </ul>
 	</li>
+	
   </ul>
 </nav>
  
