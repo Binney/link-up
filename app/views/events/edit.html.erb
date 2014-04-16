@@ -19,9 +19,9 @@
 
   <%= f.fields_for :timings do |timing_form| %>
     <div class="timing_entry">
-      <li><%= timing_form.label :start_time, "Start time:" %>
+      <li><%= timing_form.label :start_time, "Start time:", class: "checkbox inline" %>
       <%= timing_form.datetime_select :start_time, :discard_year => true, :minute_step => 5 %></li>
-      <li><%= timing_form.label :end_time, "End time:" %>
+      <li><%= timing_form.label :end_time, "End time:", class: "checkbox inline" %>
       <%= timing_form.datetime_select :end_time, :discard_year => true, :discard_month => true, :discard_day => true, :minute_step => 5 %></li>
       <li><%= timing_form.link_to_remove "Remove" %></li>
     </div>
@@ -29,6 +29,7 @@
 
   <%= f.link_to_add "Add session", :timings %>
 
+  <h2>Tags</h2>
   <%= hidden_field_tag "event[tag_ids][]", "" %>
 
   <div class="tags_select">

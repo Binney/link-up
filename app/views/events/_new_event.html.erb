@@ -9,10 +9,10 @@
   <%= f.text_area :description %>
 
   <%= f.fields_for :timings do |timing_form| %>
-    <%= timing_form.label :start_time, "Start time:" %>
+    <%= timing_form.label :start_time, "Start time:", class: "checkbox inline" %>
     <%= timing_form.datetime_select :start_time, :discard_year => true, :minute_step => 5 %>
     <br>
-    <%= timing_form.label :end_time, "End time:" %>
+    <%= timing_form.label :end_time, "End time:", class: "checkbox inline" %>
     <%= timing_form.datetime_select :end_time, :discard_year => true, :discard_month => true, :discard_day => true, :minute_step => 5 %>
     <%= timing_form.link_to_remove "Remove" %>
   <% end %>

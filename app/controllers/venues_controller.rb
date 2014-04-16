@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
   # Anyone can see index and profile for venues, even when not logged in.
-  before_action :organiser_account,  only: [:new, :create, :edit, :update, :destroy] # Only a certain kind of account can create venues.
+  before_action :organiser_account,  only: [:new, :create] # Only a certain kind of account can create venues.
   before_action :correct_user,   only: [:edit, :update, :destroy] # Only correct user or admin can edit it
   before_action :correct_school, only: :show
 
@@ -69,10 +69,6 @@ class VenuesController < ApplicationController
       params.require(:venue).permit(:name, :description, :street_address, :postcode, :is_school, :contact) # Include all extra parameters here
     end
 
-    def correct_user
-      redirect_to(root_path) unless correct_or_admin
-    end
-
     def correct_school
       current_venue = Venue.find(params[:id])
       if current_venue.is_school
@@ -80,8 +76,8 @@ class VenuesController < ApplicationController
       end
     end
 
-    def correct_or_admin
+    def correct_user
       current_venue = Venue.find(params[:id])
-      redirect_to(root_path) unless organiser?(current_venue) || admin?
+      redirect_to(root_path) unless (admin? || organiser?(current_venue))
     end
 end

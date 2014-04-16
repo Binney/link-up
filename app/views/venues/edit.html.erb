@@ -12,7 +12,7 @@
       <br>
       <% if admin? %>
         <%= f.check_box :is_school %>
-        <%= f.label :is_school, "School?" %>
+        <%= f.label :is_school, "School?", class: "checkbox inline" %>
       <% end %>
 
       <%= f.label :description %>

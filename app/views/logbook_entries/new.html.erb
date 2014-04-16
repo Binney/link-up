@@ -6,17 +6,14 @@
     <%= form_for(@logbook_entry) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label 'Event attended' %>
-      <%= f.collection_select( :event_id, @events, :id, :name ) %>
+      <%= f.label :date %>
+      <%= f.datetime_select :date %>
 
-      <%= f.label :mentor_meeting, 'Was it a mentor meeting?' %>
+      <%= f.label :mentor_meeting, 'Mentor meeting?', class: "checkbox inline" %>
       <%= f.check_box :mentor_meeting %>
 
       <%= f.label :content %>
       <%= f.text_area :content %>
-
-      <%= f.label :date %>
-      <%= f.datetime_select :date %>
 
       <%= f.submit "Add to logbook!", class: "btn btn-primary" %>
     <% end %>
