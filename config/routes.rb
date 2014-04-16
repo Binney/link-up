@@ -35,6 +35,7 @@ Sweaton2::Application.routes.draw do
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/search',  to: 'static_pages#search', via: 'get'
+  match '/logbook_overview', to: 'logbook_entries#overview', via: 'get'
   match '/12345abcsecret', to: 'users#school_correct', via: 'get'
 
 end

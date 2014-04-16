@@ -10,14 +10,12 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require bootstrap
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require jquery.ui.all
+//= require jquery.ui.tabs
 //= require jquery_nested_form
 //= require turbolinks
 //= require general.js
 //= require gmaps4rails/base
 //= require gmaps4rails/google
-//= require_tree .

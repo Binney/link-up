@@ -1,5 +1,6 @@
 class LogbookEntriesController < ApplicationController
-  before_action :signed_in_user, only: [:create, :new, :index, :edit]
+  before_action :signed_in_user, only: [:create, :new, :index, :edit, :overview]
+  before_action :admin_user, only: :overview
 
   def new
   	@logbook_entry = LogbookEntry.new
@@ -28,10 +29,17 @@ class LogbookEntriesController < ApplicationController
     @logbook_entries = current_user.logbook_entries#.paginate(params[:page])
   end
 
+  def overview
+  end
+
   private
 
     def logbook_entry_params
       params.require(:logbook_entry).permit(:mentor_meeting, :event_id, :content, :date)
+    end
+
+    def admin_user
+      redirect_to(root_path) unless admin?
     end
 
 end

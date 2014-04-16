@@ -20,8 +20,8 @@
       <% @pending_requests.each do |req| %>
         <tr>
           <td><%= req.updated_at.to_s(:short) %></td>
-          <td><%= User.find(req.mentor_id).name %></td>
-          <td><%= User.find(req.mentee_id).name %></td>
+          <td><%= link_to req.mentor.name, req.mentor %></td>
+          <td><%= link_to req.mentee.name, req.mentee %></td>
           <td><%= req.confirmation_stage % 2 == 1 ? "Yes" : "No" %></td>
           <td><%= req.confirmation_stage > 1 ? "Yes" : (render "approve_request", mentorship: req) %></td>
           <td style="vertical-align:bottom;"><%= render 'cancel_request', mentorship: req %></td>
@@ -44,8 +44,8 @@
       <% @pending_mentees.each do |req| %>
         <tr>
           <td><%= req.updated_at.to_s(:short) %></td>
-          <td><%= User.find(req.mentor_id).name %></td>
-          <td><%= User.find(req.mentee_id).name %></td>
+          <td><%= link_to req.mentor.name, req.mentor %></td>
+          <td><%= link_to req.mentee.name, req.mentee %></td>
           <td><%= req.confirmation_stage % 2 == 1 ? "Yes" : "No" %></td>
           <td><%= req.confirmation_stage > 1 ? "Yes" : (render "approve_request", mentorship: req) %></td>
           <td style="vertical-align:bottom;"><%= render 'delete', mentorship: req %></td>
@@ -90,8 +90,8 @@
       <% @pending_mentor_requests.each do |req| %>
         <tr>
           <td><%= req.updated_at.to_s(:short) %></td>
-          <td><%= User.find(req.mentor_id).name %></td>
-          <td><%= User.find(req.mentee_id).name %></td>
+          <td><%= req.mentor.name %></td>
+          <td><%= req.mentee.name %></td>
           <td><%= req.confirmation_stage % 2 == 1 ? "Yes" : "No" %></td>
           <td><%= req.confirmation_stage > 1 ? "Yes" : "No" %></td>
           <td style="vertical-align:bottom;"><%= render 'delete', mentorship: req %></td>
@@ -101,8 +101,8 @@
       <% @pending_mentee_requests.each do |req| %>
         <tr>
           <td><%= req.updated_at.to_s(:short) %></td>
-          <td><%= User.find(req.mentor_id).name %></td>
-          <td><%= User.find(req.mentee_id).name %></td>
+          <td><%= req.mentor.name %></td>
+          <td><%= req.mentee.name %></td>
           <td><%= req.confirmation_stage % 2 == 1 ? "Yes" : (render "approve_request", mentorship: req) %></td>
           <td><%= req.confirmation_stage > 1 ? "Yes" : "No" %></td>
           <td><%= render 'delete', mentorship: req %></td>
