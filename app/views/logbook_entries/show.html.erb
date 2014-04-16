@@ -1,0 +1,14 @@
+<% provide(:title, 'Your logbook') %>
+<% provide(:site_section, 2) %>
+<h1>Logbook</h1>
+<small>Posted <%= @logbook_entry.created_at.to_s(:short) %></small>
+<% if @logbook_entry.mentor_meeting %>
+	<%= 'This was a meeting with your mentor!' %>
+<% elsif @logbook_entry.event_id > 0 %>
+	<%= Event.find(@logbook_entry.event_id).name %>
+<% end %>
+<p><%= simple_format @logbook_entry.content %></p>
+<% if current_user.id==@logbook_entry.user_id %>
+  <%= link_to "Edit", edit_logbook_entry_path(@logbook_entry) %>
+<% end %>
+<%= button_to "Back to logbook", logbook_path, method: 'get', class: 'btn' %>

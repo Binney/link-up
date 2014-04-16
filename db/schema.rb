@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131002101956) do
+ActiveRecord::Schema.define(version: 20140405091328) do
 
   create_table "articles", force: true do |t|
     t.integer  "user_id"
@@ -62,6 +62,16 @@ ActiveRecord::Schema.define(version: 20131002101956) do
   add_index "favourites", ["event_id"], name: "index_favourites_on_event_id"
   add_index "favourites", ["user_id", "event_id"], name: "index_favourites_on_user_id_and_event_id_and_day"
   add_index "favourites", ["user_id"], name: "index_favourites_on_user_id"
+
+  create_table "logbook_entries", force: true do |t|
+    t.integer  "user_id"
+    t.boolean  "mentor_meeting"
+    t.integer  "event_id"
+    t.string   "content"
+    t.datetime "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "mentorships", force: true do |t|
     t.integer  "mentor_id"

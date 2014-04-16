@@ -55,9 +55,13 @@ class UsersController < ApplicationController
     end
     if @user.save
       UserMailer.welcome_email(@user).deliver
-      User.find(1).sent_messages.create!(subject: "You're in, #{@user.name}!", receiver_id: @user.id, message: "Welcome to Link Up! To get started with finding opportunities in your area, hit Find Events. For advice, visit Help at the top of the page. Good luck and have fun!")
+      User.find(1).sent_messages.create!(subject: "You're in, #{@user.name}!",
+         receiver_id: @user.id, message: "Welcome to Link Up! To get started with 
+         finding opportunities in your area, hit Find Events. For advice, visit Help 
+         at the bottom of the page. Good luck and have fun!")
       sign_in @user
-      flash[:success] = "User created successfully - we've sent you a confirmation email. Welcome to Link Up!"
+      flash[:success] = "User created successfully - we've sent you a 
+        confirmation email. Welcome to Link Up!"
       redirect_to root_path
     else
       @schools = ["None", "Dagenham Park CoS", "Westminster Academy"]

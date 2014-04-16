@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :events, through: :favourites
   has_many :diary_entries
+  has_many :logbook_entries
   has_many :messages, foreign_key: "receiver_id", dependent: :destroy
   has_many :sent_messages, class_name: "Message", 
                            foreign_key: "sender_id",

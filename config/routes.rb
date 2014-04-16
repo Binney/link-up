@@ -1,5 +1,8 @@
 Sweaton2::Application.routes.draw do
 
+  get "logbook_entries/new"
+  get "logbook_entries/edit"
+  get "logbook_entries/show"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :venues
@@ -17,6 +20,7 @@ Sweaton2::Application.routes.draw do
   resources :password_resets
   resources :reviews
   resources :articles
+  resources :logbook_entries
 
   root 'static_pages#home'
   match '/signup',  to: 'users#new',		        via: 'get'
@@ -27,6 +31,7 @@ Sweaton2::Application.routes.draw do
   match '/inbox',   to: 'messages#inbox',       via: 'get'
   match '/my_events', to: 'static_pages#my_events', via: 'get'
   match '/news',    to: 'articles#index',       via: 'get'
+  match '/logbook', to: 'logbook_entries#index', via: 'get'
   match '/approve_reviews', to: 'reviews#approve', via: 'get'
   match '/mentoring', to: 'mentorships#index',  via: 'get'
   match '/help',    to: 'static_pages#help',    via: 'get'

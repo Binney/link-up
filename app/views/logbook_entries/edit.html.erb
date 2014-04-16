@@ -1,0 +1,27 @@
+<% provide(:title, 'Edit logbook entry') %>
+<% provide(:site_section, 2) %>
+<h1>Edit logbook entry</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@logbook_entry) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label 'Event attended' %>
+      <%= f.collection_select( :event_id, @events, :id, :name ) %>
+
+      <%= f.label :mentor_meeting, 'Was it a mentor meeting?' %>
+      <%= f.checkbox :mentor_meeting %>
+
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+
+      <%= f.label :date %>
+      <%= f.datetime_select :date %>
+
+      <%= f.submit "Save!", class: "btn btn-primary" %>
+
+    <% end %>
+      <%= button_to "Delete entry", @logbook_entry, method: 'delete', class: "btn", data: {confirm: "You sure?" } %>
+  </div>
+</div>
+

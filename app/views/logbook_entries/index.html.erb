@@ -1,0 +1,12 @@
+<% provide(:title, "My logbook") %>
+<% provide(:site_section, "4") %>
+
+<h1>Logbook</h1>
+
+<% if @logbook_entries.any? %>
+  <ul class="generic-list">
+    <%= render @logbook_entries %>
+  </ul>
+<% else %>
+  No logbook entries found.
+<% end %>

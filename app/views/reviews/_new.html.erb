@@ -5,7 +5,7 @@
   <%= f.hidden_field(:event_id, :value => @event.id) %>
   <div class="field">
     <%= f.text_field :title, placeholder: "Title" %>
-    Score: <%= f.select :stars, (1..5) %>/5
+    Score: <%= f.select :stars, (1..5), default: 5 %>/5
     <%= f.text_area :content, placeholder: "Write a review..." %>
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>

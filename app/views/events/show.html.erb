@@ -35,15 +35,15 @@
         </tr>
         <tr>
           <td><b>Gender:</b></td>
-          <td><%= @event.gender %></td>
+          <td><%= @event.gender.to_s %></td>
         </tr>
         <tr>
           <td><b>Contact:</b></td>
-          <td><%= @event.contact %></td>
+          <td><%= @event.contact.to_s %></td>
         </tr>
         <tr>
           <td><b>Website:</b></td>
-          <td><%= link_to @event.website, @event.website %></td>
+          <td><%= link_to @event.website.to_s, @event.website %></td>
         </tr>
       </table>
     </section>
@@ -51,10 +51,10 @@
       <%= render 'week_view' %>
     </div>
     <section>
-      <%= @event.description %>
+      <%= @event.description.to_s %>
     </section>
     <section>
-      <p><b><%= link_to @event.venue.name, @event.venue %></b>, <%= @event.venue.street_address+", "+@event.venue.postcode %></p> 
+      <p><b><%= link_to @event.venue.name.to_s, @event.venue %></b>, <%= @event.venue.street_address.to_s+", "+@event.venue.postcode.to_s %></p> 
       <%= gmaps( :markers => {:data => @json}, 
                  :map_options => {:auto_zoom => false, :zoom => 15 }
                  ) %>
