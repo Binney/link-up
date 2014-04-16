@@ -130,6 +130,9 @@ bottomright_container {
   width: 50%;
 }
 
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -828,3 +831,4 @@ input[type=checkbox].css-checkbox {
   font-size: 11px;
   text-align: center;
 }
+

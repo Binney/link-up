@@ -1,8 +1,31 @@
 <nav class="major-nav">
   <ul class="major-nav-btn">
-    <li><%= link_to "Find Events", events_path, class: ((yield(:site_section)!='1' && yield(:site_section)!='2' && yield(:site_section)!='3' && yield(:site_section)!='4') ? "btn btn-large btn-primary" : "btn btn-large") %></li>
-    <li><%= link_to "Browse Categories", tags_path, class: (yield(:site_section)=='1' ? "btn btn-large btn-primary" : "btn btn-large") %></li>
-    <li><%= link_to "My Events", my_events_path, class: (yield(:site_section)=='2' ? "btn btn-large btn-primary" : "btn btn-large") %></li>
-    <li><%= link_to "Messages (#{session[:message_notif]})", inbox_path, class: (yield(:site_section)=='3' ? "btn btn-large btn-primary" : "btn btn-large") %></li>
+  	<li class="dropdown">
+	  <%= link_to "Find Events", '#', class: (yield(:site_section)=='0' ? "btn btn-large btn-primary dropdown-toggle sr-only" : "btn btn-large dropdown-toggle sr-only"), type: "button", :'data-toggle' => "dropdown" %>
+	  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+	    <li role="presentation"><%= link_to "Search events", search_path, role: "menuitem", tabindex: "-1" %></li>
+	    <li role="presentation"><%= link_to "All events", events_path, role: "menuitem", tabindex: "-1" %></li>
+	    <li role="presentation"><%= link_to "Browse venues", venues_path, role: "menuitem", tabindex: "-1" %></li>
+	    <li role="presentation"><%= link_to "Browse categories", tags_path, role: "menuitem", tabindex: "-1" %></li>
+	  </ul>
+	</li>
+
+    <li><%= link_to "My Events", my_events_path, class: (yield(:site_section)=='1' ? "btn btn-large btn-primary" : "btn btn-large") %></li>
+
+    <li class="dropdown">
+	  <%= link_to "Logbook", '#', class: (yield(:site_section)=='2' ? "btn btn-large btn-primary dropdown-toggle sr-only" : "btn btn-large dropdown-toggle sr-only"), type: "button", :'data-toggle' => "dropdown" %>
+	  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+	    <li role="presentation"><%= link_to "Logbook", logbook_path, role: "menuitem", tabindex: "-1" %></li>
+	    <li role="presentation"><%= link_to "Mentoring", mentoring_path, role: "menuitem", tabindex: "-1" %></li>
+	  </ul>
+	</li>
+    <li class="dropdown">
+	  <%= link_to "Messages (#{session[:message_notif]})", '#', class: (yield(:site_section)=='3' ? "btn btn-large btn-primary dropdown-toggle sr-only" : "btn btn-large dropdown-toggle sr-only"), type: "button", :'data-toggle' => "dropdown" %>
+	  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+	    <li role="presentation"><%= link_to "Inbox (#{session[:message_notif]})", inbox_path, role: "menuitem", tabindex: "-1" %></li>
+	    <li role="presentation"><%= link_to "New message", new_message_path, role: "menuitem", tabindex: "-1" %></li>
+	  </ul>
+	</li>
   </ul>
 </nav>
+ 

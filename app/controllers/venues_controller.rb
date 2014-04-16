@@ -80,4 +80,8 @@ class VenuesController < ApplicationController
       end
     end
 
+    def correct_or_admin
+      current_venue = Venue.find(params[:id])
+      redirect_to(root_path) unless organiser?(current_venue) || admin?
+    end
 end

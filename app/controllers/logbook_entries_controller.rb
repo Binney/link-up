@@ -1,4 +1,5 @@
 class LogbookEntriesController < ApplicationController
+  before_action :signed_in_user, only: [:create, :new, :index, :edit]
 
   def new
   	@logbook_entry = LogbookEntry.new

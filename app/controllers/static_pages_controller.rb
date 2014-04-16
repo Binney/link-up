@@ -67,4 +67,8 @@ class StaticPagesController < ApplicationController
   def contact
   end
 
+  def search
+    @search = Event.search(params[:q])
+  end
+
 end

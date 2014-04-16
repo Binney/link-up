@@ -1,8 +1,5 @@
 Sweaton2::Application.routes.draw do
 
-  get "logbook_entries/new"
-  get "logbook_entries/edit"
-  get "logbook_entries/show"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :venues
@@ -37,6 +34,7 @@ Sweaton2::Application.routes.draw do
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/search',  to: 'static_pages#search', via: 'get'
   match '/12345abcsecret', to: 'users#school_correct', via: 'get'
 
 end
