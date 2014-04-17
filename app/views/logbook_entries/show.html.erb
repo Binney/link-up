@@ -1,15 +1,20 @@
 <% provide(:title, "#{((current_user.id==@logbook_entry.user_id) ? "My" : @logbook_entry.user.name+"'s")}  logbook") %>
 <% provide(:site_section, 2) %>
 <h1>Logbook</h1>
+
 <b>Posted <%= @logbook_entry.created_at.to_s(:short) %></b>
+
 <% if @logbook_entry.mentor_meeting %>
 	<%= 'This was a mentor meeting.' %>
 <% elsif !(@logbook_entry.event_id.nil?) %>
 	<%= Event.find(@logbook_entry.event_id).name %>
 <% end %>
+
 <p><%= simple_format @logbook_entry.content %></p>
+
 <% if current_user.id==@logbook_entry.user_id %>
   <%= link_to "Edit", edit_logbook_entry_path(@logbook_entry) %>
   <%= link_to "Delete", @logbook_entry, method: :delete,  data: { confirm: "Delete this logbook entry?" } %>
-  <% end %>
+<% end %>
+
 <%= button_to "Back to logbook", ((current_user.id==@logbook_entry.user_id) ? logbook_path : logbook_overview_path), method: 'get', class: 'btn' %>

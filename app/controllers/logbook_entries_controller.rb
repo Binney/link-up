@@ -45,10 +45,10 @@ class LogbookEntriesController < ApplicationController
   def overview
     if admin?
       # Display all users, sorted by number of mentor meetings they've had (ascending)
-      @users = User.all.order('mentor_meetings ASC')#.paginate(params]:page)
+      @users = User.all.order('mentor_meetings ASC')#.paginate(page: params[:page], per_page: 1)
     elsif teacher?
       # Display all users from your school
-      @users = User.simple_search(params[:name_search], current_user.school).order('mentor_meetings ASC')#.paginate(page: params[:page])
+      @users = User.simple_search(params[:name_search], current_user.school).order('mentor_meetings ASC')#.paginate(page: params[:page], per_page: 1)
     else
       # Display your mentee's logbook records.
       @users = current_user.mentees.order('mentor_meetings ASC')#.paginate(params[:page])
