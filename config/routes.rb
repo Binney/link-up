@@ -13,7 +13,7 @@ Sweaton2::Application.routes.draw do
   resources :tags, only: [:index, :show]
   resources :relationships, only: [:create, :destroy]
   resources :favourites, only: [:create, :destroy]
-  resources :diary_entries, :messages, :mentorships, :password_resets, :revews, :articles, :logbook_entries
+  resources :diary_entries, :messages, :mentorships, :password_resets, :reviews, :articles, :logbook_entries
 
   root 'static_pages#home'
   match '/signup',  to: 'users#new',		        via: 'get'
@@ -31,6 +31,7 @@ Sweaton2::Application.routes.draw do
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/search',  to: 'static_pages#search', via: 'get'
+  match '/management', to: 'static_pages#management', via: 'get'
   match '/logbook_overview', to: 'logbook_entries#overview', via: 'get'
   match '/12345abcsecret', to: 'users#school_correct', via: 'get'
 

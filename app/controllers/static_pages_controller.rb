@@ -1,5 +1,7 @@
 class StaticPagesController < ApplicationController
   before_action :signed_in_user, only: :my_events
+  before_action :non_student, only: :management
+
   def home
     # Okay. Needs to process whether you're logged in and if so, how.
     # If you're not logged in, it just shows all venues.
@@ -70,5 +72,14 @@ class StaticPagesController < ApplicationController
   def search
     @search = Event.search(params[:q])
   end
+
+  def management
+  end
+
+  private
+
+    def non_student
+      redirect_to root_path unless (signed_in? && current_user.role!="student")
+    end
 
 end

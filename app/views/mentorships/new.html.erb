@@ -1,3 +1,6 @@
+<% provide(:title, "Send a mentor request") %>
+<% provide(:site_section, "2") %>
+
 <div class="searchbox">
   <%= form_tag new_mentorship_path, method: 'get', id: "user_search" do %>
     <%= hidden_field :school, value: current_user.school %>

@@ -35,6 +35,12 @@
       <%= f.label :gender %>
       <%= f.select :gender, [['All'],['Female'], ['Male']] %>
 
+      <%= f.label :contact %>
+      <%= f.text_field :contact %>
+
+      <%= f.label :website %>
+      <%= f.text_field :website %>
+
       <%= f.submit "Create event", class: "btn btn-primary" %>
     <% end %>
   </div>

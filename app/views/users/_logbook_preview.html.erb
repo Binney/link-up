@@ -7,8 +7,13 @@
     <td><b><%= user.logbook_entries.length %></b></td>
   </tr>
   <tr>
-    <td>Number of mentor meetings</td>
-    <td><b><%= user.mentor_meetings %></b></td>
+    <% if (user.mentor_meetings == 0) %>
+        <td class="red">Number of mentor meetings</td>
+        <td class="red"><b><%= user.mentor_meetings %></b></td>
+      <% else %>
+        <td>Number of mentor meetings</td>
+        <td><b><%= user.mentor_meetings %></b></td>
+      <% end %>
   </tr>
   <tr>
   	<td><%= link_to "View logbook", user_logbook_entries_path(user) %></td>

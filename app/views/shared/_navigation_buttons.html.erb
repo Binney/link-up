@@ -13,32 +13,21 @@
 
     <li><%= link_to "My Events", my_events_path, class: (yield(:site_section)=='1' ? "btn btn-large btn-primary" : "btn btn-large") %></li>
 
-    <% if current_user.role == "student" %>
-
-	    <li class="dropdown">
-		  <%= link_to "Logbook", '#', class: (yield(:site_section)=='2' ? "btn btn-large btn-primary dropdown-toggle sr-only" : "btn btn-large dropdown-toggle sr-only"), type: "button", :'data-toggle' => "dropdown" %>
-		  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-		    <li role="presentation"><%= link_to "Logbook", logbook_path, role: "menuitem", tabindex: "-1" %></li>
-		    <li role="presentation"><%= link_to "Mentoring", mentoring_path, role: "menuitem", tabindex: "-1" %></li>
-		  </ul>
-		</li>
-
-	<% elsif current_user.role != "student" %>
+	<% if current_user.role != "student" %>
 
 	    <li class="dropdown">
 		  <%= link_to "Manage", '#', class: (yield(:site_section)=='2' ? "btn btn-large btn-primary dropdown-toggle sr-only" : "btn btn-large dropdown-toggle sr-only"), type: "button", :'data-toggle' => "dropdown" %>
 		  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-		  	<% unless current_user.role=="teacher" %>
-			    <li role="presentation"><%= link_to "New event", new_event_path, role: "menuitem", tabindex: "-1" %></li>
-			    <li role="presentation"><%= link_to "New venue", new_venue_path, role: "menuitem", tabindex: "-1" %></li>
-			    <li role="presentation"><%= link_to "New article", new_article_path, role: "menuitem", tabindex: "-1" %></li>
-		    <% end %>
+		    <li role="presentation"><%= link_to "How to add events", management_path, role: "menuitem", tabindex: "-1" %></li>
+		    <li role="presentation"><%= link_to "New event", new_event_path, role: "menuitem", tabindex: "-1" %></li>
+		    <li role="presentation"><%= link_to "New venue", new_venue_path, role: "menuitem", tabindex: "-1" %></li>
+		    <li role="presentation"><%= link_to "New article", new_article_path, role: "menuitem", tabindex: "-1" %></li>
 		    <% unless current_user.role=="organiser" %>
 			    <li role="presentation"><%= link_to "Manage users", users_path, role: "menuitem", tabindex: "-1" %></li>
 			    <li role="presentation"><%= link_to "Manage mentorships", mentoring_path, role: "menuitem", tabindex: "-1" %></li>
 			    <li role="presentation"><%= link_to "Logbook overview", logbook_overview_path, role: "menuitem", tabindex: "-1" %></li>
-			    <li role="presentation"><%= link_to "Approve reviews", approve_reviews_path, role: "menuitem", tabindex: "-1" %></li>
 		    <% end %>
+		    <li role="presentation"><%= link_to "Approve reviews", approve_reviews_path, role: "menuitem", tabindex: "-1" %></li>
 
 		  </ul>
 		</li>
