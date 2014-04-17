@@ -11,6 +11,7 @@
       <% if current_user.role == "admin" %>
         <%= @user.email %><br>
       <% end %>
+      <%= link_to "View logbook", user_logbook_entries_path(@user) %><br>
       <%= link_to "Send a message", new_message_path(recipient: @user.id) %><br>
       <%= link_to "Edit", edit_user_path(@user) %>
     </section>

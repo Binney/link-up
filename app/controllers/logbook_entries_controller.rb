@@ -1,7 +1,7 @@
 class LogbookEntriesController < ApplicationController
-  before_action :signed_in_user, only: [:create, :new, :index, :edit, :overview]
+  before_action :signed_in_user, only: [:create, :new, :index, :edit, :overview, :destroy]
   before_action :admin_or_teacher_user, only: :overview
-  before_action :correct_user, only: :index
+  before_action :correct_user, only: [:index, :destroy]
 
   def new
   	@logbook_entry = LogbookEntry.new
@@ -52,6 +52,15 @@ class LogbookEntriesController < ApplicationController
     else
       # Display your mentee's logbook records.
       @users = current_user.mentees.order('mentor_meetings ASC')#.paginate(params[:page])
+    end
+  end
+
+  def destroy
+    @logbook_entry = LogbookEntry.find(params[:id])
+    user_id = @logbook_entry.user_id
+    if @logbook_entry.destroy
+      flash[:success] = "Logbook entry destroyed."
+      redirect_to logbook_path
     end
   end
 
