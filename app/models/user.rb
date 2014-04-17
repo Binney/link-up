@@ -75,6 +75,16 @@ class User < ActiveRecord::Base
     UserMailer.password_reset(self).deliver
   end
 
+  def teaches?(thing)
+    if thing.class.name=="User"
+      (self.role == "teacher") && (self.school == thing.school)
+    elsif thing.class.name=="Venue"
+      (self.role == "teacher") && (self.school == thing.name)
+    else
+      (self.role == "teacher") && (self.school == thing.venue.name)
+    end
+  end
+
   def is_mentor?(other_user)
     mentorships.find_by(mentee_id: other_user.id)
   end
@@ -97,6 +107,16 @@ class User < ActiveRecord::Base
 
   def unfavourite!(eventid, day)
     favourites.find_by(event_id: eventid, day: day).destroy
+  end
+
+  def count_mentor_meetings
+    n=0
+    self.logbook_entries.each do |meeting|
+      if meeting.mentor_meeting
+        n+=1
+      end
+    end
+    self.update_attribute(:mentor_meetings, n)
   end
 
   private

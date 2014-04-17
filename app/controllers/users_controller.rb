@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   require 'will_paginate/array'
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :correct_user,   only: [:show, :edit, :update, :logbook]
 
   # Only admins and mentors can actually see anyone's profiles - if a student
   # clicks to any profile, it just redirects them to their homepage.
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
         end
         @user_array.last[1].push(user) unless done==true
       end
-    elsif current_user.role == 'teacher'
+    elsif teacher?
       @users = User.simple_search(params[:name_search], current_user.school).paginate(page: params[:page])
       @user_array = [[current_user.school, @users]]
     else
@@ -34,10 +34,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if current_user.mentorships.find_by(mentee_id: @user, confirmation_stage: 3) || admin?
-      @favourites = @user.events.paginate(page: params[:page]) # How to display these...
-    else
+    if (current_user?(@user))
       redirect_to root_path
+    else
+      @favourites = @user.events.paginate(page: params[:page]) # TODO display these on user profile page
     end
   end
 
@@ -84,6 +84,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def logbook
+    @user = User.find(params[:id])
+    @logbook_entries = @user.logbook_entries
+  end
+
   def destroy
     User.destroy(params[:id])
     flash[:success] = "User destroyed."
@@ -110,7 +115,7 @@ class UsersController < ApplicationController
 
   private
 
-    def user_params # Ew ew ew ew ew ew ew no.
+    def user_params # TODO Ew ew ew ew ew ew ew no.
       params.require(:user).permit!#(:name, :email, :home_address, :home_postcode, :school, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at, :role)
     end
 
@@ -118,8 +123,9 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user) || (admin? || current_user.is_mentor?(@user))
+      redirect_to(root_path) unless current_user?(@user) || admin? || current_user.is_mentor?(@user) || current_user.teaches?(@user)
     end
+
 
     def admin_user
       redirect_to(root_path) unless admin?

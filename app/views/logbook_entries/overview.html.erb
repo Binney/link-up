@@ -1,4 +1,18 @@
 <% provide(:title, "Logbook management") %>
 <% provide(:site_section, "2") %>
 
-Logbooks here! All the logbooks!
+<h1>Manage logbooks</h1>
+
+<% if @users.any? %>
+
+  <%= @users.each do |user| %>
+
+  	<%= render(partial: 'users/logbook_preview', locals: {user: user}) %>
+
+  <% end %>
+
+<% else %>
+	
+  You're not mentoring anyone. <%= link_to "Start a mentor relationship", new_mentorship_path %> or <%= link_to "view your own logbook", logbook_path %>.
+
+<% end %>

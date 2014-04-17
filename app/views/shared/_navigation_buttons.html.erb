@@ -23,37 +23,30 @@
 		  </ul>
 		</li>
 
-	<% elsif current_user.role == "admin" %>
+	<% elsif current_user.role != "student" %>
 
 	    <li class="dropdown">
 		  <%= link_to "Manage", '#', class: (yield(:site_section)=='2' ? "btn btn-large btn-primary dropdown-toggle sr-only" : "btn btn-large dropdown-toggle sr-only"), type: "button", :'data-toggle' => "dropdown" %>
 		  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-		    <li role="presentation"><%= link_to "New event", new_event_path, role: "menuitem", tabindex: "-1" %></li>
-		    <li role="presentation"><%= link_to "New venue", new_venue_path, role: "menuitem", tabindex: "-1" %></li>
-		    <li role="presentation"><%= link_to "New article", new_article_path, role: "menuitem", tabindex: "-1" %></li>
-		    <li class="divider"></li>
-		    <li role="presentation"><%= link_to "Manage users", users_path, role: "menuitem", tabindex: "-1" %></li>
-		    <li role="presentation"><%= link_to "Manage mentorships", mentoring_path, role: "menuitem", tabindex: "-1" %></li>
-		    <li role="presentation"><%= link_to "Logbook overview", logbook_overview_path, role: "menuitem", tabindex: "-1" %></li>
-		    <li role="presentation"><%= link_to "Approve reviews", approve_reviews_path, role: "menuitem", tabindex: "-1" %></li>
+		  	<% unless current_user.role=="teacher" %>
+			    <li role="presentation"><%= link_to "New event", new_event_path, role: "menuitem", tabindex: "-1" %></li>
+			    <li role="presentation"><%= link_to "New venue", new_venue_path, role: "menuitem", tabindex: "-1" %></li>
+			    <li role="presentation"><%= link_to "New article", new_article_path, role: "menuitem", tabindex: "-1" %></li>
+		    <% end %>
+		    <% unless current_user.role=="organiser" %>
+			    <li role="presentation"><%= link_to "Manage users", users_path, role: "menuitem", tabindex: "-1" %></li>
+			    <li role="presentation"><%= link_to "Manage mentorships", mentoring_path, role: "menuitem", tabindex: "-1" %></li>
+			    <li role="presentation"><%= link_to "Logbook overview", logbook_overview_path, role: "menuitem", tabindex: "-1" %></li>
+			    <li role="presentation"><%= link_to "Approve reviews", approve_reviews_path, role: "menuitem", tabindex: "-1" %></li>
+		    <% end %>
 
-		  </ul>
-		</li>
-
-	<% elsif current_user.role == "" %>
-
-		<li class="dropdown">
-		  <%= link_to "Logbook", '#', class: (yield(:site_section)=='2' ? "btn btn-large btn-primary dropdown-toggle sr-only" : "btn btn-large dropdown-toggle sr-only"), type: "button", :'data-toggle' => "dropdown" %>
-		  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-		    <li role="presentation"><%= link_to "Logbook", logbook_path, role: "menuitem", tabindex: "-1" %></li>
-		    <li role="presentation"><%= link_to "Mentoring", mentoring_path, role: "menuitem", tabindex: "-1" %></li>
 		  </ul>
 		</li>
 
 	<% else %>
 
 	    <li class="dropdown">
-		  <%= link_to "Logbook", '#', class: (yield(:site_section)=='2' ? "btn btn-large btn-primary dropdown-toggle sr-only" : "btn btn-large dropdown-toggle sr-only"), type: "button", :'data-toggle' => "dropdown" %>
+		  <%= link_to "Personal", '#', class: (yield(:site_section)=='2' ? "btn btn-large btn-primary dropdown-toggle sr-only" : "btn btn-large dropdown-toggle sr-only"), type: "button", :'data-toggle' => "dropdown" %>
 		  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 		    <li role="presentation"><%= link_to "Logbook", logbook_path, role: "menuitem", tabindex: "-1" %></li>
 		    <li role="presentation"><%= link_to "Mentoring", mentoring_path, role: "menuitem", tabindex: "-1" %></li>

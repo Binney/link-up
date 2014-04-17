@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140405091328) do
+ActiveRecord::Schema.define(version: 20140417104401) do
 
   create_table "articles", force: true do |t|
     t.integer  "user_id"
@@ -150,9 +150,11 @@ ActiveRecord::Schema.define(version: 20140405091328) do
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.string   "role",                   default: "student"
+    t.integer  "mentor_meetings"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["mentor_meetings"], name: "index_users_on_mentor_meetings"
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
   add_index "users", ["school"], name: "index_users_on_school"
 

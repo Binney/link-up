@@ -1,12 +1,14 @@
-<% provide(:title, "My logbook") %>
+<% provide(:title, "#{(current_user?(@user) ? "My" : @user.name+"'s")}  logbook") %>
 <% provide(:site_section, "2") %>
 
-<h1>My Logbook</h1>
+<h1><%= (current_user?(@user) ? "My" : @user.name+"'s") %> Logbook</h1>
 
 <% if @logbook_entries.any? %>
   <ul class="generic-list">
     <%= render @logbook_entries %>
   </ul>
 <% else %>
-  No logbook entries found. <%= link_to "Create a new one!", new_logbook_entry_path %>
+  No logbook entries found. <%= (link_to "Create a new one!", new_logbook_entry_path) if current_user?(@user) %>
 <% end %>
+
+<%= (button_to "Back to logbook management", logbook_overview_path, method: 'get', class: 'btn') unless current_user?(@user) %>

@@ -23,6 +23,10 @@ module SessionsHelper
     end
   end
 
+  def teacher?
+    signed_in? && current_user.role == "teacher"
+  end
+
   def current_user=(user)
     @current_user = user
   end

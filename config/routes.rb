@@ -1,6 +1,8 @@
 Sweaton2::Application.routes.draw do
 
-  resources :users
+  resources :users do
+    resources :logbook_entries
+  end
   resources :sessions, only: [:new, :create, :destroy]
   resources :venues
   resources :events do
@@ -11,13 +13,7 @@ Sweaton2::Application.routes.draw do
   resources :tags, only: [:index, :show]
   resources :relationships, only: [:create, :destroy]
   resources :favourites, only: [:create, :destroy]
-  resources :diary_entries
-  resources :messages
-  resources :mentorships
-  resources :password_resets
-  resources :reviews
-  resources :articles
-  resources :logbook_entries
+  resources :diary_entries, :messages, :mentorships, :password_resets, :revews, :articles, :logbook_entries
 
   root 'static_pages#home'
   match '/signup',  to: 'users#new',		        via: 'get'

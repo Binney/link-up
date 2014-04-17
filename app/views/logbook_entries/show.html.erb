@@ -4,11 +4,12 @@
 <small>Posted <%= @logbook_entry.created_at.to_s(:short) %></small>
 <% if @logbook_entry.mentor_meeting %>
 	<%= 'This was a meeting with your mentor!' %>
-<% elsif @logbook_entry.event_id > 0 %>
+<% elsif !(@logbook_entry.event_id.nil?) %>
 	<%= Event.find(@logbook_entry.event_id).name %>
 <% end %>
 <p><%= simple_format @logbook_entry.content %></p>
 <% if current_user.id==@logbook_entry.user_id %>
   <%= link_to "Edit", edit_logbook_entry_path(@logbook_entry) %>
-<% end %>
+  <%= link_to "Delete", @logbook_entry, method: :delete,  data: { confirm: "Delete this logbook entry?" } %>
+  <% end %>
 <%= button_to "Back to logbook", logbook_path, method: 'get', class: 'btn' %>

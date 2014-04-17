@@ -9,7 +9,7 @@ namespace :db do
                          home_address: "School Road, Barking and Dagenham, London, RM10 9QH",
                          school: "Dagenham Park CoS",
                          home_postcode: "",
-                         role: "mentor")
+                         role: "teacher")
     organiser = User.create!(name: "Westminster Academy Teacher",
                          email: "westminsteracademy@link-up.org.uk",
                          password: "foobar",
