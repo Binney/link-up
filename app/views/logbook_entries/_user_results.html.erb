@@ -1,0 +1,11 @@
+<% if @users.any? %>
+
+  <% @users.each do |user| %>
+  	<%= render(partial: 'users/logbook_preview', locals: {user: user}) %>
+  <% end %>
+
+<% else %>
+	
+  No users found.
+
+<% end %>

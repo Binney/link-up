@@ -1,0 +1,13 @@
+<% provide(:title, @review.title) %>
+<% provide(:site_section, "1") %>
+
+<h1><%= link_to @subject.name, @subject %>: <%= @review.title.to_s %></b></h1>
+
+<%= "#{"★"*@review.stars} |" if @review.stars.to_i>0 && @review.stars.to_i<6 %>
+<% if current_user.id==@review.user_id || admin? || (current_user.school==@review.user && current_user.role=="teacher") %>  
+	<%= link_to "Edit", edit_review_path(@review) %> | <%= link_to "Delete", @review, method: :delete, data: { confirm: "You sure?" } %>
+ <% end %>
+ <br>
+ <span class="description"><%= @review.content %></span>
+
+<%= button_to "Back to #{@subject.class.name.downcase}", @subject, class: "btn", method: 'get' %>

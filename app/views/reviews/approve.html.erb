@@ -7,7 +7,7 @@
   <ul class="generic-list">
   <% @reviews.each do |review| %>
     <li><span class="name and date"><b><%= link_to review.title, review %></b> (<%= review.stars %> stars)</span>
-        <span class="description"><%= review.content[0..140] %>... <%= link_to "Read more", review %></span><%= render partial: "approve", locals: {review: review} %> <%= render 'disapprove', locals: { review: review } %></li>
+        <span class="description"><%= review.content[0..140] %>... <%= link_to "Read more", review %></span><%= render partial: "approve", locals: {review: review} %> <%= render partial: 'disapprove', locals: { review: review } %></li>
   <% end %>
   </ul>
 <% else %>

@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140417104401) do
+ActiveRecord::Schema.define(version: 20140418113503) do
 
   create_table "articles", force: true do |t|
     t.integer  "user_id"
-    t.string   "content"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20140417104401) do
     t.integer  "venue_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "description"
+    t.text     "description"
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps",        default: true
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20140417104401) do
     t.integer  "user_id"
     t.boolean  "mentor_meeting"
     t.integer  "event_id"
-    t.string   "content"
+    t.text     "content"
     t.datetime "date"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20140417104401) do
     t.integer  "sender_id"
     t.integer  "receiver_id"
     t.string   "subject"
-    t.string   "message"
+    t.text     "message"
     t.boolean  "unread",      default: true
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 20140417104401) do
     t.integer  "user_id"
     t.integer  "event_id"
     t.integer  "venue_id"
-    t.string   "content"
+    t.text     "content"
     t.integer  "stars"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -160,7 +160,7 @@ ActiveRecord::Schema.define(version: 20140417104401) do
 
   create_table "venues", force: true do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.string   "postcode"
     t.datetime "created_at"
     t.datetime "updated_at"

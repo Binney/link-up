@@ -1,1 +1,3 @@
-<%= 'button_to "Disapprove", review, method: "destroy", class: "btn", data: {confirm: "Delete this review?"}' %>
+<%= form_for(review, html: { method: :delete }) do |f| %>
+  <%= f.submit "Disapprove and delete", class: "btn", data: {confirm: "Delete this review?"}  %>
+<% end %>

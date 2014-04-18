@@ -34,6 +34,17 @@ class ReviewsController < ApplicationController
     @reviews = Review.all.where(approved: true)
   end
 
+  def show
+    @review = Review.find(params[:id])
+    if @review.event_id > 0
+      @subject = Event.find(@review.event_id)
+    elsif @review.venue_id > 0
+      @subject = Venue.find(@review.venue_id)
+    else
+      @subject = Venue.first
+    end
+  end
+
   def user_index
     # Find all reviews by user id and index them for editing/deleting/visiting said event.
     params[:user_id] ||= current_user.id
@@ -53,9 +64,15 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
-    user_id = @review.user_id
+    if @review.event_id > 0
+      @subject = Event.find(@review.event_id)
+    elsif @review.venue_id > 0
+      @subject = Venue.find(@review.venue_id)
+    else
+      @subject = approve_reviews_path
+    end
     @review.destroy
-    redirect_to reviews_user_index_path(user_id: user_id)
+    redirect_to @subject
   end
 
   private
