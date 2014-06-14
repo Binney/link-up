@@ -27,6 +27,10 @@ module SessionsHelper
     signed_in? && current_user.role == "teacher"
   end
 
+  def wrote_article?(article)
+    signed_in? && current_user.id == article.user_id
+  end
+
   def current_user=(user)
     @current_user = user
   end
