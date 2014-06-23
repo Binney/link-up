@@ -15,7 +15,8 @@
       <%= link_to "Send a message", new_message_path(recipient: @user.id) %><br>
       <%= link_to "Edit", edit_user_path(@user) %>
     </section>
-    <%=  @user.school.eql?("None") || @user.school.blank? ? "Not listed with any school" : "Student at "+@user.school %><br>
+    <% sch = (@user.school.eql?("Other Venue") || @user.school_id==1) ? "with no school" : "at #{@user.school}" %>
+    <%= "#{@user.role.humanize} #{sch}" %><br>
     <%= @user.home_address.to_s+", "+@user.home_postcode.to_s %>
   </aside>
 </div>

@@ -11,22 +11,6 @@ class SchoolsController < ApplicationController
     render 'venues/new'
   end
 
-  #def new
-    #@venue = Venue.new
-  	#@school = @venue.schools.build
-  #end
-
-  #def create
-  	#@venue = Venue.find(params[:venue_id])
-    #@school = @venue.schools.build(school_params)
-  	#if @school.save
-  	#  flash[:success] = "School successfully added to the Link Up scheme!"
-  	#  redirect_to @school
-  	#else
-  	#  render 'new'
-  	#end
-  #end
-
   def edit
     @school = School.find(params[:id])
   end

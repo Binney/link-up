@@ -79,6 +79,17 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
+    teacher_school = find_school_by_teacher_code(user_params[:school])
+    if user_params[:school]=="Link Up Teacher"
+      @user.role = "teacher"
+      @user.school_id = 1
+    elsif teacher_school.id > 1
+      @user.role = "teacher"
+      @user.school_id = teacher_school.id
+    else
+      @user.school_id = find_school_by_student_code(user_params[:school]).id
+    end
     params[:user].delete(:password) if params[:user][:password].blank?
     if @user.update_attributes(user_params)
       flash[:success] = "Edit successful."
