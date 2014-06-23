@@ -1,0 +1,7 @@
+<%= f.label :teacher_code, "Code for teachers" %>
+<small>Distribute this code to teachers at the school and they will get teacher privileges when they create an account. Guard this code well, though - teachers have access to students' private information.</small>
+<%= f.text_field :teacher_code, value: Faker::Company.bs %>
+
+<%= f.label :student_code, "Code for students" %>
+<small>Distribute this code to students at the school and they'll be registered as a student when they create an account. That means they'll be able to see school-only events and enter mentor relationships.</small>
+<%= f.text_field :student_code, value: Faker::Company.bs %>

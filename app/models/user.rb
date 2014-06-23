@@ -119,6 +119,11 @@ class User < ActiveRecord::Base
     self.update_attribute(:mentor_meetings, n)
   end
 
+  def school
+    id = self.school_id || 1
+    School.find(id).name
+  end
+
   private
 
     def create_remember_token

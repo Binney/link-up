@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  before_action :admin_user, only: [:new, :create, :edit, :update, :destroy] # Any tag-related actions can only be carried out by an admin.
+  before_action :admin_account, only: [:new, :create, :edit, :update, :destroy] # Any tag-related actions can only be carried out by an admin.
 
   def index
     @tags = Tag.all
@@ -48,10 +48,6 @@ class TagsController < ApplicationController
 
     def tag_params
       params.require(:tag).permit(:name, :relationships)
-    end
-
-    def admin_user
-      redirect_to(root_path) unless admin?
     end
 
 end

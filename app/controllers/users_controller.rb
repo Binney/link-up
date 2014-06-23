@@ -2,31 +2,28 @@ class UsersController < ApplicationController
   require 'will_paginate/array'
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:show, :edit, :update, :logbook]
-
-  # Only admins and mentors can actually see anyone's profiles - if a student
-  # clicks to any profile, it just redirects them to their homepage.
-  before_action :admin_user,     only: [:destroy, :school_correct]
+  before_action :admin_account,     only: [:destroy, :school_correct]
 
   def index
-    if admin?
+    if me_admin?
       @user_array = []
-      @schools = Venue.select {|v| v.is_school }
+      @schools = School.all
       @schools.each { |school| @user_array.push [school.name, []] }
       @user_array.push(["Other", []])
       @users = User.simple_search(params[:name_search], params[:school_search]).order('school ASC, name ASC').paginate(page: params[:page])
       @users.each do |user|
         done = false
         @schools.each_index do |n|
-          if user.school == @schools[n].name
+          if user.school_id == @schools[n].id
             @user_array[n][1].push(user)
             done = true
           end
         end
         @user_array.last[1].push(user) unless done==true
       end
-    elsif teacher?
-      @users = User.simple_search(params[:name_search], current_user.school).paginate(page: params[:page])
-      @user_array = [[current_user.school, @users]]
+    elsif me_teacher?
+      @users = User.simple_search(params[:name_search], School.find(current_user.school_id).name).paginate(page: params[:page])
+      @user_array = [[School.find(current_user.school_id).name, @users]]
     else
       redirect_to root_path
     end
@@ -34,11 +31,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if (current_user?(@user))
-      redirect_to root_path
-    else
-      @favourites = @user.events.paginate(page: params[:page]) # TODO display these on user profile page
-    end
+    @favourites = @user.events.paginate(page: params[:page])
   end
 
   def new
@@ -47,12 +40,25 @@ class UsersController < ApplicationController
  
   def create
     @user = User.new(user_params)
-    if Venue.find_by(name: @user.school)
+    teacher_school = find_school_by_teacher_code(user_params[:school])
+    if user_params[:school]=="Link Up Teacher"
+      @user.role = "teacher"
+      @user.school_id = 1
+    elsif teacher_school.id > 1
+      @user.role = "teacher"
+      @user.school_id = teacher_school.id
+    else
+      @user.school_id = find_school_by_student_code(user_params[:school]).id
+    end
+    @user.school = ""
+
+    if @user.school_id != 0
       @user.home_address = Venue.find_by(name: user_params[:school]).street_address if @user.home_address.blank?
       @user.home_postcode = Venue.find_by(name: user_params[:school]).postcode if @user.home_postcode.blank?
     else
       @user.home_address = "10 Downing Street" if @user.home_address.blank? && @user.home_postcode.blank? # As good a place as any.
     end
+
     if @user.save
       UserMailer.welcome_email(@user).deliver
       User.find(1).sent_messages.create!(subject: "You're in, #{@user.name}!",
@@ -64,7 +70,6 @@ class UsersController < ApplicationController
         confirmation email. Welcome to Link Up!"
       redirect_to root_path
     else
-      @schools = ["None", "Dagenham Park CoS", "Westminster Academy"]
       render 'new'
     end
   end
@@ -76,7 +81,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     params[:user].delete(:password) if params[:user][:password].blank?
     if @user.update_attributes(user_params)
-      flash[:success] = "Edit Successful."
+      flash[:success] = "Edit successful."
       redirect_to @user
     else
       @title = "Edit user"
@@ -95,39 +100,18 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  def school_correct
-    # If there's a large influx of new students, some of them may
-    # put a typo in their school name, which means they won't have any
-    # of the benefits of officially attending that school. So here
-    # we search for the keyword you enter and correct *any* student
-    # with a school name containing that keyword to have the school
-    # name chosen. 
-
-    # e.g. Fred puts his school down as "dagenham park" but it'll only
-    # register him correctly if he puts "Dagenham Park CoS". So enter
-    # "dagenham" as the keyword and it'll correct Fred's school.
-
-    @users = User.all.search(:school_cont => "Dagenham").result
-    @users.each do |user|
-      user.update_attribute(:school, "Dagenham Park CoS")
-    end
-  end
-
   private
 
     def user_params # TODO Ew ew ew ew ew ew ew no.
       params.require(:user).permit!#(:name, :email, :home_address, :home_postcode, :school, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at, :role)
     end
 
-    # Before filters (signed_in_user is now under sessions_helper)
-
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user) || admin? || current_user.is_mentor?(@user) || current_user.teaches?(@user)
+    def find_school_by_teacher_code(code)
+      School.find_by(teacher_code: code) || School.find(1)
     end
 
-
-    def admin_user
-      redirect_to(root_path) unless admin?
+    def find_school_by_student_code(code)
+      School.find_by(student_code: code) || School.find(1)
     end
+
 end

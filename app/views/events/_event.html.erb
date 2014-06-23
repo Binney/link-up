@@ -1,7 +1,7 @@
 <li>
 <span class="name and date"><b><%= link_to event.name, event %></b> | <%= event.get_day_info %>, <%= Venue.find(event.venue_id).name %></span>
 <span class="description"><%= event.description %></span>
-  <% if admin? || organiser?(event) %>
+  <% if me_admin? || me_organiser?(event) %>
     | <%= link_to "delete", event, method: :delete,
                                   data: { confirm: "This will delete event!\nYou sure?" } %>
   <% end %>

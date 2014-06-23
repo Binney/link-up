@@ -1,0 +1,22 @@
+<% provide(:title, "Edit entry codes for "+@school.name) %>
+<% provide(:site_section, "2") %>
+<h1>Edit <%= @school.name %> entry codes</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@school) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :teacher_code, "Code for teachers" %>
+      <small>Distribute this code to teachers at <%= @school.name %> and they will get teacher privileges when they create an account. Guard this code well, though - teachers have access to students' private information.</small>
+      <%= f.text_field :teacher_code %>
+
+      <%= f.label :student_code, "Code for students" %>
+      <small>Distribute this code to students at <%= @school.name %> and they'll be able to see school-only clubs and enter mentor relationships.</small>
+      <%= f.text_field :student_code %>
+
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+  </div>
+</div>

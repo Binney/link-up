@@ -1,6 +1,7 @@
-<% provide(:title, 'New venue') %>
+<% type = @venue.schools.length > 0 ? "school" : "venue" %>
+<% provide(:title, 'New '+type) %>
 <% provide(:site_section, "2") %>
-<h1>Create new venue</h1>
+<h1>Create new <%= type %></h1>
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@venue) do |f| %>
@@ -20,6 +21,10 @@
 
       <%= f.label :contact %>
       <%= f.text_field :contact %>
+
+      <%= f.fields_for :schools do |school_form| %>
+        <%= render 'venues/school_fields', f: school_form %>
+      <% end %>
 
       <%= f.submit "Create venue", class: "btn btn-large btn-primary" %>
     <% end %>

@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
   # Anyone can see index and profile for venues, even when not logged in.
-  before_action :organiser_account,  only: [:new, :create] # Only a certain kind of account can create venues.
+  before_action :non_student_account,  only: [:new, :create] # Only a certain kind of account can create venues.
   before_action :correct_user,   only: [:edit, :update, :destroy] # Only correct user or admin can edit it
   before_action :correct_school, only: :show
 
@@ -17,7 +17,7 @@ class VenuesController < ApplicationController
     @venue = Venue.find(params[:id])
     @events = @venue.events.paginate(page: params[:page])
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
-    if admin? || organiser?(@venue)
+    if me_admin? || me_organiser?(@venue)
       @event = Event.new(venue_id: @venue.id)
       @timing = @event.timings.build
     end
@@ -30,6 +30,12 @@ class VenuesController < ApplicationController
 
   def new
     @venue = Venue.new
+  end
+
+  def new_school
+    @venue = Venue.new
+    @venue.schools.build
+    render 'new'
   end
  
   def create
@@ -66,18 +72,18 @@ class VenuesController < ApplicationController
   private
 
     def venue_params
-      params.require(:venue).permit(:name, :description, :street_address, :postcode, :is_school, :contact) # Include all extra parameters here
+      params.require(:venue).permit!#(:name, :description, :street_address, :postcode, :is_school, :contact) #TODO ew
     end
 
     def correct_school
       current_venue = Venue.find(params[:id])
       if current_venue.is_school
-        redirect_to(root_path) unless signed_in? && (current_venue.name.eql?(current_user.school) || admin?)
+        redirect_to(root_path) unless signed_in? && (current_venue.name.eql?(current_user.school) || me_admin?)
       end
     end
 
     def correct_user
       current_venue = Venue.find(params[:id])
-      redirect_to(root_path) unless (admin? || organiser?(current_venue))
+      redirect_to(root_path) unless (me_admin? || me_organiser?(current_venue))
     end
 end

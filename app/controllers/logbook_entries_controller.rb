@@ -1,6 +1,6 @@
 class LogbookEntriesController < ApplicationController
   before_action :signed_in_user, only: [:create, :new, :index, :edit, :overview, :destroy]
-  before_action :admin_or_teacher_user, only: :overview
+  before_action :teacher_account, only: :overview
   before_action :correct_user, only: [:index, :destroy]
 
   def new
@@ -43,10 +43,10 @@ class LogbookEntriesController < ApplicationController
   end
 
   def overview
-    if admin?
+    if me_admin?
       # Display all users, sorted by number of mentor meetings they've had (ascending)
       @users = User.simple_search(params[:search], nil).order('mentor_meetings ASC')#.paginate(page: params[:page], per_page: 1)
-    elsif teacher?
+    elsif me_teacher?
       # Display all users from your school
       @users = User.simple_search(params[:search], current_user.school).order('mentor_meetings ASC')#.paginate(page: params[:page], per_page: 1)
     else
@@ -68,16 +68,6 @@ class LogbookEntriesController < ApplicationController
 
     def logbook_entry_params
       params.require(:logbook_entry).permit(:mentor_meeting, :event_id, :content, :date)
-    end
-
-    def admin_or_teacher_user
-      redirect_to(root_path) unless (admin? || teacher?)
-    end
-
-    def correct_user
-      user_id = params[:user_id] || current_user.id
-      @user = User.find(user_id)
-      redirect_to(root_path) unless (current_user?(@user) || admin? || current_user.teaches?(@user))
     end
 
 end

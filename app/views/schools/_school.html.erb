@@ -1,0 +1,10 @@
+<li>
+<span class="name and date"><h2><%= link_to school.venue.name, school.venue %></h2></span>
+<span class="description"><%= "#{school.student_quantity || "No"} pupils" %></span>
+  <% if me_admin? %>
+    | <%= link_to "edit", edit_venue_path(school.venue.id) %>
+    | <%= link_to "manage entry codes", edit_school_path(school.id) %>
+    | <%= link_to "delete", school, method: :delete,
+                                  data: { confirm: "This will delete the school completely!\nYou sure?" } %>
+  <% end %>
+</li>

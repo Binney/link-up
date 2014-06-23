@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 require 'will_paginate/array'
-  before_action :organiser_account, only: [:new, :create, :edit, :update, :destroy]
+  before_action :non_student_account, only: [:new, :create, :edit, :update, :destroy]
   before_action :correct_or_admin,  only: [:edit, :update, :destroy]
   before_action :correct_school, only: :show
   skip_before_filter :verify_authenticity_token  
@@ -12,7 +12,7 @@ require 'will_paginate/array'
       # Indexing from search
       @search = Event.search(params[:q])
       @search.sorts = 'distance_to(#{params[:q][:gender_not_cont]) asc' unless params[:q][:gender_not_cont].nil?
-      if admin?
+      if me_admin?
         # Display all events regardless of school
         @events = @search.result.paginate(:page => params[:page], :per_page => 10)
       else
@@ -20,7 +20,7 @@ require 'will_paginate/array'
         @events = @search.result.select { |ev| !(ev.venue.is_school) || ev.venue.name.eql?(schl) }.paginate(:page => params[:page], :per_page => 10)
       end
     else # Indexing without search (ie all)
-      if admin?
+      if me_admin?
         @events = Event.all.paginate(:page => params[:page], :per_page => 10)
       else
         @events = (Event.all.select { |ev| !(ev.venue.is_school) || ev.venue.name.eql?(schl) }).paginate(:page => params[:page], :per_page => 10)
@@ -100,17 +100,18 @@ require 'will_paginate/array'
 
     def event_params
       params.require(:event).permit!#(:name, :description, :day_info, :venue_id, :contact, :website, :gender, tag_ids: [:id], timings_attributes: [:id, :day, :start_time, :end_time, :_destroy])
+      # TODO EW EW EW
     end
 
     def correct_or_admin
       current_event = Event.find(params[:id])
-      redirect_to(root_path) unless organiser?(current_event) || admin?
+      redirect_to(root_path) unless me_organiser?(current_event) || me_admin?
     end
 
     def correct_school
       current_venue = Event.find(params[:id]).venue
       if current_venue.is_school
-        redirect_to(root_path) unless signed_in? && (current_venue.name.eql?(current_user.school) || admin?)
+        redirect_to(root_path) unless my_school?(current_venue) || me_admin?
       end
     end
 

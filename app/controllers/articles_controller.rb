@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_filter :not_a_student, only: [:new, :create, :destroy]
+  before_filter :non_student_account, only: [:new, :create, :destroy]
 
   def new
     @article = Article.new
@@ -43,10 +43,6 @@ class ArticlesController < ApplicationController
 
     def article_params
       params.require(:article).permit(:title, :content)
-    end
-
-    def not_a_student
-      redirect_to root_path if current_user.role=="student"
     end
 
 end

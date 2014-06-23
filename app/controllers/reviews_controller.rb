@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = current_user.reviews.build
-    if admin?
+    if me_admin?
       @events = Event.all
     else
       @events = Event.all.select {|event| !(event.venue.is_school) || event.venue.school.name==current_user.school}

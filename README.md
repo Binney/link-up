@@ -2,7 +2,7 @@
 
 Welcome to the Link Up website, which helps you connect with your local community. This git repo is managed by Binney.
 
-= A quick 101 guide to the backend!
+= A (very) quick 101 guide to the backend! If you want more info or help give me a yell.
 
 The site is built around a model-view-controller framework (like all Rails sites), so each part of the site is split into these three parts. Model is "what it is". Controller is "what it does". View is "what it looks like". All the info is stored in tables in a SQL database with tables for, in alphabetical order:
 - Articles - news items

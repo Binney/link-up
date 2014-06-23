@@ -11,15 +11,16 @@
       <%= f.label :email %>
       <%= f.text_field :email %>
 
-      <%= f.label :school, "School:" %>
+      <%= f.label :school, "School code:" %>
+      <small>If you've been given a secret code for your school, enter it here!</small>
       <%= f.text_field :school %>
 
       <%= f.label :home_address, "Address:" %>
       <%= f.text_field :home_address %>
 
       <%= f.label :home_postcode, "Postcode:" %>
-      <%= f.text_field :home_postcode %>
       <small>These aren't necessary but will give you info about your nearest events and venues.</small>
+      <%= f.text_field :home_postcode %>
 
       <%= f.label :password %>
       <%= f.password_field :password %>

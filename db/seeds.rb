@@ -39,3 +39,10 @@ admin = User.create!(name: "Link Up Admin",
                      home_address: "10 Downing Street",
                      home_postcode: "SW1A 2AA",
                      role: "admin")
+
+venue = Venue.create!(name: "Other Venue",
+	 	 			  description: "Other venue not listed above", user_id: 0,
+                      postcode: 'Westminster', street_address: '10 Downing Street', gmaps: true )
+
+# And first school is also hard coded; its access codes are blank.
+school = venue.schools.build(name: "None")

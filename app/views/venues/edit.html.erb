@@ -10,7 +10,7 @@
       <%= f.label :name %>
       <%= f.text_field :name %>
       <br>
-      <% if admin? %>
+      <% if me_admin? %>
         <%= f.check_box :is_school %>
         <%= f.label :is_school, "School?", class: "checkbox inline" %>
       <% end %>

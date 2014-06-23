@@ -20,7 +20,7 @@
   </aside>
   <div class="span7">
     <h1><%= @event.name %></h1> 
-      <% if admin? || organiser?(@event) %>
+      <% if me_admin? || me_organiser?(@event) %>
         <%= link_to "Edit", edit_event_path(@event) %>
       <% end %>
     <section>

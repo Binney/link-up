@@ -1,5 +1,7 @@
 class Venue < ActiveRecord::Base
   has_many :events, dependent: :destroy
+  has_many :schools # Will only actually have one or zero schools.
+  accepts_nested_attributes_for :schools, allow_destroy: true
   default_scope -> { order('name ASC') }
   validates :user_id, presence: true
   validates :name, presence: true, length: { maximum: 300 }, uniqueness: true

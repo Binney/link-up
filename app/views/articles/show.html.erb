@@ -3,7 +3,7 @@
 <h1><%= @article.title %></h1>
 <small>Posted <%= @article.created_at.to_s(:short) %></small>
 <p><%= simple_format @article.content %></p>
-<% if wrote_article?(@article) || admin? %>
+<% if me_wrote_article?(@article) || me_admin? %>
   <%= link_to "Edit", edit_article_path(@article) %>
   <%= link_to "Delete", @article, method: :delete,  data: { confirm: "You sure?" } %>
 <% end %>

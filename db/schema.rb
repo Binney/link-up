@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140418113503) do
+ActiveRecord::Schema.define(version: 20140619123117) do
 
   create_table "articles", force: true do |t|
     t.integer  "user_id"
@@ -117,6 +117,15 @@ ActiveRecord::Schema.define(version: 20140418113503) do
     t.string   "title"
   end
 
+  create_table "schools", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "teacher_code"
+    t.string   "student_code"
+    t.integer  "student_quantity"
+    t.integer  "venue_id"
+  end
+
   create_table "tags", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -146,17 +155,17 @@ ActiveRecord::Schema.define(version: 20140418113503) do
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps",                  default: true
-    t.string   "school"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.string   "role",                   default: "student"
     t.integer  "mentor_meetings"
+    t.string   "school"
+    t.integer  "school_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["mentor_meetings"], name: "index_users_on_mentor_meetings"
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
-  add_index "users", ["school"], name: "index_users_on_school"
 
   create_table "venues", force: true do |t|
     t.string   "name"

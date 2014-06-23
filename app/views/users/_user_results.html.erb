@@ -1,4 +1,4 @@
-<% if admin? %>
+<% if me_admin? %>
   <%= will_paginate @users %>
   <% @user_array.each do |school_list| %>
     <ul class="generic-list">

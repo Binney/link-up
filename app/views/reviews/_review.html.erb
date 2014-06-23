@@ -1,6 +1,6 @@
 <li>
   <span class="name and date"><b><%= link_to Event.find(review.event_id).name+": "+review.title.to_s, Event.find(review.event_id) %></b> <%= "| #{"★"*review.stars}" if review.stars.to_i>0 && review.stars.to_i<6 %> 
-  <% if current_user.id==review.user_id || admin? || (current_user.school==User.find(review.user_id) && current_user.role=="teacher") %>  
+  <% if current_user.id==review.user_id || me_admin? || (current_user.school==User.find(review.user_id) && current_user.role=="teacher") %>  
     | <%= link_to "Edit", edit_review_path(review) %> | <%= link_to "Delete", review, method: :delete, data: { confirm: "You sure?" } %>
   <% end %>
   </span>

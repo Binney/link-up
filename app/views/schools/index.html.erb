@@ -1,0 +1,12 @@
+<% provide :site_section, 2 %>
+<% provide :title, "Schools" %>
+
+<h1>All schools</h1>
+<%= link_to "New", new_schools_path %>
+<% if @schools.any? %>
+  <ul class="generic-list">
+    <%= render @schools %>
+  </ul>
+<% else %>
+  No schools found.
+<% end %>

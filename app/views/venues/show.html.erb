@@ -12,9 +12,12 @@
                    ) %>
     </section>
     <section>
-      <% if admin? || organiser?(@venue) %>
+      <% if me_admin? || me_organiser?(@venue) %>
         <%= link_to "Edit", edit_venue_path(@venue.id) %><br>
         <%= link_to "Delete", @venue, method: :delete,  data: { confirm: "This will delete all associated events!\nYou sure?" } %>
+        <% if @venue.schools.length > 0 %>
+          <br><%= link_to "Manage school codes", edit_school_path(@venue.schools[0].id) %>
+        <% end %>
       <% end %>
     </section>
   </aside>
