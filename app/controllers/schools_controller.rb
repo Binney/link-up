@@ -2,7 +2,7 @@ class SchoolsController < ApplicationController
   before_filter :admin_account
 
   def index
-  	@schools = School.all
+  	@schools = School.all[1..-1]
   end
 
   def new
