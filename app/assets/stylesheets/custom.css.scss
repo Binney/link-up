@@ -34,10 +34,10 @@ section {
 }
 
 .container {
+  min-height: 100%;
   padding-left: 0px;
   padding-right: 50px;
   padding-top:0px;
-  min-height: 100%; 
   position: relative;
   background-color: #fff;
 }
@@ -517,7 +517,7 @@ input[type=checkbox].css-checkbox {
 }
 
 .field_with_errors {
-  @extend .has-error;
+  /*@extend .has-error;*/
 }
 
 .generic-list {

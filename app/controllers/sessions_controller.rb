@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       sign_in user
-      flash[:success] = 'Welcome back, '+user.name+'!'
+      flash[:success] = 'Welcome back, ' + user.name + '!'
       session[:message_notif] = current_user.messages.where(unread: true).count
       redirect_back_or root_path
     else

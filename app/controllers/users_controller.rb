@@ -52,9 +52,10 @@ class UsersController < ApplicationController
     end
     @user.school = ""
 
-    if @user.school_id != 0
-      @user.home_address = Venue.find_by(name: user_params[:school]).street_address if @user.home_address.blank?
-      @user.home_postcode = Venue.find_by(name: user_params[:school]).postcode if @user.home_postcode.blank?
+    if teacher_school
+      schlVenue = teacher_school.venue
+      @user.home_address = schlVenue.street_address if @user.home_address.blank?
+      @user.home_postcode = schlVenue.postcode if @user.home_postcode.blank?
     else
       @user.home_address = "10 Downing Street" if @user.home_address.blank? && @user.home_postcode.blank? # As good a place as any.
     end
