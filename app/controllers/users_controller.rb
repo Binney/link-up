@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   require 'will_paginate/array'
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:show, :edit, :update, :logbook]
-  before_action :admin_account,     only: [:destroy, :school_correct]
+  before_action :admin_account,  only: :destroy
 
   def index
     if me_admin?
@@ -76,6 +76,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
