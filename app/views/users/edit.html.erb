@@ -7,36 +7,52 @@
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-
-      <%= f.label :home_address %>
-      <%= f.text_field :home_address %>
-
-      <%= f.label :school, "School code" %>
-      <small>If you've been given a special code for your school, enter it here!</small>
-      <%= f.text_field :school %>
-
-      <%= f.label :home_postcode %>
-      <%= f.text_field :home_postcode %>
-<br>
-      <% if me_admin? %>
-
-        <%= f.label :role %>
-        <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
-
-      <% end %>
+      <%= avatar_for @user %>
 
       <% if current_user.id == @user.id %>
+
+        <a href="http://gravatar.com/emails">change</a>
+
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+
+        <%= f.label :home_address %>
+        <%= f.text_field :home_address %>
+
+        <%= f.label :home_postcode %>
+        <%= f.text_field :home_postcode %>
+
+        <h2>Personal</h2>
+
+        <%= f.label :about, "About Me" %>
+        <%= f.text_area :about %>
+
+        <%= f.label :interests, "My Interests" %>
+        <%= f.text_area :interests %>
 
         <%= f.label :password %>
         <%= f.password_field :password %>
 
         <%= f.label :password_confirmation, "Confirm Password" %>
         <%= f.password_field :password_confirmation %>
+
+      <% else %>
+
+        <p><%= @user.name %></p>
+
+      <% end %>
+
+      <%= f.label :school, "School code" %>
+      <small>If you've been given a special code for your school, enter it here!</small>
+      <%= f.text_field :school %>
+
+      <% if (current_user.id != @user.id) && me_admin? %>
+
+        <%= f.label :role %>
+        <%= f.collection_select :role, User::ROLES, :to_s, :humanize %><br>
 
       <% end %>
 

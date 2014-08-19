@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140619123117) do
+ActiveRecord::Schema.define(version: 20140815223601) do
 
   create_table "articles", force: true do |t|
     t.integer  "user_id"
@@ -69,6 +69,17 @@ ActiveRecord::Schema.define(version: 20140619123117) do
     t.integer  "event_id"
     t.text     "content"
     t.datetime "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "template_id"
+  end
+
+  add_index "logbook_entries", ["user_id", "template_id"], name: "index_logbook_entries_on_user_id_and_template_id", unique: true
+
+  create_table "logbook_templates", force: true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "deadline"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -161,6 +172,8 @@ ActiveRecord::Schema.define(version: 20140619123117) do
     t.integer  "mentor_meetings"
     t.string   "school"
     t.integer  "school_id"
+    t.text     "about"
+    t.text     "interests"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

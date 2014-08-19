@@ -21,7 +21,19 @@
   </aside>
 </div>
 <div class="user_info">
-  <h4>Diary:</h4>
+  <h4>About Me</h4>
+  <% if @user.about.blank? %>
+    <% if current_user.id == @user.id %>
+      <p><%= link_to "Add something about you!", edit_user_path(@user) %></p>
+    <% else %>
+      <p>No information yet.</p>
+    <% end %>
+  <% else %>
+    <p><%= @user.about %></p>
+  <% end %>
+  <h4>Interests and hobbies</h4>
+  <p><%= @user.interests %></p>
+  <h4>Diary</h4>
   <ul class="generic-list">
   <%= render @user.diary_entries %>
   </ul>

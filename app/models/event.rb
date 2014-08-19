@@ -30,6 +30,22 @@ class Event < ActiveRecord::Base
     arr.empty? ? "None listed" : arr.to_sentence
   end
 
+  def age_range
+    if min_age=="0"
+      if max_age=="0"
+        "Any"
+      else
+        "Maximum #{max_age}"
+      end
+    else
+      if max_age=="0"
+        "Minimum #{min_age}"
+      else
+        "#{min_age}-#{max_age}"
+      end
+    end
+  end
+
   def self.simple_search(search)
     if search
       find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
