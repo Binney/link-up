@@ -17,7 +17,6 @@ class LogbookEntriesController < ApplicationController
   	@logbook_entry = current_user.logbook_entries.build(logbook_entry_params.merge(content: parse_content))
   	if @logbook_entry.save
   		flash[:success] = "Saved to logbook!"
-      current_user.count_mentor_meetings
   		redirect_to @logbook_entry
   	else
   		render 'new'
