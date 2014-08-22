@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
     if me_admin?
       @events = Event.all
     else
-      @events = Event.all.select {|event| !(event.venue.is_school) || event.venue.school.name==current_user.school}
+      @events = Event.all.select {|event| !(event.venue.is_school?) || event.venue.school.name==current_user.school}
     end
   end
 

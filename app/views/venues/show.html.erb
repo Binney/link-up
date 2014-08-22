@@ -23,7 +23,7 @@
   </aside>
 
   <div class="span7">
-    <% if @venue.is_school %>
+    <% if @venue.is_school? %>
       <h1><%= image_tag "l.jpg", alt: @venue.name, size: "25x25" %> <%= @venue.name %></h1>
     <% else %>
       <h1><%= @venue.name %></h1>

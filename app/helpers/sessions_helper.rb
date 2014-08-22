@@ -18,7 +18,7 @@ module SessionsHelper
 
   def me_organiser?(thing)
     if thing.class.name=="Venue"
-      signed_in? && (current_user.role == "organiser" && thing.user_id == current_user.id) || (thing.is_school && my_school?(thing) && current_user.role=="teacher")
+      signed_in? && (current_user.role == "organiser" && thing.user_id == current_user.id) || (thing.is_school? && my_school?(thing) && current_user.role=="teacher")
     else
       signed_in? && (current_user.role == "organiser" && (thing.user_id == current_user.id || thing.venue.user_id == current_user.id)) || (thing.venue.is_school? && my_school?(thing.venue) && current_user.role=="teacher")
     end

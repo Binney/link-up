@@ -17,13 +17,13 @@ require 'will_paginate/array'
         @events = @search.result.paginate(:page => params[:page], :per_page => 10)
       else
         # Only display events open to the public or at that user's school
-        @events = @search.result.select { |ev| !(ev.venue.is_school) || ev.venue.name.eql?(schl) }.paginate(:page => params[:page], :per_page => 10)
+        @events = @search.result.select { |ev| !(ev.venue.is_school?) || ev.venue.name.eql?(schl) }.paginate(:page => params[:page], :per_page => 10)
       end
     else # Indexing without search (ie all)
       if me_admin?
         @events = Event.all.paginate(:page => params[:page], :per_page => 10)
       else
-        @events = (Event.all.select { |ev| !(ev.venue.is_school) || ev.venue.name.eql?(schl) }).paginate(:page => params[:page], :per_page => 10)
+        @events = (Event.all.select { |ev| !(ev.venue.is_school?) || ev.venue.name.eql?(schl) }).paginate(:page => params[:page], :per_page => 10)
       end
     end
     @json = @events.to_gmaps4rails do |event, marker|
@@ -110,7 +110,7 @@ require 'will_paginate/array'
 
     def correct_school
       current_venue = Event.find(params[:id]).venue
-      if current_venue.is_school
+      if current_venue.is_school?
         redirect_to(root_path) unless my_school?(current_venue) || me_admin?
       end
     end

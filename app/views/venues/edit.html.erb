@@ -11,8 +11,8 @@
       <%= f.text_field :name %>
       <br>
       <% if me_admin? %>
-        <%= f.check_box :is_school %>
-        <%= f.label :is_school, "School?", class: "checkbox inline" %>
+        <%= f.check_box :is_school? %>
+        <%= f.label :is_school?, "School?", class: "checkbox inline" %>
       <% end %>
 
       <%= f.label :description %>
