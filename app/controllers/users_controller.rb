@@ -97,17 +97,17 @@ class UsersController < ApplicationController
 
     # TODO would be nice to refactor this and the identical New code into one block.
     @user.role = "student"
-    user_school = find_school_by_student_code(user_params[:interests])
+    user_school = find_school_by_student_code(params[:school_info])
     if user_school
       @user.school_id = user_school.id
     else
 
-      user_school = find_school_by_mentor_code(user_params[:interests])
+      user_school = find_school_by_mentor_code(params[:school_info])
       if user_school
         @user.role = "mentor"
         @user.school_id = user_school.id
       else
-        user_school = find_school_by_teacher_code(user_params[:interests])
+        user_school = find_school_by_teacher_code(params[:school_info])
         if user_school
           @user.role = "teacher"
           @user.school_id = user_school.id

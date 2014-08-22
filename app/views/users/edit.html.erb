@@ -45,9 +45,9 @@
 
       <% end %>
 
-      <%= f.label :school, "School code" %>
+      <%= label_tag :school_info, "School code" %>
       <small>If you've been given a special code for your school, enter it here!</small>
-      <%= f.text_field :school %>
+      <%= text_field_tag :school_info %>
 
       <% if (current_user.id != @user.id) && me_admin? %>
 
