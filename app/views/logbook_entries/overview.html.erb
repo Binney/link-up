@@ -12,5 +12,13 @@
 </div>
 
 <div id="user_results">
+	<table>
+	<tr>
+		<td>Name</td>
+		<% @sessions.each do |session| %>
+			<td><%= session.deadline.to_s(:short) %></td>
+		<% end %>
+	</tr>
 	<%= render 'user_results' %>
+	</table>
 </div>

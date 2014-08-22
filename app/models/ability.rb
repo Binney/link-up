@@ -36,8 +36,8 @@ class Ability
       when "admin"
         can :manage, :all
       when "teacher"
-        can :manage, User, :school => user.school
-        cannot :manage, User, :school => "None"
+        can :manage, User, :school_id => user.school_id
+        cannot :manage, User, :school_id => 1
         cannot :destroy, User
       when "organiser"
         can :manage, Event, :user_id => user.id

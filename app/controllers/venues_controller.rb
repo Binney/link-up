@@ -5,7 +5,7 @@ class VenuesController < ApplicationController
   before_action :correct_school, only: :show
 
   def index
-    @venues = Venue.all.select { |v| !(v.is_school) || v.name.eql?(current_user.school) }#.paginate(page: params[:page])
+    @venues = Venue.all.select { |v| (!(v.is_school) || v.id==current_user.school.venue_id) }#.paginate(page: params[:page])
     @json = Venue.all.to_gmaps4rails do |venue, marker|
     marker.infowindow render_to_string(:partial => "/venues/infowindow", :locals => { :venue => venue})
     marker.title "#{venue.name}"
@@ -78,7 +78,7 @@ class VenuesController < ApplicationController
     def correct_school
       current_venue = Venue.find(params[:id])
       if current_venue.is_school
-        redirect_to(root_path) unless signed_in? && (current_venue.name.eql?(current_user.school) || me_admin?)
+        redirect_to(root_path) unless signed_in? && (current_venue.id==current_user.school.venue_id || me_admin?)
       end
     end
 

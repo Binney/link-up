@@ -7,7 +7,7 @@ require 'will_paginate/array'
 
   def index
     @search = Event.search(params[:q])
-    schl = (signed_in? ? current_user.school : "None")
+    schl = (signed_in? ? current_user.school_name : "None")
     if params[:q]
       # Indexing from search
       @search = Event.search(params[:q])

@@ -1,8 +1,10 @@
 class MentorshipsController < ApplicationController
-  before_action :signed_in_user # Can't do anything without. These need to get replaced with cancan!
+  before_action :signed_in_user
+  before_action :teacher_or_mentor_account, only: [:new, :create]
+  
 
   def new
-    @users = User.simple_search(params[:search], current_user.school)
+    @users = User.search_by_school(params[:search], current_user.school_id).select { |u| u.role=="student" }
   end
 
   def create
@@ -31,12 +33,15 @@ class MentorshipsController < ApplicationController
       @mentorships = Mentorship.select {|m| m.confirmation_stage == 3 && User.find(m.mentee_id).school==current_user.school }
       session[:mentor_notif] = @pending_requests.count
 
-    else
+    elsif current_user.role == "mentor"
       @pending_mentor_requests = current_user.mentorships.select {|m| m.confirmation_stage < 3 }
+      @mentees = current_user.mentorships.select {|m| m.confirmation_stage == 3 }
+      session[:mentor_notif] = @pending_mentor_requests.count
+
+    else # mentee
       @pending_mentee_requests = current_user.reverse_mentorships.select {|m| m.confirmation_stage < 3 }
       @mentors = current_user.reverse_mentorships.select {|m| m.confirmation_stage == 3 }
-      @mentees = current_user.mentorships.select {|m| m.confirmation_stage == 3 }
-      session[:mentor_notif] = @pending_mentor_requests.count + @pending_mentee_requests.count
+      session[:mentor_notif] = @pending_mentee_requests.count
     end
 
   end

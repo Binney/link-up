@@ -4,7 +4,8 @@
 
 <%= button_to "New mentorship", new_mentorship_path, method: 'get', class: 'btn btn-primary' %>
 
-<% if current_user.role == 'admin' || current_user.role == 'teacher' %>
+<% case current_user.role %>
+<% when 'admin', 'teacher' %>
 
   <% if @pending_requests.any? %>
     <h4>Pending requests</h4>
@@ -74,9 +75,9 @@
     <% end %>
 
 
-<% else %>
+<% when 'mentor' %>
 
-  <% if @pending_mentor_requests.any? || @pending_mentee_requests.any? %>
+  <% if @pending_mentor_requests.any? %>
     <h4>Pending requests</h4>
     <table class="tab_table">
       <tr>
@@ -97,6 +98,38 @@
           <td style="vertical-align:bottom;"><%= render 'delete', mentorship: req %></td>
         </tr>      
       <% end %>
+      <tr></tr>
+    </table>
+  <% end %>
+
+  <h4>Established mentorships</h4>
+  <table class="tab_table">
+    <tr>
+      <td><b>Your mentees</b></td>
+      <td></td>
+    </tr>
+    <% if @mentees.any? %>
+      <% @mentees.each do |m| %>
+        <td><%= link_to m.mentee.name, m.mentee %></td>
+        <td><small>Since <%= m.created_at.to_s(:short_day) %></small></td>
+      <% end %>
+    <% else %>
+      <tr><td>You're not mentoring anyone. <%= link_to "Send a mentorship request here", new_mentorship_path %>.</td><td></td><td></td></tr>
+    <% end %>
+
+<% when 'student' %>
+
+  <% if @pending_mentee_requests.any? %>
+    <h4>Pending requests</h4>
+    <table class="tab_table">
+      <tr>
+        <td></td>
+        <td><b>Mentor</b></td>
+        <td><b>Mentee</b></td>
+        <td><b>Confirmed by mentee?</b></td>
+        <td><b>Approved by teacher?</b></td>
+        <td></td>
+      </tr>
       <tr></tr>
       <% @pending_mentee_requests.each do |req| %>
         <tr>
@@ -124,20 +157,7 @@
       <% end %>
     <tr></tr>
     <% end %>
-    <tr>
-      <td><b>Your mentees</b></td>
-      <td></td>
-    </tr>
-    <% if @mentees.any? %>
-      <% @mentees.each do |m| %>
-        <td><%= link_to m.mentee.name, m.mentee %></td>
-        <td><small>Since <%= m.created_at.to_s(:short_day) %></small></td>
-      <% end %>
-    <% else %>
-      <tr><td>You're not mentoring anyone. <%= link_to "Send a mentorship request here", new_mentorship_path %>.</td><td></td><td></td></tr>
-    <% end %>
 
 <% end %>
-
 
 </table>

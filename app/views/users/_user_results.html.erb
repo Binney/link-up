@@ -11,7 +11,7 @@
   <%= will_paginate @users %>
 
 <% else %>
-  <h4><%= current_user.school.to_s %></h4>
+  <h4><%= current_user.school_name %></h4>
   <% if @users.any? %>
     <ul class="generic-list">
       <%= will_paginate @users %>

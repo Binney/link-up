@@ -11,8 +11,12 @@
       <small>Distribute this code to teachers at <%= @school.name %> and they will get teacher privileges when they create an account. Guard this code well, though - teachers have access to students' private information.</small>
       <%= f.text_field :teacher_code %>
 
+      <%= f.label :mentor_code, "Code for mentors" %>
+      <small>Distribute this code to mentors at <%= @school.name %> and they'll be able to see school-only clubs and mentor other students.</small>
+      <%= f.text_field :mentor_code %>
+
       <%= f.label :student_code, "Code for students" %>
-      <small>Distribute this code to students at <%= @school.name %> and they'll be able to see school-only clubs and enter mentor relationships.</small>
+      <small>Distribute this code to students at <%= @school.name %> and they'll be able to see school-only clubs and be mentored by students with the Mentor code.</small>
       <%= f.text_field :student_code %>
 
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>

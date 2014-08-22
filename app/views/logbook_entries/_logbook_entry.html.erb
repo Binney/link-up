@@ -1,5 +1,4 @@
 <li>
-  <span class="name and date"><b><%= link_to logbook_entry.date.to_s(:short), logbook_entry %></b>
-   <%=  %></span>
+  <span class="name and date"><b><%= link_to (LogbookTemplate.find(logbook_entry.template_id).title || logbook_entry.updated_at.to_s(:short)), logbook_entry %></b></span>
   <span class="description"><%= simple_format logbook_entry.content[0..140]+"..." %><%= link_to "Read more", logbook_entry, method: 'get' %></span>  
 </li>

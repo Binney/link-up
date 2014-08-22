@@ -31,14 +31,14 @@ class Event < ActiveRecord::Base
   end
 
   def age_range
-    if min_age=="0"
-      if max_age=="0"
+    if min_age.blank? || min_age=="0"
+      if min_age.blank? || max_age=="0"
         "Any"
       else
         "Maximum #{max_age}"
       end
     else
-      if max_age=="0"
+      if max_age.blank? || max_age=="0"
         "Minimum #{min_age}"
       else
         "#{min_age}-#{max_age}"

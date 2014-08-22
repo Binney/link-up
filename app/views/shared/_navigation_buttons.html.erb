@@ -13,7 +13,7 @@
 
     <li><%= link_to "My Events", my_events_path, class: (yield(:site_section)=='1' ? "btn btn-large btn-primary" : "btn btn-large") %></li>
 
-	<% if current_user.role != "student" %>
+	<% if User::ROLES.index(current_user.role)<3 %>
 
 	    <li class="dropdown">
 		  <%= link_to "Manage", '#', class: (yield(:site_section)=='2' ? "btn btn-large btn-primary dropdown-toggle sr-only" : "btn btn-large dropdown-toggle sr-only"), type: "button", :'data-toggle' => "dropdown" %>
@@ -40,7 +40,7 @@
 		  <%= link_to "Personal", '#', class: (yield(:site_section)=='2' ? "btn btn-large btn-primary dropdown-toggle sr-only" : "btn btn-large dropdown-toggle sr-only"), type: "button", :'data-toggle' => "dropdown" %>
 		  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 		    <li role="presentation"><%= link_to "Logbook", logbook_path, role: "menuitem", tabindex: "-1" %></li>
-		    <li role="presentation"><%= link_to "New logbook entry", new_logbook_entry_path, role: "menuitem", tabindex: "-1" %></li>
+		    <li role="presentation"><%= link_to "New logbook entry", logbook_templates_path, role: "menuitem", tabindex: "-1" %></li>
 		    <li role="presentation"><%= link_to "Mentoring", mentoring_path, role: "menuitem", tabindex: "-1" %></li>
 		  </ul>
 		</li>

@@ -1,16 +1,20 @@
-<% provide(:title, "#{((current_user.id==@logbook_entry.user_id) ? "My" : @logbook_entry.user.name+"'s")}  logbook") %>
+<% user_name = ((current_user.id==@logbook_entry.user_id) ? "My" : @logbook_entry.user.name+"'s") %>
+<% provide(:title, "#{user_name}  logbook") %>
 <% provide(:site_section, 2) %>
-<h1>Logbook</h1>
 
-<b>Posted <%= @logbook_entry.created_at.to_s(:short) %></b>
-
-<% if @logbook_entry.mentor_meeting %>
-	<%= 'This was a mentor meeting.' %>
-<% elsif !(@logbook_entry.event_id.nil?) %>
-	<%= Event.find(@logbook_entry.event_id).name %>
+<h1><%= user_name %> logbook entry for <%= @template.title || @logbook_entry.created_at.to_s(:short) %></h1>
+<%= button_to "#{user_name} logbook", ((current_user.id==@logbook_entry.user_id) ? logbook_path : user_logbook_entries_path(@logbook_entry.user_id)), method: 'get', class: 'btn' %>
+<% if me_admin? || me_teacher? %>
+	<%= button_to "All logbooks", logbook_overview_path, method: 'get', class: 'btn' %>
 <% end %>
 
-<p><%= simple_format @logbook_entry.content %></p>
+<% for i in 0..@questions.length-2 %>
+	<p><%= @questions[i].html_safe %></p>
+	<div class="logbook_answer">
+		<p><%= @answers[i] %></p>
+	</div>
+<% end %>
+<p><small><%= @questions.last.html_safe %></small></p>
 
 <% if current_user.id==@logbook_entry.user_id %>
   <%= link_to "Edit", edit_logbook_entry_path(@logbook_entry) %>

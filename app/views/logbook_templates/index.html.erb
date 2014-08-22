@@ -1,0 +1,10 @@
+<% provide :title, "All logbook worksheets" %>
+<% provide :site_section, 2 %>
+
+<h1>All <%= "incomplete " if !(me_teacher? || me_admin?) %>logbook worksheets</h1>
+
+<%= button_to "New worksheet template", new_logbook_template_path, method: "get", class: "btn" %>
+
+<ul class="generic_list">
+	<%= render @logbook_templates %>
+</ul>

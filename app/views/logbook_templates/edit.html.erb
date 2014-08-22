@@ -1,0 +1,21 @@
+<% provide(:title, 'Edit template') %>
+<% provide(:site_section, 2) %>
+<h1>Edit template</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@logbook_template) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+
+      <%= f.label :deadline %>
+      <%= f.date_select :deadline %>
+
+      <%= f.submit "Create template", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

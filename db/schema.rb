@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815223601) do
+ActiveRecord::Schema.define(version: 20140821192336) do
 
   create_table "articles", force: true do |t|
     t.integer  "user_id"
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 20140815223601) do
     t.integer  "cost"
     t.string   "schedule"
     t.integer  "user_id"
+    t.integer  "max_age"
+    t.integer  "min_age"
   end
 
   add_index "events", ["venue_id"], name: "index_events_on_venue_id"
@@ -65,10 +67,7 @@ ActiveRecord::Schema.define(version: 20140815223601) do
 
   create_table "logbook_entries", force: true do |t|
     t.integer  "user_id"
-    t.boolean  "mentor_meeting"
-    t.integer  "event_id"
     t.text     "content"
-    t.datetime "date"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "template_id"
@@ -82,6 +81,7 @@ ActiveRecord::Schema.define(version: 20140815223601) do
     t.datetime "deadline"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
   end
 
   create_table "mentorships", force: true do |t|
@@ -133,8 +133,8 @@ ActiveRecord::Schema.define(version: 20140815223601) do
     t.datetime "updated_at"
     t.string   "teacher_code"
     t.string   "student_code"
-    t.integer  "student_quantity"
     t.integer  "venue_id"
+    t.string   "mentor_code"
   end
 
   create_table "tags", force: true do |t|
@@ -170,7 +170,6 @@ ActiveRecord::Schema.define(version: 20140815223601) do
     t.datetime "password_reset_sent_at"
     t.string   "role",                   default: "student"
     t.integer  "mentor_meetings"
-    t.string   "school"
     t.integer  "school_id"
     t.text     "about"
     t.text     "interests"
@@ -192,10 +191,8 @@ ActiveRecord::Schema.define(version: 20140815223601) do
     t.float    "longitude"
     t.boolean  "gmaps",          default: true
     t.string   "contact"
-    t.boolean  "is_school",      default: false
   end
 
-  add_index "venues", ["is_school"], name: "index_venues_on_is_school"
   add_index "venues", ["name"], name: "index_venues_on_name"
 
 end

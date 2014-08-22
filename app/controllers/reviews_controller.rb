@@ -53,7 +53,7 @@ class ReviewsController < ApplicationController
 
   def approve
     if current_user.role=="teacher"
-      @reviews = Review.where(approved: false).select {|r| User.find(r.user_id).school==current_user.school }
+      @reviews = Review.where(approved: false).select {|r| User.find(r.user_id).school_id==current_user.school_id }
     elsif current_user.role=="organiser"
       @reviews = Review.where(approved: false).select {|r| Event.find(r.event_id).user_id==current_user.id }
       # TODO potentially in future also venues?

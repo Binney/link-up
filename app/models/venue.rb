@@ -22,4 +22,8 @@ class Venue < ActiveRecord::Base
     end
   end
 
+  def is_school?
+    self.schools.length>0
+  end
+
 end

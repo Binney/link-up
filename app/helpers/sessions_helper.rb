@@ -11,6 +11,7 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  # TODO these should probably be rewritten in terms of ROLES[]
   def me_admin?
     signed_in? && current_user.role == "admin"
   end
@@ -31,12 +32,16 @@ module SessionsHelper
     signed_in? && current_user.role == "student"
   end
 
+  def me_mentor?
+    signed_in? && current_user.role == "mentor"
+  end
+
   def me_wrote_article?(article)
     signed_in? && current_user.id == article.user_id
   end
 
   def my_school?(venue)
-    signed_in? && current_user.school.eql?(venue.name)
+    signed_in? && current_user.school_id.eql?(venue.id)
   end
 
   def current_user=(user)
@@ -75,10 +80,16 @@ module SessionsHelper
     end
   end
 
+  def teacher_or_mentor_account 
+    unless me_mentor? || me_teacher? || me_admin?
+      redirect_to root_path
+    end
+  end
+
   def correct_user
     user_id = params[:user_id] || current_user.id
     @user = User.find(user_id)
-    redirect_to(root_path) unless current_user?(@user) || me_admin? || current_user.is_mentor?(@user) || current_user.teaches?(@user)
+    redirect_to(root_path) unless current_user?(@user) || me_admin? || current_user.mentoring?(@user) || current_user.teaches?(@user)
   end
 
   def sign_out

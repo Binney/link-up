@@ -740,6 +740,26 @@ input[type=checkbox].css-checkbox {
 
 .red {
   color: #f00;  
+  background-color: #f00;
+}
+
+/* Logbooks */
+
+.has_completed0 {
+  background-color: #f00;
+}
+
+.has_completed1 {
+  background-color: #ff0;
+}
+
+.has_completed2 {
+  background-color: #0f0;
+}
+
+.logbook_answer {
+  background-color: #96E3C0;
+  border: 1px solid;
 }
 
 #message_body {

@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
                                    class_name:  "Mentorship",
                                    dependent:   :destroy
   has_many :mentors, through: :reverse_mentorships, source: :mentor
+  belongs_to :school
+  validates :school_id, presence: true
 
   before_save { self.email = email.downcase }
   before_create :create_remember_token
@@ -36,15 +38,43 @@ class User < ActiveRecord::Base
 
   geocoded_by :gmaps4rails_address
 
-  ROLES = %w[admin teacher organiser student]
+  ROLES = %w[admin teacher organiser mentor student]
+  validates :role, presence: true, inclusion: {in: ROLES}
 
   def ip_address
     request.remote_ip
   end
 
-  def self.simple_search(name_search, school_search)
-    if search # UPPER(?) ensures it's case insensitive
-      all.where('UPPER(name) LIKE UPPER(?) AND UPPER(school) LIKE UPPER(?)', "%#{name_search}%", "%#{school_search}%")
+  def self.search_by_school(name_search, school_search)
+    if school_search == 0
+      all.where('UPPER(name) LIKE UPPER(?)', "%#{name_search}%")      
+    else
+      all.where('UPPER(name) LIKE UPPER(?) AND school_id LIKE ?', "%#{name_search}%", "%#{school_search}%")
+    end
+ #     puts (name_search ? "YES" : "NO")
+ #   if name_search # UPPER(?) ensures it's case insensitive
+ #     if school_search>0
+ #       puts "Name and school"
+ #      self.name_search(name_search).select { |u| u.school_id == school_search }
+ #     else
+ #       puts "Name, no school"
+ #       self.name_search(name_search).select { |u| u.name }
+ #     end
+ #   else
+ #     puts school_search.to_s+"////////////////"
+ #     if school_search>0
+ #       puts "School, no name"
+ #       all.select { |u| u.school_id == school_search }
+ #     else
+ #       puts "Orphan (black?)"
+ #       all.select { |u| u.name }
+ #     end
+ #   end
+  end
+
+  def self.search_by_name(name_search)
+    if name_search
+      all.where('UPPER(name) LIKE UPPER(?)', "%#{name_search}%")
     else
       all
     end
@@ -77,15 +107,15 @@ class User < ActiveRecord::Base
 
   def teaches?(thing)
     if thing.class.name=="User"
-      (self.role == "teacher") && (self.school == thing.school)
+      (self.role == "teacher") && (self.school.id == thing.school.id)
     elsif thing.class.name=="Venue"
-      (self.role == "teacher") && (self.school == thing.name)
+      (self.role == "teacher") && (self.school.venue_id == thing.id)
     else
-      (self.role == "teacher") && (self.school == thing.venue.name)
+      (self.role == "teacher") && (self.school.name == thing.venue.name)
     end
   end
 
-  def is_mentor?(other_user)
+  def mentoring?(other_user)
     mentorships.find_by(mentee_id: other_user.id)
   end
 
@@ -108,20 +138,22 @@ class User < ActiveRecord::Base
   def unfavourite!(eventid, day)
     favourites.find_by(event_id: eventid, day: day).destroy
   end
-
-  def count_mentor_meetings
-    n=0
-    self.logbook_entries.each do |meeting|
-      if meeting.mentor_meeting
-        n+=1
-      end
-    end
-    self.update_attribute(:mentor_meetings, n)
+  
+  def school_name
+    School.find(self.school_id).name || "no school"
   end
 
-  def school
-    id = self.school_id || 1
-    School.find(id).name
+  def has_school?
+    self.school_id.to_i>1
+  end
+
+  def has_completed template
+    entry = self.logbook_entries.find_by(template_id: template.id)
+    if entry
+      entry.is_complete
+    else
+      0
+    end
   end
 
   private

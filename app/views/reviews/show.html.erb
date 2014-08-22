@@ -4,7 +4,7 @@
 <h1><%= link_to @subject.name, @subject %>: <%= @review.title.to_s %></b></h1>
 
 <%= "#{"★"*@review.stars} |" if @review.stars.to_i>0 && @review.stars.to_i<6 %>
-<% if current_user.id==@review.user_id || me_admin? || (current_user.school==@review.user && current_user.role=="teacher") %>  
+<% if current_user.id==@review.user_id || me_admin? || (current_user.school_id==@review.user.school_id && current_user.role=="teacher") %>  
 	<%= link_to "Edit", edit_review_path(@review) %> | <%= link_to "Delete", @review, method: :delete, data: { confirm: "You sure?" } %>
  <% end %>
  <br>

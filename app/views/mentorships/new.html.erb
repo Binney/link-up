@@ -3,7 +3,6 @@
 
 <div class="searchbox">
   <%= form_tag new_mentorship_path, method: 'get', id: "user_search" do %>
-    <%= hidden_field :school, value: current_user.school %>
     <li class="searchsbox"><%= text_field_tag :search, params[:search], placeholder: "Search by name", id: "searchbox" %></li>
     <li class="searchsbox"><%= submit_tag "Search", name: nil, class: "btn", id: "searchbtn" %></li>
   <% end %>

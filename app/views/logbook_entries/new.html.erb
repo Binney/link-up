@@ -2,20 +2,18 @@
 <% provide(:site_section, 2) %>
 <h1>New logbook entry</h1>
 <div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@logbook_entry) do |f| %>
+  <%= form_for(@logbook_entry) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :date %>
-      <%= f.datetime_select :date %>
+    <%= f.hidden_field :template_id, value: @template.id %>
 
-      <%= f.label :mentor_meeting, 'Mentor meeting?', class: "checkbox inline" %>
-      <%= f.check_box :mentor_meeting %>
-
-      <%= f.label :content %>
-      <%= f.text_area :content %>
-
-      <%= f.submit "Add to logbook!", class: "btn btn-primary" %>
+    <% for i in 0..@questions.length-2 %>
+      <p><%= @questions[i].html_safe %></p>
+      <%= text_area_tag "questions#{i}" %>
     <% end %>
-  </div>
+    <p><%= @questions.last.html_safe %></p>
+
+
+    <%= f.submit "Save to logbook", class: "btn btn-primary" %>
+  <% end %>
 </div>

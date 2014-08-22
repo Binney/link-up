@@ -6,17 +6,11 @@
     <%= form_for(@logbook_entry) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label 'Event attended' %>
-      <%= f.collection_select( :event_id, @events, :id, :name ) %>
-
-      <%= f.label :mentor_meeting, 'Was it a mentor meeting?' %>
-      <%= f.checkbox :mentor_meeting %>
-
-      <%= f.label :content %>
-      <%= f.text_area :content %>
-
-      <%= f.label :date %>
-      <%= f.datetime_select :date %>
+      <% for i in 0..@questions.length-2 %>
+        <p><%= @questions[i].html_safe %></p>
+        <%= text_area_tag "questions#{i}", @answers[i] %>
+      <% end %>
+      <p><%= @questions.last.html_safe %></p>
 
       <%= f.submit "Save!", class: "btn btn-primary" %>
 

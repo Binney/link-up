@@ -14,7 +14,7 @@ class Mentorship < ActiveRecord::Base
         end
       end
 
-    elsif user.role == 'admin' && confirmation_stage < 2
+    elsif (user.role == 'admin' || user.role == 'teacher') && confirmation_stage < 2
       if self.update_attribute(:confirmation_stage, confirmation_stage+2)
         if confirmation_stage == 3
           puts "Approved! #{User.find(mentor_id)} is now mentoring #{User.find(mentee_id)}."

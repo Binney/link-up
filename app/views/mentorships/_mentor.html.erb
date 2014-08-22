@@ -1,7 +1,7 @@
 <% unless current_user?(user) %>
   <div id="mentor_form">
 
-  <% if current_user.is_mentor?(user) %>
+  <% if current_user.mentoring?(user) %>
     Already sent a mentor request.
    <% else %>
     <%= render 'start_mentoring', user: user %>

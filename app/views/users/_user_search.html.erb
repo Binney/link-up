@@ -1,7 +1,8 @@
 <%= form_tag users_path, method: 'get', id: "user_search" do %>
   <%= text_field_tag :name_search, params[:name_search], placeholder: "Name" %>
   <% if me_admin? %>
-    <%= text_field_tag :school_search, params[:school_search], placeholder: "School" %>
+  	<%= collection_select nil, :school_search, School.all, :id, :name, include_blank: "All schools" %>
+
   <% end %>
   <%= submit_tag "Search", name: nil, class: "btn" %>
 <% end %>

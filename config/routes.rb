@@ -13,7 +13,8 @@ Sweaton2::Application.routes.draw do
   resources :tags, only: [:index, :show]
   resources :relationships, only: [:create, :destroy]
   resources :favourites, only: [:create, :destroy]
-  resources :diary_entries, :messages, :mentorships, :password_resets, :reviews, :articles, :logbook_entries, :schools
+  resources :diary_entries, :messages, :mentorships, :password_resets,
+     :reviews, :articles, :logbook_entries, :schools, :logbook_templates
 
   root 'static_pages#home'
   match '/signup',  to: 'users#new',		        via: 'get'

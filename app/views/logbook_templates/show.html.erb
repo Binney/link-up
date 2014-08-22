@@ -1,0 +1,16 @@
+<% provide(:title, 'View template') %>
+<% provide(:site_section, 2) %>
+<h1><%= @logbook_template.title %>: preview</h1>
+<div class="row">
+
+  <p><b>!! This is a preview of the template. To fill it in, <%= link_to "click here", new_logbook_entry_path(template_id: @logbook_template.id) %>. To edit, <%= link_to "click here", edit_logbook_template_path(@logbook_template.id) %>.</b></p>
+
+    <% for i in 0..@questions.length-2 %>
+      <p><%= @questions[i].html_safe %></p>
+      <%= text_area_tag "questions#{i}" %>
+    <% end %>
+    <p><%= @questions.last.html_safe %></p>
+
+    <%= link_to "Fill this in", new_logbook_entry_path(template_id: @logbook_template.id) %>
+
+</div>

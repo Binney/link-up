@@ -1,15 +1,20 @@
 class LogbookEntriesController < ApplicationController
-  before_action :signed_in_user, only: [:create, :new, :index, :edit, :overview, :destroy]
-  before_action :teacher_account, only: :overview
+  before_action :signed_in_user
+  before_action :teacher_or_mentor_account, only: :overview
   before_action :correct_user, only: [:index, :destroy]
 
   def new
-  	@logbook_entry = LogbookEntry.new
-  	@events = Event.all # TODO with certain constraints!!
+    if current_user.logbook_entries.find_by(template_id: params[:template_id])
+      redirect_to edit_logbook_entry_path(current_user.logbook_entries.find_by(template_id: params[:template_id]).id)
+    else
+      @template = LogbookTemplate.find(params[:template_id])
+    	@logbook_entry = @template.logbook_entries.build
+      @questions = @template.content.split("<text>")
+    end
   end
 
   def create
-  	@logbook_entry = current_user.logbook_entries.build(logbook_entry_params)
+  	@logbook_entry = current_user.logbook_entries.build(logbook_entry_params.merge(content: parse_content))
   	if @logbook_entry.save
   		flash[:success] = "Saved to logbook!"
       current_user.count_mentor_meetings
@@ -20,14 +25,16 @@ class LogbookEntriesController < ApplicationController
   end
 
   def edit
-  	@logbook_entry = LogbookEntry.find(params[:id])
+    @logbook_entry = LogbookEntry.find(params[:id])
+    @template = LogbookTemplate.find(@logbook_entry.template_id)
+    @questions = @template.content.split("<text>")
+    @answers = @logbook_entry.content.split("<template>")
   end
 
   def update
-    @logbook_entry = LogbookEntry.find(parms[:id])
-    if @logbook_entry.update(logbook_entry_params)
+    @logbook_entry = LogbookEntry.find(params[:id])
+    if @logbook_entry.update_attribute(:content, parse_content)
       flash[:success] = "Logbook entry updated."
-      current_user.count_mentor_meetings
       redirect_to @logbook_entry
     else
       render 'edit'
@@ -36,6 +43,9 @@ class LogbookEntriesController < ApplicationController
 
   def show
     @logbook_entry = LogbookEntry.find(params[:id])
+    @template = LogbookTemplate.find(@logbook_entry.template_id)
+    @questions = @template.content.split("<text>")
+    @answers = @logbook_entry.content.split("<template>")
   end
 
   def index
@@ -44,15 +54,19 @@ class LogbookEntriesController < ApplicationController
 
   def overview
     if me_admin?
-      # Display all users, sorted by number of mentor meetings they've had (ascending)
-      @users = User.simple_search(params[:search], nil).order('mentor_meetings ASC')#.paginate(page: params[:page], per_page: 1)
+      # Display all users, sorted by name
+      #@users = User.simple_search(params[:search], nil).sort_by { |u| [u.school_id, u.name] }#.paginate(page: params[:page], per_page: 1)
+      @users = User.search_by_name(params[:search]).order ('school_id DESC, name DESC')#.sort_by { |u| [u.school_id, u.name] }
     elsif me_teacher?
       # Display all users from your school
-      @users = User.simple_search(params[:search], current_user.school).order('mentor_meetings ASC')#.paginate(page: params[:page], per_page: 1)
+      @users = User.search_by_name(params[:search]).select { |u| u.school_id==current_user.school_id }
+      #@users = User.simple_search(params[:search], current_user.school.name)..sort_by { |u| [u.school_id, u.name] }#.paginate(page: params[:page], per_page: 1)
     else
-      # Display your mentee's logbook records.
-      @users = current_user.mentees.simple_search(params[:search], current_user.school).order('mentor_meetings ASC')#.paginate(params[:page])
+      # Display your mentee's logbook records. Ordinary student accounts can't get this far because of before_filter.
+      @users = current_user.mentees.search_by_name(params[:search])
+      #@users = current_user.mentees.simple_search(params[:search], current_user.school.name)..sort_by { |u| [u.school_id, u.name] }#.paginate(params[:page])
     end
+    @sessions = LogbookTemplate.all
   end
 
   def destroy
@@ -67,7 +81,19 @@ class LogbookEntriesController < ApplicationController
   private
 
     def logbook_entry_params
-      params.require(:logbook_entry).permit(:mentor_meeting, :event_id, :content, :date)
+      params.require(:logbook_entry).permit(:content, :template_id)
+    end
+
+    def parse_content
+      i = 0
+      content = ""
+      # TODO also need to check if any fields are blank and mark entry as incomplete if so
+      while params.has_key?("questions#{i}")
+        content += params["questions#{i}"]
+        content += "<template>"
+        i+=1
+      end
+      return content
     end
 
 end
