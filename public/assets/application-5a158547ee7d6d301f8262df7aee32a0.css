@@ -9195,13 +9195,13 @@ a.label:hover, a.label:focus, a.badge:hover, a.badge:focus {
 
 /* mixins, variables, etc. */
 /* universal */
-/* line 20, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 20, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 html {
   overflow-y: scroll;
   height: 100%;
 }
 
-/* line 25, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 25, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 body {
   background-color: #f7931e;
   padding-top: 0px;
@@ -9209,12 +9209,12 @@ body {
   height: 100%;
 }
 
-/* line 32, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 32, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 section {
   overflow: auto;
 }
 
-/* line 36, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 36, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .container {
   padding-left: 0px;
   padding-right: 50px;
@@ -9224,7 +9224,7 @@ section {
   background-color: #fff;
 }
 
-/* line 45, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 45, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .container1 {
   padding-left: 50px;
   padding-right: 0px;
@@ -9233,16 +9233,16 @@ section {
   background-color: #fff;
 }
 
-/* line 53, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 53, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .center {
   text-align: center;
 }
-/* line 55, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 55, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .center h1 {
   margin-bottom: 10px;
 }
 
-/* line 60, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 60, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .image {
   padding: 6px;
   border: 1px solid #ccc;
@@ -9252,7 +9252,7 @@ section {
   width: 95%;
 }
 
-/* line 69, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 69, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .map_container {
   padding: 6px;
   border-width: 1px;
@@ -9263,25 +9263,25 @@ section {
   box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
   /*width: 100%;*/
 }
-/* line 78, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 78, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .map_container .infowindow {
   text-align: left;
   background-color: #f7931e;
   color: white;
 }
-/* line 82, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 82, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .map_container .infowindow a {
   color: yellow;
   text-decoration: none;
 }
 
-/* line 89, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 89, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .gmaps4rails_map {
   width: map_container;
   height: 400px;
 }
 
-/* line 94, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 94, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .yellow {
   border: 1px solid black;
   margin-top: 8px;
@@ -9289,32 +9289,32 @@ section {
   padding: 5px;
 }
 
-/* line 96, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 96, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .tagline {
   float: left;
   padding-left: 50px;
   width: 40%;
   height: 200px;
 }
-/* line 101, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 101, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .tagline h2 {
   font-size: 20px;
   letter-spacing: 1px;
   line-height: 30px;
 }
 
-/* line 108, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 108, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #map label {
   width: auto;
   display: inline;
 }
 
-/* line 112, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 112, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #map img {
   max-width: none;
 }
 
-/* line 114, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 114, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 top_container {
   float: top;
   border-width: 5px;
@@ -9324,20 +9324,20 @@ top_container {
   height: 400px;
 }
 
-/* line 123, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 123, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 bottomleft_container {
   float: left;
   width: 50%;
 }
 
-/* line 128, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 128, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 bottomright_container {
   float: right;
   width: 50%;
 }
 
 /* typography */
-/* line 135, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 135, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Open Sans', sans-serif;
   line-height: 1;
@@ -9345,7 +9345,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #f7931e;
 }
 
-/* line 142, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 142, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 h1 {
   font-size: 2em;
   letter-spacing: 0px;
@@ -9353,7 +9353,7 @@ h1 {
   color: #000;
 }
 
-/* line 149, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 149, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
@@ -9362,76 +9362,76 @@ h2 {
   color: #999999;
 }
 
-/* line 157, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 157, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 h3 {
   font-size: 1.6em;
   letter-spacing: 0px;
   margin-bottom: 20px;
 }
 
-/* line 163, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 163, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
 
-/* line 168, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 168, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 a {
   color: #000;
 }
-/* line 170, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 170, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 a:hover {
   color: #f7931e;
 }
 
 /* header */
-/* line 176, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 176, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .logo {
   z-index: -1;
 }
 
-/* line 180, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 180, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .user-bar, .top-bar {
   display: inline;
   list-style-type: none;
 }
 
-/* line 185, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 185, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .user-bar li, .top-bar li {
   float: right;
   padding-left: 20px;
 }
-/* line 188, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 188, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .user-bar li a, .top-bar li a {
   font-size: 15px;
   text-decoration: none;
   color: #888;
 }
 
-/* line 195, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 195, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .top-bar li a {
   color: #ccc;
   font-size: 12px;
 }
 
-/* line 201, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 201, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .account_info {
   height: 150px;
 }
 
-/* line 205, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 205, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .major-nav {
   width: 100%;
   padding-left: 30px;
 }
 
-/* line 210, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 210, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .major-nav-btn ul {
   padding-left: 0px;
   float: left;
 }
 
-/* line 215, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 215, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .major-nav-btn li {
   display: inline;
   padding-right: 20px;
@@ -9439,7 +9439,7 @@ a:hover {
 }
 
 /* footer */
-/* line 223, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 223, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 footer {
   float: bottom;
   margin-top: 45px;
@@ -9447,31 +9447,31 @@ footer {
   border-top: 1px solid #eaeaea;
   color: #999999;
 }
-/* line 229, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 229, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 footer a {
   color: #555555;
 }
-/* line 231, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 231, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 footer a:hover {
   color: #222222;
 }
-/* line 235, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 235, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 footer small {
   float: left;
 }
-/* line 238, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 238, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 footer ul {
   float: right;
   list-style: none;
 }
-/* line 241, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 241, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 footer ul li {
   float: left;
   margin-left: 10px;
 }
 
 /* buttons */
-/* line 250, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 250, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .btn {
   cursor: pointer;
   border-width: 0px;
@@ -9493,7 +9493,7 @@ footer ul li {
   box-shadow: 0px 4px 0px 0px #a7a7a7;
   display: inline-block;
 }
-/* line 270, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 270, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .btn:hover {
   background: #ffc319;
   text-decoration: none;
@@ -9502,12 +9502,12 @@ footer ul li {
   -moz-box-shadow: 0px 4px 0px 0px #D18B19;
   box-shadow: 0px 4px 0px 0px #D18B19;
 }
-/* line 278, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 278, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .btn:active {
   background: #f7931e;
 }
 
-/* line 283, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 283, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .btn-large {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
@@ -9519,7 +9519,7 @@ footer ul li {
   height: 30px;
 }
 
-/* line 295, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 295, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .btn-primary {
   /* TODO align button in middle of line */
   display: inline-block;
@@ -9529,47 +9529,47 @@ footer ul li {
   -moz-box-shadow: 0px 4px 0px 0px #D18B19;
   box-shadow: 0px 4px 0px 0px #D18B19;
 }
-/* line 303, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 303, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .btn-primary:hover {
   background: #ffc319;
   text-decoration: none;
   color: white;
 }
-/* line 308, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 308, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .btn-primary:active {
   background: #f7931e;
 }
 
-/* line 313, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 313, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .btn-wide-enough {
   width: auto;
 }
 
-/* line 317, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 317, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .btn-login {
   float: right;
 }
 
-/* line 321, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 321, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .request_login {
   color: #f7931e;
   text-decoration: underline;
 }
 
 /* homepage */
-/* line 328, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 328, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #local-map {
   padding-bottom: 25px;
 }
 
-/* line 332, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 332, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #homepage {
   width: 100%;
   float: left;
   padding-bottom: 100px;
 }
 
-/* line 338, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 338, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #homepage-left {
   width: 45%;
   float: left;
@@ -9578,7 +9578,7 @@ footer ul li {
   display: table;
 }
 
-/* line 347, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 347, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #homepage-right {
   width: 45%;
   float: left;
@@ -9587,23 +9587,23 @@ footer ul li {
 }
 
 /* sidebar */
-/* line 357, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 357, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 aside section {
   padding: 10px 0;
   border-top: 1px solid #eeeeee;
 }
-/* line 360, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 360, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 aside section:first-child {
   border: 0;
   padding-top: 0;
 }
-/* line 364, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 364, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 aside section col-md-* {
   display: block;
   margin-bottom: 3px;
   line-height: 1;
 }
-/* line 369, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 369, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 aside section h1 {
   font-size: 1.4em;
   text-align: left;
@@ -9613,7 +9613,7 @@ aside section h1 {
 }
 
 /* forms */
-/* line 381, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 381, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 input, textarea, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
@@ -9627,14 +9627,14 @@ input, textarea, .uneditable-input {
   box-sizing: border-box;
 }
 
-/* line 392, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 392, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 textarea {
   width: 100%;
   height: 200px;
   resize: vertical;
 }
 
-/* line 398, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 398, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 select {
   border: 1px solid #bbb;
   width: auto;
@@ -9645,12 +9645,12 @@ select {
   box-sizing: border-box;
 }
 
-/* line 406, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 406, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 input {
   height: auto !important;
 }
 
-/* line 410, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 410, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 input#text-entry-special {
   background-color: #ffede0;
   padding: 6px;
@@ -9663,7 +9663,7 @@ input#text-entry-special {
   -moz-border-radius: 0px;
   border-radius: 0px;
 }
-/* line 421, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 421, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 input#text-entry-special::-webkit-input-placeholder {
   color: #555;
   padding-top: 4px;
@@ -9671,7 +9671,7 @@ input#text-entry-special::-webkit-input-placeholder {
   font-size: 15px;
   font-family: 'Open Sans', sans-serif;
 }
-/* line 429, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 429, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 input#text-entry-special:-moz-placeholder {
   color: #555;
   padding-top: 4px;
@@ -9679,7 +9679,7 @@ input#text-entry-special:-moz-placeholder {
   font-size: 15px;
   font-family: 'Open Sans', sans-serif;
 }
-/* line 437, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 437, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 input#text-entry-special::-moz-placeholder {
   color: #555;
   padding-top: 4px;
@@ -9687,7 +9687,7 @@ input#text-entry-special::-moz-placeholder {
   font-size: 15px;
   font-family: 'Open Sans', sans-serif;
 }
-/* line 445, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 445, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 input#text-entry-special:-ms-input-placeholder {
   color: #555;
   padding-top: 4px;
@@ -9695,18 +9695,18 @@ input#text-entry-special:-ms-input-placeholder {
   font-size: 15px;
   font-family: 'Open Sans', sans-serif;
 }
-/* line 452, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 452, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 input#text-entry-special:focus {
   background-color: #fddbc5;
 }
 
-/* line 457, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 457, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .annotation {
   color: #aaa;
   font-size: 8px;
 }
 
-/* line 462, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 462, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 input[type=checkbox].css-checkbox {
   position: absolute;
   overflow: hidden;
@@ -9718,7 +9718,7 @@ input[type=checkbox].css-checkbox {
   border: 0;
 }
 
-/* line 473, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 473, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 input[type=checkbox].css-checkbox + label.css-label {
   padding-left: 20px;
   height: 15px;
@@ -9731,38 +9731,38 @@ input[type=checkbox].css-checkbox + label.css-label {
   cursor: pointer;
 }
 
-/* line 485, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 485, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 input[type=checkbox].css-checkbox:checked + label.css-label {
   background-position: 0 -15px;
 }
 
-/* line 489, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 489, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .css-label {
   background-image: url(http://csscheckbox.com/checkboxes/dark-check-orange.png);
 }
 
-/* line 493, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 493, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #timing-entry {
   list-style-type: none;
   display: inline;
 }
 
-/* line 498, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 498, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #error_explanation {
   color: #f00;
 }
-/* line 500, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 500, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #error_explanation ul {
   list-style: none;
   margin: 0 0 18px 0;
 }
 
-/* line 510, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 510, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .generic-list {
   list-style: none;
   margin: 0;
 }
-/* line 513, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 513, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .generic-list li {
   overflow: auto;
   padding: 10px 0;
@@ -9773,14 +9773,14 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 }
 
 /* categories/tags */
-/* line 524, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 524, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .tags li {
   list-style: none;
   display: inline-block;
   line-height: 150px;
 }
 
-/* line 530, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 530, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .tag_wrapper {
   position: relative;
   padding: 30px;
@@ -9791,7 +9791,7 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
   text-align: center;
 }
 
-/* line 539, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 539, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .tag_name {
   line-height: 30px;
   display: inline-block;
@@ -9809,25 +9809,25 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
   opacity: 0;
 }
 
-/* line 554, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 554, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .tag_name:hover {
   opacity: 1;
 }
 
-/* line 558, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 558, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .tags_select {
   list-style-type: none;
   display: inline;
 }
 
 /* search */
-/* line 566, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 566, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #mega-search {
   width: 100%;
   float: bottom;
 }
 
-/* line 569, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 569, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #mega-search ul li {
   padding-left: 0px;
   display: inline-block;
@@ -9835,18 +9835,18 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
   list-style-type: none;
 }
 
-/* line 574, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 574, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #mega-search input {
   width: 300px;
 }
 
-/* line 576, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 576, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #mega-search .btn {
   width: auto;
   vertical-align: bottom;
 }
 
-/* line 581, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 581, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .btn-mega-search {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -9861,17 +9861,17 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
   height: 45px;
 }
 
-/* line 595, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 595, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .searchbox {
   list-style-type: none;
   width: 400px;
 }
 
-/* line 600, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 600, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #search-toggle {
   cursor: pointer;
 }
-/* line 602, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 602, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #search-toggle h4 {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -9885,55 +9885,55 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
   text-align: center;
 }
 
-/* line 616, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 616, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #toggleform {
   cursor: pointer;
 }
 
 /* events */
-/* line 623, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 623, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .events {
   list-style: none;
   margin: 10px 0 0 0;
 }
-/* line 627, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 627, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .events li {
   padding: 10px 0;
   border-top: 1px solid #e8e8e8;
 }
 
-/* line 632, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 632, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .name {
   display: block;
 }
 
-/* line 635, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 635, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .description {
   color: #999999;
 }
 
-/* line 639, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 639, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .events_list {
   float: right;
   width: 50%;
 }
 
-/* line 644, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 644, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .login-tab {
   width: 50%;
   float: right;
   height: 200px;
 }
-/* line 648, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 648, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .login-tab input[type=text] {
   width: 49%;
 }
-/* line 651, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 651, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .login-tab input[type=password] {
   width: 49%;
 }
 
-/* line 656, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 656, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .activity-list {
   -moz-column-count: 3;
   -moz-column-gap: 20px;
@@ -9944,7 +9944,7 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 }
 
 /* Messages + diary */
-/* line 667, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 667, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .tab_table {
   margin: 0px;
   padding: 0px;
@@ -9956,7 +9956,7 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
   border-radius: 0px;
 }
 
-/* line 676, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 676, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .tab_table table {
   width: 100%;
   height: 100%;
@@ -9964,40 +9964,40 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
   padding: 0px;
 }
 
-/* line 681, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 681, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .tab_table tr:last-child td:last-child {
   -moz-border-radius-bottomright: 0px;
   -webkit-border-bottom-right-radius: 0px;
   border-bottom-right-radius: 0px;
 }
 
-/* line 686, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 686, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .tab_table table tr:first-child td:first-child {
   -moz-border-radius-topleft: 0px;
   -webkit-border-top-left-radius: 0px;
   border-top-left-radius: 0px;
 }
 
-/* line 691, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 691, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .tab_table table tr:first-child td:last-child {
   -moz-border-radius-topright: 0px;
   -webkit-border-top-right-radius: 0px;
   border-top-right-radius: 0px;
 }
 
-/* line 695, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 695, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .tab_table tr:last-child td:first-child {
   -moz-border-radius-bottomleft: 0px;
   -webkit-border-bottom-left-radius: 0px;
   border-bottom-left-radius: 0px;
 }
 
-/* line 699, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 699, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .tab_table tr:hover td {
   background-color: #fff;
 }
 
-/* line 702, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 702, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .tab_table td {
   vertical-align: middle;
   background-color: #f4f4f4;
@@ -10012,38 +10012,38 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
   color: #000000;
 }
 
-/* line 717, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 717, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .tab_table tr:last-child td {
   border-width: 0px 1px 0px 0px;
 }
 
-/* line 719, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 719, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .tab_table tr td:last-child {
   border-width: 0px 0px 1px 0px;
 }
 
-/* line 721, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 721, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .tab_table tr:last-child td:last-child {
   border-width: 0px 0px 0px 0px;
 }
 
-/* line 724, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 724, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #message_body {
   height: 500px;
 }
 
-/* line 727, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 727, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .message_view {
   border-top: 0px solid #fff;
   border-bottom: 0px solid #fff;
 }
 
-/* line 730, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 730, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .message_view tr:hover td {
   background-color: #f4f4f4;
 }
 
-/* line 733, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 733, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .message_view td {
   vertical-align: middle;
   background-color: #f4f4f4;
@@ -10054,49 +10054,49 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
   font-size: 12px;
 }
 
-/* line 742, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 742, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .message_view tr:last-child td {
   border-width: 0px 0px 0px 0px;
 }
 
-/* line 744, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 744, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .message_view tr td:last-child {
   border-width: 0px 0px 0px 0px;
 }
 
-/* line 746, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 746, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 .message_view tr:last-child td:last-child {
   border-width: 0px 0px 0px 0px;
 }
 
-/* line 751, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 751, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #flex {
   color: #f7931e;
   font-weight: bold;
 }
-/* line 754, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 754, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #flex a {
   color: #f7931e;
 }
-/* line 756, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 756, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #flex a:hover {
   color: #000;
 }
 
-/* line 762, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 762, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #const {
   vertical-align: top;
   text-align: right;
 }
 
 /* Calendars */
-/* line 769, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 769, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #calendar table {
   border-collapse: collapse;
   width: 100%;
 }
 
-/* line 775, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 775, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #calendar td,
 #calendar th {
   font-family: 'Open Sans', sans-serif;
@@ -10105,7 +10105,7 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
   border: 1px solid #999;
 }
 
-/* line 782, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 782, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #calendar th {
   background: #DDD;
   color: #666;
@@ -10113,7 +10113,7 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
   width: 14.2857142857143%;
 }
 
-/* line 789, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 789, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #calendar td {
   background: #FFF;
   color: #777;
@@ -10122,12 +10122,12 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
   font-size: 16px;
 }
 
-/* line 797, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 797, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #calendar .notmonth {
   color: #CCC;
 }
 
-/* line 801, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 801, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #calendar #month {
   margin: 0;
   padding-top: 10px;
@@ -10135,19 +10135,19 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
   text-align: center;
 }
 
-/* line 808, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 808, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #calendar #month a, #calendar #month a:hover {
   text-decoration: none;
   padding: 0 10px;
   color: #999;
 }
 
-/* line 814, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 814, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #calendar .today {
   background-color: #fff;
 }
 
-/* line 818, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 818, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #calendar ul {
   margin: 0;
   margin-top: 5px;
@@ -10155,7 +10155,7 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
   list-style: none;
 }
 
-/* line 825, C:/Users/Binney/Documents/GitHub/sweaton2/app/assets/stylesheets/custom.css.scss */
+/* line 825, C:/Users/Binney/Documents/GitHub/link-up/app/assets/stylesheets/custom.css.scss */
 #calendar li {
   margin: 0;
   padding: 0;

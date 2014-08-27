@@ -1,4 +1,4 @@
-Sweaton2::Application.routes.draw do
+LinkUp::Application.routes.draw do
 
   resources :users do
     resources :logbook_entries

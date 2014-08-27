@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Sweaton2::Application.load_tasks
+LinkUp::Application.load_tasks

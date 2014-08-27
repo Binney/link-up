@@ -24,4 +24,4 @@ def secure_token
   end
 end
 
-Sweaton2::Application.config.secret_key_base = secure_token
+LinkUp::Application.config.secret_key_base = secure_token
