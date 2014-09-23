@@ -1,3 +1,10 @@
 <li>
-<span class="name and date"><b><%= link_to logbook_template.title, logbook_template %></b> | Deadline: <%= logbook_template.deadline.to_s(:short) %></span>
+<span class="name and date"><b><%= link_to logbook_template.title, logbook_template %></b>
+ | Available from: <%= logbook_template.start_time.to_s %>
+ | Deadline: <%= logbook_template.deadline.to_s(:short) %>
+	<% if me_admin? %>
+		| <%= link_to "delete", logbook_template, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+	<% end %>
+</span>
 </li>

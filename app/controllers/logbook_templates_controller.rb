@@ -1,5 +1,6 @@
 class LogbookTemplatesController < ApplicationController
 	before_filter :signed_in_user
+	before_filter :admin_account, only: [:new, :create, :edit, :update, :destroy]
 
 	def new
 		@logbook_template = LogbookTemplate.new
@@ -46,10 +47,16 @@ class LogbookTemplatesController < ApplicationController
 		end
 	end
 
+	def destroy
+		@logbook_template = LogbookTemplate.find(params[:id])
+		@logbook_template.destroy
+		redirect_to logbook_templates_path
+	end
+
 	private
 
 		def logbook_template_params
-			params.require(:logbook_template).permit(:title, :content, :deadline, :user_id)
+			params.require(:logbook_template).permit(:title, :content, :start_time, :deadline, :user_id)
 		end
 
 end

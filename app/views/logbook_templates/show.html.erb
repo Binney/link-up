@@ -3,6 +3,8 @@
 <h1><%= @logbook_template.title %>: preview</h1>
 <div class="row">
 
+Available from: <%= @logbook_template.start_time.to_s %>
+
   <p><b>!! This is a preview of the template. To fill it in, <%= link_to "click here", new_logbook_entry_path(template_id: @logbook_template.id) %>. To edit, <%= link_to "click here", edit_logbook_template_path(@logbook_template.id) %>.</b></p>
 
     <% for i in 0..@questions.length-2 %>
