@@ -21,13 +21,13 @@ class LogbookTemplatesController < ApplicationController
 	end
 
 	def update
-	@logbook_template = LogbookTemplate.find(params[:id])
-	if @logbook_template.update(logbook_template_params)
-	  flash[:success] = "Logbook template updated."
-	  redirect_to @logbook_template
-	else
-	  render 'edit'
-	end
+		@logbook_template = LogbookTemplate.find(params[:id])
+		if @logbook_template.update(logbook_template_params)
+		  flash[:success] = "Logbook template updated."
+		  redirect_to @logbook_template
+		else
+		  render 'edit'
+		end
 	end
 
 	def show
@@ -43,7 +43,7 @@ class LogbookTemplatesController < ApplicationController
 		if me_admin? || me_teacher?
 			@logbook_templates = LogbookTemplate.all
 		else
-			@logbook_templates = LogbookTemplate.all.select { |template| !(current_user.logbook_entries.find_by(template_id: template.id))}
+			@logbook_templates = LogbookTemplate.all.select { |template| template.start_time<Time.now && !(current_user.logbook_entries.find_by(template_id: template.id))}
 		end
 	end
 
