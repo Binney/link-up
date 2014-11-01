@@ -8,6 +8,9 @@ class LogbookTemplatesController < ApplicationController
 
 	def create
 		@logbook_template = LogbookTemplate.new(logbook_template_params)
+		unless current_user.admin?
+		  @logbook_template.school_id = current_user.school_id
+		end
 		if @logbook_template.save
 			flash[:success] = "Template saved successfully."
 			redirect_to @logbook_template
@@ -22,6 +25,9 @@ class LogbookTemplatesController < ApplicationController
 
 	def update
 		@logbook_template = LogbookTemplate.find(params[:id])
+		unless current_user.admin?
+		  logbook_template_params[:school_id] = current_user.school_id
+		end
 		if @logbook_template.update(logbook_template_params)
 		  flash[:success] = "Logbook template updated."
 		  redirect_to @logbook_template
@@ -43,7 +49,7 @@ class LogbookTemplatesController < ApplicationController
 		if me_admin? || me_teacher?
 			@logbook_templates = LogbookTemplate.all
 		else
-			@logbook_templates = LogbookTemplate.all.select { |template| template.start_time<Time.now && !(current_user.logbook_entries.find_by(template_id: template.id))}
+			@logbook_templates = LogbookTemplate.all.select { |template| template.start_time<Time.now && current_user.school_id==template.school_id && !(current_user.logbook_entries.find_by(template_id: template.id))}
 		end
 	end
 
@@ -56,7 +62,17 @@ class LogbookTemplatesController < ApplicationController
 	private
 
 		def logbook_template_params
-			params.require(:logbook_template).permit(:title, :content, :start_time, :deadline, :user_id)
+			params.require(:logbook_template).permit(:title, :content, :start_time, :deadline, :user_id, :school_id)
+		end
+
+		def correct_school
+			unless current_user.admin?
+				@logbook_template = LogbookTemplate.find(params[:id])
+				if @logbook_template.school_id != current_user.school_id
+					flash[:error] = "That logbook template isn't for your school."
+					redirect_to root_path
+				end
+			end
 		end
 
 end

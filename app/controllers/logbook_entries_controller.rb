@@ -8,6 +8,10 @@ class LogbookEntriesController < ApplicationController
       redirect_to edit_logbook_entry_path(current_user.logbook_entries.find_by(template_id: params[:template_id]).id)
     else
       @template = LogbookTemplate.find(params[:template_id])
+      if @template.school_id != current_user.school_id
+        flash[:error] = "That logbook template is for a different school."
+        redirect_to logbook_path
+      end
     	@logbook_entry = @template.logbook_entries.build
       @questions = @template.content.split("<text>")
     end
@@ -65,7 +69,7 @@ class LogbookEntriesController < ApplicationController
       @users = current_user.mentees.search_by_name(params[:search])
       #@users = current_user.mentees.simple_search(params[:search], current_user.school.name)..sort_by { |u| [u.school_id, u.name] }#.paginate(params[:page])
     end
-    @sessions = LogbookTemplate.all
+    @sessions = LogbookTemplate.all.order ('deadline ASC')
   end
 
   def destroy

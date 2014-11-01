@@ -12,6 +12,14 @@
       <%= f.label :content %>
       <%= f.text_area :content %>
 
+      <% if me_admin? %>
+        <%= f.label :school_id, "School" %>
+        <%= f.collection_select( :school_id, School.all, :id, :name ) %>
+        <br><small>This template will only be visible to students at this school. If you want one template to be visible to multiple schools, make separate templates for each school.</small>
+      <% else %>
+        <%= f.hidden_field :school_id, value: current_user.school_id %>
+      <% end %>
+
       <%= f.label :start_time %>
       <%= f.date_select :start_time %>
 
