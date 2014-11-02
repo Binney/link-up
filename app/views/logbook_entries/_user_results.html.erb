@@ -2,7 +2,7 @@
 
 	<% @schools.each do |school| %>
 
-		<% users = User.search_by_school(params[:name_search], school.id) %>
+		<% users = User.search_by_school(params[:name_search].to_s, school.id.to_i) %>
 
 		<% if users.any? %>
 
