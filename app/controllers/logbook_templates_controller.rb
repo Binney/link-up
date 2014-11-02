@@ -8,7 +8,7 @@ class LogbookTemplatesController < ApplicationController
 
 	def create
 		@logbook_template = LogbookTemplate.new(logbook_template_params)
-		unless current_user.admin?
+		unless me_admin?
 		  @logbook_template.school_id = current_user.school_id
 		end
 		if @logbook_template.save
@@ -25,7 +25,7 @@ class LogbookTemplatesController < ApplicationController
 
 	def update
 		@logbook_template = LogbookTemplate.find(params[:id])
-		unless current_user.admin?
+		unless me_admin?
 		  logbook_template_params[:school_id] = current_user.school_id
 		end
 		if @logbook_template.update(logbook_template_params)
@@ -66,7 +66,7 @@ class LogbookTemplatesController < ApplicationController
 		end
 
 		def correct_school
-			unless current_user.admin?
+			unless me_admin?
 				@logbook_template = LogbookTemplate.find(params[:id])
 				if @logbook_template.school_id != current_user.school_id
 					flash[:error] = "That logbook template isn't for your school."

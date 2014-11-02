@@ -52,24 +52,21 @@ class LogbookEntriesController < ApplicationController
   end
 
   def index
-    @logbook_entries = @user.logbook_entries#.paginate(params[:page])
+    @logbook_entries = @user.logbook_entries
   end
 
   def overview
     if me_admin?
-      # Display all users, sorted by name
-      #@users = User.simple_search(params[:search], nil).sort_by { |u| [u.school_id, u.name] }#.paginate(page: params[:page], per_page: 1)
-      @users = User.search_by_name(params[:search]).order ('school_id DESC, name DESC')#.sort_by { |u| [u.school_id, u.name] }
-    elsif me_teacher?
-      # Display all users from your school
-      @users = User.search_by_name(params[:search]).select { |u| u.school_id==current_user.school_id }
-      #@users = User.simple_search(params[:search], current_user.school.name)..sort_by { |u| [u.school_id, u.name] }#.paginate(page: params[:page], per_page: 1)
+      if params[:school_search].blank? || params[:school_search][0].blank?
+        @schools = School.all
+      else
+        @schools = [School.find(params[:school_search][0].to_i)]
+      end
+    elsif me_teacher? 
+      @schools = [current_user.school]
     else
-      # Display your mentee's logbook records. Ordinary student accounts can't get this far because of before_filter.
-      @users = current_user.mentees.search_by_name(params[:search])
-      #@users = current_user.mentees.simple_search(params[:search], current_user.school.name)..sort_by { |u| [u.school_id, u.name] }#.paginate(params[:page])
+      flash[:error] = "This part of the site is off limits to all those who do not wish to die a most painful death."
     end
-    @sessions = LogbookTemplate.all.order ('deadline ASC')
   end
 
   def destroy

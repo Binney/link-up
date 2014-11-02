@@ -1,12 +1,12 @@
 <tr id="request">
   <td><%= link_to user.name, user_logbook_entries_path(user) %></td>
-  <% sessions.each do |session| %>
-    <% if user.has_completed(session) != 0 %>
-      <%= content_tag :td, class: "has_completed#{user.has_completed(session)}" do %>
-        <%= link_to "View entry", user_logbook_entry_path(user, user.logbook_entries.find_by(template_id: session.id).id) %>
+  <% templates.each do |template| %>
+    <% if user.has_completed(template) != 0 %>
+      <%= content_tag :td, class: "has_completed#{user.has_completed(template)}" do %>
+        <%= link_to "View entry", user_logbook_entry_path(user, user.logbook_entries.find_by(template_id: template.id).id) %>
       <% end %>
     <% else %>
-      <%= content_tag :td, "Not yet filled in", class: "has_completed#{user.has_completed(session)}" %>
+      <%= content_tag :td, "Not yet filled in", class: "has_completed#{user.has_completed(template)}" %>
     <% end %>      
   <% end %>
 </tr>

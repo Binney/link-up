@@ -6,19 +6,15 @@
 <div class="searchbox">
   <%= form_tag logbook_overview_path, method: 'get', id: "user_search" do %>
     <%= hidden_field :school, value: current_user.school %>
-    <li class="searchsbox"><%= text_field_tag :search, params[:search], placeholder: "Search by name", id: "searchbox" %></li>
+    <li class="searchsbox"><%= text_field_tag :name_search, params[:name_search], placeholder: "Search by name", id: "searchbox" %></li>
+    <% if me_admin? %>
+    	<%= label_tag "Search by school:" %>
+	    <li class="searchsbox"><%= collection_select :school_search, params[:school_search], School.all, :id, :name, include_blank: "All", id: "schoolsearchbox" %></li>
+	<% end %>
     <li class="searchsbox"><%= submit_tag "Search", name: nil, class: "btn", id: "searchbtn" %></li>
   <% end %>
 </div>
 
 <div id="user_results">
-	<table>
-	<tr>
-		<td>Name</td>
-		<% @sessions.each do |session| %>
-			<td><%= session.deadline.to_s(:short) %></td>
-		<% end %>
-	</tr>
-	<%= render 'user_results' %>
-	</table>
+	<%= render "user_results" %>
 </div>

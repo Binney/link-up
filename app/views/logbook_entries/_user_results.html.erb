@@ -1,11 +1,32 @@
-<% if @users.any? %>
+<% if @schools.any? %>
 
-  <% @users.each do |user| %>
-  	<%= render(partial: 'users/logbook_preview', locals: {user: user, sessions: @sessions}) %>
-  <% end %>
+	<% @schools.each do |school| %>
+
+		<% users = User.search_by_school(params[:name_search], school.id) %>
+
+		<% if users.any? %>
+
+			<h4><%= school.name %></h4>
+			<% if school.logbook_templates.any? %>
+				<table>
+				<tr>
+					<td>Name</td>
+					<% school.logbook_templates.each do |template| %>
+						<td><%= template.deadline.to_s(:short) %></td>
+					<% end %>
+				</tr>
+				<%= render(partial: 'school_view', locals: {school_name: school.name, users: users, templates: school.logbook_templates}) %>
+				</table>
+			<% else %>
+				No logbook templates for this school. <%= link_to "Create one here!", new_logbook_template_path %>
+			<% end %>
+
+		<% end %>
+
+	<% end %>
 
 <% else %>
-	
-  No users found.
+
+	No schools found.
 
 <% end %>
