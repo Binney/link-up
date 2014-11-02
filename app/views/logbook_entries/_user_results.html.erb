@@ -2,6 +2,7 @@
 
 	<% @schools.each do |school| %>
 
+		<% puts params[:name_search] %>
 		<% users = User.search_by_school(params[:name_search].to_s, school.id.to_i) %>
 
 		<% if users.any? %>

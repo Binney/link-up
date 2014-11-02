@@ -1,7 +1,8 @@
 LinkUp::Application.routes.draw do
 
   resources :users do
-    resources :logbook_entries
+    resources :logbook_entries, path: "logbook"
+
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :venues

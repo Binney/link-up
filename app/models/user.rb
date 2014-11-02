@@ -46,30 +46,11 @@ class User < ActiveRecord::Base
   end
 
   def self.search_by_school(name_search, school_search)
-    if school_search == 0
+    if school_search.to_i == 0
       all.where('UPPER(name) LIKE UPPER(?)', "%#{name_search}%")      
     else
       all.where('UPPER(name) LIKE UPPER(?) AND school_id LIKE ?', "%#{name_search}%", "%#{school_search}%")
     end
- #     puts (name_search ? "YES" : "NO")
- #   if name_search # UPPER(?) ensures it's case insensitive
- #     if school_search>0
- #       puts "Name and school"
- #      self.name_search(name_search).select { |u| u.school_id == school_search }
- #     else
- #       puts "Name, no school"
- #       self.name_search(name_search).select { |u| u.name }
- #     end
- #   else
- #     puts school_search.to_s+"////////////////"
- #     if school_search>0
- #       puts "School, no name"
- #       all.select { |u| u.school_id == school_search }
- #     else
- #       puts "Orphan (black?)"
- #       all.select { |u| u.name }
- #     end
- #   end
   end
 
   def self.search_by_name(name_search)
