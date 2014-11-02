@@ -56,12 +56,17 @@ class LogbookEntriesController < ApplicationController
   end
 
   def overview
+    puts "Viewing over"
+    puts params[:school_search]
+    puts params[:name_search]
+
     if me_admin?
       if params[:school_search].blank? || params[:school_search][0].blank?
         @schools = School.all
       else
         @schools = [School.find(params[:school_search][0].to_i)]
       end
+      puts @schools.first.name
     elsif me_teacher? 
       @schools = [current_user.school]
     else
