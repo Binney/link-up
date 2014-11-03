@@ -46,10 +46,12 @@ class User < ActiveRecord::Base
   end
 
   def self.search_by_school(name_search, school_search)
+    puts "Search gives #{school_search} following #{school_search.to_i}"
     if school_search.to_i == 0
-      all.where('UPPER(name) LIKE UPPER(?)', "%#{name_search}%")      
+      all.where('UPPER(name) LIKE UPPER(?)', "%#{name_search}%")
     else
-      all.where('UPPER(name) LIKE UPPER(?) AND school_id LIKE (?)', "%#{name_search}%", "%#{school_search}%")
+      all.where('UPPER(name) LIKE UPPER(?)', "%#{name_search}%").select { |u| u.school_id == school_search }
+      #all.where('UPPER(name) LIKE UPPER(?) AND school_id LIKE ?', "%#{name_search}%", "%#{school_search}%")
     end
   end
 
