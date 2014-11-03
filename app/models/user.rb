@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
     if school_search.to_i == 0
       all.where('UPPER(name) LIKE UPPER(?)', "%#{name_search}%")      
     else
-      all.where('UPPER(name) LIKE UPPER(?) AND school_id LIKE ?', "%#{name_search.to_s}%", "%#{school_search.to_s}%")
+      all.where('UPPER(name) LIKE UPPER(?) AND school_id LIKE (?)', "%#{name_search}%", "%#{school_search}%")
     end
   end
 
