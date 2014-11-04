@@ -13,6 +13,10 @@
     <% end %>
     <p><%= @questions.last.html_safe %></p>
 
+    <% unless @template.goal.blank? %>
+      <%= @template.goal %>
+      <%= f.text_area :goal %>
+    <% end %>
 
     <%= f.submit "Save to logbook", class: "btn btn-primary" %>
   <% end %>
