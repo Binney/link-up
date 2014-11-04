@@ -3,8 +3,12 @@
 
 <h1>All <%= "incomplete " if !(me_teacher? || me_admin?) %>logbook worksheets</h1>
 
-<%= button_to "New worksheet template", new_logbook_template_path, method: "get", class: "btn" %>
+<%= button_to "New worksheet template", new_logbook_template_path, method: "get", class: "btn" if (me_teacher? || me_admin?) %>
 
 <ul class="generic_list">
-	<%= render @logbook_templates %>
+	<% if @logbook_templates.any? %>
+		<%= render @logbook_templates %>
+	<% else %>
+	  You're currently up to date on your logbook. :)
+    <% end %>
 </ul>

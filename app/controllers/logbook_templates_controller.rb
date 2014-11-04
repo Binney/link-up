@@ -38,7 +38,7 @@ class LogbookTemplatesController < ApplicationController
 
 	def show
 		if me_teacher? || me_admin?
-	  	@logbook_template = LogbookTemplate.find(params[:id])
+	  	  @logbook_template = LogbookTemplate.find(params[:id])
 		  @questions = @logbook_template.content.split("<text>")
 		else
 			redirect_to new_logbook_entry_path(template_id: params[:id])
